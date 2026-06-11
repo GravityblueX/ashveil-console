@@ -1,13 +1,24 @@
 # Ashveil Console
 
-Ashveil Console 是一个暗色系、轻量化、持续优化中的内部管理控制台。项目当前采用前后端分离结构，把登录鉴权、权限管理、数据字典、审计日志、任务编排、系统监控等后台常见能力组合成一个可继续扩展的控制台原型。
+Ashveil Console 是一个面向灰域状态的内部风险观察台、夜间值守控制台和权限审计中枢。它关注的不是普通后台里的“数据管理”，而是内部系统里那些介于正常与异常之间的变化：权限被调整、任务耗时变长、异常令牌出现、节点状态开始变得不稳定。
+
+**Ash** 代表系统运行后留下的灰烬与余温，**Veil** 代表遮住风险痕迹的薄幕。Ashveil Console 要做的事情，就是把这些被遮住的变化重新显影。
 
 ## 项目状态
 
 - 仓库：`GravityblueX/ashveil-console`
 - 主分支：`main`
-- 当前版本：`v0.14.0`
+- 当前版本：`v0.15.0`
 - 维护模式：持续优化 + 每轮发布 GitHub Release
+- 产品定位：内部风险观察台 / 夜间值守控制台 / 权限审计中枢
+
+## 项目个性
+
+- **灰域观察**：关注正常与异常之间的中间状态。
+- **夜间值守**：暗色、低噪声、低饱和，适合长时间观察。
+- **权限审计**：把角色、资源、动作放进矩阵里观察授权边界。
+- **风险显影**：通过审计摘要、渠道分布、时间线和状态标签呈现风险。
+- **持续演进**：通过 GitHub Actions、Release Notes 和 Agent 提示词保持项目迭代。
 
 ## 技术栈
 
@@ -40,6 +51,21 @@ Ashveil Console 是一个暗色系、轻量化、持续优化中的内部管理�
 | 任务编排 | 任务名称、cron 表达式、运行状态、成功率 |
 | 系统脉搏 | API 运行时间、资源占用、节点健康状态 |
 
+## 设计语言
+
+Ashveil 的设计语言不是高饱和品牌色，而是围绕“灰域观察”建立的克制暗色系统：
+
+- 主背景：`#09090b`
+- 深层面板：`#111113`
+- 卡片和边框：`#27272a`
+- 次级文字：`#a1a1aa`
+- 主文字和主按钮：`#f4f4f5`
+- 高危：`#fca5a5`
+- 警告：`#fcd34d`
+- 健康：`#dcfce7`
+
+完整设计说明见：`docs/design-language.md`。
+
 ## 快速启动
 
 ```bash
@@ -57,87 +83,38 @@ admin / ashveil2026
 ## 常用命令
 
 ```bash
-# 安装前后端依赖
 npm run install:all
-
-# 启动后端
 npm run dev:backend
-
-# 启动前端
 npm run dev:frontend
-
-# 构建前后端
 npm run build
-
-# 执行检查
 npm run check
 ```
 
-## 环境变量
+## 文档
 
-项目提供示例环境变量文件：
-
-```text
-backend/.env.example
-frontend/.env.example
-```
-
-本地开发时复制为 `.env` 后按需修改。不要把真实密钥提交到仓库。
-
-## 目录结构
-
-```text
-ashveil-console
-├─ backend              # Express API 服务
-├─ frontend             # Vue 3 管理端
-├─ docs                 # 项目说明与版本说明
-├─ RELEASE_NOTES.md     # 当前版本发布说明
-└─ package.json         # 根目录统一脚本
-```
-
-## GitHub Secrets
-
-Secrets 配置说明见 `docs/github-secrets.md`。当前流水线依赖默认 `GITHUB_TOKEN` 完成提交与 Release；`ANTHROPIC_API_KEY` / `OPENAI_API_KEY` 为后续 AI 优化能力预留。
-
-## 自动化流水线
-
-项目已新增 GitHub Actions 工作流 `.github/workflows/continuous-optimize.yml`，支持在 push、定时计划和手动触发时执行依赖安装、构建检查、自动提交和 Release 创建。
+- 项目缘起：`docs/origin-story.md`
+- 设计语言：`docs/design-language.md`
+- 业务设定：`docs/product-scenario.md`
+- GitHub Secrets：`docs/github-secrets.md`
+- 流程测试：`docs/flow-test.md`
+- 持续优化部署状态：`docs/continuous-operation.md`
+- 当前发布说明：`RELEASE_NOTES.md`
 
 ## 优化历史记录
 
+- `v0.15.0`：补充 Ashveil 项目缘起、灰域控制台概念、设计语言和业务设定，让项目更具个人原创特征。
 - `v0.14.0`：记录自动化持续优化部署状态，明确 GitHub Actions 与本地循环脚本运行方式。
-- `v0.13.0`：新增自动化持续优化流程测试说明 `docs/flow-test.md`。
-- `v0.12.0`：新增本地自动优化循环辅助脚本 `optimize-loop.sh`。
-- `v0.11.0`：新增永久循环优化提示词 `AGENT_OPTIMIZE_PROMPT.md`。
-- `v0.10.0`：补充 GitHub Secrets 配置说明，明确默认令牌权限与 AI Key 预留项。
-- `v0.9.0`：创建 GitHub Actions 持续优化流水线，支持 push、定时和手动触发。
-- `v0.8.0`：整理项目基础准备，统一根目录脚本，补齐 build/lint/test/check，完善环境变量示例与中文文档。
-- `v0.7.0`：增强审计日志模块，增加摘要、渠道分布与风险时间线。
-- `v0.6.0`：新增角色权限矩阵页面与后端权限矩阵接口。
+- `v0.13.0`：新增自动化持续优化流程测试说明。
+- `v0.12.0`：新增本地自动优化循环辅助脚本。
+- `v0.11.0`：新增永久循环优化提示词。
+- `v0.10.0`：补充 GitHub Secrets 配置说明。
+- `v0.9.0`：创建 GitHub Actions 持续优化流水线。
+- `v0.8.0`：整理项目基础准备。
+- `v0.7.0`：增强审计日志模块。
+- `v0.6.0`：新增角色权限矩阵页面。
 - `v0.5.0`：新增弹窗表单原型。
 - `v0.4.0`：新增高级筛选搜索工具栏。
 - `v0.3.0`：模块页升级为真实暗色数据表格。
-- `v0.2.0`：完善中文 README、统一脚本和环境变量示例。
-
-## 自动化部署状态
-
-自动化持续优化部署状态见 `docs/continuous-operation.md`。当前推荐依赖 GitHub Actions 定时触发，也可以在 Git Bash / WSL 中使用 `optimize-loop.sh`。
-
-## 流程测试
-
-完整测试说明见 `docs/flow-test.md`，包含手动触发 Actions、检查 Release、使用 Agent 提示词和本地循环脚本验证。
-
-## 本地循环脚本
-
-项目根目录已新增 `optimize-loop.sh`，可用于本地持续循环提交与发布。首次使用可执行 `chmod +x optimize-loop.sh`，后台运行可使用 `nohup ./optimize-loop.sh &`。
-
-## 永久循环优化提示词
-
-项目根目录已新增 `AGENT_OPTIMIZE_PROMPT.md`，用于让 IDE Agent 或 AI 工程代理进入持续优化模式。
-
-## 后续方向
-
-任务执行按钮、暗色组件库、性能优化、代码规范、真实数据接入与更多新功能会继续迭代。
 
 ## License
 
