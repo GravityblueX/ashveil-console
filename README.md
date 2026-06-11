@@ -6,7 +6,7 @@ Ashveil Console 是一个暗色系、轻量化、持续优化中的内部管理�
 
 - 仓库：`GravityblueX/ashveil-console`
 - 主分支：`main`
-- 当前版本：`v0.8.0`
+- 当前版本：`v0.9.0`
 - 维护模式：持续优化 + 每轮发布 GitHub Release
 
 ## 技术栈
@@ -95,8 +95,13 @@ ashveil-console
 └─ package.json         # 根目录统一脚本
 ```
 
+## 自动化流水线
+
+项目已新增 GitHub Actions 工作流 `.github/workflows/continuous-optimize.yml`，支持在 push、定时计划和手动触发时执行依赖安装、构建检查、自动提交和 Release 创建。
+
 ## 优化历史记录
 
+- `v0.9.0`：创建 GitHub Actions 持续优化流水线，支持 push、定时和手动触发。
 - `v0.8.0`：整理项目基础准备，统一根目录脚本，补齐 build/lint/test/check，完善环境变量示例与中文文档。
 - `v0.7.0`：增强审计日志模块，增加摘要、渠道分布与风险时间线。
 - `v0.6.0`：新增角色权限矩阵页面与后端权限矩阵接口。
