@@ -1,11 +1,14 @@
 {
   "name": "ashveil-console-api",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "build": "node --check src/server.js && node --check src/store.js",
+    "lint": "node --check src/server.js && node --check src/store.js",
+    "test": "node -e \"console.log(\\\"no tests configured\\\")\""
   },
   "dependencies": {
     "cors": "^2.8.5",
