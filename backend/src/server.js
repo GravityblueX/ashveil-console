@@ -12,6 +12,7 @@ import {
   dataSourceMeta,
   findUserById,
   findUserForLogin,
+  getPermissionMatrix,
   listRoles,
   listUsers
 } from './repositories.js';
@@ -43,7 +44,7 @@ function auth(req, res, next) {
 }
 
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.24.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.25.0' })
 );
 
 app.post('/api/auth/login', async (req, res) => {
@@ -80,7 +81,10 @@ app.get('/api/dashboard', auth, (_, res) => {
 app.get('/api/access/users', auth, async (_, res) => res.json(await listUsers()));
 app.get('/api/access/roles', auth, async (_, res) => res.json(await listRoles()));
 app.get('/api/access/menus', auth, (_, res) => res.json(menus));
-app.get('/api/access/permission-matrix', auth, (_, res) => res.json(permissionMatrix));
+app.get('/api/access/permission-matrix', auth, async (_, res) => {
+  const result = await getPermissionMatrix();
+  res.json({ ...result.matrix, meta: dataSourceMeta(result.source) });
+});
 app.get('/api/dictionaries', auth, (_, res) => res.json(dictionaries));
 app.get('/api/audit/logs', auth, (_, res) => res.json(auditLogs));
 app.get('/api/audit/summary', auth, (_, res) => {

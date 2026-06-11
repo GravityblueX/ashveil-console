@@ -1,4 +1,4 @@
-import { users, roles } from './store.js';
+import { users, roles, permissionMatrix } from './store.js';
 import { getPrisma, getPrismaStatus } from './db.js';
 
 function toSafeUser(user, roleCodes = user.roles || []) {
@@ -80,4 +80,35 @@ export function dataSourceMeta(source = 'mock') {
     source,
     prisma: getPrismaStatus()
   };
+}
+
+export async function getPermissionMatrix() {
+  const prisma = await getPrisma();
+  if (prisma) {
+    const [resources, roleRows] = await Promise.all([
+      prisma.permissionResource.findMany({ include: { actions: true }, orderBy: { id: 'asc' } }),
+      prisma.role.findMany({
+        include: { grants: { include: { action: { include: { resource: true } } } } }
+      })
+    ]);
+
+    if (resources.length && roleRows.length) {
+      const matrix = {
+        resources: resources.map((resource) => ({
+          key: resource.key,
+          name: resource.name,
+          actions: resource.actions.map((action) => action.key)
+        })),
+        grants: Object.fromEntries(
+          roleRows.map((role) => [
+            role.code,
+            role.grants.map((grant) => `${grant.action.resource.key}:${grant.action.key}`)
+          ])
+        )
+      };
+      return { matrix, source: 'prisma' };
+    }
+  }
+
+  return { matrix: permissionMatrix, source: 'mock' };
 }
