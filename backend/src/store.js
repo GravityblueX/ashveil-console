@@ -14,6 +14,7 @@ export const menus = [
   { path: '/dashboard', title: '星图总览', icon: '◐' },
   { path: '/risk/scores', title: '灰域评分', icon: '◈' },
   { path: '/risk/events', title: '风险事件', icon: '✦' },
+  { path: '/watch/night', title: '夜间值守', icon: '◒' },
   { path: '/access/users', title: '身份权限', icon: '◇' },
   { path: '/access/matrix', title: '权限矩阵', icon: '◆' },
   { path: '/system/dictionaries', title: '数据字典', icon: '□' },
