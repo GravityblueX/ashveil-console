@@ -97,6 +97,17 @@ model RiskEvent {
   updatedAt   DateTime @updatedAt
 }
 
+model RiskEventStatusLog {
+  id          Int       @id @default(autoincrement())
+  eventId     Int
+  event       RiskEvent @relation(fields: [eventId], references: [id])
+  fromStatus  String?
+  toStatus    String
+  note        String?
+  actor       String?
+  createdAt   DateTime  @default(now())
+}
+
 model JobTask {
   id          Int      @id @default(autoincrement())
   name        String

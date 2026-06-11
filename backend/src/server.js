@@ -46,7 +46,7 @@ function auth(req, res, next) {
 }
 
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.26.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.27.0' })
 );
 
 app.post('/api/auth/login', async (req, res) => {
@@ -122,7 +122,10 @@ app.get('/api/risk/events', auth, async (_, res) => {
   });
 });
 app.patch('/api/risk/events/:eventKey/status', auth, async (req, res) => {
-  const result = await updateRiskEventStatus(req.params.eventKey, req.body.status);
+  const result = await updateRiskEventStatus(req.params.eventKey, req.body.status, {
+    note: req.body.note,
+    actor: req.user?.username
+  });
   if (result.error) return res.status(result.statusCode || 500).json({ message: result.error });
   res.json({ event: result.event, meta: dataSourceMeta(result.source) });
 });

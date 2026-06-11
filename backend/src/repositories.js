@@ -127,9 +127,25 @@ function normalizeRiskEvent(row) {
     score: row.score,
     level: row.level,
     status: row.status,
+    statusNote: row.statusNote || '',
+    handledBy: row.handledBy || '',
+    statusChangedAt:
+      row.statusChangedAt instanceof Date ? row.statusChangedAt.toISOString() : row.statusChangedAt,
     suggestion: row.suggestion,
     createdAt: row.createdAt instanceof Date ? row.createdAt.toISOString() : row.createdAt,
-    updatedAt: row.updatedAt instanceof Date ? row.updatedAt.toISOString() : row.updatedAt
+    updatedAt: row.updatedAt instanceof Date ? row.updatedAt.toISOString() : row.updatedAt,
+    logs: (row.logs || []).map(normalizeRiskEventStatusLog)
+  };
+}
+
+function normalizeRiskEventStatusLog(row) {
+  return {
+    id: row.id,
+    fromStatus: row.fromStatus || '',
+    toStatus: row.toStatus,
+    note: row.note || '',
+    actor: row.actor || '',
+    createdAt: row.createdAt instanceof Date ? row.createdAt.toISOString() : row.createdAt
   };
 }
 
@@ -173,6 +189,10 @@ function riskEventOverview(events) {
   };
 }
 
+function statusLogSelect() {
+  return { orderBy: { createdAt: 'desc' }, take: 5 };
+}
+
 export async function getRiskEvents() {
   const generated = buildRiskEvents();
   const prisma = await getPrisma();
@@ -180,6 +200,7 @@ export async function getRiskEvents() {
   if (prisma) {
     await persistRiskEvents(prisma, generated.events);
     const rows = await prisma.riskEvent.findMany({
+      include: { logs: statusLogSelect() },
       orderBy: [{ score: 'desc' }, { createdAt: 'desc' }]
     });
     const events = rows.map(normalizeRiskEvent);
@@ -189,7 +210,7 @@ export async function getRiskEvents() {
   return { ...generated, source: 'mock' };
 }
 
-export async function updateRiskEventStatus(eventKey, status) {
+export async function updateRiskEventStatus(eventKey, status, options = {}) {
   if (!RISK_EVENT_STATUSES.includes(status)) {
     return { error: '不支持的风险事件状态', statusCode: 400 };
   }
@@ -203,10 +224,31 @@ export async function updateRiskEventStatus(eventKey, status) {
   const event = generated.events.find((item) => item.eventKey === eventKey || item.id === eventKey);
   if (event) await persistRiskEvents(prisma, [event]);
 
-  try {
-    const row = await prisma.riskEvent.update({ where: { eventKey }, data: { status } });
-    return { event: normalizeRiskEvent(row), source: 'prisma' };
-  } catch {
-    return { error: '风险事件不存在', statusCode: 404, source: 'prisma' };
-  }
+  const existing = await prisma.riskEvent.findUnique({ where: { eventKey } });
+  if (!existing) return { error: '风险事件不存在', statusCode: 404, source: 'prisma' };
+
+  const note = typeof options.note === 'string' ? options.note.trim() : '';
+  const actor = typeof options.actor === 'string' ? options.actor.trim() : '';
+  const changedAt = new Date();
+
+  const row = await prisma.riskEvent.update({
+    where: { eventKey },
+    data: {
+      status,
+      statusNote: note || null,
+      handledBy: actor || null,
+      statusChangedAt: changedAt,
+      logs: {
+        create: {
+          fromStatus: existing.status,
+          toStatus: status,
+          note: note || null,
+          actor: actor || null,
+          createdAt: changedAt
+        }
+      }
+    },
+    include: { logs: statusLogSelect() }
+  });
+  return { event: normalizeRiskEvent(row), source: 'prisma' };
 }
