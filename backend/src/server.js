@@ -17,6 +17,13 @@ import { buildRiskScores } from './risk.js';
 import { buildRiskEvents } from './risk-events.js';
 import { cachedJson } from './cache.js';
 import { buildRoadmap, featureIdeas } from './ideas.js';
+import {
+  dataSourceMeta,
+  findUserById,
+  findUserForLogin,
+  listRoles,
+  listUsers
+} from './repositories.js';
 
 const app = express();
 const PORT = process.env.PORT || 4160;
@@ -45,7 +52,7 @@ function auth(req, res, next) {
 }
 
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.23.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.24.0' })
 );
 
 app.post('/api/auth/login', (req, res) => {
@@ -78,7 +85,7 @@ app.get('/api/dashboard', auth, (_, res) => {
 app.get('/api/access/users', auth, (_, res) =>
   res.json(users.map(({ password: _password, ...u }) => u))
 );
-app.get('/api/access/roles', auth, (_, res) => res.json(roles));
+app.get('/api/access/roles', auth, async (_, res) => res.json(await listRoles()));
 app.get('/api/access/menus', auth, (_, res) => res.json(menus));
 app.get('/api/access/permission-matrix', auth, (_, res) => res.json(permissionMatrix));
 app.get('/api/dictionaries', auth, (_, res) => res.json(dictionaries));
