@@ -13,6 +13,7 @@ export const users = [
 export const menus = [
   { path: '/dashboard', title: '星图总览', icon: '◐' },
   { path: '/access/users', title: '身份权限', icon: '◇' },
+  { path: '/access/matrix', title: '权限矩阵', icon: '◆' },
   { path: '/system/dictionaries', title: '数据字典', icon: '□' },
   { path: '/audit/logs', title: '审计轨迹', icon: '◎' },
   { path: '/jobs', title: '任务编排', icon: '△' },
@@ -45,4 +46,22 @@ export const monitor = {
     { name: 'worker-02', status: 'healthy', latency: '24ms' },
     { name: 'audit-archive', status: 'degraded', latency: '91ms' }
   ]
+};
+
+
+export const permissionMatrix = {
+  resources: [
+    { key: 'dashboard', name: '星图总览', actions: ['view'] },
+    { key: 'users', name: '用户管理', actions: ['view', 'create', 'edit', 'disable'] },
+    { key: 'roles', name: '角色管理', actions: ['view', 'create', 'edit', 'grant'] },
+    { key: 'dictionary', name: '数据字典', actions: ['view', 'create', 'edit', 'delete'] },
+    { key: 'audit', name: '审计轨迹', actions: ['view', 'export'] },
+    { key: 'jobs', name: '任务编排', actions: ['view', 'run', 'pause'] },
+    { key: 'monitor', name: '系统脉搏', actions: ['view'] }
+  ],
+  grants: {
+    ROOT: ['dashboard:view', 'users:view', 'users:create', 'users:edit', 'users:disable', 'roles:view', 'roles:create', 'roles:edit', 'roles:grant', 'dictionary:view', 'dictionary:create', 'dictionary:edit', 'dictionary:delete', 'audit:view', 'audit:export', 'jobs:view', 'jobs:run', 'jobs:pause', 'monitor:view'],
+    AUDITOR: ['dashboard:view', 'users:view', 'roles:view', 'dictionary:view', 'audit:view', 'audit:export', 'monitor:view'],
+    OPS: ['dashboard:view', 'audit:view', 'jobs:view', 'jobs:run', 'jobs:pause', 'monitor:view']
+  }
 };

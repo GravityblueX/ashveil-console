@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
-import { users, roles, menus, dictionaries, auditLogs, jobs, monitor } from './store.js';
+import { users, roles, menus, dictionaries, auditLogs, jobs, monitor, permissionMatrix } from './store.js';
 
 const app = express();
 const PORT = process.env.PORT || 4160;
@@ -29,7 +29,7 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.5.0' }));
+app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.6.0' }));
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
@@ -61,6 +61,7 @@ app.get('/api/dashboard', auth, (_, res) => {
 app.get('/api/access/users', auth, (_, res) => res.json(users.map(({ password, ...u }) => u)));
 app.get('/api/access/roles', auth, (_, res) => res.json(roles));
 app.get('/api/access/menus', auth, (_, res) => res.json(menus));
+app.get('/api/access/permission-matrix', auth, (_, res) => res.json(permissionMatrix));
 app.get('/api/dictionaries', auth, (_, res) => res.json(dictionaries));
 app.get('/api/audit/logs', auth, (_, res) => res.json(auditLogs));
 app.get('/api/jobs', auth, (_, res) => res.json(jobs));
