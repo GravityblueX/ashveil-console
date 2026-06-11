@@ -15,7 +15,7 @@
             <span v-else>{{ displayValue(row[column.key]) }}</span>
           </td>
           <td v-if="actions.length" class="table-actions">
-            <button v-for="action in actions" :key="action" class="ghost-btn" type="button">{{ action }}</button>
+            <button v-for="action in actions" :key="action" class="ghost-btn" type="button" @click="emit('action', { action, row })">{{ action }}</button>
           </td>
         </tr>
         <tr v-if="!rows.length">
@@ -27,6 +27,7 @@
 </template>
 <script setup>
 import { computed } from 'vue';
+const emit = defineEmits(['action']);
 const props = defineProps({
   rows: { type: Array, default: () => [] },
   columns: { type: Array, default: () => [] },
