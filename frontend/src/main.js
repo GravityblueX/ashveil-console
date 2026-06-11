@@ -22,6 +22,7 @@ const AuditCenter = page(() => import('./pages/AuditCenter.vue'));
 const RiskScores = page(() => import('./pages/RiskScores.vue'));
 const RiskEvents = page(() => import('./pages/RiskEvents.vue'));
 const NightWatch = page(() => import('./pages/NightWatch.vue'));
+const IdeasRoadmap = page(() => import('./pages/IdeasRoadmap.vue'));
 
 const routes = [
   { path: '/', redirect: '/dashboard' },
@@ -30,6 +31,7 @@ const routes = [
   { path: '/risk/scores', component: RiskScores },
   { path: '/risk/events', component: RiskEvents },
   { path: '/watch/night', component: NightWatch },
+  { path: '/ideas', component: IdeasRoadmap },
   {
     path: '/access/users',
     component: TablePage,

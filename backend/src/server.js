@@ -16,6 +16,7 @@ import {
 import { buildRiskScores } from './risk.js';
 import { buildRiskEvents } from './risk-events.js';
 import { cachedJson } from './cache.js';
+import { buildRoadmap, featureIdeas } from './ideas.js';
 
 const app = express();
 const PORT = process.env.PORT || 4160;
@@ -44,7 +45,7 @@ function auth(req, res, next) {
 }
 
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.21.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.22.0' })
 );
 
 app.post('/api/auth/login', (req, res) => {
@@ -109,6 +110,7 @@ app.get('/api/risk/scores', auth, (_, res) =>
 app.get('/api/risk/events', auth, (_, res) =>
   res.json(cachedJson('risk:events', 15000, buildRiskEvents))
 );
+app.get('/api/ideas', auth, (_, res) => res.json({ ideas: featureIdeas, roadmap: buildRoadmap() }));
 app.get('/api/watch/night', auth, (_, res) => {
   const risk = buildRiskScores();
   const eventData = buildRiskEvents();
