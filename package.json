@@ -1,6 +1,6 @@
 {
   "name": "ashveil-console",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "private": true,
   "description": "一个暗色系、轻量化的内部管理控制台。",
   "scripts": {

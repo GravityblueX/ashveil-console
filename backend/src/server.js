@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
 import { users, roles, menus, dictionaries, auditLogs, jobs, monitor, permissionMatrix } from './store.js';
+import { buildRiskScores } from './risk.js';
 
 const app = express();
 const PORT = process.env.PORT || 4160;
@@ -29,7 +30,7 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.15.0' }));
+app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.16.0' }));
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
@@ -85,6 +86,7 @@ app.get('/api/audit/summary', auth, (_, res) => {
 });
 app.get('/api/jobs', auth, (_, res) => res.json(jobs));
 app.get('/api/monitor', auth, (_, res) => res.json(monitor));
+app.get('/api/risk/scores', auth, (_, res) => res.json(buildRiskScores()));
 
 app.use((_, res) => res.status(404).json({ message: 'Not Found' }));
 
