@@ -5,7 +5,7 @@ export const roles = [
 ];
 
 export const users = [
-  { id: 1, username: 'admin', password: 'nocturne2026', nickname: 'Night Operator', dept: '中台治理部', roles: ['ROOT'], status: 'active', lastLogin: '2026-06-11 08:00' },
+  { id: 1, username: 'admin', password: 'ashveil2026', nickname: 'Ash Operator', dept: '中台治理部', roles: ['ROOT'], status: 'active', lastLogin: '2026-06-11 08:00' },
   { id: 2, username: 'mira', password: 'demo123456', nickname: 'Mira', dept: '风控组', roles: ['AUDITOR'], status: 'active', lastLogin: '2026-06-10 19:42' },
   { id: 3, username: 'ops01', password: 'demo123456', nickname: 'Ops Watcher', dept: '基础设施组', roles: ['OPS'], status: 'locked', lastLogin: '2026-06-09 13:18' }
 ];

@@ -2,13 +2,13 @@
   <router-view v-if="$route.path === '/login'" />
   <div v-else class="shell">
     <aside class="side">
-      <div class="brand"><span class="moon">◑</span><div><b>Nocturne</b><small>Admin Console</small></div></div>
+      <div class="brand"><span class="moon">◑</span><div><b>Ashveil</b><small>Control Room</small></div></div>
       <router-link v-for="item in menus" :key="item.path" :to="item.path" class="nav">
         <span>{{ item.icon }}</span>{{ item.title }}
       </router-link>
     </aside>
     <main class="main">
-      <header class="top"><span>暗色运营中台</span><button @click="logout">退出</button></header>
+      <header class="top"><span>灰域控制台</span><button @click="logout">退出</button></header>
       <router-view />
     </main>
   </div>

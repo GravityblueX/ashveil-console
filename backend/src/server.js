@@ -6,7 +6,7 @@ import { users, roles, menus, dictionaries, auditLogs, jobs, monitor } from './s
 
 const app = express();
 const PORT = process.env.PORT || 4160;
-const JWT_SECRET = process.env.JWT_SECRET || 'nocturne-local-secret';
+const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 
 app.use(cors());
 app.use(express.json());
@@ -28,7 +28,7 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Nocturne Admin API' }));
+app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API' }));
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
@@ -67,4 +67,4 @@ app.get('/api/monitor', auth, (_, res) => res.json(monitor));
 
 app.use((_, res) => res.status(404).json({ message: 'Not Found' }));
 
-app.listen(PORT, () => console.log(`Nocturne Admin API listening on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Ashveil Console API listening on http://localhost:${PORT}`));
