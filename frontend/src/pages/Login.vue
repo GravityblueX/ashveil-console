@@ -17,12 +17,17 @@ import { api } from '../api';
 const username = ref('admin');
 const password = ref('ashveil2026');
 const error = ref('');
-async function submit(){
+async function submit() {
   try {
-    const data = await api('/auth/login', { method: 'POST', body: JSON.stringify({ username: username.value, password: password.value }) });
+    const data = await api('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username: username.value, password: password.value })
+    });
     localStorage.setItem('token', data.token);
     localStorage.setItem('menus', JSON.stringify(data.menus));
     location.href = '/dashboard';
-  } catch(e) { error.value = e.message; }
+  } catch (e) {
+    error.value = e.message;
+  }
 }
 </script>

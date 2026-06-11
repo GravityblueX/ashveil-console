@@ -8,7 +8,13 @@ function eventStatus(item) {
 }
 
 function eventType(item) {
-  const map = { role: '权限风险', user: '账号风险', audit: '审计风险', job: '任务风险', node: '节点风险' };
+  const map = {
+    role: '权限风险',
+    user: '账号风险',
+    audit: '审计风险',
+    job: '任务风险',
+    node: '节点风险'
+  };
   return map[item.type] || '灰域风险';
 }
 
@@ -21,24 +27,26 @@ function suggestion(item) {
 
 export function buildRiskEvents() {
   const scores = buildRiskScores();
-  const events = scores.items.filter(item => item.score >= 35).map((item, index) => ({
-    id: `evt-${String(index + 1).padStart(4, '0')}`,
-    title: `${eventType(item)}：${item.target}`,
-    target: item.target,
-    sourceType: item.type,
-    score: item.score,
-    level: item.band,
-    status: eventStatus(item),
-    reasons: item.reasons,
-    suggestion: suggestion(item),
-    createdAt: new Date(Date.now() - index * 1000 * 60 * 17).toISOString()
-  }));
+  const events = scores.items
+    .filter((item) => item.score >= 35)
+    .map((item, index) => ({
+      id: `evt-${String(index + 1).padStart(4, '0')}`,
+      title: `${eventType(item)}：${item.target}`,
+      target: item.target,
+      sourceType: item.type,
+      score: item.score,
+      level: item.band,
+      status: eventStatus(item),
+      reasons: item.reasons,
+      suggestion: suggestion(item),
+      createdAt: new Date(Date.now() - index * 1000 * 60 * 17).toISOString()
+    }));
   const overview = {
     total: events.length,
-    pending: events.filter(e => e.status === 'pending').length,
-    processing: events.filter(e => e.status === 'processing').length,
-    confirmed: events.filter(e => e.status === 'confirmed').length,
-    archived: events.filter(e => e.status === 'archived').length
+    pending: events.filter((e) => e.status === 'pending').length,
+    processing: events.filter((e) => e.status === 'processing').length,
+    confirmed: events.filter((e) => e.status === 'confirmed').length,
+    archived: events.filter((e) => e.status === 'archived').length
   };
   return { overview, events };
 }

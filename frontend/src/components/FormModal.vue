@@ -14,7 +14,9 @@
             <span>{{ field.title }}</span>
             <select v-if="field.options?.length" v-model="draft[field.key]">
               <option value="">请选择</option>
-              <option v-for="option in field.options" :key="option" :value="option">{{ option }}</option>
+              <option v-for="option in field.options" :key="option" :value="option">
+                {{ option }}
+              </option>
             </select>
             <textarea v-else-if="field.type === 'textarea'" v-model="draft[field.key]" rows="3" />
             <input v-else v-model="draft[field.key]" :placeholder="`请输入${field.title}`" />
@@ -39,10 +41,20 @@ const props = defineProps({
 });
 const emit = defineEmits(['close', 'submit']);
 const draft = reactive({});
-watch(() => [props.open, props.modelValue, props.fields], () => {
-  Object.keys(draft).forEach(key => delete draft[key]);
-  props.fields.forEach(field => { draft[field.key] = props.modelValue?.[field.key] ?? ''; });
-}, { immediate: true, deep: true });
-function close(){ emit('close'); }
-function submit(){ emit('submit', { ...draft }); }
+watch(
+  () => [props.open, props.modelValue, props.fields],
+  () => {
+    Object.keys(draft).forEach((key) => delete draft[key]);
+    props.fields.forEach((field) => {
+      draft[field.key] = props.modelValue?.[field.key] ?? '';
+    });
+  },
+  { immediate: true, deep: true }
+);
+function close() {
+  emit('close');
+}
+function submit() {
+  emit('submit', { ...draft });
+}
 </script>

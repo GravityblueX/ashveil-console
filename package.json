@@ -1,6 +1,6 @@
 {
   "name": "ashveil-console",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "private": true,
   "description": "一个暗色系、轻量化的内部管理控制台。",
   "scripts": {
@@ -10,7 +10,9 @@
     "build": "npm run build --prefix backend && npm run build --prefix frontend",
     "lint": "npm run lint --prefix backend && npm run lint --prefix frontend",
     "test": "npm run test --prefix backend && npm run test --prefix frontend",
-    "check": "npm run lint && npm run test"
+    "check": "npm run lint && npm run format:check && npm run test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [
     "admin",
@@ -19,5 +21,8 @@
     "express",
     "dark-theme"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
 }

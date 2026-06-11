@@ -2,9 +2,13 @@
   <router-view v-if="$route.path === '/login'" />
   <div v-else class="shell">
     <aside class="side">
-      <div class="brand"><span class="moon">◑</span><div><b>Ashveil</b><small>Greyfield Console</small></div></div>
+      <div class="brand">
+        <span class="moon">◑</span>
+        <div><b>Ashveil</b><small>Greyfield Console</small></div>
+      </div>
       <router-link v-for="item in menus" :key="item.path" :to="item.path" class="nav">
-        <span>{{ item.icon }}</span>{{ item.title }}
+        <span>{{ item.icon }}</span
+        >{{ item.title }}
       </router-link>
     </aside>
     <main class="main">
@@ -15,5 +19,8 @@
 </template>
 <script setup>
 const menus = JSON.parse(localStorage.getItem('menus') || '[]');
-function logout(){ localStorage.clear(); location.href='/login'; }
+function logout() {
+  localStorage.clear();
+  location.href = '/login';
+}
 </script>

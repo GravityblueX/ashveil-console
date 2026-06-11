@@ -2,7 +2,7 @@ name: Continuous Optimization & Release
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   schedule:
     - cron: '0 2 * * *'
   workflow_dispatch:
@@ -32,7 +32,7 @@ jobs:
       - name: Auto Commit Improvements
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(auto): optimization round ${{ github.run_number }}"
+          commit_message: 'chore(auto): optimization round ${{ github.run_number }}'
 
       - name: Create Release
         uses: softprops/action-gh-release@v2

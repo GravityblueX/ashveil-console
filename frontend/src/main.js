@@ -5,13 +5,14 @@ import App from './App.vue';
 import './styles/tokens.css';
 import './styles.css';
 
-const page = (loader) => defineAsyncComponent({
-  loader,
-  delay: 80,
-  timeout: 10000,
-  errorComponent: { template: '<div class="state error-box">页面加载失败，请刷新重试。</div>' },
-  loadingComponent: { template: '<div class="state">正在加载灰域模块...</div>' }
-});
+const page = (loader) =>
+  defineAsyncComponent({
+    loader,
+    delay: 80,
+    timeout: 10000,
+    errorComponent: { template: '<div class="state error-box">页面加载失败，请刷新重试。</div>' },
+    loadingComponent: { template: '<div class="state">正在加载灰域模块...</div>' }
+  });
 
 const Login = page(() => import('./pages/Login.vue'));
 const Dashboard = page(() => import('./pages/Dashboard.vue'));
@@ -29,9 +30,17 @@ const routes = [
   { path: '/risk/scores', component: RiskScores },
   { path: '/risk/events', component: RiskEvents },
   { path: '/watch/night', component: NightWatch },
-  { path: '/access/users', component: TablePage, props: { title: '身份权限', endpoint: '/access/users' } },
+  {
+    path: '/access/users',
+    component: TablePage,
+    props: { title: '身份权限', endpoint: '/access/users' }
+  },
   { path: '/access/matrix', component: PermissionMatrix },
-  { path: '/system/dictionaries', component: TablePage, props: { title: '数据字典', endpoint: '/dictionaries' } },
+  {
+    path: '/system/dictionaries',
+    component: TablePage,
+    props: { title: '数据字典', endpoint: '/dictionaries' }
+  },
   { path: '/audit/logs', component: AuditCenter },
   { path: '/jobs', component: TablePage, props: { title: '任务编排', endpoint: '/jobs' } },
   { path: '/monitor', component: TablePage, props: { title: '系统脉搏', endpoint: '/monitor' } }

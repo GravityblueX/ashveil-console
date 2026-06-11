@@ -1,5 +1,9 @@
 <template>
-  <button class="ash-button" :class="[`ash-button--${variant}`, { 'is-block': block }]" :type="type">
+  <button
+    class="ash-button"
+    :class="[`ash-button--${variant}`, { 'is-block': block }]"
+    :type="type"
+  >
     <slot />
   </button>
 </template>

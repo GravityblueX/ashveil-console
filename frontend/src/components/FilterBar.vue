@@ -9,14 +9,18 @@
         <span>状态/级别</span>
         <select v-model="local.status">
           <option value="">全部</option>
-          <option v-for="option in statusOptions" :key="option" :value="option">{{ option }}</option>
+          <option v-for="option in statusOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
         </select>
       </label>
       <label v-if="channelOptions.length" class="filter-field">
         <span>渠道</span>
         <select v-model="local.channel">
           <option value="">全部</option>
-          <option v-for="option in channelOptions" :key="option" :value="option">{{ option }}</option>
+          <option v-for="option in channelOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
         </select>
       </label>
     </div>
@@ -35,13 +39,17 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:modelValue', 'search', 'reset']);
 const local = reactive({ keyword: '', status: '', channel: '' });
-watch(() => props.modelValue, value => Object.assign(local, value || {}), { immediate: true, deep: true });
-function apply(){
+watch(
+  () => props.modelValue,
+  (value) => Object.assign(local, value || {}),
+  { immediate: true, deep: true }
+);
+function apply() {
   const payload = { keyword: local.keyword.trim(), status: local.status, channel: local.channel };
   emit('update:modelValue', payload);
   emit('search', payload);
 }
-function reset(){
+function reset() {
   const payload = { keyword: '', status: '', channel: '' };
   Object.assign(local, payload);
   emit('update:modelValue', payload);

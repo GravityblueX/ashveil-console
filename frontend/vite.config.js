@@ -11,7 +11,8 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) return 'vendor';
-          if (id.includes('/src/pages/Risk') || id.includes('/src/pages/Audit')) return 'risk-audit';
+          if (id.includes('/src/pages/Risk') || id.includes('/src/pages/Audit'))
+            return 'risk-audit';
           if (id.includes('/src/pages/NightWatch')) return 'watch';
           if (id.includes('/src/components/ash/')) return 'ash-ui';
         }

@@ -6,5 +6,10 @@
   </article>
 </template>
 <script setup>
-defineProps({ label: String, value: [String, Number], hint: String, tone: { type: String, default: 'default' } });
+defineProps({
+  label: String,
+  value: [String, Number],
+  hint: String,
+  tone: { type: String, default: 'default' }
+});
 </script>

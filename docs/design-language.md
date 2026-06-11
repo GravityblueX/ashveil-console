@@ -12,16 +12,16 @@ Ashveil Console 的设计语言围绕“灰域观察”展开。它不追求强�
 
 ## 色板
 
-| 名称 | 色值 | 用途 |
-| --- | --- | --- |
-| Obsidian | `#09090b` | 主背景 |
-| Charcoal | `#111113` | 输入框、深层面板 |
-| Graphite | `#27272a` | 卡片、边框、分隔层 |
-| Mist | `#a1a1aa` | 次级文字 |
-| Bone | `#f4f4f5` | 主文字、主按钮 |
-| Ember Red | `#fca5a5` | 高危状态 |
-| Amber Fog | `#fcd34d` | 警告状态 |
-| Pale Green | `#dcfce7` | 健康/成功状态 |
+| 名称       | 色值      | 用途               |
+| ---------- | --------- | ------------------ |
+| Obsidian   | `#09090b` | 主背景             |
+| Charcoal   | `#111113` | 输入框、深层面板   |
+| Graphite   | `#27272a` | 卡片、边框、分隔层 |
+| Mist       | `#a1a1aa` | 次级文字           |
+| Bone       | `#f4f4f5` | 主文字、主按钮     |
+| Ember Red  | `#fca5a5` | 高危状态           |
+| Amber Fog  | `#fcd34d` | 警告状态           |
+| Pale Green | `#dcfce7` | 健康/成功状态      |
 
 ## 间距规则
 

@@ -3,7 +3,16 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
-import { users, roles, menus, dictionaries, auditLogs, jobs, monitor, permissionMatrix } from './store.js';
+import {
+  users,
+  roles,
+  menus,
+  dictionaries,
+  auditLogs,
+  jobs,
+  monitor,
+  permissionMatrix
+} from './store.js';
 import { buildRiskScores } from './risk.js';
 import { buildRiskEvents } from './risk-events.js';
 import { cachedJson } from './cache.js';
@@ -17,7 +26,9 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 function sign(user) {
-  return jwt.sign({ id: user.id, username: user.username, roles: user.roles }, JWT_SECRET, { expiresIn: '8h' });
+  return jwt.sign({ id: user.id, username: user.username, roles: user.roles }, JWT_SECRET, {
+    expiresIn: '8h'
+  });
 }
 
 function auth(req, res, next) {
@@ -32,18 +43,20 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.20.0' }));
+app.get('/api/health', (_, res) =>
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.21.0' })
+);
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
-  const user = users.find(item => item.username === username && item.password === password);
+  const user = users.find((item) => item.username === username && item.password === password);
   if (!user) return res.status(401).json({ message: '账号或密码错误' });
   const { password: _, ...safeUser } = user;
   res.json({ token: sign(user), user: safeUser, menus });
 });
 
 app.get('/api/auth/me', auth, (req, res) => {
-  const user = users.find(item => item.id === req.user.id);
+  const user = users.find((item) => item.id === req.user.id);
   const { password: _, ...safeUser } = user;
   res.json({ user: safeUser, menus });
 });
@@ -61,7 +74,9 @@ app.get('/api/dashboard', auth, (_, res) => {
   });
 });
 
-app.get('/api/access/users', auth, (_, res) => res.json(users.map(({ password, ...u }) => u)));
+app.get('/api/access/users', auth, (_, res) =>
+  res.json(users.map(({ password: _password, ...u }) => u))
+);
 app.get('/api/access/roles', auth, (_, res) => res.json(roles));
 app.get('/api/access/menus', auth, (_, res) => res.json(menus));
 app.get('/api/access/permission-matrix', auth, (_, res) => res.json(permissionMatrix));
@@ -88,22 +103,38 @@ app.get('/api/audit/summary', auth, (_, res) => {
 });
 app.get('/api/jobs', auth, (_, res) => res.json(jobs));
 app.get('/api/monitor', auth, (_, res) => res.json(monitor));
-app.get('/api/risk/scores', auth, (_, res) => res.json(cachedJson('risk:scores', 15000, buildRiskScores)));
-app.get('/api/risk/events', auth, (_, res) => res.json(cachedJson('risk:events', 15000, buildRiskEvents)));
+app.get('/api/risk/scores', auth, (_, res) =>
+  res.json(cachedJson('risk:scores', 15000, buildRiskScores))
+);
+app.get('/api/risk/events', auth, (_, res) =>
+  res.json(cachedJson('risk:events', 15000, buildRiskEvents))
+);
 app.get('/api/watch/night', auth, (_, res) => {
   const risk = buildRiskScores();
   const eventData = buildRiskEvents();
-  res.json(cachedJson('watch:night', 10000, () => ({
-    shift: { name: '灰域夜间值守', window: '22:00 - 08:00', keeper: 'Ash Operator', mode: 'low-noise' },
-    pulse: { riskAverage: risk.overview.average, criticalEvents: eventData.overview.pending, processingEvents: eventData.overview.processing, onlineNodes: 3 },
-    spotlight: eventData.events.slice(0, 4),
-    checklist: [
-      { label: '复核高危权限变更', done: eventData.overview.pending === 0 },
-      { label: '确认任务执行队列', done: true },
-      { label: '观察降级节点延迟', done: false },
-      { label: '同步下一班值守备注', done: false }
-    ]
-  })));
+  res.json(
+    cachedJson('watch:night', 10000, () => ({
+      shift: {
+        name: '灰域夜间值守',
+        window: '22:00 - 08:00',
+        keeper: 'Ash Operator',
+        mode: 'low-noise'
+      },
+      pulse: {
+        riskAverage: risk.overview.average,
+        criticalEvents: eventData.overview.pending,
+        processingEvents: eventData.overview.processing,
+        onlineNodes: 3
+      },
+      spotlight: eventData.events.slice(0, 4),
+      checklist: [
+        { label: '复核高危权限变更', done: eventData.overview.pending === 0 },
+        { label: '确认任务执行队列', done: true },
+        { label: '观察降级节点延迟', done: false },
+        { label: '同步下一班值守备注', done: false }
+      ]
+    }))
+  );
 });
 
 app.use((_, res) => res.status(404).json({ message: 'Not Found' }));

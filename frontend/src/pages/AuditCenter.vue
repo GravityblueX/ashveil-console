@@ -7,16 +7,28 @@
         <div v-if="loading" class="state">正在加载审计摘要...</div>
         <template v-else>
           <div class="audit-metrics">
-            <div class="metric"><span>总日志</span><strong>{{ summary.total }}</strong></div>
-            <div class="metric danger"><span>高危</span><strong>{{ summary.critical }}</strong></div>
-            <div class="metric warn"><span>警告</span><strong>{{ summary.warning }}</strong></div>
-            <div class="metric"><span>信息</span><strong>{{ summary.info }}</strong></div>
+            <div class="metric">
+              <span>总日志</span><strong>{{ summary.total }}</strong>
+            </div>
+            <div class="metric danger">
+              <span>高危</span><strong>{{ summary.critical }}</strong>
+            </div>
+            <div class="metric warn">
+              <span>警告</span><strong>{{ summary.warning }}</strong>
+            </div>
+            <div class="metric">
+              <span>信息</span><strong>{{ summary.info }}</strong>
+            </div>
           </div>
           <h2>渠道分布</h2>
           <div class="channel-bars">
-            <div v-for="(count, channel) in summary.channelCount" :key="channel" class="channel-row">
+            <div
+              v-for="(count, channel) in summary.channelCount"
+              :key="channel"
+              class="channel-row"
+            >
               <span>{{ channel }}</span>
-              <i :style="{ width: `${Math.max(12, count / summary.total * 100)}%` }"></i>
+              <i :style="{ width: `${Math.max(12, (count / summary.total) * 100)}%` }"></i>
               <b>{{ count }}</b>
             </div>
           </div>
@@ -42,10 +54,20 @@ import { onMounted, reactive, ref } from 'vue';
 import { api } from '../api';
 import TablePage from './TablePage.vue';
 const loading = ref(false);
-const summary = reactive({ total: 0, critical: 0, warning: 0, info: 0, channelCount: {}, latest: [] });
+const summary = reactive({
+  total: 0,
+  critical: 0,
+  warning: 0,
+  info: 0,
+  channelCount: {},
+  latest: []
+});
 onMounted(async () => {
   loading.value = true;
-  try { Object.assign(summary, await api('/audit/summary')); }
-  finally { loading.value = false; }
+  try {
+    Object.assign(summary, await api('/audit/summary'));
+  } finally {
+    loading.value = false;
+  }
 });
 </script>
