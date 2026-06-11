@@ -1,17 +1,26 @@
-import { createApp } from 'vue';
+import { createApp, defineAsyncComponent } from 'vue';
 import { createPinia } from 'pinia';
 import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
-import Login from './pages/Login.vue';
-import Dashboard from './pages/Dashboard.vue';
-import TablePage from './pages/TablePage.vue';
-import PermissionMatrix from './pages/PermissionMatrix.vue';
-import AuditCenter from './pages/AuditCenter.vue';
-import RiskScores from './pages/RiskScores.vue';
-import RiskEvents from './pages/RiskEvents.vue';
-import NightWatch from './pages/NightWatch.vue';
 import './styles/tokens.css';
 import './styles.css';
+
+const page = (loader) => defineAsyncComponent({
+  loader,
+  delay: 80,
+  timeout: 10000,
+  errorComponent: { template: '<div class="state error-box">页面加载失败，请刷新重试。</div>' },
+  loadingComponent: { template: '<div class="state">正在加载灰域模块...</div>' }
+});
+
+const Login = page(() => import('./pages/Login.vue'));
+const Dashboard = page(() => import('./pages/Dashboard.vue'));
+const TablePage = page(() => import('./pages/TablePage.vue'));
+const PermissionMatrix = page(() => import('./pages/PermissionMatrix.vue'));
+const AuditCenter = page(() => import('./pages/AuditCenter.vue'));
+const RiskScores = page(() => import('./pages/RiskScores.vue'));
+const RiskEvents = page(() => import('./pages/RiskEvents.vue'));
+const NightWatch = page(() => import('./pages/NightWatch.vue'));
 
 const routes = [
   { path: '/', redirect: '/dashboard' },

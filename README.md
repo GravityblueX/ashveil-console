@@ -8,7 +8,7 @@ Ashveil Console 是一个面向灰域状态的内部风险观察台、夜间值�
 
 - 仓库：`GravityblueX/ashveil-console`
 - 主分支：`main`
-- 当前版本：`v0.19.0`
+- 当前版本：`v0.20.0`
 - 维护模式：持续优化 + 每轮发布 GitHub Release
 - 产品定位：内部风险观察台 / 夜间值守控制台 / 权限审计中枢
 
@@ -86,6 +86,12 @@ npm run dev:frontend
 admin / ashveil2026
 ```
 
+## 性能策略
+
+- 前端页面采用异步组件懒加载，降低首屏主包压力。
+- Vite 构建启用手动分包，将 vendor、risk-audit、watch、ash-ui 拆分为独立 chunk。
+- 后端风险评分、风险事件和夜间值守聚合接口增加短 TTL 缓存，并返回 cache meta 信息。
+
 ## 常用命令
 
 ```bash
@@ -108,6 +114,7 @@ npm run check
 
 ## 优化历史记录
 
+- `v0.20.0`：实施性能优化，新增前端路由懒加载、构建分包和后端聚合接口缓存。
 - `v0.19.0`：沉淀 Ashveil UI 基础组件与设计令牌，新增 AshButton、AshCard、AshBadge、AshMetricCard。
 - `v0.18.0`：新增夜间值守模式，提供全屏值守面板、聚光事件和低噪声检查单。
 - `v0.17.0`：新增风险事件中心，将灰域评分结果转为可跟进的处置事件。

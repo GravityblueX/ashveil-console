@@ -40,5 +40,5 @@ const bandMap = { critical:'高危', high:'偏高', medium:'中等', low:'低风
 function typeName(type){ return typeMap[type] || type; }
 function bandName(band){ return bandMap[band] || band; }
 function formatTime(value){ return value ? new Date(value).toLocaleString('zh-CN') : '-'; }
-onMounted(async()=>{ loading.value=true; try{ Object.assign(data, await api('/risk/scores')); } catch(e){ error.value=`加载失败：${e.message}`; } finally{ loading.value=false; } });
+onMounted(async()=>{ loading.value=true; try{ const payload = await api('/risk/scores'); Object.assign(data, payload.data || payload); } catch(e){ error.value=`加载失败：${e.message}`; } finally{ loading.value=false; } });
 </script>

@@ -37,5 +37,5 @@ const loading=ref(false); const error=ref(''); const overview=ref({total:0,pendi
 const levelMap={critical:'高危',high:'偏高',medium:'中等',low:'低风险'};
 function levelName(level){return levelMap[level]||level}
 function formatTime(value){return value?new Date(value).toLocaleString('zh-CN'):'-'}
-onMounted(async()=>{loading.value=true;try{const data=await api('/risk/events');overview.value=data.overview;events.value=data.events;}catch(e){error.value=`加载失败：${e.message}`;}finally{loading.value=false;}})
+onMounted(async()=>{loading.value=true;try{const payload=await api('/risk/events');const data=payload.data||payload;overview.value=data.overview;events.value=data.events;}catch(e){error.value=`加载失败：${e.message}`;}finally{loading.value=false;}})
 </script>

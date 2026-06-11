@@ -33,6 +33,6 @@ const loading=ref(false); const error=ref(''); const focusMode=ref(false); const
 const data=reactive({shift:{},pulse:{},spotlight:[],checklist:[]});
 function tick(){clock.value=new Date().toLocaleTimeString('zh-CN',{hour12:false});}
 function toggleFocus(){focusMode.value=!focusMode.value; document.body.classList.toggle('watch-focus', focusMode.value);}
-onMounted(async()=>{tick();timer=setInterval(tick,1000);loading.value=true;try{Object.assign(data,await api('/watch/night'));}catch(e){error.value=`加载失败：${e.message}`;}finally{loading.value=false;}});
+onMounted(async()=>{tick();timer=setInterval(tick,1000);loading.value=true;try{const payload=await api('/watch/night');Object.assign(data,payload.data||payload);}catch(e){error.value=`加载失败：${e.message}`;}finally{loading.value=false;}});
 onUnmounted(()=>{clearInterval(timer);document.body.classList.remove('watch-focus');});
 </script>
