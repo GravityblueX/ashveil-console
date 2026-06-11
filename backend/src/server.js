@@ -3,16 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
-import {
-  users,
-  roles,
-  menus,
-  dictionaries,
-  auditLogs,
-  jobs,
-  monitor,
-  permissionMatrix
-} from './store.js';
+import { users, menus, dictionaries, auditLogs, jobs, monitor, permissionMatrix } from './store.js';
 import { buildRiskScores } from './risk.js';
 import { buildRiskEvents } from './risk-events.js';
 import { cachedJson } from './cache.js';
@@ -55,18 +46,22 @@ app.get('/api/health', (_, res) =>
   res.json({ ok: true, name: 'Ashveil Console API', version: '0.24.0' })
 );
 
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/auth/login', async (req, res) => {
   const { username, password } = req.body;
-  const user = users.find((item) => item.username === username && item.password === password);
-  if (!user) return res.status(401).json({ message: '账号或密码错误' });
-  const { password: _, ...safeUser } = user;
-  res.json({ token: sign(user), user: safeUser, menus });
+  const result = await findUserForLogin(username, password);
+  if (!result) return res.status(401).json({ message: '账号或密码错误' });
+  res.json({
+    token: sign(result.safe),
+    user: result.safe,
+    menus,
+    meta: dataSourceMeta(result.source)
+  });
 });
 
-app.get('/api/auth/me', auth, (req, res) => {
-  const user = users.find((item) => item.id === req.user.id);
-  const { password: _, ...safeUser } = user;
-  res.json({ user: safeUser, menus });
+app.get('/api/auth/me', auth, async (req, res) => {
+  const result = await findUserById(req.user.id);
+  if (!result) return res.status(404).json({ message: '用户不存在' });
+  res.json({ user: result.safe, menus, meta: dataSourceMeta(result.source) });
 });
 
 app.get('/api/dashboard', auth, (_, res) => {
@@ -82,9 +77,7 @@ app.get('/api/dashboard', auth, (_, res) => {
   });
 });
 
-app.get('/api/access/users', auth, (_, res) =>
-  res.json(users.map(({ password: _password, ...u }) => u))
-);
+app.get('/api/access/users', auth, async (_, res) => res.json(await listUsers()));
 app.get('/api/access/roles', auth, async (_, res) => res.json(await listRoles()));
 app.get('/api/access/menus', auth, (_, res) => res.json(menus));
 app.get('/api/access/permission-matrix', auth, (_, res) => res.json(permissionMatrix));
