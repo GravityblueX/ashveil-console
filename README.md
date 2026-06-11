@@ -6,7 +6,7 @@ Ashveil Console 是一个暗色系、轻量化、持续优化中的内部管理�
 
 - 仓库：`GravityblueX/ashveil-console`
 - 主分支：`main`
-- 当前版本：`v0.10.0`
+- 当前版本：`v0.11.0`
 - 维护模式：持续优化 + 每轮发布 GitHub Release
 
 ## 技术栈
@@ -105,6 +105,7 @@ Secrets 配置说明见 `docs/github-secrets.md`。当前流水线依赖默认 `
 
 ## 优化历史记录
 
+- `v0.11.0`：新增永久循环优化提示词 `AGENT_OPTIMIZE_PROMPT.md`。
 - `v0.10.0`：补充 GitHub Secrets 配置说明，明确默认令牌权限与 AI Key 预留项。
 - `v0.9.0`：创建 GitHub Actions 持续优化流水线，支持 push、定时和手动触发。
 - `v0.8.0`：整理项目基础准备，统一根目录脚本，补齐 build/lint/test/check，完善环境变量示例与中文文档。
@@ -114,6 +115,10 @@ Secrets 配置说明见 `docs/github-secrets.md`。当前流水线依赖默认 `
 - `v0.4.0`：新增高级筛选搜索工具栏。
 - `v0.3.0`：模块页升级为真实暗色数据表格。
 - `v0.2.0`：完善中文 README、统一脚本和环境变量示例。
+
+## 永久循环优化提示词
+
+项目根目录已新增 `AGENT_OPTIMIZE_PROMPT.md`，用于让 IDE Agent 或 AI 工程代理进入持续优化模式。
 
 ## 后续方向
 
