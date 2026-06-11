@@ -8,7 +8,7 @@ Ashveil Console 是一个面向灰域状态的内部风险观察台、夜间值�
 
 - 仓库：`GravityblueX/ashveil-console`
 - 主分支：`main`
-- 当前版本：`v0.25.0`
+- 当前版本：`v0.26.0`
 - 维护模式：持续优化 + 每轮发布 GitHub Release
 - 产品定位：内部风险观察台 / 夜间值守控制台 / 权限审计中枢
 
@@ -128,10 +128,12 @@ npm run check
 - 数据层设计：`docs/data-layer-plan.md`
 - Prisma 运行时接入：`docs/prisma-runtime.md`
 - 权限矩阵 Prisma 迁移：`docs/permission-matrix-prisma.md`
+- 风险事件状态持久化：`docs/risk-event-status-prisma.md`
 - 当前发布说明：`RELEASE_NOTES.md`
 
 ## 优化历史记录
 
+- `v0.26.0`：风险事件状态持久化到 Prisma，支持事件状态保存、回滚提示和数据源 meta。
 - `v0.25.0`：权限矩阵接口支持 Prisma 优先读取，并保留 mock 兜底与数据来源 meta。
 - `v0.24.0`：接入 Prisma Client 基础数据访问层，登录、用户和角色读取支持 Prisma 优先与 mock 兜底。
 - `v0.23.0`：新增 SQLite + Prisma 数据层设计、schema 与 seed 脚本，为 mock 数据迁移做准备。

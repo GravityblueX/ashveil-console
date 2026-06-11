@@ -20,10 +20,13 @@
             <span>已确认/归档</span><strong>{{ overview.confirmed + overview.archived }}</strong>
           </article>
         </div>
+        <p v-if="meta.source" class="state">
+          数据源：{{ meta.source }} · Prisma {{ meta.prisma?.enabled ? '已连接' : '兜底' }}
+        </p>
         <div class="event-board">
           <article v-for="event in events" :key="event.id" class="event-card" :class="event.level">
             <header>
-              <span>{{ event.id }}</span
+              <span>{{ event.displayId || event.id }}</span
               ><b>{{ levelName(event.level) }}</b>
             </header>
             <h2>{{ event.title }}</h2>
@@ -32,7 +35,7 @@
               <em v-for="reason in event.reasons" :key="reason">{{ reason }}</em>
             </div>
             <footer>
-              <select v-model="event.status">
+              <select :value="event.status" @change="changeStatus(event, $event.target.value)">
                 <option value="pending">待确认</option>
                 <option value="processing">处理中</option>
                 <option value="confirmed">已确认</option>
@@ -52,14 +55,40 @@ import { onMounted, ref } from 'vue';
 import { api } from '../api';
 const loading = ref(false);
 const error = ref('');
-const overview = ref({ total: 0, pending: 0, processing: 0, confirmed: 0, archived: 0 });
+const overview = ref({
+  total: 0,
+  pending: 0,
+  processing: 0,
+  confirmed: 0,
+  ignored: 0,
+  archived: 0
+});
 const events = ref([]);
+const meta = ref({});
 const levelMap = { critical: '高危', high: '偏高', medium: '中等', low: '低风险' };
 function levelName(level) {
   return levelMap[level] || level;
 }
 function formatTime(value) {
   return value ? new Date(value).toLocaleString('zh-CN') : '-';
+}
+async function changeStatus(event, status) {
+  const previous = event.status;
+  event.status = status;
+  try {
+    const payload = await api(
+      `/risk/events/${encodeURIComponent(event.eventKey || event.id)}/status`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify({ status })
+      }
+    );
+    Object.assign(event, payload.event);
+    meta.value = payload.meta || meta.value;
+  } catch (e) {
+    event.status = previous;
+    error.value = `状态保存失败：${e.message}`;
+  }
 }
 onMounted(async () => {
   loading.value = true;
@@ -68,6 +97,7 @@ onMounted(async () => {
     const data = payload.data || payload;
     overview.value = data.overview;
     events.value = data.events;
+    meta.value = payload.meta || data.meta || {};
   } catch (e) {
     error.value = `加载失败：${e.message}`;
   } finally {

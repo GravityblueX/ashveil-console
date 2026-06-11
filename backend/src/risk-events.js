@@ -1,5 +1,7 @@
 import { buildRiskScores } from './risk.js';
 
+export const RISK_EVENT_STATUSES = ['pending', 'processing', 'confirmed', 'ignored', 'archived'];
+
 function eventStatus(item) {
   if (item.band === 'critical') return 'pending';
   if (item.band === 'high') return 'processing';
@@ -25,27 +27,38 @@ function suggestion(item) {
   return '当前仅归档展示，无需立即处理。';
 }
 
-export function buildRiskEvents() {
+export function riskEventKey(item) {
+  return `risk:${item.type}:${item.id}`;
+}
+
+export function buildRiskEvents(statusOverrides = {}) {
   const scores = buildRiskScores();
   const events = scores.items
     .filter((item) => item.score >= 35)
-    .map((item, index) => ({
-      id: `evt-${String(index + 1).padStart(4, '0')}`,
-      title: `${eventType(item)}：${item.target}`,
-      target: item.target,
-      sourceType: item.type,
-      score: item.score,
-      level: item.band,
-      status: eventStatus(item),
-      reasons: item.reasons,
-      suggestion: suggestion(item),
-      createdAt: new Date(Date.now() - index * 1000 * 60 * 17).toISOString()
-    }));
+    .map((item, index) => {
+      const eventKey = riskEventKey(item);
+      return {
+        id: eventKey,
+        eventKey,
+        displayId: `evt-${String(index + 1).padStart(4, '0')}`,
+        title: `${eventType(item)}：${item.target}`,
+        target: item.target,
+        sourceType: item.type,
+        score: item.score,
+        level: item.band,
+        status: statusOverrides[eventKey] || eventStatus(item),
+        defaultStatus: eventStatus(item),
+        reasons: item.reasons,
+        suggestion: suggestion(item),
+        createdAt: new Date(Date.now() - index * 1000 * 60 * 17).toISOString()
+      };
+    });
   const overview = {
     total: events.length,
     pending: events.filter((e) => e.status === 'pending').length,
     processing: events.filter((e) => e.status === 'processing').length,
     confirmed: events.filter((e) => e.status === 'confirmed').length,
+    ignored: events.filter((e) => e.status === 'ignored').length,
     archived: events.filter((e) => e.status === 'archived').length
   };
   return { overview, events };

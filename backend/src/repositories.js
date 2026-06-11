@@ -1,8 +1,12 @@
 import { users, roles, permissionMatrix } from './store.js';
 import { getPrisma, getPrismaStatus } from './db.js';
+import { buildRiskEvents, RISK_EVENT_STATUSES } from './risk-events.js';
 
 function toSafeUser(user, roleCodes = user.roles || []) {
-  const { password: _password, roles: _roles, userRoles: _userRoles, ...safe } = user;
+  const { password, roles, userRoles, ...safe } = user;
+  void password;
+  void roles;
+  void userRoles;
   return {
     ...safe,
     roles: roleCodes,
@@ -111,4 +115,98 @@ export async function getPermissionMatrix() {
   }
 
   return { matrix: permissionMatrix, source: 'mock' };
+}
+
+function normalizeRiskEvent(row) {
+  return {
+    id: row.eventKey || `risk:legacy:${row.id}`,
+    eventKey: row.eventKey || `risk:legacy:${row.id}`,
+    title: row.title,
+    target: row.target,
+    sourceType: row.sourceType,
+    score: row.score,
+    level: row.level,
+    status: row.status,
+    suggestion: row.suggestion,
+    createdAt: row.createdAt instanceof Date ? row.createdAt.toISOString() : row.createdAt,
+    updatedAt: row.updatedAt instanceof Date ? row.updatedAt.toISOString() : row.updatedAt
+  };
+}
+
+async function persistRiskEvents(prisma, events) {
+  await Promise.all(
+    events.map((event) =>
+      prisma.riskEvent.upsert({
+        where: { eventKey: event.eventKey },
+        update: {
+          title: event.title,
+          target: event.target,
+          sourceType: event.sourceType,
+          score: event.score,
+          level: event.level,
+          suggestion: event.suggestion
+        },
+        create: {
+          eventKey: event.eventKey,
+          title: event.title,
+          target: event.target,
+          sourceType: event.sourceType,
+          score: event.score,
+          level: event.level,
+          status: event.status,
+          suggestion: event.suggestion,
+          createdAt: new Date(event.createdAt)
+        }
+      })
+    )
+  );
+}
+
+function riskEventOverview(events) {
+  return {
+    total: events.length,
+    pending: events.filter((event) => event.status === 'pending').length,
+    processing: events.filter((event) => event.status === 'processing').length,
+    confirmed: events.filter((event) => event.status === 'confirmed').length,
+    ignored: events.filter((event) => event.status === 'ignored').length,
+    archived: events.filter((event) => event.status === 'archived').length
+  };
+}
+
+export async function getRiskEvents() {
+  const generated = buildRiskEvents();
+  const prisma = await getPrisma();
+
+  if (prisma) {
+    await persistRiskEvents(prisma, generated.events);
+    const rows = await prisma.riskEvent.findMany({
+      orderBy: [{ score: 'desc' }, { createdAt: 'desc' }]
+    });
+    const events = rows.map(normalizeRiskEvent);
+    return { overview: riskEventOverview(events), events, source: 'prisma' };
+  }
+
+  return { ...generated, source: 'mock' };
+}
+
+export async function updateRiskEventStatus(eventKey, status) {
+  if (!RISK_EVENT_STATUSES.includes(status)) {
+    return { error: '不支持的风险事件状态', statusCode: 400 };
+  }
+
+  const prisma = await getPrisma();
+  if (!prisma) {
+    return { error: 'Prisma 不可用，无法持久化风险事件状态', statusCode: 503, source: 'mock' };
+  }
+
+  const generated = buildRiskEvents();
+  const event = generated.events.find((item) => item.eventKey === eventKey || item.id === eventKey);
+  if (event) await persistRiskEvents(prisma, [event]);
+
+  try {
+    const row = await prisma.riskEvent.update({ where: { eventKey }, data: { status } });
+    return { event: normalizeRiskEvent(row), source: 'prisma' };
+  } catch {
+    return { error: '风险事件不存在', statusCode: 404, source: 'prisma' };
+  }
 }

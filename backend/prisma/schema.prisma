@@ -85,6 +85,7 @@ model AuditLog {
 
 model RiskEvent {
   id          Int      @id @default(autoincrement())
+  eventKey    String   @unique
   title       String
   target      String
   sourceType  String

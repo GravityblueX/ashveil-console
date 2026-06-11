@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
-import { users, menus, dictionaries, auditLogs, jobs, monitor, permissionMatrix } from './store.js';
+import { menus, dictionaries, auditLogs, jobs, monitor } from './store.js';
 import { buildRiskScores } from './risk.js';
 import { buildRiskEvents } from './risk-events.js';
 import { cachedJson } from './cache.js';
@@ -13,8 +13,10 @@ import {
   findUserById,
   findUserForLogin,
   getPermissionMatrix,
+  getRiskEvents,
   listRoles,
-  listUsers
+  listUsers,
+  updateRiskEventStatus
 } from './repositories.js';
 
 const app = express();
@@ -44,7 +46,7 @@ function auth(req, res, next) {
 }
 
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.25.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.26.0' })
 );
 
 app.post('/api/auth/login', async (req, res) => {
@@ -111,9 +113,19 @@ app.get('/api/monitor', auth, (_, res) => res.json(monitor));
 app.get('/api/risk/scores', auth, (_, res) =>
   res.json(cachedJson('risk:scores', 15000, buildRiskScores))
 );
-app.get('/api/risk/events', auth, (_, res) =>
-  res.json(cachedJson('risk:events', 15000, buildRiskEvents))
-);
+app.get('/api/risk/events', auth, async (_, res) => {
+  const result = await getRiskEvents();
+  res.json({
+    overview: result.overview,
+    events: result.events,
+    meta: dataSourceMeta(result.source)
+  });
+});
+app.patch('/api/risk/events/:eventKey/status', auth, async (req, res) => {
+  const result = await updateRiskEventStatus(req.params.eventKey, req.body.status);
+  if (result.error) return res.status(result.statusCode || 500).json({ message: result.error });
+  res.json({ event: result.event, meta: dataSourceMeta(result.source) });
+});
 app.get('/api/ideas', auth, (_, res) => res.json({ ideas: featureIdeas, roadmap: buildRoadmap() }));
 app.get('/api/watch/night', auth, (_, res) => {
   const risk = buildRiskScores();
