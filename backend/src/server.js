@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -28,7 +29,7 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API' }));
+app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.2.0' }));
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
