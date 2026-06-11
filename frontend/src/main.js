@@ -10,6 +10,7 @@ import AuditCenter from './pages/AuditCenter.vue';
 import RiskScores from './pages/RiskScores.vue';
 import RiskEvents from './pages/RiskEvents.vue';
 import NightWatch from './pages/NightWatch.vue';
+import './styles/tokens.css';
 import './styles.css';
 
 const routes = [
