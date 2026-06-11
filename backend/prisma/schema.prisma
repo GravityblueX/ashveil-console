@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int         @id @default(autoincrement())
+  username    String      @unique
+  nickname    String
+  password    String
+  dept        String
+  status      String      @default("active")
+  lastLogin   DateTime?
+  roles       UserRole[]
+  auditLogs   AuditLog[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Role {
+  id          Int         @id @default(autoincrement())
+  code        String      @unique
+  name        String
+  scope       String
+  users       UserRole[]
+  grants      PermissionGrant[]
+  snapshots   PermissionSnapshot[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model UserRole {
+  userId Int
+  roleId Int
+  user   User @relation(fields: [userId], references: [id])
+  role   Role @relation(fields: [roleId], references: [id])
+
+  @@id([userId, roleId])
+}
+
+model PermissionResource {
+  id        Int                @id @default(autoincrement())
+  key       String             @unique
+  name      String
+  actions   PermissionAction[]
+  createdAt DateTime           @default(now())
+}
+
+model PermissionAction {
+  id         Int                 @id @default(autoincrement())
+  key        String
+  name       String
+  resourceId Int
+  resource   PermissionResource  @relation(fields: [resourceId], references: [id])
+  grants     PermissionGrant[]
+
+  @@unique([resourceId, key])
+}
+
+model PermissionGrant {
+  id        Int              @id @default(autoincrement())
+  roleId    Int
+  actionId  Int
+  role      Role             @relation(fields: [roleId], references: [id])
+  action    PermissionAction @relation(fields: [actionId], references: [id])
+  createdAt DateTime         @default(now())
+
+  @@unique([roleId, actionId])
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  actor     String
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String
+  channel   String
+  level     String
+  time      DateTime @default(now())
+}
+
+model RiskEvent {
+  id          Int      @id @default(autoincrement())
+  title       String
+  target      String
+  sourceType  String
+  score       Int
+  level       String
+  status      String   @default("pending")
+  suggestion  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model JobTask {
+  id          Int      @id @default(autoincrement())
+  name        String
+  cron        String
+  status      String
+  successRate Float    @default(100)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PermissionSnapshot {
+  id        Int      @id @default(autoincrement())
+  roleId    Int
+  role      Role     @relation(fields: [roleId], references: [id])
+  payload   String
+  note      String?
+  createdAt DateTime @default(now())
+}

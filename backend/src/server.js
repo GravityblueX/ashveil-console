@@ -45,7 +45,7 @@ function auth(req, res, next) {
 }
 
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.22.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: '0.23.0' })
 );
 
 app.post('/api/auth/login', (req, res) => {

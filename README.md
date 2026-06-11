@@ -8,7 +8,7 @@ Ashveil Console 是一个面向灰域状态的内部风险观察台、夜间值�
 
 - 仓库：`GravityblueX/ashveil-console`
 - 主分支：`main`
-- 当前版本：`v0.22.0`
+- 当前版本：`v0.23.0`
 - 维护模式：持续优化 + 每轮发布 GitHub Release
 - 产品定位：内部风险观察台 / 夜间值守控制台 / 权限审计中枢
 
@@ -39,7 +39,9 @@ Ashveil Console 是一个面向灰域状态的内部风险观察台、夜间值�
 - Express
 - JWT
 - dotenv
-- 内存 mock 数据
+- Prisma
+- SQLite
+- 内存 mock 数据（逐步迁移中）
 
 ## 功能模块
 
@@ -123,10 +125,12 @@ npm run check
 - GitHub Secrets：`docs/github-secrets.md`
 - 流程测试：`docs/flow-test.md`
 - 持续优化部署状态：`docs/continuous-operation.md`
+- 数据层设计：`docs/data-layer-plan.md`
 - 当前发布说明：`RELEASE_NOTES.md`
 
 ## 优化历史记录
 
+- `v0.23.0`：新增 SQLite + Prisma 数据层设计、schema 与 seed 脚本，为 mock 数据迁移做准备。
 - `v0.22.0`：新增功能建议中心与路线图视图，沉淀后续演进方向。
 - `v0.21.0`：补充 ESLint / Prettier 基础规范配置，统一代码检查与格式化流程。
 - `v0.20.0`：实施性能优化，新增前端路由懒加载、构建分包和后端聚合接口缓存。
