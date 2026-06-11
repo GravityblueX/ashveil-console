@@ -8,6 +8,7 @@ import TablePage from './pages/TablePage.vue';
 import PermissionMatrix from './pages/PermissionMatrix.vue';
 import AuditCenter from './pages/AuditCenter.vue';
 import RiskScores from './pages/RiskScores.vue';
+import RiskEvents from './pages/RiskEvents.vue';
 import './styles.css';
 
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/dashboard', component: Dashboard },
   { path: '/risk/scores', component: RiskScores },
+  { path: '/risk/events', component: RiskEvents },
   { path: '/access/users', component: TablePage, props: { title: '身份权限', endpoint: '/access/users' } },
   { path: '/access/matrix', component: PermissionMatrix },
   { path: '/system/dictionaries', component: TablePage, props: { title: '数据字典', endpoint: '/dictionaries' } },
