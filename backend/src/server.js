@@ -29,7 +29,7 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.6.0' }));
+app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.7.0' }));
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
@@ -64,6 +64,25 @@ app.get('/api/access/menus', auth, (_, res) => res.json(menus));
 app.get('/api/access/permission-matrix', auth, (_, res) => res.json(permissionMatrix));
 app.get('/api/dictionaries', auth, (_, res) => res.json(dictionaries));
 app.get('/api/audit/logs', auth, (_, res) => res.json(auditLogs));
+app.get('/api/audit/summary', auth, (_, res) => {
+  const levelCount = auditLogs.reduce((acc, item) => {
+    acc[item.level] = (acc[item.level] || 0) + 1;
+    return acc;
+  }, {});
+  const channelCount = auditLogs.reduce((acc, item) => {
+    acc[item.channel] = (acc[item.channel] || 0) + 1;
+    return acc;
+  }, {});
+  res.json({
+    total: auditLogs.length,
+    critical: levelCount.critical || 0,
+    warning: levelCount.warning || 0,
+    info: levelCount.info || 0,
+    levelCount,
+    channelCount,
+    latest: auditLogs.slice(0, 6)
+  });
+});
 app.get('/api/jobs', auth, (_, res) => res.json(jobs));
 app.get('/api/monitor', auth, (_, res) => res.json(monitor));
 

@@ -30,7 +30,10 @@ export const auditLogs = [
   { id: 1001, actor: 'admin', action: '刷新角色权限矩阵', channel: 'console', level: 'info', time: '2026-06-11 08:16:22' },
   { id: 1002, actor: 'mira', action: '导出异常登录报告', channel: 'console', level: 'warning', time: '2026-06-11 07:54:08' },
   { id: 1003, actor: 'system', action: '自动归档任务日志', channel: 'scheduler', level: 'info', time: '2026-06-11 02:10:00' },
-  { id: 1004, actor: 'ops01', action: '访问受限菜单被拒绝', channel: 'console', level: 'critical', time: '2026-06-10 21:33:19' }
+  { id: 1004, actor: 'ops01', action: '访问受限菜单被拒绝', channel: 'console', level: 'critical', time: '2026-06-10 21:33:19' },
+  { id: 1005, actor: 'api-gateway', action: '异常令牌连续失败', channel: 'api', level: 'critical', time: '2026-06-10 20:11:42' },
+  { id: 1006, actor: 'scheduler', action: '任务执行耗时超过阈值', channel: 'scheduler', level: 'warning', time: '2026-06-10 18:06:27' },
+  { id: 1007, actor: 'admin', action: '调整用户 ops01 角色范围', channel: 'console', level: 'info', time: '2026-06-10 16:25:10' }
 ];
 
 export const jobs = [
