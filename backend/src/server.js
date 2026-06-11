@@ -29,7 +29,7 @@ function auth(req, res, next) {
   }
 }
 
-app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.11.0' }));
+app.get('/api/health', (_, res) => res.json({ ok: true, name: 'Ashveil Console API', version: '0.12.0' }));
 
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
