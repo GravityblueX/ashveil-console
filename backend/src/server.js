@@ -160,4 +160,8 @@ app.get('/api/watch/night', auth, (_, res) => {
 
 app.use((_, res) => res.status(404).json({ message: 'Not Found' }));
 
-app.listen(PORT, () => console.log(`Ashveil Console API listening on http://localhost:${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => console.log(`Ashveil Console API listening on http://localhost:${PORT}`));
+}
+
+export default app;
