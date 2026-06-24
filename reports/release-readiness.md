@@ -1,6 +1,6 @@
 # Ashveil Release Readiness
 
-Generated: 2026-06-24T02:16:00.385Z
+Generated: 2026-06-24T02:32:54.752Z
 Project: `ashveil-console`
 Version: `0.27.0`
 Status: `OK`
@@ -22,7 +22,7 @@ Status: `OK`
 | test | OK | npm run test exit=0 |
 | smoke report | OK | npm run smoke:report exit=0 |
 | smoke report content | OK | 8 gates |
-| git status readable | OK | dirty_count=5 |
+| git status readable | OK | dirty_count=4 |
 
 ## Commands
 

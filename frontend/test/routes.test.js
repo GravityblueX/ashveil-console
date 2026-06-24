@@ -36,4 +36,22 @@ describe('frontend route contract', () => {
       assert.match(source, /<template>|<script/, `page module looks empty: ${page}`);
     }
   });
+
+  it('keeps key page API calls backed by server routes', async () => {
+    const server = await readFile(resolve(root, '..', 'backend/src/server.js'), 'utf8');
+    const contracts = [
+      ['pages/PermissionMatrix.vue', ['/access/roles', '/access/permission-matrix']],
+      ['pages/AuditCenter.vue', ['/audit/summary', '/audit/logs']],
+      ['pages/RiskEvents.vue', ['/risk/events']],
+      ['pages/NightWatch.vue', ['/watch/night']]
+    ];
+
+    for (const [page, endpoints] of contracts) {
+      const source = await readSource(`src/${page}`);
+      for (const endpoint of endpoints) {
+        assert.ok(source.includes(endpoint), `${page} does not reference ${endpoint}`);
+        assert.ok(server.includes(`/api${endpoint}`) || server.includes(`/api${endpoint}/`), `server route missing ${endpoint}`);
+      }
+    }
+  });
 });
