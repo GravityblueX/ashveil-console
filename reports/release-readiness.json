@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_release_readiness",
-  "generatedAt": "2026-06-24T03:35:27.692Z",
+  "generatedAt": "2026-06-24T04:00:00.295Z",
   "project": "ashveil-console",
   "version": "0.27.0",
   "ok": true,
@@ -46,6 +46,11 @@
       "detail": "scripts/openapi-spec.mjs"
     },
     {
+      "name": "required file scripts/client-api-coverage.mjs",
+      "ok": true,
+      "detail": "scripts/client-api-coverage.mjs"
+    },
+    {
       "name": "required file scripts/dependency-sbom.mjs",
       "ok": true,
       "detail": "scripts/dependency-sbom.mjs"
@@ -69,6 +74,11 @@
       "name": "script api:openapi",
       "ok": true,
       "detail": "node scripts/openapi-spec.mjs"
+    },
+    {
+      "name": "script api:client-coverage",
+      "ok": true,
+      "detail": "node scripts/client-api-coverage.mjs"
     },
     {
       "name": "script deps:sbom",
@@ -101,6 +111,11 @@
       "detail": "npm run api:openapi exit=0"
     },
     {
+      "name": "client API coverage",
+      "ok": true,
+      "detail": "npm run api:client-coverage exit=0"
+    },
+    {
       "name": "dependency SBOM",
       "ok": true,
       "detail": "npm run deps:sbom exit=0"
@@ -118,7 +133,7 @@
     {
       "name": "git status readable",
       "ok": true,
-      "detail": "dirty_count=11"
+      "detail": "dirty_count=12"
     }
   ],
   "commands": [
@@ -126,13 +141,13 @@
       "name": "build",
       "command": "npm run build",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 build\n> npm run build --prefix backend && npm run build --prefix frontend\n\n\n> ashveil-console-api@0.27.0 build\n> node --check src/server.js && node --check src/store.js\n\n\n> ashveil-console-web@0.27.0 build\n> vite build\n\n\u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 42 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m 0.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BfqClSQo.css            \u001b[39m\u001b[1m\u001b[2m17.18 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  3.99 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Dashboard-83APmH6R.js         \u001b[39m\u001b[1m\u001b[2m 0.94 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.59 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Login-DdaHftDB.js             \u001b[39m\u001b[1m\u001b[2m 1.11 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/IdeasRoadmap-BfYaRmSm.js      \u001b[39m\u001b[1m\u001b[2m 1.74 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.95 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/PermissionMatrix-GZp38ZI9.js  \u001b[39m\u001b[1m\u001b[2m 2.39 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.35 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/watch-a8ndIpTP.js             \u001b[39m\u001b[1m\u001b[2m 2.72 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.41 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-B5GRH5zT.js             \u001b[39m\u001b[1m\u001b[2m 4.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  2.20 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/risk-audit-wnyxM_Iz.js        \u001b[39m\u001b[1m\u001b[2m18.53 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  7.01 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/vendor-DgAT1jjX.js            \u001b[39m\u001b[1m\u001b[2m97.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 38.14 kB\u001b[22m\n\u001b[32m✓ built in 1.26s\u001b[39m"
+      "output": "> ashveil-console@0.27.0 build\n> npm run build --prefix backend && npm run build --prefix frontend\n\n\n> ashveil-console-api@0.27.0 build\n> node --check src/server.js && node --check src/store.js\n\n\n> ashveil-console-web@0.27.0 build\n> vite build\n\n\u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 42 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m 0.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BfqClSQo.css            \u001b[39m\u001b[1m\u001b[2m17.18 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  3.99 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Dashboard-83APmH6R.js         \u001b[39m\u001b[1m\u001b[2m 0.94 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.59 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Login-DdaHftDB.js             \u001b[39m\u001b[1m\u001b[2m 1.11 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/IdeasRoadmap-BfYaRmSm.js      \u001b[39m\u001b[1m\u001b[2m 1.74 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.95 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/PermissionMatrix-GZp38ZI9.js  \u001b[39m\u001b[1m\u001b[2m 2.39 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.35 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/watch-a8ndIpTP.js             \u001b[39m\u001b[1m\u001b[2m 2.72 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.41 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-B5GRH5zT.js             \u001b[39m\u001b[1m\u001b[2m 4.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  2.20 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/risk-audit-wnyxM_Iz.js        \u001b[39m\u001b[1m\u001b[2m18.53 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  7.01 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/vendor-DgAT1jjX.js            \u001b[39m\u001b[1m\u001b[2m97.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 38.14 kB\u001b[22m\n\u001b[32m✓ built in 1.31s\u001b[39m"
     },
     {
       "name": "test",
       "command": "npm run test",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 test\n> npm run test --prefix backend && npm run test --prefix frontend\n\n\n> ashveil-console-api@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 2.555 ms - 59\u001b[0m\n▶ Ashveil API smoke contract\n  ✔ reports service health (36.9547ms)\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.411 ms - 27\u001b[0m\n  ✔ rejects protected routes without a token (17.9403ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 9.156 ms - 1187\u001b[0m\n  ✔ logs in with mock credentials and keeps passwords out of the response (28.4667ms)\n✔ Ashveil API smoke contract (84.8851ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 13.015 ms - 1187\u001b[0m\n\u001b[0mGET /api/access/permission-matrix \u001b[32m200\u001b[0m 2.126 ms - 1208\u001b[0m\n▶ Ashveil risk and access regression contract\n  ✔ returns a permission matrix with role grants and data-source meta (75.3028ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.887 ms - 1187\u001b[0m\n\u001b[0mGET /api/audit/summary \u001b[32m200\u001b[0m 0.950 ms - 957\u001b[0m\n\u001b[0mGET /api/audit/logs \u001b[32m200\u001b[0m 0.901 ms - 937\u001b[0m\n  ✔ keeps audit summary counts consistent with the audit log feed (16.7288ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.886 ms - 1187\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.138 ms - 2018\u001b[0m\n  ✔ returns risk events with overview buckets matching the event list (13.6537ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.522 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 1.075 ms - 44\u001b[0m\n  ✔ rejects unsupported risk event status before persistence is attempted (9.5305ms)\n✔ Ashveil risk and access regression contract (116.6938ms)\nℹ tests 7\nℹ suites 2\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 621.8409\n\n> ashveil-console-web@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n▶ frontend API client contract\n  ✔ uses the default API base outside Vite and sends bearer tokens (1.2206ms)\n  ✔ lets callers override headers without dropping authorization (0.5952ms)\n  ✔ uses structured server error messages when available (1.2084ms)\n  ✔ falls back to status-based errors for non-json failures (0.643ms)\n✔ frontend API client contract (6.2874ms)\n▶ frontend route contract\n  ✔ keeps every backend menu path routable in the Vue app (7.9157ms)\n  ✔ keeps lazy-loaded page modules present on disk (5.7205ms)\n  ✔ keeps key page API calls backed by server routes (1.988ms)\n✔ frontend route contract (17.6917ms)\nℹ tests 7\nℹ suites 2\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 148.0526"
+      "output": "> ashveil-console@0.27.0 test\n> npm run test --prefix backend && npm run test --prefix frontend\n\n\n> ashveil-console-api@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 3.840 ms - 59\u001b[0m\n▶ Ashveil API smoke contract\n  ✔ reports service health (39.2ms)\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.541 ms - 27\u001b[0m\n  ✔ rejects protected routes without a token (8.4518ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 7.665 ms - 1187\u001b[0m\n  ✔ logs in with mock credentials and keeps passwords out of the response (28.4559ms)\n✔ Ashveil API smoke contract (77.9376ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 12.032 ms - 1187\u001b[0m\n\u001b[0mGET /api/access/permission-matrix \u001b[32m200\u001b[0m 3.145 ms - 1208\u001b[0m\n▶ Ashveil risk and access regression contract\n  ✔ returns a permission matrix with role grants and data-source meta (71.5802ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 1.660 ms - 1187\u001b[0m\n\u001b[0mGET /api/audit/summary \u001b[32m200\u001b[0m 1.151 ms - 957\u001b[0m\n\u001b[0mGET /api/audit/logs \u001b[32m200\u001b[0m 0.674 ms - 937\u001b[0m\n  ✔ keeps audit summary counts consistent with the audit log feed (21.6703ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.674 ms - 1187\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.910 ms - 2018\u001b[0m\n  ✔ returns risk events with overview buckets matching the event list (14.2942ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.772 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 1.949 ms - 44\u001b[0m\n  ✔ rejects unsupported risk event status before persistence is attempted (19.4222ms)\n✔ Ashveil risk and access regression contract (129.0702ms)\nℹ tests 7\nℹ suites 2\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 631.3115\n\n> ashveil-console-web@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n▶ frontend API client contract\n  ✔ uses the default API base outside Vite and sends bearer tokens (2.7036ms)\n  ✔ lets callers override headers without dropping authorization (0.3831ms)\n  ✔ uses structured server error messages when available (0.801ms)\n  ✔ falls back to status-based errors for non-json failures (0.4081ms)\n✔ frontend API client contract (7.2045ms)\n▶ frontend route contract\n  ✔ keeps every backend menu path routable in the Vue app (7.5368ms)\n  ✔ keeps lazy-loaded page modules present on disk (5.5562ms)\n  ✔ keeps key page API calls backed by server routes (2.2023ms)\n✔ frontend route contract (16.9289ms)\nℹ tests 7\nℹ suites 2\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 139.5736"
     },
     {
       "name": "api surface",
@@ -147,6 +162,12 @@
       "output": "> ashveil-console@0.27.0 api:openapi\n> node scripts/openapi-spec.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\openapi.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\openapi.md\"\n}"
     },
     {
+      "name": "client API coverage",
+      "command": "npm run api:client-coverage",
+      "exitCode": 0,
+      "output": "> ashveil-console@0.27.0 api:client-coverage\n> node scripts/client-api-coverage.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\client-api-coverage.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\client-api-coverage.md\"\n}"
+    },
+    {
       "name": "dependency SBOM",
       "command": "npm run deps:sbom",
       "exitCode": 0,
@@ -156,12 +177,13 @@
       "name": "smoke report",
       "command": "npm run smoke:report",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 smoke:report\n> node scripts/smoke-report.mjs\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 3.733 ms - 59\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.467 ms - 27\u001b[0m\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 9.390 ms - 1187\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[32m200\u001b[0m 1.497 ms - 939\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.727 ms - 2018\u001b[0m\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.md\"\n}"
+      "output": "> ashveil-console@0.27.0 smoke:report\n> node scripts/smoke-report.mjs\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 2.172 ms - 59\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.423 ms - 27\u001b[0m\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 7.473 ms - 1187\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[32m200\u001b[0m 1.379 ms - 939\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.014 ms - 2018\u001b[0m\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.md\"\n}"
     }
   ],
   "references": [
     "Release-readiness gates before tagging",
     "OpenAPI Specification contract generated from the route inventory",
+    "Client API coverage checks Vue calls and route endpoints against generated OpenAPI paths",
     "CycloneDX style dependency SBOM from package-lock files",
     "Express API smoke coverage",
     "Node.js native test runner contract checks"

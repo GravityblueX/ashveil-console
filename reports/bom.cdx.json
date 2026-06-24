@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:ashveil-local-sbom",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-24T03:35:26.682Z",
+    "timestamp": "2026-06-24T03:59:59.346Z",
     "component": {
       "type": "application",
       "name": "ashveil-console",

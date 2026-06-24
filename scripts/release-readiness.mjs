@@ -35,10 +35,10 @@ async function buildReport() {
   const gates = [];
   const commands = [];
 
-  for (const file of ['README.md', 'LICENSE', 'renovate.json', 'package-lock.json', 'backend/package.json', 'frontend/package.json', 'scripts/api-surface.mjs', 'scripts/openapi-spec.mjs', 'scripts/dependency-sbom.mjs']) {
+  for (const file of ['README.md', 'LICENSE', 'renovate.json', 'package-lock.json', 'backend/package.json', 'frontend/package.json', 'scripts/api-surface.mjs', 'scripts/openapi-spec.mjs', 'scripts/client-api-coverage.mjs', 'scripts/dependency-sbom.mjs']) {
     gates.push(gate(`required file ${file}`, existsSync(resolve(root, file)), file));
   }
-  for (const script of ['build', 'test', 'api:surface', 'api:openapi', 'deps:sbom', 'smoke:report']) {
+  for (const script of ['build', 'test', 'api:surface', 'api:openapi', 'api:client-coverage', 'deps:sbom', 'smoke:report']) {
     gates.push(gate(`script ${script}`, Boolean(pkg.scripts?.[script]), pkg.scripts?.[script] || 'missing'));
   }
 
@@ -47,6 +47,7 @@ async function buildReport() {
     ['test', 'npm', ['run', 'test']],
     ['api surface', 'npm', ['run', 'api:surface']],
     ['openapi contract', 'npm', ['run', 'api:openapi']],
+    ['client API coverage', 'npm', ['run', 'api:client-coverage']],
     ['dependency SBOM', 'npm', ['run', 'deps:sbom']],
     ['smoke report', 'npm', ['run', 'smoke:report']]
   ]) {
@@ -80,6 +81,7 @@ async function buildReport() {
     references: [
       'Release-readiness gates before tagging',
       'OpenAPI Specification contract generated from the route inventory',
+      'Client API coverage checks Vue calls and route endpoints against generated OpenAPI paths',
       'CycloneDX style dependency SBOM from package-lock files',
       'Express API smoke coverage',
       'Node.js native test runner contract checks'

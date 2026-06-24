@@ -1,0 +1,331 @@
+{
+  "reportType": "ashveil_client_api_coverage",
+  "generatedAt": "2026-06-24T03:59:58.846Z",
+  "ok": true,
+  "summary": {
+    "clientCallCount": 15,
+    "matchedCallCount": 15,
+    "unmatchedCallCount": 0,
+    "backendOperationCount": 18
+  },
+  "gates": [
+    {
+      "name": "OpenAPI contract available",
+      "ok": true,
+      "detail": "3.1.0"
+    },
+    {
+      "name": "client API calls discovered",
+      "ok": true,
+      "detail": "15 call(s)"
+    },
+    {
+      "name": "all client calls match OpenAPI",
+      "ok": true,
+      "detail": "0 unmatched"
+    },
+    {
+      "name": "login flow covered",
+      "ok": true,
+      "detail": "POST /api/auth/login"
+    },
+    {
+      "name": "dynamic table endpoints covered",
+      "ok": true,
+      "detail": "route props and template endpoints"
+    }
+  ],
+  "calls": [
+    {
+      "method": "GET",
+      "path": "/api/access/permission-matrix",
+      "raw": "/access/permission-matrix",
+      "file": "frontend\\src\\pages\\PermissionMatrix.vue",
+      "line": 85,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\PermissionMatrix.vue",
+          "line": 85,
+          "source": "api()",
+          "raw": "/access/permission-matrix"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/access/permission-matrix",
+      "operationId": "getApiAccessPermissionMatrix"
+    },
+    {
+      "method": "GET",
+      "path": "/api/access/roles",
+      "raw": "/access/roles",
+      "file": "frontend\\src\\pages\\PermissionMatrix.vue",
+      "line": 84,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\PermissionMatrix.vue",
+          "line": 84,
+          "source": "api()",
+          "raw": "/access/roles"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/access/roles",
+      "operationId": "getApiAccessRoles"
+    },
+    {
+      "method": "GET",
+      "path": "/api/access/users",
+      "raw": "/access/users",
+      "file": "frontend\\src\\main.js",
+      "line": 38,
+      "source": "TablePage endpoint",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\main.js",
+          "line": 38,
+          "source": "TablePage endpoint",
+          "raw": "/access/users"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/access/users",
+      "operationId": "getApiAccessUsers"
+    },
+    {
+      "method": "GET",
+      "path": "/api/audit/logs",
+      "raw": "/audit/logs",
+      "file": "frontend\\src\\pages\\AuditCenter.vue",
+      "line": 49,
+      "source": "TablePage endpoint",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\AuditCenter.vue",
+          "line": 49,
+          "source": "TablePage endpoint",
+          "raw": "/audit/logs"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/audit/logs",
+      "operationId": "getApiAuditLogs"
+    },
+    {
+      "method": "GET",
+      "path": "/api/audit/summary",
+      "raw": "/audit/summary",
+      "file": "frontend\\src\\pages\\AuditCenter.vue",
+      "line": 68,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\AuditCenter.vue",
+          "line": 68,
+          "source": "api()",
+          "raw": "/audit/summary"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/audit/summary",
+      "operationId": "getApiAuditSummary"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "raw": "/auth/login",
+      "file": "frontend\\src\\pages\\Login.vue",
+      "line": 22,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\Login.vue",
+          "line": 22,
+          "source": "api()",
+          "raw": "/auth/login"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/auth/login",
+      "operationId": "postApiAuthLogin"
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "raw": "/dashboard",
+      "file": "frontend\\src\\pages\\Dashboard.vue",
+      "line": 32,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\Dashboard.vue",
+          "line": 32,
+          "source": "api()",
+          "raw": "/dashboard"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/dashboard",
+      "operationId": "getApiDashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/dictionaries",
+      "raw": "/dictionaries",
+      "file": "frontend\\src\\main.js",
+      "line": 44,
+      "source": "TablePage endpoint",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\main.js",
+          "line": 44,
+          "source": "TablePage endpoint",
+          "raw": "/dictionaries"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/dictionaries",
+      "operationId": "getApiDictionaries"
+    },
+    {
+      "method": "GET",
+      "path": "/api/ideas",
+      "raw": "/ideas",
+      "file": "frontend\\src\\pages\\IdeasRoadmap.vue",
+      "line": 56,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\IdeasRoadmap.vue",
+          "line": 56,
+          "source": "api()",
+          "raw": "/ideas"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/ideas",
+      "operationId": "getApiIdeas"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs",
+      "raw": "/jobs",
+      "file": "frontend\\src\\main.js",
+      "line": 47,
+      "source": "TablePage endpoint",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\main.js",
+          "line": 47,
+          "source": "TablePage endpoint",
+          "raw": "/jobs"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/jobs",
+      "operationId": "getApiJobs"
+    },
+    {
+      "method": "GET",
+      "path": "/api/monitor",
+      "raw": "/monitor",
+      "file": "frontend\\src\\main.js",
+      "line": 48,
+      "source": "TablePage endpoint",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\main.js",
+          "line": 48,
+          "source": "TablePage endpoint",
+          "raw": "/monitor"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/monitor",
+      "operationId": "getApiMonitor"
+    },
+    {
+      "method": "GET",
+      "path": "/api/risk/events",
+      "raw": "/risk/events",
+      "file": "frontend\\src\\pages\\RiskEvents.vue",
+      "line": 124,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\RiskEvents.vue",
+          "line": 124,
+          "source": "api()",
+          "raw": "/risk/events"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/risk/events",
+      "operationId": "getApiRiskEvents"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/risk/events/{param}/status",
+      "raw": "/risk/events/${encodeURIComponent(event.eventKey || event.id)}/status",
+      "file": "frontend\\src\\pages\\RiskEvents.vue",
+      "line": 102,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\RiskEvents.vue",
+          "line": 102,
+          "source": "api()",
+          "raw": "/risk/events/${encodeURIComponent(event.eventKey || event.id)}/status"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/risk/events/{eventKey}/status",
+      "operationId": "patchApiRiskEventsByEventKeyStatus"
+    },
+    {
+      "method": "GET",
+      "path": "/api/risk/scores",
+      "raw": "/risk/scores",
+      "file": "frontend\\src\\pages\\RiskScores.vue",
+      "line": 85,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\RiskScores.vue",
+          "line": 85,
+          "source": "api()",
+          "raw": "/risk/scores"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/risk/scores",
+      "operationId": "getApiRiskScores"
+    },
+    {
+      "method": "GET",
+      "path": "/api/watch/night",
+      "raw": "/watch/night",
+      "file": "frontend\\src\\pages\\NightWatch.vue",
+      "line": 76,
+      "source": "api()",
+      "occurrences": [
+        {
+          "file": "frontend\\src\\pages\\NightWatch.vue",
+          "line": 76,
+          "source": "api()",
+          "raw": "/watch/night"
+        }
+      ],
+      "matched": true,
+      "matchedPath": "/api/watch/night",
+      "operationId": "getApiWatchNight"
+    }
+  ],
+  "unmatched": [],
+  "referenceBasis": [
+    "OpenAPI Specification as the backend contract",
+    "Static Vue API call inventory for path drift detection",
+    "Route-prop endpoints are resolved into concrete GET checks"
+  ]
+}

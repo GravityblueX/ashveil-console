@@ -1,6 +1,6 @@
 # Ashveil Dependency SBOM
 
-Generated: 2026-06-24T03:35:26.682Z
+Generated: 2026-06-24T03:59:59.346Z
 Status: `OK`
 Spec: `CycloneDX 1.6`
 Components: `295`

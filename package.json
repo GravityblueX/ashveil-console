@@ -12,6 +12,7 @@
     "test": "npm run test --prefix backend && npm run test --prefix frontend",
     "api:surface": "node scripts/api-surface.mjs",
     "api:openapi": "node scripts/openapi-spec.mjs",
+    "api:client-coverage": "node scripts/client-api-coverage.mjs",
     "deps:sbom": "node scripts/dependency-sbom.mjs",
     "smoke:report": "node scripts/smoke-report.mjs",
     "release:readiness": "node scripts/release-readiness.mjs",
