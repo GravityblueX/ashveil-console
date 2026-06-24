@@ -1,0 +1,52 @@
+{
+  "reportType": "ashveil_smoke_report",
+  "generatedAt": "2026-06-24T02:02:45.755Z",
+  "ok": true,
+  "gates": [
+    {
+      "name": "api health",
+      "ok": true,
+      "detail": "status=200, version=0.27.0"
+    },
+    {
+      "name": "protected route rejects anonymous access",
+      "ok": true,
+      "detail": "status=401"
+    },
+    {
+      "name": "mock login succeeds",
+      "ok": true,
+      "detail": "status=200, user=admin"
+    },
+    {
+      "name": "login response omits password",
+      "ok": true,
+      "detail": "password field absent"
+    },
+    {
+      "name": "dashboard contract",
+      "ok": true,
+      "detail": "status=200, cards=4"
+    },
+    {
+      "name": "risk events contract",
+      "ok": true,
+      "detail": "status=200, events=4"
+    },
+    {
+      "name": "frontend route coverage",
+      "ok": true,
+      "detail": "11 menu routes covered"
+    },
+    {
+      "name": "login route exists",
+      "ok": true,
+      "detail": "/login"
+    }
+  ],
+  "references": [
+    "Node.js test runner style contract checks",
+    "Express health/auth route smoke coverage",
+    "SRE-style health signal and route evidence"
+  ]
+}
