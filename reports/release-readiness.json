@@ -1,0 +1,104 @@
+{
+  "reportType": "ashveil_release_readiness",
+  "generatedAt": "2026-06-24T02:16:00.385Z",
+  "project": "ashveil-console",
+  "version": "0.27.0",
+  "ok": true,
+  "gates": [
+    {
+      "name": "required file README.md",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "name": "required file LICENSE",
+      "ok": true,
+      "detail": "LICENSE"
+    },
+    {
+      "name": "required file renovate.json",
+      "ok": true,
+      "detail": "renovate.json"
+    },
+    {
+      "name": "required file package-lock.json",
+      "ok": true,
+      "detail": "package-lock.json"
+    },
+    {
+      "name": "required file backend/package.json",
+      "ok": true,
+      "detail": "backend/package.json"
+    },
+    {
+      "name": "required file frontend/package.json",
+      "ok": true,
+      "detail": "frontend/package.json"
+    },
+    {
+      "name": "script build",
+      "ok": true,
+      "detail": "npm run build --prefix backend && npm run build --prefix frontend"
+    },
+    {
+      "name": "script test",
+      "ok": true,
+      "detail": "npm run test --prefix backend && npm run test --prefix frontend"
+    },
+    {
+      "name": "script smoke:report",
+      "ok": true,
+      "detail": "node scripts/smoke-report.mjs"
+    },
+    {
+      "name": "build",
+      "ok": true,
+      "detail": "npm run build exit=0"
+    },
+    {
+      "name": "test",
+      "ok": true,
+      "detail": "npm run test exit=0"
+    },
+    {
+      "name": "smoke report",
+      "ok": true,
+      "detail": "npm run smoke:report exit=0"
+    },
+    {
+      "name": "smoke report content",
+      "ok": true,
+      "detail": "8 gates"
+    },
+    {
+      "name": "git status readable",
+      "ok": true,
+      "detail": "dirty_count=5"
+    }
+  ],
+  "commands": [
+    {
+      "name": "build",
+      "command": "npm run build",
+      "exitCode": 0,
+      "output": "> ashveil-console@0.27.0 build\n> npm run build --prefix backend && npm run build --prefix frontend\n\n\n> ashveil-console-api@0.27.0 build\n> node --check src/server.js && node --check src/store.js\n\n\n> ashveil-console-web@0.27.0 build\n> vite build\n\n\u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 42 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m 0.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BfqClSQo.css            \u001b[39m\u001b[1m\u001b[2m17.18 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  3.99 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Dashboard-D8BCn7WC.js         \u001b[39m\u001b[1m\u001b[2m 0.94 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.59 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Login-CMMxYG-h.js             \u001b[39m\u001b[1m\u001b[2m 1.11 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/IdeasRoadmap-CTzZE67p.js      \u001b[39m\u001b[1m\u001b[2m 1.74 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.95 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/PermissionMatrix-wRej2ucD.js  \u001b[39m\u001b[1m\u001b[2m 2.39 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.34 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/watch-WMv9-rBn.js             \u001b[39m\u001b[1m\u001b[2m 2.72 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.41 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-CeBKlz_H.js             \u001b[39m\u001b[1m\u001b[2m 4.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  2.20 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/risk-audit-J-cu5be9.js        \u001b[39m\u001b[1m\u001b[2m18.30 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  6.90 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/vendor-DgAT1jjX.js            \u001b[39m\u001b[1m\u001b[2m97.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 38.14 kB\u001b[22m\n\u001b[32m✓ built in 1.13s\u001b[39m"
+    },
+    {
+      "name": "test",
+      "command": "npm run test",
+      "exitCode": 0,
+      "output": "> ashveil-console@0.27.0 test\n> npm run test --prefix backend && npm run test --prefix frontend\n\n\n> ashveil-console-api@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 2.666 ms - 59\u001b[0m\n▶ Ashveil API smoke contract\n  ✔ reports service health (35.0144ms)\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.825 ms - 27\u001b[0m\n  ✔ rejects protected routes without a token (7.633ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 10.225 ms - 1187\u001b[0m\n  ✔ logs in with mock credentials and keeps passwords out of the response (28.2642ms)\n✔ Ashveil API smoke contract (72.0068ms)\nℹ tests 3\nℹ suites 1\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 506.5767\n\n> ashveil-console-web@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n▶ frontend route contract\n  ✔ keeps every backend menu path routable in the Vue app (4.4669ms)\n  ✔ keeps lazy-loaded page modules present on disk (7.8347ms)\n✔ frontend route contract (13.5782ms)\nℹ tests 2\nℹ suites 1\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 111.8342"
+    },
+    {
+      "name": "smoke report",
+      "command": "npm run smoke:report",
+      "exitCode": 0,
+      "output": "> ashveil-console@0.27.0 smoke:report\n> node scripts/smoke-report.mjs\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 2.320 ms - 59\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.873 ms - 27\u001b[0m\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 8.225 ms - 1187\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[32m200\u001b[0m 1.803 ms - 939\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.537 ms - 2018\u001b[0m\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.md\"\n}"
+    }
+  ],
+  "references": [
+    "Release-readiness gates before tagging",
+    "Express API smoke coverage",
+    "Node.js native test runner contract checks"
+  ]
+}

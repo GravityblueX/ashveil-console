@@ -115,10 +115,12 @@ npm run dev:backend
 npm run dev:frontend
 npm run build
 npm run smoke:report
+npm run release:readiness
 npm run check
 ```
 
 `npm run smoke:report` writes `reports/smoke-report.md` and `reports/smoke-report.json`, covering API health, anonymous auth rejection, mock login, protected dashboard/risk routes, and frontend menu route coverage.
+`npm run release:readiness` runs build, tests, smoke report generation, and writes `reports/release-readiness.md` plus `reports/release-readiness.json`.
 
 ## 文档
 
