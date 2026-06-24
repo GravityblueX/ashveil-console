@@ -1,0 +1,170 @@
+{
+  "reportType": "ashveil_api_surface",
+  "generatedAt": "2026-06-24T02:56:16.248Z",
+  "ok": true,
+  "summary": {
+    "routeCount": 18,
+    "publicCount": 2,
+    "protectedCount": 16
+  },
+  "gates": [
+    {
+      "name": "routes discovered",
+      "ok": true,
+      "detail": "18 routes"
+    },
+    {
+      "name": "health endpoint public",
+      "ok": true,
+      "detail": "/api/health"
+    },
+    {
+      "name": "login endpoint public",
+      "ok": true,
+      "detail": "/api/auth/login"
+    },
+    {
+      "name": "dashboard protected",
+      "ok": true,
+      "detail": "/api/dashboard"
+    },
+    {
+      "name": "risk event status protected",
+      "ok": true,
+      "detail": "/api/risk/events/:eventKey/status"
+    }
+  ],
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/access/menus",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/access/permission-matrix",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/access/roles",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/access/users",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/audit/logs",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/audit/summary",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "protected": false,
+      "firstHandler": "async (req",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/dictionaries",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "protected": false,
+      "firstHandler": "(_",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/ideas",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/monitor",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/risk/events",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/risk/events/:eventKey/status",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/risk/scores",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/watch/night",
+      "protected": true,
+      "firstHandler": "auth",
+      "source": "backend/src/server.js"
+    }
+  ],
+  "referenceBasis": [
+    "OpenAPI-style API inventory",
+    "Express route auth boundary",
+    "Node.js native test runner contract checks"
+  ]
+}
