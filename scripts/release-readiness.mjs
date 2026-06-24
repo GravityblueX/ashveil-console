@@ -35,10 +35,10 @@ async function buildReport() {
   const gates = [];
   const commands = [];
 
-  for (const file of ['README.md', 'LICENSE', 'renovate.json', 'package-lock.json', 'backend/package.json', 'frontend/package.json', 'scripts/api-surface.mjs']) {
+  for (const file of ['README.md', 'LICENSE', 'renovate.json', 'package-lock.json', 'backend/package.json', 'frontend/package.json', 'scripts/api-surface.mjs', 'scripts/openapi-spec.mjs']) {
     gates.push(gate(`required file ${file}`, existsSync(resolve(root, file)), file));
   }
-  for (const script of ['build', 'test', 'api:surface', 'smoke:report']) {
+  for (const script of ['build', 'test', 'api:surface', 'api:openapi', 'smoke:report']) {
     gates.push(gate(`script ${script}`, Boolean(pkg.scripts?.[script]), pkg.scripts?.[script] || 'missing'));
   }
 
@@ -46,6 +46,7 @@ async function buildReport() {
     ['build', 'npm', ['run', 'build']],
     ['test', 'npm', ['run', 'test']],
     ['api surface', 'npm', ['run', 'api:surface']],
+    ['openapi contract', 'npm', ['run', 'api:openapi']],
     ['smoke report', 'npm', ['run', 'smoke:report']]
   ]) {
     const result = run(command, args);
@@ -77,7 +78,7 @@ async function buildReport() {
     commands,
     references: [
       'Release-readiness gates before tagging',
-      'OpenAPI-style route inventory',
+      'OpenAPI Specification contract generated from the route inventory',
       'Express API smoke coverage',
       'Node.js native test runner contract checks'
     ]

@@ -1,6 +1,6 @@
 # Ashveil API Surface
 
-Generated: 2026-06-24T02:56:16.248Z
+Generated: 2026-06-24T03:20:42.018Z
 Status: `OK`
 Routes: `18`
 Public: `2`
