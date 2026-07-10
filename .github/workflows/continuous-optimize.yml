@@ -24,10 +24,13 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm run install:all
+        run: |
+          npm ci
+          npm ci --prefix backend
+          npm ci --prefix frontend
 
-      - name: Format Workspace
-        run: npm run format
+      - name: Check Formatting
+        run: npm run format:check
 
       - name: Release Readiness
         run: npm run release:readiness
@@ -41,11 +44,13 @@ jobs:
           if-no-files-found: ignore
 
       - name: Auto Commit Improvements
+        if: github.event_name == 'workflow_dispatch'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore(auto): optimization round ${{ github.run_number }}'
 
       - name: Create Release
+        if: github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v0.${{ github.run_number }}
