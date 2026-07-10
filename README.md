@@ -116,6 +116,7 @@ npm run dev:frontend
 npm run build
 npm run api:surface
 npm run api:openapi
+npm run api:client-coverage
 npm run deps:sbom
 npm run smoke:report
 npm run release:readiness
@@ -124,9 +125,10 @@ npm run check
 
 `npm run api:surface` writes `reports/api-surface.md` and `reports/api-surface.json`, recording public and protected Express routes.
 `npm run api:openapi` writes `reports/openapi.md` and `reports/openapi.json`, converting Ashveil Express routes, path parameters, and JWT Bearer boundaries into an OpenAPI 3.1 contract.
+`npm run api:client-coverage` regenerates OpenAPI first, then writes `reports/client-api-coverage.md` and `reports/client-api-coverage.json`, matching Vue API calls and route-prop endpoints against the generated OpenAPI paths.
 `npm run deps:sbom` writes `reports/dependency-sbom.md` and `reports/bom.cdx.json`, generating a CycloneDX-style dependency bill of materials from package-lock files.
 `npm run smoke:report` writes `reports/smoke-report.md` and `reports/smoke-report.json`, covering API health, anonymous auth rejection, mock login, protected dashboard/risk routes, and frontend menu route coverage.
-`npm run release:readiness` runs build, tests, smoke report generation, and writes `reports/release-readiness.md` plus `reports/release-readiness.json`.
+`npm run release:readiness` pre-formats existing reports, runs build, `npm run check` (lint, Prettier, and tests), API/report generation, smoke checks, required release-file gates, and writes `reports/release-readiness.md` plus `reports/release-readiness.json`.
 
 ## 文档
 

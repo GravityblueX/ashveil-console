@@ -1,14 +1,20 @@
 {
   "reportType": "ashveil_client_api_coverage",
-  "generatedAt": "2026-06-24T03:59:58.846Z",
+  "generatedAt": "2026-07-10T18:09:50.457Z",
   "ok": true,
   "summary": {
     "clientCallCount": 15,
     "matchedCallCount": 15,
     "unmatchedCallCount": 0,
-    "backendOperationCount": 18
+    "backendOperationCount": 18,
+    "directFetchCount": 0
   },
   "gates": [
+    {
+      "name": "OpenAPI regenerated for coverage",
+      "ok": true,
+      "detail": "node scripts/openapi-spec.mjs"
+    },
     {
       "name": "OpenAPI contract available",
       "ok": true,
@@ -33,6 +39,16 @@
       "name": "dynamic table endpoints covered",
       "ok": true,
       "detail": "route props and template endpoints"
+    },
+    {
+      "name": "risk status mutation covered",
+      "ok": true,
+      "detail": "PATCH /api/risk/events/{eventKey}/status"
+    },
+    {
+      "name": "frontend fetch calls go through API helper",
+      "ok": true,
+      "detail": "0 bypass(es)"
     }
   ],
   "calls": [
@@ -323,6 +339,7 @@
     }
   ],
   "unmatched": [],
+  "directFetches": [],
   "referenceBasis": [
     "OpenAPI Specification as the backend contract",
     "Static Vue API call inventory for path drift detection",

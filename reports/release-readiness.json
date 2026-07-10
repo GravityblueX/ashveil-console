@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_release_readiness",
-  "generatedAt": "2026-06-24T04:00:00.295Z",
+  "generatedAt": "2026-07-10T18:09:51.695Z",
   "project": "ashveil-console",
   "version": "0.27.0",
   "ok": true,
@@ -16,6 +16,11 @@
       "detail": "LICENSE"
     },
     {
+      "name": "required file RELEASE_NOTES.md",
+      "ok": true,
+      "detail": "RELEASE_NOTES.md"
+    },
+    {
       "name": "required file renovate.json",
       "ok": true,
       "detail": "renovate.json"
@@ -26,9 +31,34 @@
       "detail": "package-lock.json"
     },
     {
+      "name": "required file .github/workflows/continuous-optimize.yml",
+      "ok": true,
+      "detail": ".github/workflows/continuous-optimize.yml"
+    },
+    {
+      "name": "required file backend/.env.example",
+      "ok": true,
+      "detail": "backend/.env.example"
+    },
+    {
       "name": "required file backend/package.json",
       "ok": true,
       "detail": "backend/package.json"
+    },
+    {
+      "name": "required file backend/prisma/schema.prisma",
+      "ok": true,
+      "detail": "backend/prisma/schema.prisma"
+    },
+    {
+      "name": "required file scripts/markdown.mjs",
+      "ok": true,
+      "detail": "scripts/markdown.mjs"
+    },
+    {
+      "name": "required file scripts/markdown.test.mjs",
+      "ok": true,
+      "detail": "scripts/markdown.test.mjs"
     },
     {
       "name": "required file frontend/package.json",
@@ -61,6 +91,11 @@
       "detail": "npm run build --prefix backend && npm run build --prefix frontend"
     },
     {
+      "name": "script check",
+      "ok": true,
+      "detail": "npm run reports:markdown-test && npm run lint && npm run format:check && npm run test"
+    },
+    {
       "name": "script test",
       "ok": true,
       "detail": "npm run test --prefix backend && npm run test --prefix frontend"
@@ -91,14 +126,54 @@
       "detail": "node scripts/smoke-report.mjs"
     },
     {
+      "name": "script reports:markdown-test",
+      "ok": true,
+      "detail": "node --test scripts/markdown.test.mjs"
+    },
+    {
+      "name": "markdown table cells escaped",
+      "ok": true,
+      "detail": "pipe and newline escaping"
+    },
+    {
+      "name": "markdown code spans escaped",
+      "ok": true,
+      "detail": "backtick and pipe escaping"
+    },
+    {
+      "name": "markdown code spans pad boundary backticks",
+      "ok": true,
+      "detail": "boundary backtick padding"
+    },
+    {
+      "name": "release notes match package version",
+      "ok": true,
+      "detail": "v0.27.0"
+    },
+    {
+      "name": "versioned release document exists",
+      "ok": true,
+      "detail": "docs/releases/v0.27.0.md"
+    },
+    {
+      "name": "format existing reports",
+      "ok": true,
+      "detail": "prettier --write reports/**/*.json reports/**/*.md exit=0"
+    },
+    {
+      "name": "markdown helper tests",
+      "ok": true,
+      "detail": "npm run reports:markdown-test exit=0"
+    },
+    {
       "name": "build",
       "ok": true,
       "detail": "npm run build exit=0"
     },
     {
-      "name": "test",
+      "name": "quality check",
       "ok": true,
-      "detail": "npm run test exit=0"
+      "detail": "npm run check exit=0"
     },
     {
       "name": "api surface",
@@ -126,58 +201,90 @@
       "detail": "npm run smoke:report exit=0"
     },
     {
-      "name": "smoke report content",
+      "name": "api surface required gates",
       "ok": true,
-      "detail": "8 gates"
+      "detail": "9 required gates passed (9 total)"
+    },
+    {
+      "name": "openapi required gates",
+      "ok": true,
+      "detail": "17 required gates passed (17 total)"
+    },
+    {
+      "name": "client API coverage required gates",
+      "ok": true,
+      "detail": "8 required gates passed (8 total)"
+    },
+    {
+      "name": "dependency SBOM required gates",
+      "ok": true,
+      "detail": "8 required gates passed (8 total)"
+    },
+    {
+      "name": "smoke report required gates",
+      "ok": true,
+      "detail": "11 required gates passed (11 total)"
     },
     {
       "name": "git status readable",
       "ok": true,
-      "detail": "dirty_count=12"
+      "detail": "dirty_count=35"
     }
   ],
   "commands": [
     {
+      "name": "format existing reports",
+      "command": "prettier --write reports/**/*.json reports/**/*.md",
+      "exitCode": 0,
+      "output": "\u001b[90mreports/api-surface.json\u001b[39m 36ms (unchanged)\n\u001b[90mreports/bom.cdx.json\u001b[39m 133ms (unchanged)\n\u001b[90mreports/client-api-coverage.json\u001b[39m 14ms (unchanged)\n\u001b[90mreports/openapi.json\u001b[39m 16ms (unchanged)\n\u001b[90mreports/release-readiness.json\u001b[39m 12ms (unchanged)\n\u001b[90mreports/smoke-report.json\u001b[39m 3ms (unchanged)\n\u001b[90mreports/api-surface.md\u001b[39m 36ms (unchanged)\n\u001b[90mreports/client-api-coverage.md\u001b[39m 9ms (unchanged)\n\u001b[90mreports/dependency-sbom.md\u001b[39m 14ms (unchanged)\n\u001b[90mreports/openapi.md\u001b[39m 7ms (unchanged)\n\u001b[90mreports/release-readiness.md\u001b[39m 24ms (unchanged)\n\u001b[90mreports/smoke-report.md\u001b[39m 13ms (unchanged)"
+    },
+    {
+      "name": "markdown helper tests",
+      "command": "npm run reports:markdown-test",
+      "exitCode": 0,
+      "output": "> ashveil-console@0.27.0 reports:markdown-test\n> node --test scripts/markdown.test.mjs\n\n✔ markdownTableCell escapes table separators and line breaks (1.327ms)\n✔ markdownTableCell handles nullish values as empty cells (0.2759ms)\n✔ markdownCodeSpan escapes pipes and chooses a longer fence than the content (0.3735ms)\n✔ markdownCodeSpan supports runs of multiple backticks (1.7788ms)\n✔ markdownCodeSpan pads values that start or end with backticks (0.2188ms)\n✔ markdownCodeSpan normalizes line breaks before fencing (0.5619ms)\n✔ markdownCodeSpan leaves nullish and empty values unfenced (0.5574ms)\n✔ markdown helpers stringify non-string scalar values (0.3321ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 115.4514"
+    },
+    {
       "name": "build",
       "command": "npm run build",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 build\n> npm run build --prefix backend && npm run build --prefix frontend\n\n\n> ashveil-console-api@0.27.0 build\n> node --check src/server.js && node --check src/store.js\n\n\n> ashveil-console-web@0.27.0 build\n> vite build\n\n\u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 42 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m 0.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BfqClSQo.css            \u001b[39m\u001b[1m\u001b[2m17.18 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  3.99 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Dashboard-83APmH6R.js         \u001b[39m\u001b[1m\u001b[2m 0.94 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.59 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Login-DdaHftDB.js             \u001b[39m\u001b[1m\u001b[2m 1.11 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/IdeasRoadmap-BfYaRmSm.js      \u001b[39m\u001b[1m\u001b[2m 1.74 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.95 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/PermissionMatrix-GZp38ZI9.js  \u001b[39m\u001b[1m\u001b[2m 2.39 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.35 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/watch-a8ndIpTP.js             \u001b[39m\u001b[1m\u001b[2m 2.72 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.41 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-B5GRH5zT.js             \u001b[39m\u001b[1m\u001b[2m 4.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  2.20 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/risk-audit-wnyxM_Iz.js        \u001b[39m\u001b[1m\u001b[2m18.53 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  7.01 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/vendor-DgAT1jjX.js            \u001b[39m\u001b[1m\u001b[2m97.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 38.14 kB\u001b[22m\n\u001b[32m✓ built in 1.31s\u001b[39m"
+      "output": "> ashveil-console@0.27.0 build\n> npm run build --prefix backend && npm run build --prefix frontend\n\n\n> ashveil-console-api@0.27.0 build\n> node --check src/server.js && node --check src/store.js\n\n\n> ashveil-console-web@0.27.0 build\n> vite build\n\n\u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 42 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m 0.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BfqClSQo.css            \u001b[39m\u001b[1m\u001b[2m17.18 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  3.99 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Dashboard-7yfXk9a3.js         \u001b[39m\u001b[1m\u001b[2m 0.94 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.59 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/Login-oWBZ4LpD.js             \u001b[39m\u001b[1m\u001b[2m 1.11 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/IdeasRoadmap-CX5rej7x.js      \u001b[39m\u001b[1m\u001b[2m 1.74 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.95 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/PermissionMatrix-B-pOIHAX.js  \u001b[39m\u001b[1m\u001b[2m 2.39 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.35 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/watch-BaA4n4NE.js             \u001b[39m\u001b[1m\u001b[2m 2.72 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.42 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-6uXjiaOG.js             \u001b[39m\u001b[1m\u001b[2m 4.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  2.20 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/risk-audit-B4BVT2DN.js        \u001b[39m\u001b[1m\u001b[2m18.65 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  7.08 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/vendor-DgAT1jjX.js            \u001b[39m\u001b[1m\u001b[2m97.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 38.14 kB\u001b[22m\n\u001b[32m✓ built in 1.21s\u001b[39m"
     },
     {
-      "name": "test",
-      "command": "npm run test",
+      "name": "quality check",
+      "command": "npm run check",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 test\n> npm run test --prefix backend && npm run test --prefix frontend\n\n\n> ashveil-console-api@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 3.840 ms - 59\u001b[0m\n▶ Ashveil API smoke contract\n  ✔ reports service health (39.2ms)\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.541 ms - 27\u001b[0m\n  ✔ rejects protected routes without a token (8.4518ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 7.665 ms - 1187\u001b[0m\n  ✔ logs in with mock credentials and keeps passwords out of the response (28.4559ms)\n✔ Ashveil API smoke contract (77.9376ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 12.032 ms - 1187\u001b[0m\n\u001b[0mGET /api/access/permission-matrix \u001b[32m200\u001b[0m 3.145 ms - 1208\u001b[0m\n▶ Ashveil risk and access regression contract\n  ✔ returns a permission matrix with role grants and data-source meta (71.5802ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 1.660 ms - 1187\u001b[0m\n\u001b[0mGET /api/audit/summary \u001b[32m200\u001b[0m 1.151 ms - 957\u001b[0m\n\u001b[0mGET /api/audit/logs \u001b[32m200\u001b[0m 0.674 ms - 937\u001b[0m\n  ✔ keeps audit summary counts consistent with the audit log feed (21.6703ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.674 ms - 1187\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.910 ms - 2018\u001b[0m\n  ✔ returns risk events with overview buckets matching the event list (14.2942ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.772 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 1.949 ms - 44\u001b[0m\n  ✔ rejects unsupported risk event status before persistence is attempted (19.4222ms)\n✔ Ashveil risk and access regression contract (129.0702ms)\nℹ tests 7\nℹ suites 2\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 631.3115\n\n> ashveil-console-web@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n▶ frontend API client contract\n  ✔ uses the default API base outside Vite and sends bearer tokens (2.7036ms)\n  ✔ lets callers override headers without dropping authorization (0.3831ms)\n  ✔ uses structured server error messages when available (0.801ms)\n  ✔ falls back to status-based errors for non-json failures (0.4081ms)\n✔ frontend API client contract (7.2045ms)\n▶ frontend route contract\n  ✔ keeps every backend menu path routable in the Vue app (7.5368ms)\n  ✔ keeps lazy-loaded page modules present on disk (5.5562ms)\n  ✔ keeps key page API calls backed by server routes (2.2023ms)\n✔ frontend route contract (16.9289ms)\nℹ tests 7\nℹ suites 2\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 139.5736"
+      "output": "86ms)\n✔ markdownCodeSpan normalizes line breaks before fencing (0.1627ms)\n✔ markdownCodeSpan leaves nullish and empty values unfenced (0.203ms)\n✔ markdown helpers stringify non-string scalar values (0.2384ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 106.9449\n\n> ashveil-console@0.27.0 lint\n> npm run lint --prefix backend && npm run lint --prefix frontend\n\n\n> ashveil-console-api@0.27.0 lint\n> eslint src/**/*.js\n\n\n> ashveil-console-web@0.27.0 lint\n> eslint src --ext .js,.vue\n\n\n> ashveil-console@0.27.0 format:check\n> prettier --check .\n\nChecking formatting...\nAll matched files use Prettier code style!\n\n> ashveil-console@0.27.0 test\n> npm run test --prefix backend && npm run test --prefix frontend\n\n\n> ashveil-console-api@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 2.487 ms - 59\u001b[0m\n▶ Ashveil API smoke contract\n  ✔ reports service health (28.4102ms)\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.625 ms - 27\u001b[0m\n  ✔ rejects protected routes without a token (13.4667ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 7.206 ms - 1187\u001b[0m\n  ✔ logs in with mock credentials and keeps passwords out of the response (22.2759ms)\n✔ Ashveil API smoke contract (65.8066ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 12.220 ms - 1187\u001b[0m\n\u001b[0mGET /api/access/permission-matrix \u001b[32m200\u001b[0m 2.893 ms - 1208\u001b[0m\n▶ Ashveil risk and access regression contract\n  ✔ returns a permission matrix with role grants and data-source meta (57.9129ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 1.603 ms - 1187\u001b[0m\n\u001b[0mGET /api/audit/summary \u001b[32m200\u001b[0m 0.852 ms - 957\u001b[0m\n\u001b[0mGET /api/audit/logs \u001b[32m200\u001b[0m 0.757 ms - 937\u001b[0m\n  ✔ keeps audit summary counts consistent with the audit log feed (19.34ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.865 ms - 1187\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.199 ms - 2018\u001b[0m\n  ✔ returns risk events with overview buckets matching the event list (16.1414ms)\n  ✔ keeps the Prisma risk-event schema aligned with persisted status fields (3.1021ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.664 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 1.698 ms - 44\u001b[0m\n  ✔ rejects unsupported risk event status before persistence is attempted (12.6888ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.789 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 0.421 ms - 56\u001b[0m\n  ✔ rejects missing risk event status before repository handling (9.9454ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.514 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 0.545 ms - 56\u001b[0m\n  ✔ rejects non-string risk event notes (9.8396ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.639 ms - 1187\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 0.643 ms - 62\u001b[0m\n  ✔ rejects extra fields in risk event status requests (11.3707ms)\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 0.631 ms - 1187\u001b[0m\n  ✔ returns structured JSON errors for malformed JSON request bodies (9.9111ms)\n✔ Ashveil risk and access regression contract (151.885ms)\nℹ tests 12\nℹ suites 2\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 531.1125\n\n> ashveil-console-web@0.27.0 test\n> node --test \"test/**/*.test.js\"\n\n▶ frontend API client contract\n  ✔ normalizes API base and path slashes (0.8456ms)\n  ✔ uses the default API base outside Vite and sends bearer tokens (1.9863ms)\n  ✔ lets callers override headers without dropping authorization (0.6682ms)\n  ✔ uses structured server error messages when available (1.0184ms)\n  ✔ falls back to status-based errors for non-json failures (0.4173ms)\n✔ frontend API client contract (6.2032ms)\n▶ frontend route contract\n  ✔ keeps every backend menu path routable in the Vue app (5.4197ms)\n  ✔ keeps lazy-loaded page modules present on disk (6.0247ms)\n  ✔ keeps key page API calls backed by server routes (1.909ms)\n✔ frontend route contract (14.4992ms)\nℹ tests 8\nℹ suites 2\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 122.6573"
     },
     {
       "name": "api surface",
       "command": "npm run api:surface",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 api:surface\n> node scripts/api-surface.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\api-surface.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\api-surface.md\"\n}"
+      "output": "> ashveil-console@0.27.0 api:surface\n> node scripts/api-surface.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\api-surface.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\api-surface.md\"\n}"
     },
     {
       "name": "openapi contract",
       "command": "npm run api:openapi",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 api:openapi\n> node scripts/openapi-spec.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\openapi.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\openapi.md\"\n}"
+      "output": "> ashveil-console@0.27.0 api:openapi\n> node scripts/openapi-spec.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\openapi.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\openapi.md\"\n}"
     },
     {
       "name": "client API coverage",
       "command": "npm run api:client-coverage",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 api:client-coverage\n> node scripts/client-api-coverage.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\client-api-coverage.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\client-api-coverage.md\"\n}"
+      "output": "> ashveil-console@0.27.0 api:client-coverage\n> node scripts/client-api-coverage.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\client-api-coverage.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\client-api-coverage.md\"\n}"
     },
     {
       "name": "dependency SBOM",
       "command": "npm run deps:sbom",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 deps:sbom\n> node scripts/dependency-sbom.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\bom.cdx.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\dependency-sbom.md\"\n}"
+      "output": "> ashveil-console@0.27.0 deps:sbom\n> node scripts/dependency-sbom.mjs\n\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\bom.cdx.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\dependency-sbom.md\"\n}"
     },
     {
       "name": "smoke report",
       "command": "npm run smoke:report",
       "exitCode": 0,
-      "output": "> ashveil-console@0.27.0 smoke:report\n> node scripts/smoke-report.mjs\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 2.172 ms - 59\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.423 ms - 27\u001b[0m\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 7.473 ms - 1187\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[32m200\u001b[0m 1.379 ms - 939\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 2.014 ms - 2018\u001b[0m\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Documents\\\\Codex\\\\2026-06-18\\\\new-chat-5\\\\work\\\\ashveil-console\\\\reports\\\\smoke-report.md\"\n}"
+      "output": "> ashveil-console@0.27.0 smoke:report\n> node scripts/smoke-report.mjs\n\n\u001b[0mGET /api/health \u001b[32m200\u001b[0m 1.757 ms - 59\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[33m401\u001b[0m 0.377 ms - 27\u001b[0m\n\u001b[0mPOST /api/auth/login \u001b[32m200\u001b[0m 9.146 ms - 1187\u001b[0m\n\u001b[0mGET /api/dashboard \u001b[32m200\u001b[0m 1.181 ms - 939\u001b[0m\n\u001b[0mGET /api/risk/events \u001b[32m200\u001b[0m 1.909 ms - 2018\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[33m400\u001b[0m 1.074 ms - 44\u001b[0m\n\u001b[0mPATCH /api/risk/events/risk%3Auser%3A1/status \u001b[31m503\u001b[0m 1.382 ms - 66\u001b[0m\n{\n  \"ok\": true,\n  \"json\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\smoke-report.json\",\n  \"markdown\": \"C:\\\\Users\\\\123\\\\Desktop\\\\fountain\\\\nocturne-admin\\\\reports\\\\smoke-report.md\"\n}"
     }
   ],
   "references": [
@@ -186,6 +293,6 @@
     "Client API coverage checks Vue calls and route endpoints against generated OpenAPI paths",
     "CycloneDX style dependency SBOM from package-lock files",
     "Express API smoke coverage",
-    "Node.js native test runner contract checks"
+    "Lint, Prettier, and Node.js native test runner checks through npm run check"
   ]
 }

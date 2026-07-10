@@ -50,7 +50,10 @@ describe('frontend route contract', () => {
       const source = await readSource(`src/${page}`);
       for (const endpoint of endpoints) {
         assert.ok(source.includes(endpoint), `${page} does not reference ${endpoint}`);
-        assert.ok(server.includes(`/api${endpoint}`) || server.includes(`/api${endpoint}/`), `server route missing ${endpoint}`);
+        assert.ok(
+          server.includes(`/api${endpoint}`) || server.includes(`/api${endpoint}/`),
+          `server route missing ${endpoint}`
+        );
       }
     }
   });

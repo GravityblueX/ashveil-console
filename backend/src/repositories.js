@@ -117,10 +117,12 @@ export async function getPermissionMatrix() {
   return { matrix: permissionMatrix, source: 'mock' };
 }
 
-function normalizeRiskEvent(row) {
+function normalizeRiskEvent(row, generated = {}) {
+  const eventKey = row.eventKey || `risk:legacy:${row.id}`;
   return {
-    id: row.eventKey || `risk:legacy:${row.id}`,
-    eventKey: row.eventKey || `risk:legacy:${row.id}`,
+    id: eventKey,
+    eventKey,
+    displayId: generated.displayId || `evt-${String(row.id).padStart(4, '0')}`,
     title: row.title,
     target: row.target,
     sourceType: row.sourceType,
@@ -131,6 +133,8 @@ function normalizeRiskEvent(row) {
     handledBy: row.handledBy || '',
     statusChangedAt:
       row.statusChangedAt instanceof Date ? row.statusChangedAt.toISOString() : row.statusChangedAt,
+    defaultStatus: generated.defaultStatus || row.status,
+    reasons: generated.reasons || [],
     suggestion: row.suggestion,
     createdAt: row.createdAt instanceof Date ? row.createdAt.toISOString() : row.createdAt,
     updatedAt: row.updatedAt instanceof Date ? row.updatedAt.toISOString() : row.updatedAt,
@@ -199,11 +203,12 @@ export async function getRiskEvents() {
 
   if (prisma) {
     await persistRiskEvents(prisma, generated.events);
+    const generatedByKey = new Map(generated.events.map((event) => [event.eventKey, event]));
     const rows = await prisma.riskEvent.findMany({
       include: { logs: statusLogSelect() },
       orderBy: [{ score: 'desc' }, { createdAt: 'desc' }]
     });
-    const events = rows.map(normalizeRiskEvent);
+    const events = rows.map((row) => normalizeRiskEvent(row, generatedByKey.get(row.eventKey)));
     return { overview: riskEventOverview(events), events, source: 'prisma' };
   }
 
@@ -250,5 +255,5 @@ export async function updateRiskEventStatus(eventKey, status, options = {}) {
     },
     include: { logs: statusLogSelect() }
   });
-  return { event: normalizeRiskEvent(row), source: 'prisma' };
+  return { event: normalizeRiskEvent(row, event), source: 'prisma' };
 }

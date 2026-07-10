@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_api_surface",
-  "generatedAt": "2026-06-24T03:59:58.287Z",
+  "generatedAt": "2026-07-10T18:09:50.398Z",
   "ok": true,
   "summary": {
     "routeCount": 18,
@@ -12,6 +12,26 @@
       "name": "routes discovered",
       "ok": true,
       "detail": "18 routes"
+    },
+    {
+      "name": "route source lines recorded",
+      "ok": true,
+      "detail": "18 route line(s)"
+    },
+    {
+      "name": "no duplicate method/path routes",
+      "ok": true,
+      "detail": "unique method/path route inventory"
+    },
+    {
+      "name": "all routes use /api prefix",
+      "ok": true,
+      "detail": "/api prefix enforced"
+    },
+    {
+      "name": "public routes are documented allowlist",
+      "ok": true,
+      "detail": "GET /api/health, POST /api/auth/login"
     },
     {
       "name": "health endpoint public",
@@ -40,126 +60,144 @@
       "path": "/api/access/menus",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 121
     },
     {
       "method": "GET",
       "path": "/api/access/permission-matrix",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 122
     },
     {
       "method": "GET",
       "path": "/api/access/roles",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 120
     },
     {
       "method": "GET",
       "path": "/api/access/users",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 119
     },
     {
       "method": "GET",
       "path": "/api/audit/logs",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 127
     },
     {
       "method": "GET",
       "path": "/api/audit/summary",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 128
     },
     {
       "method": "POST",
       "path": "/api/auth/login",
       "protected": false,
       "firstHandler": "async (req",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 88
     },
     {
       "method": "GET",
       "path": "/api/auth/me",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 100
     },
     {
       "method": "GET",
       "path": "/api/dashboard",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 106
     },
     {
       "method": "GET",
       "path": "/api/dictionaries",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 126
     },
     {
       "method": "GET",
       "path": "/api/health",
       "protected": false,
       "firstHandler": "(_",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 84
     },
     {
       "method": "GET",
       "path": "/api/ideas",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 170
     },
     {
       "method": "GET",
       "path": "/api/jobs",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 147
     },
     {
       "method": "GET",
       "path": "/api/monitor",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 148
     },
     {
       "method": "GET",
       "path": "/api/risk/events",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 152
     },
     {
       "method": "PATCH",
       "path": "/api/risk/events/:eventKey/status",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 160
     },
     {
       "method": "GET",
       "path": "/api/risk/scores",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 149
     },
     {
       "method": "GET",
       "path": "/api/watch/night",
       "protected": true,
       "firstHandler": "auth",
-      "source": "backend/src/server.js"
+      "source": "backend/src/server.js",
+      "sourceLine": 171
     }
   ],
   "referenceBasis": [

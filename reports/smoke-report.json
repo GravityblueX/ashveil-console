@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-06-24T04:00:00.179Z",
+  "generatedAt": "2026-07-10T18:09:51.561Z",
   "ok": true,
   "gates": [
     {
@@ -32,6 +32,21 @@
       "name": "risk events contract",
       "ok": true,
       "detail": "status=200, events=4"
+    },
+    {
+      "name": "risk status rejects invalid status",
+      "ok": true,
+      "detail": "status=400, message=不支持的风险事件状态"
+    },
+    {
+      "name": "risk status rejects malformed JSON",
+      "ok": true,
+      "detail": "status=400, message=请求体必须是合法 JSON"
+    },
+    {
+      "name": "risk status persistence boundary",
+      "ok": true,
+      "detail": "status=503, message=Prisma 不可用，无法持久化风险事件状态"
     },
     {
       "name": "frontend route coverage",

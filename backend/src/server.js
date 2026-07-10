@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { createRequire } from 'node:module';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -19,6 +20,8 @@ import {
   updateRiskEventStatus
 } from './repositories.js';
 
+const { version: API_VERSION } = createRequire(import.meta.url)('../package.json');
+
 const app = express();
 const PORT = process.env.PORT || 4160;
 const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
@@ -26,6 +29,12 @@ const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use((err, _req, res, next) => {
+  if (err instanceof SyntaxError && 'body' in err) {
+    return res.status(400).json({ message: '请求体必须是合法 JSON' });
+  }
+  next(err);
+});
 
 function sign(user) {
   return jwt.sign({ id: user.id, username: user.username, roles: user.roles }, JWT_SECRET, {
@@ -45,8 +54,35 @@ function auth(req, res, next) {
   }
 }
 
+function parseRiskStatusPayload(body) {
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return { error: '风险事件状态请求体必须是 JSON 对象' };
+  }
+
+  const allowedKeys = new Set(['status', 'note']);
+  const unknownKeys = Object.keys(body).filter((key) => !allowedKeys.has(key));
+  if (unknownKeys.length > 0) {
+    return { error: `不支持的风险事件状态字段：${unknownKeys.join(', ')}` };
+  }
+
+  if (typeof body.status !== 'string' || body.status.trim().length === 0) {
+    return { error: '风险事件状态必须是非空字符串' };
+  }
+
+  if (body.note !== undefined && typeof body.note !== 'string') {
+    return { error: '风险事件处置备注必须是字符串' };
+  }
+
+  return {
+    value: {
+      status: body.status,
+      note: body.note
+    }
+  };
+}
+
 app.get('/api/health', (_, res) =>
-  res.json({ ok: true, name: 'Ashveil Console API', version: '0.27.0' })
+  res.json({ ok: true, name: 'Ashveil Console API', version: API_VERSION })
 );
 
 app.post('/api/auth/login', async (req, res) => {
@@ -122,8 +158,10 @@ app.get('/api/risk/events', auth, async (_, res) => {
   });
 });
 app.patch('/api/risk/events/:eventKey/status', auth, async (req, res) => {
-  const result = await updateRiskEventStatus(req.params.eventKey, req.body.status, {
-    note: req.body.note,
+  const payload = parseRiskStatusPayload(req.body);
+  if (payload.error) return res.status(400).json({ message: payload.error });
+  const result = await updateRiskEventStatus(req.params.eventKey, payload.value.status, {
+    note: payload.value.note,
     actor: req.user?.username
   });
   if (result.error) return res.status(result.statusCode || 500).json({ message: result.error });

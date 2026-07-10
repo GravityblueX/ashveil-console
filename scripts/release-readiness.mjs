@@ -3,11 +3,76 @@ import { existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const reportsDir = resolve(root, 'reports');
 const jsonOut = resolve(reportsDir, 'release-readiness.json');
 const markdownOut = resolve(reportsDir, 'release-readiness.md');
+const prettierBin = resolve(root, 'node_modules', 'prettier', 'bin', 'prettier.cjs');
+const REQUIRED_SMOKE_GATES = [
+  'api health',
+  'protected route rejects anonymous access',
+  'mock login succeeds',
+  'login response omits password',
+  'dashboard contract',
+  'risk events contract',
+  'risk status rejects invalid status',
+  'risk status rejects malformed JSON',
+  'risk status persistence boundary',
+  'frontend route coverage',
+  'login route exists'
+];
+const REQUIRED_API_SURFACE_GATES = [
+  'routes discovered',
+  'route source lines recorded',
+  'no duplicate method/path routes',
+  'all routes use /api prefix',
+  'public routes are documented allowlist',
+  'health endpoint public',
+  'login endpoint public',
+  'dashboard protected',
+  'risk event status protected'
+];
+const REQUIRED_OPENAPI_GATES = [
+  'OpenAPI version',
+  'API info version matches package',
+  'generated from API surface report',
+  'operation count matches API surface',
+  'bearer security scheme present',
+  'operation source lines recorded',
+  'operation sources match API surface',
+  'operation auth boundaries recorded',
+  'operation auth boundaries match API surface',
+  'protected operations require bearer auth',
+  'public operations omit bearer auth',
+  'server URL matches backend default port',
+  'Express path params converted',
+  'operation IDs are unique',
+  'path parameters documented',
+  'risk status request body constrained',
+  'risk status error responses documented'
+];
+const REQUIRED_CLIENT_API_COVERAGE_GATES = [
+  'OpenAPI regenerated for coverage',
+  'OpenAPI contract available',
+  'client API calls discovered',
+  'all client calls match OpenAPI',
+  'login flow covered',
+  'dynamic table endpoints covered',
+  'risk status mutation covered',
+  'frontend fetch calls go through API helper'
+];
+const REQUIRED_SBOM_GATES = [
+  'lockfiles discovered',
+  'components discovered',
+  'components include versions',
+  'package URLs recorded',
+  'components include lockfile hashes',
+  'scoped package URLs preserve namespace',
+  'metadata component matches package',
+  'CycloneDX serial number is UUID URN'
+];
 
 function gate(name, ok, detail) {
   return { name, ok, detail };
@@ -22,7 +87,10 @@ function run(command, args) {
     encoding: 'utf8',
     shell: false
   });
-  const output = [completed.stdout, completed.stderr, completed.error?.message].filter(Boolean).join('\n').trim();
+  const output = [completed.stdout, completed.stderr, completed.error?.message]
+    .filter(Boolean)
+    .join('\n')
+    .trim();
   return {
     command: [command, ...args].join(' '),
     exitCode: completed.status ?? 1,
@@ -30,21 +98,178 @@ function run(command, args) {
   };
 }
 
+function formatReportOutputs() {
+  if (!existsSync(prettierBin)) {
+    return {
+      command: 'prettier --write reports/**/*.json reports/**/*.md',
+      exitCode: 1,
+      output: `missing local prettier binary: ${prettierBin}`
+    };
+  }
+  const completed = spawnSync(
+    process.execPath,
+    [prettierBin, '--write', 'reports/**/*.json', 'reports/**/*.md'],
+    {
+      cwd: root,
+      encoding: 'utf8',
+      shell: false
+    }
+  );
+  const output = [completed.stdout, completed.stderr, completed.error?.message]
+    .filter(Boolean)
+    .join('\n')
+    .trim();
+  return {
+    command: 'prettier --write reports/**/*.json reports/**/*.md',
+    exitCode: completed.status ?? 1,
+    output: output.slice(-4000)
+  };
+}
+
+function summarizeRequiredReportGates(report, requiredGateNames, reportLabel) {
+  if (report.ok !== true) {
+    return { ok: false, detail: `${reportLabel} ok flag is not true` };
+  }
+  if (!Array.isArray(report.gates)) {
+    return { ok: false, detail: `${reportLabel} gates missing` };
+  }
+
+  const gatesByName = new Map();
+  const duplicateNames = [];
+  for (const item of report.gates) {
+    if (!item?.name) continue;
+    if (gatesByName.has(item.name)) duplicateNames.push(item.name);
+    gatesByName.set(item.name, item);
+  }
+
+  const missing = requiredGateNames.filter((name) => !gatesByName.has(name));
+  const failed = requiredGateNames.filter((name) => gatesByName.get(name)?.ok !== true);
+  if (duplicateNames.length > 0) {
+    return { ok: false, detail: `duplicate gates: ${duplicateNames.join(', ')}` };
+  }
+  if (missing.length > 0) {
+    return { ok: false, detail: `missing gates: ${missing.join(', ')}` };
+  }
+  if (failed.length > 0) {
+    return { ok: false, detail: `failed gates: ${failed.join(', ')}` };
+  }
+
+  return {
+    ok: true,
+    detail: `${requiredGateNames.length} required gates passed (${report.gates.length} total)`
+  };
+}
+
+function summarizeRequiredSmokeGates(smoke) {
+  return summarizeRequiredReportGates(
+    { ok: smoke.ok, gates: smoke.gates },
+    REQUIRED_SMOKE_GATES,
+    'smoke report'
+  );
+}
+
+async function pushJsonReportGate(gates, name, relativePath, requiredGateNames, selectReport) {
+  const reportPath = resolve(root, relativePath);
+  if (!existsSync(reportPath)) {
+    gates.push(gate(name, false, `${relativePath} missing`));
+    return;
+  }
+
+  const parsed = JSON.parse(await readFile(reportPath, 'utf8'));
+  const selected = selectReport(parsed);
+  const summary = summarizeRequiredReportGates(selected, requiredGateNames, relativePath);
+  gates.push(gate(name, summary.ok, summary.detail));
+}
+
 async function buildReport() {
   const pkg = JSON.parse(await readFile(resolve(root, 'package.json'), 'utf8'));
   const gates = [];
   const commands = [];
 
-  for (const file of ['README.md', 'LICENSE', 'renovate.json', 'package-lock.json', 'backend/package.json', 'frontend/package.json', 'scripts/api-surface.mjs', 'scripts/openapi-spec.mjs', 'scripts/client-api-coverage.mjs', 'scripts/dependency-sbom.mjs']) {
+  for (const file of [
+    'README.md',
+    'LICENSE',
+    'RELEASE_NOTES.md',
+    'renovate.json',
+    'package-lock.json',
+    '.github/workflows/continuous-optimize.yml',
+    'backend/.env.example',
+    'backend/package.json',
+    'backend/prisma/schema.prisma',
+    'scripts/markdown.mjs',
+    'scripts/markdown.test.mjs',
+    'frontend/package.json',
+    'scripts/api-surface.mjs',
+    'scripts/openapi-spec.mjs',
+    'scripts/client-api-coverage.mjs',
+    'scripts/dependency-sbom.mjs'
+  ]) {
     gates.push(gate(`required file ${file}`, existsSync(resolve(root, file)), file));
   }
-  for (const script of ['build', 'test', 'api:surface', 'api:openapi', 'api:client-coverage', 'deps:sbom', 'smoke:report']) {
-    gates.push(gate(`script ${script}`, Boolean(pkg.scripts?.[script]), pkg.scripts?.[script] || 'missing'));
+  for (const script of [
+    'build',
+    'check',
+    'test',
+    'api:surface',
+    'api:openapi',
+    'api:client-coverage',
+    'deps:sbom',
+    'smoke:report',
+    'reports:markdown-test'
+  ]) {
+    gates.push(
+      gate(`script ${script}`, Boolean(pkg.scripts?.[script]), pkg.scripts?.[script] || 'missing')
+    );
   }
+  gates.push(
+    gate(
+      'markdown table cells escaped',
+      mdCell('pipe|newline\nvalue') === 'pipe\\|newline<br>value',
+      'pipe and newline escaping'
+    )
+  );
+  gates.push(
+    gate(
+      'markdown code spans escaped',
+      mdCode('tick`pipe|value') === '``tick`pipe\\|value``',
+      'backtick and pipe escaping'
+    )
+  );
+  gates.push(
+    gate(
+      'markdown code spans pad boundary backticks',
+      mdCode('`edge`') === '`` `edge` ``',
+      'boundary backtick padding'
+    )
+  );
+
+  const releaseTag = `v${pkg.version}`;
+  const releaseNotes = await readFile(resolve(root, 'RELEASE_NOTES.md'), 'utf8');
+  gates.push(
+    gate('release notes match package version', releaseNotes.includes(releaseTag), releaseTag)
+  );
+  gates.push(
+    gate(
+      'versioned release document exists',
+      existsSync(resolve(root, 'docs', 'releases', `${releaseTag}.md`)),
+      `docs/releases/${releaseTag}.md`
+    )
+  );
+
+  const precheckFormat = formatReportOutputs();
+  commands.push({ name: 'format existing reports', ...precheckFormat });
+  gates.push(
+    gate(
+      'format existing reports',
+      precheckFormat.exitCode === 0,
+      `${precheckFormat.command} exit=${precheckFormat.exitCode}`
+    )
+  );
 
   for (const [name, command, args] of [
+    ['markdown helper tests', 'npm', ['run', 'reports:markdown-test']],
     ['build', 'npm', ['run', 'build']],
-    ['test', 'npm', ['run', 'test']],
+    ['quality check', 'npm', ['run', 'check']],
     ['api surface', 'npm', ['run', 'api:surface']],
     ['openapi contract', 'npm', ['run', 'api:openapi']],
     ['client API coverage', 'npm', ['run', 'api:client-coverage']],
@@ -56,14 +281,42 @@ async function buildReport() {
     gates.push(gate(name, result.exitCode === 0, `${result.command} exit=${result.exitCode}`));
   }
 
+  await pushJsonReportGate(
+    gates,
+    'api surface required gates',
+    'reports/api-surface.json',
+    REQUIRED_API_SURFACE_GATES,
+    (report) => ({ ok: report.ok, gates: report.gates })
+  );
+  await pushJsonReportGate(
+    gates,
+    'openapi required gates',
+    'reports/openapi.json',
+    REQUIRED_OPENAPI_GATES,
+    (report) => ({ ok: report['x-report']?.ok, gates: report['x-report']?.gates })
+  );
+  await pushJsonReportGate(
+    gates,
+    'client API coverage required gates',
+    'reports/client-api-coverage.json',
+    REQUIRED_CLIENT_API_COVERAGE_GATES,
+    (report) => ({ ok: report.ok, gates: report.gates })
+  );
+  await pushJsonReportGate(
+    gates,
+    'dependency SBOM required gates',
+    'reports/bom.cdx.json',
+    REQUIRED_SBOM_GATES,
+    (report) => ({ ok: report['x-report']?.ok, gates: report['x-report']?.gates })
+  );
+
   const smokeJsonPath = resolve(root, 'reports/smoke-report.json');
-  let smokeOk = false;
   if (existsSync(smokeJsonPath)) {
     const smoke = JSON.parse(await readFile(smokeJsonPath, 'utf8'));
-    smokeOk = smoke.ok === true && Array.isArray(smoke.gates) && smoke.gates.length >= 6;
-    gates.push(gate('smoke report content', smokeOk, `${smoke.gates?.length || 0} gates`));
+    const smokeSummary = summarizeRequiredSmokeGates(smoke);
+    gates.push(gate('smoke report required gates', smokeSummary.ok, smokeSummary.detail));
   } else {
-    gates.push(gate('smoke report content', false, 'reports/smoke-report.json missing'));
+    gates.push(gate('smoke report required gates', false, 'reports/smoke-report.json missing'));
   }
 
   const dirty = run('git', ['status', '--short']);
@@ -84,7 +337,7 @@ async function buildReport() {
       'Client API coverage checks Vue calls and route endpoints against generated OpenAPI paths',
       'CycloneDX style dependency SBOM from package-lock files',
       'Express API smoke coverage',
-      'Node.js native test runner contract checks'
+      'Lint, Prettier, and Node.js native test runner checks through npm run check'
     ]
   };
 }
@@ -94,9 +347,9 @@ function render(report) {
     '# Ashveil Release Readiness',
     '',
     `Generated: ${report.generatedAt}`,
-    `Project: \`${report.project}\``,
-    `Version: \`${report.version}\``,
-    `Status: \`${report.ok ? 'OK' : 'NOT READY'}\``,
+    `Project: ${mdCode(report.project)}`,
+    `Version: ${mdCode(report.version)}`,
+    `Status: ${mdCode(report.ok ? 'OK' : 'NOT READY')}`,
     '',
     '## Gates',
     '',
@@ -104,11 +357,11 @@ function render(report) {
     '|---|---|---|'
   ];
   for (const item of report.gates) {
-    lines.push(`| ${item.name} | ${item.ok ? 'OK' : 'FAIL'} | ${item.detail} |`);
+    lines.push(`| ${mdCell(item.name)} | ${item.ok ? 'OK' : 'FAIL'} | ${mdCell(item.detail)} |`);
   }
   lines.push('', '## Commands', '');
   for (const command of report.commands) {
-    lines.push(`- ${command.name}: \`${command.command}\` exit \`${command.exitCode}\``);
+    lines.push(`- ${command.name}: ${mdCode(command.command)} exit ${mdCode(command.exitCode)}`);
   }
   lines.push('', '## Reference Basis', '');
   for (const reference of report.references) {
@@ -122,5 +375,12 @@ const report = await buildReport();
 await mkdir(reportsDir, { recursive: true });
 await writeFile(jsonOut, JSON.stringify(report, null, 2), 'utf8');
 await writeFile(markdownOut, render(report), 'utf8');
-console.log(JSON.stringify({ ok: report.ok, json: jsonOut, markdown: markdownOut }, null, 2));
-if (!report.ok) process.exit(1);
+const formatResult = formatReportOutputs();
+console.log(
+  JSON.stringify(
+    { ok: report.ok, json: jsonOut, markdown: markdownOut, formatted: formatResult.exitCode === 0 },
+    null,
+    2
+  )
+);
+if (!report.ok || formatResult.exitCode !== 0) process.exit(1);

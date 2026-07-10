@@ -16,7 +16,8 @@
     "deps:sbom": "node scripts/dependency-sbom.mjs",
     "smoke:report": "node scripts/smoke-report.mjs",
     "release:readiness": "node scripts/release-readiness.mjs",
-    "check": "npm run lint && npm run format:check && npm run test",
+    "reports:markdown-test": "node --test scripts/markdown.test.mjs",
+    "check": "npm run reports:markdown-test && npm run lint && npm run format:check && npm run test",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
 import request from 'supertest';
 
@@ -6,6 +7,7 @@ process.env.NODE_ENV = 'test';
 process.env.DATABASE_URL = '';
 process.env.JWT_SECRET = 'ashveil-test-secret';
 
+const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 const { default: app } = await import('../src/server.js');
 
 describe('Ashveil API smoke contract', () => {
@@ -14,7 +16,7 @@ describe('Ashveil API smoke contract', () => {
 
     assert.equal(response.body.ok, true);
     assert.equal(response.body.name, 'Ashveil Console API');
-    assert.equal(response.body.version, '0.27.0');
+    assert.equal(response.body.version, pkg.version);
   });
 
   it('rejects protected routes without a token', async () => {

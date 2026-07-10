@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
 import request from 'supertest';
 
@@ -36,11 +37,17 @@ describe('Ashveil risk and access regression contract', () => {
     const token = await loginToken();
     const [summary, logs] = await Promise.all([
       request(app).get('/api/audit/summary').set('Authorization', `Bearer ${token}`).expect(200),
-      request(app).get('/api/audit/logs').set('Authorization', `Bearer ${token}`).expect(200),
+      request(app).get('/api/audit/logs').set('Authorization', `Bearer ${token}`).expect(200)
     ]);
 
-    const levelTotal = Object.values(summary.body.levelCount).reduce((sum, count) => sum + count, 0);
-    const channelTotal = Object.values(summary.body.channelCount).reduce((sum, count) => sum + count, 0);
+    const levelTotal = Object.values(summary.body.levelCount).reduce(
+      (sum, count) => sum + count,
+      0
+    );
+    const channelTotal = Object.values(summary.body.channelCount).reduce(
+      (sum, count) => sum + count,
+      0
+    );
 
     assert.equal(summary.body.total, logs.body.length);
     assert.equal(levelTotal, summary.body.total);
@@ -67,7 +74,21 @@ describe('Ashveil risk and access regression contract', () => {
     assert.equal(overview.total, events.length);
     assert.equal(bucketTotal, events.length);
     assert.ok(events.every((event) => event.eventKey && event.title && event.suggestion));
+    assert.ok(events.every((event) => event.displayId && event.defaultStatus));
+    assert.ok(events.every((event) => Array.isArray(event.reasons)));
     assert.equal(response.body.meta.source, 'mock');
+  });
+
+  it('keeps the Prisma risk-event schema aligned with persisted status fields', async () => {
+    const schema = await readFile(new URL('../prisma/schema.prisma', import.meta.url), 'utf8');
+    const riskEventModel = schema.match(/^model RiskEvent \{([\s\S]*?)^}/m)?.[1] || '';
+
+    for (const field of ['status', 'statusNote', 'handledBy', 'statusChangedAt', 'logs']) {
+      assert.match(riskEventModel, new RegExp(`\\b${field}\\b`));
+    }
+
+    assert.match(schema, /model RiskEventStatusLog \{/);
+    assert.match(schema, /event\s+RiskEvent\s+@relation/);
   });
 
   it('rejects unsupported risk event status before persistence is attempted', async () => {
@@ -80,5 +101,54 @@ describe('Ashveil risk and access regression contract', () => {
       .expect(400);
 
     assert.equal(response.body.message, '不支持的风险事件状态');
+  });
+
+  it('rejects missing risk event status before repository handling', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ note: 'missing status' })
+      .expect(400);
+
+    assert.equal(response.body.message, '风险事件状态必须是非空字符串');
+  });
+
+  it('rejects non-string risk event notes', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: 'processing', note: 123 })
+      .expect(400);
+
+    assert.equal(response.body.message, '风险事件处置备注必须是字符串');
+  });
+
+  it('rejects extra fields in risk event status requests', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: 'processing', note: 'ok', handledBy: 'spoofed' })
+      .expect(400);
+
+    assert.equal(response.body.message, '不支持的风险事件状态字段：handledBy');
+  });
+
+  it('returns structured JSON errors for malformed JSON request bodies', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json')
+      .send('{"status":')
+      .expect(400);
+
+    assert.equal(response.body.message, '请求体必须是合法 JSON');
   });
 });

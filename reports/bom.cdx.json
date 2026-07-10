@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:ashveil-local-sbom",
+  "serialNumber": "urn:uuid:c9568e1d-de3d-4224-9e1e-57f2de093d3a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-24T03:59:59.346Z",
+    "timestamp": "2026-07-10T18:09:50.870Z",
     "component": {
       "type": "application",
       "name": "ashveil-console",
@@ -17,7 +17,13 @@
       "name": "@babel/helper-string-parser",
       "version": "7.29.7",
       "scope": "required",
-      "purl": "pkg:npm/%40babel%2Fhelper-string-parser@7.29.7",
+      "purl": "pkg:npm/%40babel/helper-string-parser@7.29.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3dbe628cfad9f3d1831fcdb6dcbe143fc8ba400a56c6cd3845b3d02537960d5d3f91e476137e8c78a9f2afa2d899452fa91448f88bfced2b85d56e84ac837363"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -34,7 +40,13 @@
       "name": "@babel/helper-validator-identifier",
       "version": "7.29.7",
       "scope": "required",
-      "purl": "pkg:npm/%40babel%2Fhelper-validator-identifier@7.29.7",
+      "purl": "pkg:npm/%40babel/helper-validator-identifier@7.29.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a9e8711a4463e7987f7dff0431a27e71887268a947231a980e7ebcdb0403ed1369f54ba3390b07a20dae4b4af6bf3af8a56fac5dff7435e79aca370d697ddf16"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -51,7 +63,13 @@
       "name": "@babel/parser",
       "version": "7.29.7",
       "scope": "required",
-      "purl": "pkg:npm/%40babel%2Fparser@7.29.7",
+      "purl": "pkg:npm/%40babel/parser@7.29.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8673919e33ffd4fff31449dda1e5fe9feb7547059126226933f8ceec55b7d8a9fdaf9fac241d8958e758a382fa93bf23d79782c18dc69bfef7eb807510cc2d36"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -68,7 +86,13 @@
       "name": "@babel/types",
       "version": "7.29.7",
       "scope": "required",
-      "purl": "pkg:npm/%40babel%2Ftypes@7.29.7",
+      "purl": "pkg:npm/%40babel/types@7.29.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e33048c693f3a30899a6eb28164c865706a4751254cae1f93f143f3ebaa085f7455966acbe709d3df4171eb7a70da8be8322c046e9598d9a3008e8fa7e34f8a4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -85,7 +109,13 @@
       "name": "@esbuild/aix-ppc64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Faix-ppc64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/aix-ppc64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d520e01fa6523d3960832d7223af836e48b3f31ce91c911502517f00cd6d1cf2ec7f9493a26f6bc2d8c4e21280176d057d75cd4c5a84617c893568751a265e75"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -102,7 +132,13 @@
       "name": "@esbuild/android-arm",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fandroid-arm@0.21.5",
+      "purl": "pkg:npm/%40esbuild/android-arm@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bc23efcd28e93c7122d6c899765bc096c3f15e5ed66ce554041028c16ba0e2b2476faf0ec7c2ae6a507ed6870dbd3e5f8efeb0a645faa3f884a5b0eb7faf3372"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -119,7 +155,13 @@
       "name": "@esbuild/android-arm64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fandroid-arm64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/android-arm64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "734b97f55014050edd4c30a3abec1dc862e8c0c76d47f1a80b653921893fec3d47d49602d2ab1e0fbfb5d6230fda644b37d45c08c45c8c2e1831c942cc6c12fc"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -136,7 +178,13 @@
       "name": "@esbuild/android-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fandroid-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/android-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0fb68f45450d1d10701f1cf146fa7ce7aae35074455b549d4004ca5c7da1a80d240196f584a9a2d363a961169c9744f1206cff6665d695b6608f05986826a44c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -153,7 +201,13 @@
       "name": "@esbuild/darwin-arm64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fdarwin-arm64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/darwin-arm64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0f0a97a99cae9390225967f751f2e2443279103778f7383a3bdc1c959ee450cbf659116be072a35e9ff9b7c259d7541b41f512ebf71108a1b0621b4d018f3c91"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -170,7 +224,13 @@
       "name": "@esbuild/darwin-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fdarwin-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/darwin-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b1efc98c5f0d9662951b890d22ec96315ff6d9969eac1faa6928b931dad7b5de91d3c92fb36a823780b4f668aea64b438adbe1f234457e5c0614141cc594636f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -187,7 +247,13 @@
       "name": "@esbuild/freebsd-arm64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Ffreebsd-arm64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/freebsd-arm64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e49711c714435092d7f095e9ff07010b2de910d9c280147d6cde89b18e0e9a17d4b481dedd95b499ac00efe44301c30bacc21969fd373654225fd0c6c81f21e2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -204,7 +270,13 @@
       "name": "@esbuild/freebsd-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Ffreebsd-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/freebsd-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "27de643418f5ce46cc5ed1d51f6f5b06b890ca0317aa8550390600f884acd3fda5dd3f7f923e36a30da6a6a7ab441c432679a450309a413fdd7cd5d65ff65909"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -221,7 +293,13 @@
       "name": "@esbuild/linux-arm",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-arm@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-arm@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6cf6f900766d6de3468c229567d506a86c28f0452ee1c2eaebc13de40e772a5c403d1994c98bf60fa174b9423ae578ac18e2f58413f9993ae89db828fb46c570"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -238,7 +316,13 @@
       "name": "@esbuild/linux-arm64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-arm64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-arm64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "89b2af9b26332ac05e5fc77c23b307fd331f5835c117775be2a33ab32fbbaded185f26be2b571e9b7a27f5781d4f611018cbb8850c9985a9fb4de43c5e41a9e1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -255,7 +339,13 @@
       "name": "@esbuild/linux-ia32",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-ia32@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-ia32@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "62f8d70ea2d1a8f0e5d9dbd13836269a1cf8acf795298be9a5f198292346772664034d74e3aa4b5b244a288ddac7c7db2682b941bc5b954464c0afcc598d7c4e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -272,7 +362,13 @@
       "name": "@esbuild/linux-loong64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-loong64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-loong64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b877f5066306f2a12fcddaf302a8364881bfd36fb8fc31c1e9af4a6f26b45c3bf00c4282a02f19456239249bcd7548ed722046150e4fb8196910e5d08fe2504a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -289,7 +385,13 @@
       "name": "@esbuild/linux-mips64el",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-mips64el@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-mips64el@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "21a8ce98ef8a24adb76e3e7674548d08cb33d503f50ea33a7302d4bf75b5430cb193221679c7da7e7239e797ef486a842b08cc5d52e891c579ca01d6e5bdc96e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -306,7 +408,13 @@
       "name": "@esbuild/linux-ppc64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-ppc64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-ppc64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d611d5fd9e0e11f330a4b3bcae9ec2be58410e78ec0b70adb495c88418bee408f9afe301bf2e1e820ef009b7bffe14ac4fe46f0c01bbb3cd6d02fa4bd97004e3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -323,7 +431,13 @@
       "name": "@esbuild/linux-riscv64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-riscv64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-riscv64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d877570cc77d18c8131ab3d69c9ccfd802d2a2413fd0ee4785352f5886c3dd8763304f09c2f4829cd1819d34e1286101f75399873ac9e2a208c64fd2066c830c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -340,7 +454,13 @@
       "name": "@esbuild/linux-s390x",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-s390x@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-s390x@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ceeb39b31cea0490f7797c70be3375c909117a900d83113d960396daa2e79abf2290c4e98648e05eed47474d4ae05260f21d641040c0a8371942d6eb467078d4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -357,7 +477,13 @@
       "name": "@esbuild/linux-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Flinux-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/linux-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d6b61d4e9cafd378b2705d7e061cebcd024274eb803ad6aa1d35896425af8a3283d8de57bb44ed542f3ffb57da5aa70ff6204258e9a39a1a07f78747f360713d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -374,7 +500,13 @@
       "name": "@esbuild/netbsd-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fnetbsd-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/netbsd-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5a88b6317cd78cc50b71c2303272dc8b2647e2708832959002cd38f4a11e32f39c3400d5c68d1404840f7d29b107709629e767820eec59974bbcb733a5ed2d2e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -391,7 +523,13 @@
       "name": "@esbuild/openbsd-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fopenbsd-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/openbsd-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1cb34dc3df71b2fc75da5141530a13f04542b12bd13435713698d9edb3e7f78edbf2024fcde1d6c8d56116c69eadcd27dd3b1b38836f44fd9bc936792ca7b3a3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -408,7 +546,13 @@
       "name": "@esbuild/sunos-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fsunos-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/sunos-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ebe823985a5fcb40475394e9a6d92e87cfaec379a7aef82cf9d48f41740ebf77a46e8addc27cd35446f8aa722f41c617aba8339324e7a19f5d646f83e206ab2a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -425,7 +569,13 @@
       "name": "@esbuild/win32-arm64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fwin32-arm64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/win32-arm64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "67480e4ddef956f5eacaaee7b25f77cf06a171344e82abee01c60352bfaf3aff2e1e13522913b253deb5920b420f57bde48a8f29240a1fbb414ec9674b7b40f0"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -442,7 +592,13 @@
       "name": "@esbuild/win32-ia32",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fwin32-ia32@0.21.5",
+      "purl": "pkg:npm/%40esbuild/win32-ia32@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4965c517508bd9154d31a56cf81042970b5f652bc382d2fffc6fec9b001ce6854afd43eed86bbdb486918059981452ab9a0dd2c808d2ac495fd13889d6ff1f60"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -459,7 +615,13 @@
       "name": "@esbuild/win32-x64",
       "version": "0.21.5",
       "scope": "required",
-      "purl": "pkg:npm/%40esbuild%2Fwin32-x64@0.21.5",
+      "purl": "pkg:npm/%40esbuild/win32-x64@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b5077fd5e7c9bb33c2eab085c04bcbb5c8bfc4d15c4d9927997b3df056037c6138c0ff4294557df27c8aaf324a54f3217439e3ccb85d532317e0fb1000f8f023"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -476,7 +638,13 @@
       "name": "@eslint-community/eslint-utils",
       "version": "4.9.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint-community%2Feslint-utils@4.9.1",
+      "purl": "pkg:npm/%40eslint-community/eslint-utils@4.9.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a61ad898d898a6947bce714476a81f5875d1e8d0a46442bb8705831d95238adff6fd4d2be97be40e5d12627a0ce751eaec584219d2c34facf1082398d617b1b1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -493,7 +661,13 @@
       "name": "@eslint-community/regexpp",
       "version": "4.12.2",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint-community%2Fregexpp@4.12.2",
+      "purl": "pkg:npm/%40eslint-community/regexpp@4.12.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "12b8924e5b79382f7fed25e445208085f4b1c684948019b7dce1fe224c1b769828aac4ac520ef2dee87e208088fd08380415abdd4da2dfd4699b271bc4cab87b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -510,7 +684,13 @@
       "name": "@eslint/config-array",
       "version": "0.21.2",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Fconfig-array@0.21.2",
+      "purl": "pkg:npm/%40eslint/config-array@0.21.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9c99762864e5adff468cb8a6808aeef95fe6ce048ad000420d046fc70e418d444bed67c7e6ea169a2cdb1fb401e8c9a730177c7080bdb9c7969deccbd556565b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -527,7 +707,13 @@
       "name": "@eslint/config-helpers",
       "version": "0.4.2",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Fconfig-helpers@0.4.2",
+      "purl": "pkg:npm/%40eslint/config-helpers@0.4.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "801af137cf203887f747b8dae4af6c97035ac9571980ae923943919b6b81cd378811f79568884ea42b53a31dcfe91ee8da32c5c0b1532e70bb914fd119c60483"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -544,7 +730,13 @@
       "name": "@eslint/core",
       "version": "0.17.0",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Fcore@0.17.0",
+      "purl": "pkg:npm/%40eslint/core@0.17.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c8bfec2eba66b43685122523d68b113f84c8d8c0f3d4075d24bfa367b292aaf06e962378c6a618e7821f74df2a0fc4e86ba8358a5a298757f140d9233b1aeba5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -561,7 +753,13 @@
       "name": "@eslint/eslintrc",
       "version": "3.3.5",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Feslintrc@3.3.5",
+      "purl": "pkg:npm/%40eslint/eslintrc@3.3.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e08949c745f4a9fb55b0de44fbfbc6ba34d1205b70b8b6cdb1551eed33bacd83c34753ba9c5c2fc2120a10a4ab97a7597219980484dacf12a85183a376d8e546"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -578,7 +776,13 @@
       "name": "@eslint/js",
       "version": "9.39.4",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Fjs@9.39.4",
+      "purl": "pkg:npm/%40eslint/js@9.39.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9c4ec3108721bed8854f0070e0b7dbbb9f4f1be902a1f863b0a6825b3c53a6de257d18d132a1bab8c073297b847325e1387a14a7dae2026eff69660685767d73"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -595,7 +799,13 @@
       "name": "@eslint/object-schema",
       "version": "2.1.7",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Fobject-schema@2.1.7",
+      "purl": "pkg:npm/%40eslint/object-schema@2.1.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "56d00e6b299655f65c9996e9e84da6ca6a43207bf28d7b3fd762ea5988d5c3aaa3adf17e54af9fc86df7902873de79caf92539fcd7873aaad31074bcb173b738"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -612,7 +822,13 @@
       "name": "@eslint/plugin-kit",
       "version": "0.4.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40eslint%2Fplugin-kit@0.4.1",
+      "purl": "pkg:npm/%40eslint/plugin-kit@0.4.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e37feab6b0d4a24afb2c9aa8176737f91227bbfb78cdfae961da120df632860e76af02d5e939cebdd1b87d79bb224481df012b91c9894bd88486356d3921238c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -629,7 +845,13 @@
       "name": "@humanfs/core",
       "version": "0.19.2",
       "scope": "optional",
-      "purl": "pkg:npm/%40humanfs%2Fcore@0.19.2",
+      "purl": "pkg:npm/%40humanfs/core@0.19.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5215cd9be08531671b0a15f2c05c249a1aa3b373d10a67126bf85f0602c86fba10e4735bd704b489c5ac1ad48050d81e7c7788f9e06b03c2357f199b1ec19dbc"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -646,7 +868,13 @@
       "name": "@humanfs/node",
       "version": "0.16.8",
       "scope": "optional",
-      "purl": "pkg:npm/%40humanfs%2Fnode@0.16.8",
+      "purl": "pkg:npm/%40humanfs/node@0.16.8",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "804d5e40d67747efa44f3154a5d1a5a66cbc903643fcc2f21ea0f0aa3915408d0931d2350f9d6ccb51fde7c3cd5d890cdab01a73b7b9fc29c8299ac7b4f87705"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -663,7 +891,13 @@
       "name": "@humanfs/types",
       "version": "0.15.0",
       "scope": "optional",
-      "purl": "pkg:npm/%40humanfs%2Ftypes@0.15.0",
+      "purl": "pkg:npm/%40humanfs/types@0.15.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "659d70d1aa10930b94b82ed87feeec75e68d7ea42288b71245b7c8d3ca00c6a2eda5742bf402155fb032ec72c3ba22d801a14fbbca0160dabf4088bd5111c9dd"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -680,7 +914,13 @@
       "name": "@humanwhocodes/module-importer",
       "version": "1.0.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40humanwhocodes%2Fmodule-importer@1.0.1",
+      "purl": "pkg:npm/%40humanwhocodes/module-importer@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6f1bde57857cbf961be277054d3deb3d281904ea429237cad32e28555549c08b8354144c0d7acfc9744bf7cf22e5aa7d9bd6e7c8412359f9b95a4066b5f7cb7c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -697,7 +937,13 @@
       "name": "@humanwhocodes/retry",
       "version": "0.4.3",
       "scope": "optional",
-      "purl": "pkg:npm/%40humanwhocodes%2Fretry@0.4.3",
+      "purl": "pkg:npm/%40humanwhocodes/retry@0.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6d5d13828f4ae217cf09e93e68c027f35469a452afdb248341e328499baf4c04b2c0d4e7549080ac2644d855aaa6f21ab4abbb54c44b5a547511acef5610f285"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -714,7 +960,13 @@
       "name": "@jridgewell/sourcemap-codec",
       "version": "1.5.5",
       "scope": "required",
-      "purl": "pkg:npm/%40jridgewell%2Fsourcemap-codec@1.5.5",
+      "purl": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "71843ddf5d20aeac6e7966e5f96b885086a251a0dc8fb58eab97d58449633558117ce52163d7f2db34ef7e8a96b2779b87c4a5ef45527056c80af2672ca0743a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -731,7 +983,13 @@
       "name": "@noble/hashes",
       "version": "1.8.0",
       "scope": "optional",
-      "purl": "pkg:npm/%40noble%2Fhashes@1.8.0",
+      "purl": "pkg:npm/%40noble/hashes@1.8.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8c2b3d95d77b370ce98170c87fa3f7f8dac787dfec0fa0907711f28d023e87feab0cda3cf32a41c71cf8e540ee647cfdaf7b4dcfb37f5489d256855db57108e0"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -748,7 +1006,13 @@
       "name": "@paralleldrive/cuid2",
       "version": "2.3.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40paralleldrive%2Fcuid2@2.3.1",
+      "purl": "pkg:npm/%40paralleldrive/cuid2@2.3.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5ceedc0318674d997462082aea33a08e238785b81c3b836a16ac12990a632b76fa4c413a523fe37d293ac336327a6877f88d2c1e2aca49eb634309f971992d17"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -765,7 +1029,13 @@
       "name": "@prisma/client",
       "version": "5.22.0",
       "scope": "required",
-      "purl": "pkg:npm/%40prisma%2Fclient@5.22.0",
+      "purl": "pkg:npm/%40prisma/client@5.22.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3344955dfc879d044404ac42832a3bb1f7eb2adb7013a47c3ccab7df4308505d294f08d484b6d6f38a450e57f4e81dbb5f2091fbe56d8ee8049c81ddaf4ed254"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -782,7 +1052,13 @@
       "name": "@prisma/debug",
       "version": "5.22.0",
       "scope": "required",
-      "purl": "pkg:npm/%40prisma%2Fdebug@5.22.0",
+      "purl": "pkg:npm/%40prisma/debug@5.22.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "014b78e2fdd825e8203b6654e4191723b33886ef41176cf31f6885d95e69c974ff9514f25a212567b22df9b447d44b21a0c4711e0a58838541eab08cfa61b98d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -799,7 +1075,13 @@
       "name": "@prisma/engines-version",
       "version": "5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2",
       "scope": "required",
-      "purl": "pkg:npm/%40prisma%2Fengines-version@5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2",
+      "purl": "pkg:npm/%40prisma/engines-version@5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d8f4e6c45476c875bf781deea96b5c81172001b1b5af01bd66b892bd0c3e9e76fb738b82af744070631bebfcdf13cf122a50b5363db3894bdcf7a677efd98781"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -816,7 +1098,13 @@
       "name": "@prisma/engines",
       "version": "5.22.0",
       "scope": "required",
-      "purl": "pkg:npm/%40prisma%2Fengines@5.22.0",
+      "purl": "pkg:npm/%40prisma/engines@5.22.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "50d8dfb255a102dd3a9152f70a392e6291c05923ba2f89030953de815ea2b6dee70f591225abdddef8600048638252c924a11d27ba08a8327ec8793aa8ef203c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -833,7 +1121,13 @@
       "name": "@prisma/fetch-engine",
       "version": "5.22.0",
       "scope": "required",
-      "purl": "pkg:npm/%40prisma%2Ffetch-engine@5.22.0",
+      "purl": "pkg:npm/%40prisma/fetch-engine@5.22.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6e4ac3fcc7367d2be4401579129a05719f3b02f3a00f16c6f7de3cf1ae5c7b1a7909c9f2f9433a3007bf5059140b4c0b603f7ef5b79f34ea8688826186af876c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -850,7 +1144,13 @@
       "name": "@prisma/get-platform",
       "version": "5.22.0",
       "scope": "required",
-      "purl": "pkg:npm/%40prisma%2Fget-platform@5.22.0",
+      "purl": "pkg:npm/%40prisma/get-platform@5.22.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a4786941daf550f169b7ecc57e73dace1ba569960252a78870fa49562628abd47e0ffcb0e1f8c4f82b67b272b33d89b475d51b7975338c65462115603c30a4e1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -867,7 +1167,13 @@
       "name": "@rollup/rollup-android-arm-eabi",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-android-arm-eabi@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-android-arm-eabi@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "267041f0c7578f8e5c6a3bd3b8ee4598f96f155251420bebcf5b92125dcdc2a16745e00f1b06fc11a9db1a2e33da745aa8bce3252bf9fc99b27284ca9516711c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -884,7 +1190,13 @@
       "name": "@rollup/rollup-android-arm64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-android-arm64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-android-arm64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "271da0ee24a3c3800e4f41c33c733d455dc6363457c326d6b521598990185138d4c2356b608c2ade405ff8b9e1a899735c502a4c087617b20623e3b9ebc7b13f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -901,7 +1213,13 @@
       "name": "@rollup/rollup-darwin-arm64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-darwin-arm64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-darwin-arm64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d05d4bfd9dc4aaff264f69f7742a5e3bc19c4ef1ef56a90fe7fb7a0ccb27d0ace1615720facecd725e434bcaa329811e8a8e80cf41adea7c813916b2e6a22508"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -918,7 +1236,13 @@
       "name": "@rollup/rollup-darwin-x64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-darwin-x64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-darwin-x64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a8bb6d707f3bd6e8d8e187157d44928613b0f82b284dab58cfc8116c73bb05bf76407d39f7f3f4cb9768d4a32ce357d8d01a43db1e00247fe0203d33162a9529"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -935,7 +1259,13 @@
       "name": "@rollup/rollup-freebsd-arm64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-freebsd-arm64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-freebsd-arm64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7d423845aa461343a1de66fc9a07ef0b53b69d4d51a436542a70d09b7c41d48a60ec2db04ece4ab2dcfb1b6b962bdf5af12db24ccabcfcfe2ec9cc0d6b49c9cb"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -952,7 +1282,13 @@
       "name": "@rollup/rollup-freebsd-x64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-freebsd-x64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-freebsd-x64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1f962b76f25a0ed23f53dfde9ab0f86fefb192fa77cbf26f39ee2b8b31dbc6f93231f452fc289161d8e2f8f97c0f46eb11a34559487576b43180018897a5ee77"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -969,7 +1305,13 @@
       "name": "@rollup/rollup-linux-arm-gnueabihf",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm-gnueabihf@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-arm-gnueabihf@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "43c08108242d0c5ad8b57a1e5174ab9c55ca3a7c94871e9bcfe4a42fa03413b57c900882279a5a9aad56b5b7e9546851e534a95d8e9a9376af9837397c74f224"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -986,7 +1328,13 @@
       "name": "@rollup/rollup-linux-arm-musleabihf",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm-musleabihf@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-arm-musleabihf@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9f09e1935e7cd65d050557a59467150804f43a2d3aa27100dd6079dec7f4d553b723450f064307f6c5ce358304d8ad28bd770d6b225f36d1df9ba9a924495ab5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1003,7 +1351,13 @@
       "name": "@rollup/rollup-linux-arm64-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm64-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-arm64-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c795ebe3d870b7785d5bbe543999b7dfde58c30ccfc9aba4b6c96fdbd2a958bfd3faf540ce84f76b32dc4d6bf478c72204daf1f836231f8a5a7a11e82e93efa6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1020,7 +1374,13 @@
       "name": "@rollup/rollup-linux-arm64-musl",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm64-musl@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-arm64-musl@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ba7312dc7ef70e96a83f2c8454f8c62a578cfecd26926b1ab9310da70e0835063ccb8f88b8b36392e790e500ad0b40f7377f18dfcca1014f0ea19db44b64e6eb"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1037,7 +1397,13 @@
       "name": "@rollup/rollup-linux-loong64-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-loong64-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-loong64-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ccd6731919c08708c51189afa612515795da4068eceb670299e6181d44fffcd6ef1271dabb0f88f399c61be4a2560e65778197f03d486ca217fa8cc84d09e131"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1054,7 +1420,13 @@
       "name": "@rollup/rollup-linux-loong64-musl",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-loong64-musl@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-loong64-musl@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2dda5618bf17db4f41d9222f5a3aa573c55980ce8f29fa27b527ab19ea6e95d4261d8ac03ad9cc0977899315c66c2f8f3d954ebaee5ccc9a3b7cd57a69e5bcad"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1071,7 +1443,13 @@
       "name": "@rollup/rollup-linux-ppc64-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-ppc64-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-ppc64-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "102e644ed35a3463a66cc1aa6abf1dbc9cbacbf860f7d180c237c1cfefa9c598500135c67118dde9ce5e9f9c1c6ebbb4be446688c1ac40a74c24e39feaccdae2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1088,7 +1466,13 @@
       "name": "@rollup/rollup-linux-ppc64-musl",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-ppc64-musl@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-ppc64-musl@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f218b0a7a0f869c11c34aefc238acfd3f5ed4b5b249d620030904f751e25eb352dc939b92a24c3af96d7996b787e863b9c037b0138431e090b20464e58a6f35b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1105,7 +1489,13 @@
       "name": "@rollup/rollup-linux-riscv64-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-riscv64-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-riscv64-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d74761fe1fc1a80ec3b8c3d64b1911f2e92cd7c151c27c0e12aaf9cce4c497e34ec0ffce333297f0e151fce7fdc710c0ec3e6a79fd4dcdaaf95830f69020abd6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1122,7 +1512,13 @@
       "name": "@rollup/rollup-linux-riscv64-musl",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-riscv64-musl@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-riscv64-musl@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "60a279960df90cfd7b81c00e8209e285ef803f0f472f28f55e7ee0b261ae9812405036ba3465cd8b12739a458b85c2bd4cebaec908dd6a6cef25e7e43bba8765"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1139,7 +1535,13 @@
       "name": "@rollup/rollup-linux-s390x-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-s390x-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-s390x-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3258a5e46d898fa6bb0772d619cb60f973cbf6f75762ecc2b4d5dfc4e4349cf8dcda6eae79492da1c3c61fd6e700cd1b35129bfdb0164ee8d453b20941d400fa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1156,7 +1558,13 @@
       "name": "@rollup/rollup-linux-x64-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-x64-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-x64-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6d558838893aa55d35a7809d51b3cfec227fe37e33f8ea286230ee15c47ee38377e58bca502eba1bc3069ef716c79996296de0eb527eb7be25dca8f5e4ac27d9"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1173,7 +1581,13 @@
       "name": "@rollup/rollup-linux-x64-musl",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-linux-x64-musl@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-linux-x64-musl@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ab2e6906f65ba8d161781cfad51d6bcec7b38e6d09eceda8346a16b46a18f3d49960b51fc40253040a830a1a8021d078ac28886e2f6717bc99f371a73622f04b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1190,7 +1604,13 @@
       "name": "@rollup/rollup-openbsd-x64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-openbsd-x64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-openbsd-x64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "13cdd35e3238ce6d3ee5fdaa3be50eb9d682608858c292798eae9809934867ee826df84aae40067b37a201204bf4497103116c452f598444aff267e78fa4ca7a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1207,7 +1627,13 @@
       "name": "@rollup/rollup-openharmony-arm64",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-openharmony-arm64@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-openharmony-arm64@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7db5a72aa5648eb24ddfcbcd7b76a191b93a89e8d2ff76f436dec412d3e913a44169c65c19734a6f37c73771945255ce3e08548348fa5d41abb635fdcf5b08bc"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1224,7 +1650,13 @@
       "name": "@rollup/rollup-win32-arm64-msvc",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-win32-arm64-msvc@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-win32-arm64-msvc@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "02b325dfc89501b93435ec35a208a140d63a8a984b8b865a46c6b4dfb814cefe7278a3d8f130f70e6cb8c7644d0b5573b54feeaa6f86fbf47016b4a46b73b2da"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1241,7 +1673,13 @@
       "name": "@rollup/rollup-win32-ia32-msvc",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-win32-ia32-msvc@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-win32-ia32-msvc@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d2662d8c74bdb9c01b7004f270234af4818193f7027bf99aec49922c665db319ce03c723448c94d38c03a55003f4d88e7cb511f4a4f17623b9dee3a485eaea8d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1258,7 +1696,13 @@
       "name": "@rollup/rollup-win32-x64-gnu",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-win32-x64-gnu@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-win32-x64-gnu@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "80ad620843dfa68486f707c18a15f1bc1322f197dc59f7d8904b02fc48a1fa214435369ec2f35cac443af6520e5983b9a5e3c728b1c73bb9eae4020b18efc741"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1275,7 +1719,13 @@
       "name": "@rollup/rollup-win32-x64-msvc",
       "version": "4.61.1",
       "scope": "required",
-      "purl": "pkg:npm/%40rollup%2Frollup-win32-x64-msvc@4.61.1",
+      "purl": "pkg:npm/%40rollup/rollup-win32-x64-msvc@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5fecda3f6c7e8f845719f6e9fec792a111d69cfc730298a50ecce2b19c5b607e42fe34f11610ad0cd74f1996fd949c983ecdb8c06c6bb8f17b63eb085edf46cf"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1292,7 +1742,13 @@
       "name": "@types/estree",
       "version": "1.0.9",
       "scope": "optional",
-      "purl": "pkg:npm/%40types%2Festree@1.0.9",
+      "purl": "pkg:npm/%40types/estree@1.0.9",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1a174f832d5e978fc898fd395f4e54c38730dbf33ddc10949a712f599352b650b310a304e05924f98a680393a21cd426a12ec269f6fc5dadcfc9af26d50af37a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1309,7 +1765,13 @@
       "name": "@types/json-schema",
       "version": "7.0.15",
       "scope": "optional",
-      "purl": "pkg:npm/%40types%2Fjson-schema@7.0.15",
+      "purl": "pkg:npm/%40types/json-schema@7.0.15",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e7e7cff0ff0c14d0be0326420f1ac1da991914f1b3a90594ce949ebae54bbe6f1531ca2b3586af06aa057312bc6d0cf842c6e7e2850411e9b8c032df732b061c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1326,7 +1788,13 @@
       "name": "@vitejs/plugin-vue",
       "version": "5.2.4",
       "scope": "required",
-      "purl": "pkg:npm/%40vitejs%2Fplugin-vue@5.2.4",
+      "purl": "pkg:npm/%40vitejs/plugin-vue@5.2.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ed8c7f49748e710ab91e2895de8adebc75059fea66301e1c81b1240d882791459bd167de43fc1adb216fe83e480a2090395a6303bbd80d7ac2ec018ef328c31c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1343,7 +1811,13 @@
       "name": "@vue/compiler-core",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fcompiler-core@3.5.37",
+      "purl": "pkg:npm/%40vue/compiler-core@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4df433e1bb014133e84de0564d43c93eafb81424d35e0da96e9f138e3032ac668b02ef677eb653c4a2dfea674095c967c2dc944e815a310bbb4114badd07a4d6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1360,7 +1834,13 @@
       "name": "@vue/compiler-dom",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fcompiler-dom@3.5.37",
+      "purl": "pkg:npm/%40vue/compiler-dom@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a2a7e5fd06825445b1a6100b14467b9beabdcfe4a0873f5909ca09fe8a654c6c6c3a0c76733573499c64324cd0ad621a872c0e7b2187760f6697f594cf70cccf"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1377,7 +1857,13 @@
       "name": "@vue/compiler-sfc",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fcompiler-sfc@3.5.37",
+      "purl": "pkg:npm/%40vue/compiler-sfc@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "858bbe79fb3aefcc5a3c763184544add986443f16e78c56744ea2866a7a6398972401420d3aaa422ba72014ad4596a8c2df89f80e756c14e822fa16e4d1bcfe0"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1394,7 +1880,13 @@
       "name": "@vue/compiler-ssr",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fcompiler-ssr@3.5.37",
+      "purl": "pkg:npm/%40vue/compiler-ssr@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8a16dd08b24b5c5295dde7c442515fcf2e932c746e390ffe7737b6bd97e0d03227715c64714c700aa3dec0289255d59715ea22b8c30e37cef0a6df86fb24f6d8"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1411,7 +1903,13 @@
       "name": "@vue/devtools-api",
       "version": "6.6.4",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fdevtools-api@6.6.4",
+      "purl": "pkg:npm/%40vue/devtools-api@6.6.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b068533ccb97a99d6b54e937d91ca5ced5a47d74d186e4bbbe000abf4ce3aa4f206ec1e427bc5f15ffa36f24b1b7bb5639b109c3229a1cc8a457f5860e2426f2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1428,7 +1926,13 @@
       "name": "@vue/reactivity",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Freactivity@3.5.37",
+      "purl": "pkg:npm/%40vue/reactivity@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "33b8fb605ebc214776b85348aa1c326e9cd41bf4a4f4752d93e50b982fa0e89799f342f20b21a78efe9260147ceadddfcb2b989595126f5f32bb85182e0c398e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1445,7 +1949,13 @@
       "name": "@vue/runtime-core",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fruntime-core@3.5.37",
+      "purl": "pkg:npm/%40vue/runtime-core@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "374216462acd3f3269fc3b94091f4cfa86d5507640acc92695d440a4ab09448580f970ceea2c05e1987de073fab82cd8560595c2bf18b8a7961781f9d95c536f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1462,7 +1972,13 @@
       "name": "@vue/runtime-dom",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fruntime-dom@3.5.37",
+      "purl": "pkg:npm/%40vue/runtime-dom@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f5592eb421707d53a23111fb9a08bb41aa6ca82f07c5ca30dc32ef04a7fe9911fcf0ff7821bfc3feeea5fe59fad924fe7c8be6b0e3bbf836fdf4bcd6bfdb2526"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1479,7 +1995,13 @@
       "name": "@vue/server-renderer",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fserver-renderer@3.5.37",
+      "purl": "pkg:npm/%40vue/server-renderer@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "08fee76f125bd59734fe8781aaee82b4c7fd4cdeb87f3eaa13be4167c996874e33004c9af040199aa1f68114169285148c5aaff62ee1fe657e138fcb2f82575f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1496,7 +2018,13 @@
       "name": "@vue/shared",
       "version": "3.5.37",
       "scope": "required",
-      "purl": "pkg:npm/%40vue%2Fshared@3.5.37",
+      "purl": "pkg:npm/%40vue/shared@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "273171e1a606cfe12d065f33cf0f171023564a63574eb5398e9b9bdd3d6543ed97e58b3d4331d669fc6113e139a92d91cbf99597ca3642aaf0446618385620bb"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1514,6 +2042,12 @@
       "version": "1.3.8",
       "scope": "required",
       "purl": "pkg:npm/accepts@1.3.8",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3d802d8536b69b654ac6ebd20f70cf0bf1b2f94fac380d4b02e4fc9a4991bafc3e34009269e5c443e34771517bace365eaa71ac55dd4b9e9b06b093eefe4892f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1531,6 +2065,12 @@
       "version": "5.3.2",
       "scope": "optional",
       "purl": "pkg:npm/acorn-jsx@5.3.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "aeaf6cf893617f4202863b435f196527b838d68664e52957b69d0b1f0c80e5c7a3c27eef2a62a9e293eb8ba60478fbf63d4eb9b00b1e81b5ed2229e60c50d781"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1548,6 +2088,12 @@
       "version": "8.16.0",
       "scope": "optional",
       "purl": "pkg:npm/acorn@8.16.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "51527213d32db4eb014080cac35b246fd9c0c10b91e70b860f7fbcd8ae89809966fd8f8a23dda836c30d199098743b15b511d26a4d29715e439e8e7ee2387db3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1565,6 +2111,12 @@
       "version": "6.15.0",
       "scope": "optional",
       "purl": "pkg:npm/ajv@6.15.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7e0171ec77e8abad32b4ad9cec386717c8c8bf362038cc5fba08cb3923078cb20f81e9ea6bb4bba1a6a001352af7d995e8862f376b51982d309d3617ea23db33"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1582,6 +2134,12 @@
       "version": "4.3.0",
       "scope": "optional",
       "purl": "pkg:npm/ansi-styles@4.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cdb07dac22404f5adb8e25436f686a2851cd60bc60b64f0d511c59dc86700f717a36dc5b5d94029e74a2d4b931f880e885d3e5169db6db05402c885e64941212"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1599,6 +2157,12 @@
       "version": "2.0.1",
       "scope": "optional",
       "purl": "pkg:npm/argparse@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f3ef56a9e6db173a57f4e47e59ae8edbd6ac22881e44ccdc1ad00835da4c1c7c80835d1fd3969215505b704a867ff3d7c35123019faadbf6c4060dc3beeacadd"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1616,6 +2180,12 @@
       "version": "1.1.1",
       "scope": "required",
       "purl": "pkg:npm/array-flatten@1.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3c254042cc167a6bba51dc6c0c5157ffe815798a8a0287770f75159bdd631f0ca782e3b002f60f871f2736533ef8da9170ae82c71a5469f8e684874a88789baa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1633,6 +2203,12 @@
       "version": "2.0.6",
       "scope": "optional",
       "purl": "pkg:npm/asap@2.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0521d680348088ab39d28d917bca69be9dec7951d7491338e1c752b13f457cd1145192ce196542b2259a44f58cd599e7fa6a99d4e7d5677cf70d61334a9ee144"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1650,6 +2226,12 @@
       "version": "0.4.0",
       "scope": "optional",
       "purl": "pkg:npm/asynckit@0.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "39e8bd387e2d461d18a94dc6c615fbf5d33f9b0560bdb64969235a464f9bb21923d12e5c7c772061a92b7818eb1f06ad5ca6f3f88a087582f1aca8a6d8c8d6d1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1667,6 +2249,12 @@
       "version": "1.0.2",
       "scope": "optional",
       "purl": "pkg:npm/balanced-match@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "de849e50ed13315ebb84dd4099b5ec2b8c9aa94eed8e21e56f144364ea47d0a5bdf82797e1b440697d009f1b74b71d8cae94695b041a3f02252121098585393f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1684,6 +2272,12 @@
       "version": "2.0.1",
       "scope": "required",
       "purl": "pkg:npm/basic-auth@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "345f9ea6e11d9d4615946ba16b16dbabe76f26db702e7198f988b195794c1392a94395b70a75c0e5c5539de63748f6cf0d191c8cc6e27ebc261587029603997a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1701,6 +2295,12 @@
       "version": "1.20.5",
       "scope": "required",
       "purl": "pkg:npm/body-parser@1.20.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "de0ae6fbfdad50ebeed9c8c992fb08c6bbffc15a5f5d05b83ec407626ef2938bdfa6eec4925ea712c601a0950beaa0f0654c7cc14850f2d476ab3f9a77d73d38"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1718,6 +2318,12 @@
       "version": "1.0.0",
       "scope": "optional",
       "purl": "pkg:npm/boolbase@1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "25939203b328f6c34607cf948d283374bb68916024cb5cdbced3375912c26d9ef4ff771300d99098e751ef2da0f89d1ed965f2c32d724b8ebcb58f88aeea84c3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1735,6 +2341,12 @@
       "version": "1.1.15",
       "scope": "optional",
       "purl": "pkg:npm/brace-expansion@1.1.15",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1303820c47b1e2ab83dfb5e1a8cde89b0b4ca098ebfff8ac519cf5268a543569acfb8676562c8cfe4d5821178fa6854d9d0844367c6d1632dac4d1eb4fbc4852"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1752,6 +2364,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/buffer-equal-constant-time@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cd1a54883c1dff193a003a8f3004c6f2f73d54fae4724ed3d3b388c748278e62409c79d35573501b7bdfbd636e899224c2ef4aaca740d6224a7ec7d357113a34"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1769,6 +2387,12 @@
       "version": "3.1.2",
       "scope": "required",
       "purl": "pkg:npm/bytes@3.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fcd7fb4f2cd3c7a4b7c9124e6ce015efde7aafc72bdbe3a3f000b976df3048fdc1400a1e5f9f0da07c8253c3fccc690d5d2b634d28ba7f33ba174a4175c61b12"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1786,6 +2410,12 @@
       "version": "1.0.2",
       "scope": "required",
       "purl": "pkg:npm/call-bind-apply-helpers@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4a9d5a6e52748af0e44b38dc68977112e9cde7f5ef92c149dac30115fabac74af285057fd9bfcac057b6d5c329987b4f3928a3f0af7dff049fa04b9339b9ae31"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1803,6 +2433,12 @@
       "version": "1.0.4",
       "scope": "required",
       "purl": "pkg:npm/call-bound@1.0.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fb2b3df7b53dea9a382b1fc0069042aa103d12ec49690583420ef6f791f8841a61bf72198346e804abb0629b78617a7a319e4099942753fb72313951a5a49e8e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1820,6 +2456,12 @@
       "version": "3.1.0",
       "scope": "optional",
       "purl": "pkg:npm/callsites@3.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3fc06302c5ef652f95203508d7584709012fef8613ebb6148b924914d588a8bdb7e6c0668d7e3eab1f4cbaf96ce62bf234435cb71e3ac502d0dda4ee13bb2c69"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1837,6 +2479,12 @@
       "version": "4.1.2",
       "scope": "optional",
       "purl": "pkg:npm/chalk@4.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a0a9db845c91217a54b9ecfc881326c846b89db8f820e432ba173fc32f6463bfd654f73020ef5503aebc3eef1190eefed06efa48b44e7b2c3d0a9434eb58b898"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1854,6 +2502,12 @@
       "version": "2.0.1",
       "scope": "optional",
       "purl": "pkg:npm/color-convert@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4511023ec8fb8aeff16f9a0a61cb051d2a6914d9ec8ffe763954d129be333f9a275f0545df3566993a0d70e7c60be0910e97cafd4e7ce1f320dfc64709a12529"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1871,6 +2525,12 @@
       "version": "1.1.4",
       "scope": "optional",
       "purl": "pkg:npm/color-name@1.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "74ecbedc0b96ddadb035b64722e319a537208c6b8b53fb812ffb9b71917d3976c3a3c7dfe0ef32569e417f479f4bcb84a18a39ab8171edd63d3a04065e002c40"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1888,6 +2548,12 @@
       "version": "1.0.8",
       "scope": "optional",
       "purl": "pkg:npm/combined-stream@1.0.8",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1503783117ee25e1dfedc05b04c2455e12920eafb690002b06599106f72f144e410751d9297b5214048385d973f73398c3187c943767be630e7bffb971da0476"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1905,6 +2571,12 @@
       "version": "1.3.1",
       "scope": "optional",
       "purl": "pkg:npm/component-emitter@1.3.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4f4f9b6ab5124114d44004a1f1bc74d9d97e0e1179e06b480d8d776379bda164e494a6dbdd6bfdef899e469799de5a752692d51025963470b8bda1b65c75e8b9"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1922,6 +2594,12 @@
       "version": "0.0.1",
       "scope": "optional",
       "purl": "pkg:npm/concat-map@0.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fd2aefe1db30c903417e8846a73f68e986f71b3dd2ad40ea047e6b4ee84647b6a1b656d82a7571c366c214c4658da03b1171da5d9f30b07768745bdb9212a6aa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1939,6 +2617,12 @@
       "version": "0.5.4",
       "scope": "required",
       "purl": "pkg:npm/content-disposition@0.5.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "16f7994cdb86c34e1cc6502259bce2eb34c02ff9617a16966d3b6096e261e3f13de43a8cc139a16b7299375680580f1c148847ccc654bcb7af930e51aa4fad49"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1956,6 +2640,12 @@
       "version": "1.0.5",
       "scope": "required",
       "purl": "pkg:npm/content-type@1.0.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9d38ea7dc045122a4a7570afe180d05827e670b64a9bcd65745d29028a53bf2ac51956dc47a3ff54001de46ecdfb4b53afc42a894d2d15a743e852b836d27038"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1973,6 +2663,12 @@
       "version": "1.0.7",
       "scope": "required",
       "purl": "pkg:npm/cookie-signature@1.0.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "35775873774baf8ee9064a54087b4a4b020e4172d59fc75912ecb06e808e258fe8b00d301522e549ac2bdca37ca97244c97eba15c38d4c7f0422556e2b4cb214"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -1990,6 +2686,12 @@
       "version": "1.2.2",
       "scope": "optional",
       "purl": "pkg:npm/cookie-signature@1.2.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0fbeae53bdee9525eb0f5517178284d93331555c21b270a07c0c9383d93c3fa2866639572ab38b7b874940a2370718b9c237ac6681572561253560633d931b86"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2007,6 +2709,12 @@
       "version": "0.7.2",
       "scope": "required",
       "purl": "pkg:npm/cookie@0.7.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ca48b95e72ae7fbe74979d2e193965b7a90a20b6389d0d5e34841ab685c40726797568272aa6e7aa64eb044e41e0dee5acc24a436cad58c8933b6a34bfa130ff"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2024,6 +2732,12 @@
       "version": "2.1.4",
       "scope": "optional",
       "purl": "pkg:npm/cookiejar@2.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2c3c7aa07acaf8f8732ca254f63e52eff6378ccfe6507bc3fc3788d56426267eb9da23c2e58e130730bd97ee4e30e5e5c934c0f9299550f9b41d0530a43e49ab"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2041,6 +2755,12 @@
       "version": "2.8.6",
       "scope": "required",
       "purl": "pkg:npm/cors@2.8.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b49b590411c0eaf8c801a17a12721aaba95a0413fd6aafd8de8b9526311fa076d105c1c100761c321ff0f0b0eb9363ef20c32af209a8a5ae43e15f1199baf11b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2058,6 +2778,12 @@
       "version": "7.0.6",
       "scope": "optional",
       "purl": "pkg:npm/cross-spawn@7.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b95d903963f69d6ceccb668ca7c69189b862f5d9731791e0879487681f4e893184c834e2249cb1d2ecb9d505ddc966ed00736e6b85c9cd429c6b73b3294777bc"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2075,6 +2801,12 @@
       "version": "3.0.0",
       "scope": "optional",
       "purl": "pkg:npm/cssesc@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fd36ff25c8cad75d67352706a1be4c36db27b4d3356823540e2a41fd39306458720ebac4e3b48ec7fd7cc05d9b6e381cdd9cc248a5b54f99ede446c5a00cff56"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2092,6 +2824,12 @@
       "version": "3.2.3",
       "scope": "required",
       "purl": "pkg:npm/csstype@3.2.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cf51c629c632db103c00641fc2b9f43c0cbe3c1ed7fc64a3dd45495bda8aca7e37c566be825e675e6538aaa2cc4735952c50bc2aeb145fc4ffd240a2398a4021"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2109,6 +2847,12 @@
       "version": "2.6.9",
       "scope": "required",
       "purl": "pkg:npm/debug@2.6.9",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6c2ec496b7496899cf6c03fed44a2d62fa99b1bdde725e708ba05f8ba0494d470da30a7a72fb298348d7ce74532838e6fc4ec076014155e00f54c35c286b0730"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2126,6 +2870,12 @@
       "version": "4.4.3",
       "scope": "optional",
       "purl": "pkg:npm/debug@4.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "446c305a7c10be455f6af295b76d8518bc3ec5849dcc04709b4aeee83853540dee994e6165cdbc57790ee2cb6062bcab4e52e9baf808f468a28e5b408cd6dca8"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2143,6 +2893,12 @@
       "version": "0.1.4",
       "scope": "optional",
       "purl": "pkg:npm/deep-is@0.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a083f392c993838fccae289a6063bea245c34fbced9ffc37129b6fffe81221d31d2ac268d2ee027d834524fcbee1228cb82a86c36c319c0f9444c837b7c6bf6d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2160,6 +2916,12 @@
       "version": "1.0.0",
       "scope": "optional",
       "purl": "pkg:npm/delayed-stream@1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "672483ecd7fdd5a2c1d11c4be0a1ab28705797b11db350c098475ca156b05e72c3ed20e1a4d82db88236680920edaed04b8d63c4f499d7ba7855d1a730793731"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2177,6 +2939,12 @@
       "version": "2.0.0",
       "scope": "required",
       "purl": "pkg:npm/depd@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "83b9c7e8fe9dc838a8268800006a6b1a90ad5489898693e4feba02cdd6f77c887ad7fb3f9cfb1f47aa27c8cc2408047f3a50b7c810b49444af52840402cb08af"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2194,6 +2962,12 @@
       "version": "1.2.0",
       "scope": "required",
       "purl": "pkg:npm/destroy@1.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "dac246253697208691d70e22252368374867318ec6a5cfe7f03e2a482270f10a855977fb72e0209c41f1069c1e69570f7af0b69772a98d80b1dcdca941081a26"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2211,6 +2985,12 @@
       "version": "1.0.4",
       "scope": "optional",
       "purl": "pkg:npm/dezalgo@1.0.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ad748fd1b7fee67d10a27b1bf925557cd7c8b2298ee0712d9a72293c763c435502cca950ac331f7686ebf2724e3ac460582c8c46a792050ce659432aef3bd58a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2228,6 +3008,12 @@
       "version": "16.6.1",
       "scope": "required",
       "purl": "pkg:npm/dotenv@16.6.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b81ab87a05874dc4eddf76bbdafa521b4cf71e73ee225e8da98713aca120d9ace81329768695b4cea971cacab6a4af47943207c87c9a91e61a627480c1df1ba3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2245,6 +3031,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/dunder-proto@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "28837f9c3241411717c3430b561644f62407986ebca80548060f42aa65188e64088608a3f54e4c16faea9142f915bb72cb366e39e3add3375e45ee1463b72df8"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2262,6 +3054,12 @@
       "version": "1.0.11",
       "scope": "required",
       "purl": "pkg:npm/ecdsa-sig-formatter@1.0.11",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9da825dd162b6cdbfa91091e248a6de8d259cbcb702c1ff6bedcfac8df59e2f44a1cde3f41924811baa88402d283029d9e4b2e63793901d769e6583cb15a1571"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2279,6 +3077,12 @@
       "version": "1.1.1",
       "scope": "required",
       "purl": "pkg:npm/ee-first@1.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "58cc26f4b851528f9651a44dfaf46e113a86f3d22066985548d91d16079beac4bf1383ab0c837bb78f0201ec121d773a0bc95e7c3f0a29faf9bd8eb56eb425a3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2296,6 +3100,12 @@
       "version": "2.0.0",
       "scope": "required",
       "purl": "pkg:npm/encodeurl@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4349fd1d18b89ba26e188575785966bc907b644571bbddc8accca232c182d25acc24c5b3460c7a586aaec9f4206556f7d6f8468179df98f34d5e6c673a4441ae"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2313,6 +3123,12 @@
       "version": "7.0.1",
       "scope": "required",
       "purl": "pkg:npm/entities@7.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4d6ae02ce1544131fdf78614ca5d724f8bb26af6399cd0799ae7dff91b566aa3550802b8d3c6f96679db34050458b4c2a6e9bdc3a6ab4fbd22d57750e1478e3c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2330,6 +3146,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/es-define-property@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7b79d17e07d4678acd18bdb7da05205f4e90372c9ecf4e0a76316b17e2d34683979ab3a014a0e0e0109db235bc1274faf5ea9d606991a49c223d560dac2696de"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2347,6 +3169,12 @@
       "version": "1.3.0",
       "scope": "required",
       "purl": "pkg:npm/es-errors@1.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "65fe47d8ac6ddb18d3bdb26f3f66562c4202c40ea3fa1026333225ca9cb8c5c060d6f2959f1f3d5b2d066d2fa47f9730095145cdd0858765d20853542d2e9cb3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2364,6 +3192,12 @@
       "version": "1.1.2",
       "scope": "required",
       "purl": "pkg:npm/es-object-atoms@1.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1d6701a0de8d8a57aab52c9d2b616a1db4bf2e80ddda9aab9d01cbc89cc18f890ea7f932d8c58c37af78c4e7e42bcfd29d4b16d831fb11fc9597274a0ac9b567"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2381,6 +3215,12 @@
       "version": "2.1.0",
       "scope": "optional",
       "purl": "pkg:npm/es-set-tostringtag@2.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8fabd6cdfac655fc97c607be3b4c79b21e9cbf10288346bfe1175dd8adfacc2315e5e27effeb4e0278113bc70e0cc3566d545d5659866502f6612df247c6c850"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2398,6 +3238,12 @@
       "version": "0.21.5",
       "scope": "required",
       "purl": "pkg:npm/esbuild@0.21.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9a0dce3cc578857cb0c29a03c6edd075ae7108a422faf09366af12f49fc4a64841d87cca5eae12345644dfe34af77258c5cf153127a9fa5394482fd154a681ab"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2415,6 +3261,12 @@
       "version": "1.0.3",
       "scope": "required",
       "purl": "pkg:npm/escape-html@1.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3624aea59e0e7ae1b0afaf251887b29bf92c219309a1d506392099fc54a74f172b7a46efaab81d53194938ca628da299563009ad6ac6b3fe89cbc38cbb28fda3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2432,6 +3284,12 @@
       "version": "4.0.0",
       "scope": "optional",
       "purl": "pkg:npm/escape-string-regexp@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4eda5c349dd7033c771aaf2c591cc96956a346cd2e57103660091d6f58e6d9890fcf81ba7a05050320379f9bed10865e7cf93959ae145db2ae4b97ca90959d80"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2449,6 +3307,12 @@
       "version": "9.33.0",
       "scope": "optional",
       "purl": "pkg:npm/eslint-plugin-vue@9.33.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d7be2524ab8db2e0c894ba637977391364ecb3c3f8e2e2229807c60f46fdd24d0da22ac9aa91bbb2d2ee53d569ffd8a84cead075655111ce2645dd410fe0af1b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2466,6 +3330,12 @@
       "version": "7.2.2",
       "scope": "optional",
       "purl": "pkg:npm/eslint-scope@7.2.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "74eb76d4eee54cc84333e5fd981e065fe0d9ad9b425093cbff095c4eac72af1e48bced0862d20b76dad0190a7ef27e52d20c1256639ff4d42b8cc3a07d066522"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2483,6 +3353,12 @@
       "version": "8.4.0",
       "scope": "optional",
       "purl": "pkg:npm/eslint-scope@8.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b0d5ce7ca0a7ef8aedf1120228cbc94bb5ca57f5e4f6403b0f226bf262629374bb0b0832dea964926c92dae401de388983a54d75977fa43049bb49ef1b63654e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2500,6 +3376,12 @@
       "version": "3.4.3",
       "scope": "optional",
       "purl": "pkg:npm/eslint-visitor-keys@3.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c2973e2d77a2ca28acc4f944914cd4eacbf24b57eb20edcc8318f57ddcbb3e6f1883382e6b1d8ddc56bf0ff6a0d56a9b3a9add23eb98eb031497cfdad86fa26a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2517,6 +3399,12 @@
       "version": "4.2.1",
       "scope": "optional",
       "purl": "pkg:npm/eslint-visitor-keys@4.2.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "521764e6c7ea71e7bff47feb08e262918cfaee8d1ad93c3684644f386d98d51d9d83b6eb45ed6e1b4c9a3500c7bbe4cefee40f17fe5e09aa6f612987523b7b25"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2534,6 +3422,12 @@
       "version": "9.39.4",
       "scope": "optional",
       "purl": "pkg:npm/eslint@9.39.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5e83237413b07bf7ac56012f2e636c0f72111e49bb7db288506beb95e9682575198031e283620f58d9e2bfe1b08f2257cee36a56396be7ee32554663c9c2707d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2551,6 +3445,12 @@
       "version": "10.4.0",
       "scope": "optional",
       "purl": "pkg:npm/espree@10.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8fa3c0436b94afbf4f6610633f90b97e197c7b7f459919ce8ec0f99469d6ac553c8b61bbefab412bbfa73fc2ae4144d3c80654c1f42a5c082b547e4c6c7f4261"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2568,6 +3468,12 @@
       "version": "9.6.1",
       "scope": "optional",
       "purl": "pkg:npm/espree@9.6.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a2bb99685923a2b4e9177da40d2239ffbe558b019e6608a7186cb636839283743d6e7c259e60e6e072e7925d111379fe9e30d7474dfb698d7ec79f19ff315dc1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2585,6 +3491,12 @@
       "version": "1.7.0",
       "scope": "optional",
       "purl": "pkg:npm/esquery@1.7.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "029e86d16430714fcb1ecbcbc0e3757c0417f59a7403663a63f709065f6bfc96d6f74672838ff36c6eb3cca6b639300b10b6ab60798abb41a1a4ce443beed3d2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2602,6 +3514,12 @@
       "version": "4.3.0",
       "scope": "optional",
       "purl": "pkg:npm/esrecurse@4.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2a67ca2f76fa1be457bcff0dd6faf74ead642ffa021609f63585c4b6a3fcfcbde929aa540381bc70555aa05dd2537db7083e17ca947f7df8a81e692d8bafd36a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2619,6 +3537,12 @@
       "version": "5.3.0",
       "scope": "optional",
       "purl": "pkg:npm/estraverse@5.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "30c74046e54443388d4de243f0380caa6870475d41450fdc04ffa92ed61d4939dfdcc20ef1f15e8883446d7dfa65d3657d4ffb03d7f7814c38f41de842cbf004"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2636,6 +3560,12 @@
       "version": "2.0.2",
       "scope": "required",
       "purl": "pkg:npm/estree-walker@2.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "45f924fcca7f0cbec95637b7bb5f05c45ba34254cd476aba41f312301ec0bc2071f753468ff6dade409fcdad1fe9d5436f0ed89517ff9c3ae7ee942b082c90ff"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2653,6 +3583,12 @@
       "version": "2.0.3",
       "scope": "optional",
       "purl": "pkg:npm/esutils@2.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "915b1ca97938382a7af126747648042958baffc8a3df4d0a0564c9ab7d8ffdd61e5934b02b8d56c93c5a94dd5e46603967d514fcb5fd0fb1564a657d480631ea"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2670,6 +3606,12 @@
       "version": "1.8.1",
       "scope": "required",
       "purl": "pkg:npm/etag@1.8.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6882f9171ee66b055adf4d1a976067104e2236fa35a844f12eb3c8fe8d392fbcfa828edf0b0d49e844266cae05989d804bb920545fca1195ae7c17dd0a531c3e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2687,6 +3629,12 @@
       "version": "4.22.2",
       "scope": "required",
       "purl": "pkg:npm/express@4.22.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "22e2fe125ae8bb666f0851ecd7cfc2233cb6373be8db99d9d7f0f6788665cfb73e4146b201c62888cd81b610a3b3e1011d5a6362372e2c302209681e217dd7d5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2704,6 +3652,12 @@
       "version": "3.1.3",
       "scope": "optional",
       "purl": "pkg:npm/fast-deep-equal@3.1.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7f7a90f68432f63d808417bf1fd542f75c0b98a042094fe00ce9ca340606e61b303bb04b2a3d3d1dce4760dcfd70623efb19690c22200da8ad56cd3701347ce1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2721,6 +3675,12 @@
       "version": "2.1.0",
       "scope": "optional",
       "purl": "pkg:npm/fast-json-stable-stringify@2.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "96177fc05f8b93df076684c2b6556b687b5f8795d88a32236a55dc93bb1a52db9a9d20f22ccc671e149710326a1f10fb9ac47c0f4b829aa964c23095f31bf01f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2738,6 +3698,12 @@
       "version": "2.0.6",
       "scope": "optional",
       "purl": "pkg:npm/fast-levenshtein@2.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0c25eee887e1a9c92ced364a6371f1a77cbaaa9858e522599ab58c0eb29c11148e5d641d32153d220fcf62bcf2c3fba5f63388ca1d0de0cd2d6c2e61a1d83c77"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2755,6 +3721,12 @@
       "version": "2.1.1",
       "scope": "optional",
       "purl": "pkg:npm/fast-safe-stringify@2.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5be28973676620b94fa650ff1f82bd97d2dc00701f3ed3fa058f38b952d743a12f733f4b720df7636cf52156e54fac5d639e0f5d854712ffb45a9abc228eb390"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2772,6 +3744,12 @@
       "version": "8.0.0",
       "scope": "optional",
       "purl": "pkg:npm/file-entry-cache@8.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5d74d4c02be2b1ae6869c34644ff527cdb5804d00c8be44fc011666e564417b37bb301d8412ebf65f93b491c31e03e63dc21f6d7560d45ca350c430d55f6429d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2789,6 +3767,12 @@
       "version": "1.3.2",
       "scope": "required",
       "purl": "pkg:npm/finalhandler@1.3.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "680e11c8f71dddb69d6dd001183b935c2313b4e9de5020181ff831a18453665209745d183d6b86aa202c22b84d9e7a9d5c6b30624e9d1ae8de9b8c3cd1424586"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2806,6 +3790,12 @@
       "version": "5.0.0",
       "scope": "optional",
       "purl": "pkg:npm/find-up@5.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "efcfcf5d3d7094b2c3813cc3b3bb23abd873cf4bd70fece7fbbc32a447b87d74310a6766a9f1ac10f4319a2092408dda8c557dd5b552b2f36dac94625ba9c69e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2823,6 +3813,12 @@
       "version": "4.0.1",
       "scope": "optional",
       "purl": "pkg:npm/flat-cache@4.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7fb71c14f2b7497147a71d795081b2449fc525072db8a674cd5b8dddfac1a381e72b771acbd5445b447ac8f6051c2d0082a86e90fcca8eadb6b790e6032a86cb"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2840,6 +3836,12 @@
       "version": "3.4.2",
       "scope": "optional",
       "purl": "pkg:npm/flatted@3.4.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3e30ec7bb47385c3e4209c32e6deca3d641267d7006f341771a7ec7ad4280fbb0e2514251a290d6f1ef2669d8ea2d0e7272ac371bc91ab74ed6f5f2260eaa4c4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2857,6 +3859,12 @@
       "version": "4.0.6",
       "scope": "optional",
       "purl": "pkg:npm/form-data@4.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bca6ad021e129557e06eff98b66862463844309b18a6c1b5636acc42d47e49549bcadb120f5606cc321cac026674579cf3cbbff95a069b19e5fbcd202f5b5109"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2874,6 +3882,12 @@
       "version": "3.5.4",
       "scope": "optional",
       "purl": "pkg:npm/formidable@3.5.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "622907fbb0944ceb4fe386539d4851ec87365004813ceaa66919112b145bcb03d37b957117b45109c93869ff70bad899fd028ce67304f4189ed9f15a3f3e46ba"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2891,6 +3905,12 @@
       "version": "0.2.0",
       "scope": "required",
       "purl": "pkg:npm/forwarded@0.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6ee446d1fa41b511d24c238049eea10f6e7cb44b9b16844b6f864d03a3713151cdc3680e7301e8f70c9a6e5ccccce039cfdc40f4bd4a36393f36de8c4fd698a3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2908,6 +3928,12 @@
       "version": "0.5.2",
       "scope": "required",
       "purl": "pkg:npm/fresh@0.5.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cc9da6418335f2b1053ae75e57819285318843b45bcc0ee8cdb53d23f5c1a66ee4aa0332c209b294cc171f16499a45686249daf5dda95575573dd6133fd7a3f1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2925,6 +3951,12 @@
       "version": "2.3.3",
       "scope": "required",
       "purl": "pkg:npm/fsevents@2.3.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e71a037d7f9f2fb7da0139da82658fa5b16dc21fd1efb5a630caaa1c64bae42defbc1d181eb805f81d58999df8e35b4c8f99fade4d36d765cda09c339617df43"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2942,6 +3974,12 @@
       "version": "1.1.2",
       "scope": "required",
       "purl": "pkg:npm/function-bind@1.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ed71cdc47eea5fdc46e66230c6486e993a31fcc21135c3a00ebc56b0cb76a40af6dd61e9e8cad194dec50521690a9afea153b417be38894811f369c931f1b648"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2959,6 +3997,12 @@
       "version": "1.3.0",
       "scope": "required",
       "purl": "pkg:npm/get-intrinsic@1.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f5f4a349aa2cfdf448548a7ec5226513a95fc21112ecb36d29a08121a987b23af69dad418800493e8d263a38f3f062435116ab9823c6a9a89583999f8dbf7c09"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2976,6 +4020,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/get-proto@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b1349f063a17069f3d26f20a21e7eac3b53608279bb1cef892263a6b0886a202ada1219b823604fc6ffe97db05dcc5853cd73d21ca0e0b83837ca1dfc459a9d2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -2993,6 +4043,12 @@
       "version": "6.0.2",
       "scope": "optional",
       "purl": "pkg:npm/glob-parent@6.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5f1c08f043a1550816a7a8832feddbd2bf3a7f877a017eb3494e791df078c9d084b972d773915c61e3aefa79c67ed4b84c48eeff5d6bb782893d33206df9afe0"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3010,6 +4066,12 @@
       "version": "13.24.0",
       "scope": "optional",
       "purl": "pkg:npm/globals@13.24.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0213b9414723f2596b6c6d3d89684f536076d38275c673de2fc910995a2b4accbe4a38f5b24f2023287a714a1c1a61f82f452e840272fa124c440e26800e2615"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3027,6 +4089,12 @@
       "version": "14.0.0",
       "scope": "optional",
       "purl": "pkg:npm/globals@14.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a1a846bee3064253f0fe2bc86018d54ab5807d62c17a4bb9b693c4d9f38f2e2f961df7c859bba1dad0a38724214c13cc7f913d8c3107e053a64d8818c1b2b0b5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3044,6 +4112,12 @@
       "version": "15.15.0",
       "scope": "optional",
       "purl": "pkg:npm/globals@15.15.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ec00b24f7c26ca9dc8eb54b87c6ebcd8bd150364460fda2d92a189230354305d52594a266c8224f9a7f5ba7b83620326d3cd9a1d8c03fa6cc9beff48bbc76c82"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3061,6 +4135,12 @@
       "version": "1.2.0",
       "scope": "required",
       "purl": "pkg:npm/gopd@1.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "65429187afe4505a0089302d4d83d9277870f70371c7e04804e8a39e51bd3e7ac9b027128ecd70cb20fabc9a5a62d827cc3aca6114aa7f738ee917daf77c6c46"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3078,6 +4158,12 @@
       "version": "4.0.0",
       "scope": "optional",
       "purl": "pkg:npm/has-flag@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1329094ff4352a34d672da698080207d23b4b4a56e6548e180caf5ee4a93ba6325e807efdc421295e53ba99533a170c54c01d30c2e0d3a81bf67153712f94c3d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3095,6 +4181,12 @@
       "version": "1.1.0",
       "scope": "required",
       "purl": "pkg:npm/has-symbols@1.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d5c0cd77027625aa2199bdec8383a629a301c2e0b8f2c6278b91d4c360efb02f0b8c64cb2bd87e79bd57e91cae3877b8853d142c25baf22a26863528294aa53d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3112,6 +4204,12 @@
       "version": "1.0.2",
       "scope": "optional",
       "purl": "pkg:npm/has-tostringtag@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "36a00307c5633c52ccd95d15bc751ec30c2cc3465605a21d828fa2787b4ade16ac2f3e2a78246361ca9f07a010ac182044aa69285f0be76fd5a9d56c3b8ec397"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3129,6 +4227,12 @@
       "version": "2.0.4",
       "scope": "required",
       "purl": "pkg:npm/hasown@2.0.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4f651b7db044177db089ea5722c3254d6f7e743602eb0321fedfef600e2db8e30aa96cff9f7bebd4d152c508b23fece4da65eca0c03f8bfeea57a2cabadd6dd4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3146,6 +4250,12 @@
       "version": "2.0.1",
       "scope": "required",
       "purl": "pkg:npm/http-errors@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e056d17405fe6d2766a3801416e4b458d88fcfc36016dfabf138603569a5ae3423b7543b651f7ecd395c7b6f39f71e0a497af022c69e4ea0e82909ad3fca4b99"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3163,6 +4273,12 @@
       "version": "0.4.24",
       "scope": "required",
       "purl": "pkg:npm/iconv-lite@0.4.24",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bf73179d901cbe7cb091350466898801cb657bb4575de79d391df5c3097b565ca85cee108bd6abbd27a73505a77b54dc4708422f51f02c8db56c4a9da63f3fac"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3180,6 +4296,12 @@
       "version": "5.3.2",
       "scope": "optional",
       "purl": "pkg:npm/ignore@5.3.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "86c053354a904c3c245ad71d608da2d3a63f9d4044b0d10324a8d676280bbde832f240ee2404bcb91969924710a721172f467fa630f2e4706632344227682afa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3197,6 +4319,12 @@
       "version": "3.3.1",
       "scope": "optional",
       "purl": "pkg:npm/import-fresh@3.3.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4d1dca7eb4d94d82cf07a8d48dfc7a305f56716ac72fdb2ee5339b2b866462005d58a3ce1684a8408744b93b91f36a66b711f6b29586f61e9eb707ebd692c1a9"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3214,6 +4342,12 @@
       "version": "0.1.4",
       "scope": "optional",
       "purl": "pkg:npm/imurmurhash@0.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2665cc67ac2ebc398b88712697dca4cea3ba97015ba1fd061b822470668435d0910c398c5679f2eece47b0880709b6aad30d8cc8f843aa48535204b62d4d8f1c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3231,6 +4365,12 @@
       "version": "2.0.4",
       "scope": "required",
       "purl": "pkg:npm/inherits@2.0.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "93fbc6697e3f6256b75b3c8c0af4d039761e207bea38ab67a8176ecd31e9ce9419cc0b2428c859d8af849c189233dcc64a820578ca572b16b8758799210a9ec1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3248,6 +4388,12 @@
       "version": "1.9.1",
       "scope": "required",
       "purl": "pkg:npm/ipaddr.js@1.9.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d0a23feb4ef1a31493a07ec68cdd457d26cba14d3e6ed4e2723b1049642587f859ca437c2a998c7fbb98c0f5b747e6a467a47fc35f199574870585e26143cede"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3265,6 +4411,12 @@
       "version": "2.1.1",
       "scope": "optional",
       "purl": "pkg:npm/is-extglob@2.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "49b29b00d90deb4dd58b88c466fe3d2de549327e321b0b1bcd9c28ac4a32122badb0dde725875b3b7eb37e1189e90103a4e6481640ed9eae494719af9778eca1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3282,6 +4434,12 @@
       "version": "4.0.3",
       "scope": "optional",
       "purl": "pkg:npm/is-glob@4.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c5e9526b21c7dfa66013b6568658bba56df884d6cd97c3a3bf92959a4243e2105d0f7b61f137e4f6f61ab0b33e99758e6611648197f184b4a7af046be1e9524a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3299,6 +4457,12 @@
       "version": "2.0.0",
       "scope": "optional",
       "purl": "pkg:npm/isexe@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "447c4c2e9f659ca1c61d19e0f5016144231b600715a67ebdb2648672addfdfac638155564e18f8aaa2db4cb96aed2b23f01f9f210d44b8210623694ab3241e23"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3316,6 +4480,12 @@
       "version": "4.2.0",
       "scope": "optional",
       "purl": "pkg:npm/js-yaml@4.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "78f5acbda9efd035ae0d1b16f1d9edf91e23437d52091090ee184d70f5d93eca016627a6b9935819feda75976a5f60fcea3eabbcaa774690b155349bf164253b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3333,6 +4503,12 @@
       "version": "3.0.1",
       "scope": "optional",
       "purl": "pkg:npm/json-buffer@3.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e1b57905f4769aa7d04c99be579b4f3dd7fe669ba1888bd3b8007983c91cad7399a534ff430c15456072c17d68cebea512e3dd6c7c70689966f46ea6236b1f49"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3350,6 +4526,12 @@
       "version": "0.4.1",
       "scope": "optional",
       "purl": "pkg:npm/json-schema-traverse@0.4.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c5b6c21f9742614e53f0b704861ba1ec727cf075ee5b7aac237634cce64529f6441dca5688753f271ce4eb6f41aec69bfe63221d0b62f7030ffbce3944f7b756"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3367,6 +4549,12 @@
       "version": "1.0.1",
       "scope": "optional",
       "purl": "pkg:npm/json-stable-stringify-without-jsonify@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "05d6e8cbe97bb40dce196e858f21475a43f92ee0728f54e4df72e3caad1ac72cdd93dfff2528b6bb77cfd504a677528dc2ae9538a606940bbcec28ac562afa3f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3384,6 +4572,12 @@
       "version": "9.0.3",
       "scope": "required",
       "purl": "pkg:npm/jsonwebtoken@9.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "313ff13f40abb9b15134b34abf12760587f2e776649befb96d7f5db6e3dba80790a5355ed0c4131616a8f3e0a9fff126269db8e31b7a0ebc3f1951060948f8d2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3401,6 +4595,12 @@
       "version": "2.0.1",
       "scope": "required",
       "purl": "pkg:npm/jwa@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "851174e1fa8920ff006db92ae4d28637405baf7271950faa859b9f5d5af40efba32b2f776426d764c1c32f810eb687526c25b13aa47c312d6d5c0e61c2a0970e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3418,6 +4618,12 @@
       "version": "4.0.1",
       "scope": "required",
       "purl": "pkg:npm/jws@4.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "10a23f33fcaa3e7706514878e31cf43f14a275716bffeaf4a40ef4fa0218863bfe7adef2c4cfacdbd63e5460e4a2f4687d07a6d1fb3b52f7f8f9898077245db8"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3435,6 +4641,12 @@
       "version": "4.5.4",
       "scope": "optional",
       "purl": "pkg:npm/keyv@4.5.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a3154790747f1097f608d5e75b144b5ba9a0ec9c82094706d03b441a62f672d528d4f3538a7d4f52297eafffb8af93295600bf7e7d648ecc7b9a34ae8caa88a7"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3452,6 +4664,12 @@
       "version": "0.4.1",
       "scope": "optional",
       "purl": "pkg:npm/levn@0.4.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f9b4f6b87e04e4b184ee1fe7ddebdc4bfb109495c2a48a7aca6f0e589e5e57afbaec3b2a97f2da693eea24102ddabcdfa1aff94011818710e2c7574cb7691029"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3469,6 +4687,12 @@
       "version": "6.0.0",
       "scope": "optional",
       "purl": "pkg:npm/locate-path@6.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "88f64ae9e6236f146edee078fd667712c10830914ca80a28a65dd1fb3baad148dc026fcc3ba282c1e0e03df3f77a54f3b6828fdcab67547c539f63470520d553"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3486,6 +4710,12 @@
       "version": "4.3.0",
       "scope": "required",
       "purl": "pkg:npm/lodash.includes@4.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5b7071ea67644531ad9492123af543fe56ea8d394f3d40d33279576459d5c22f4d289ead88093a2d5765859326d7b5598acaa129c833a4ee56cfdd4f0ade5bd3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3503,6 +4733,12 @@
       "version": "3.0.3",
       "scope": "required",
       "purl": "pkg:npm/lodash.isboolean@3.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "073e66ba9cb64956cf1d4441f7c540730f9a1e1e2f455e483cd8482d40ac3b3466b13992435ee322eaa8a407a7b56a1e864b7119df5efe16c85eaf7cd3fd5026"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3520,6 +4756,12 @@
       "version": "4.0.4",
       "scope": "required",
       "purl": "pkg:npm/lodash.isinteger@4.0.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0c1c2d11637671a1d0f7f8a688d784039cacd49a11b517d8ddded5f7092ab5bc9c9c0993bd14666c72835786b411873aefcfdd89ad23aed7b8b6363054169950"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3537,6 +4779,12 @@
       "version": "3.0.3",
       "scope": "required",
       "purl": "pkg:npm/lodash.isnumber@3.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "418ab3a5fc0edff0967f75cff99fad910b1f68b2ff1275255d6564224e4550f738b017537a112a64e36ec91b763faecf5c093e35799305c73def3c3db75150af"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3554,6 +4802,12 @@
       "version": "4.0.6",
       "scope": "required",
       "purl": "pkg:npm/lodash.isplainobject@4.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a125f3696ca908c1e43c2dcdbc111a3c77f42ac0399af3eb38f810583b1b83c9fba2b676f743340660bf8e0459e2f709e834c0863aec49881db16fc5f8c14e04"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3571,6 +4825,12 @@
       "version": "4.0.1",
       "scope": "required",
       "purl": "pkg:npm/lodash.isstring@4.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d302717f11f5c203b71ab6ee3fe7534e4ee8a7ee8be354025db188344983fa7cbf1bf782a86cf1c82b21ef5e7d4be9a00c37286ab9c1c3a3c2d4f4b9fb050683"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3588,6 +4848,12 @@
       "version": "4.6.2",
       "scope": "optional",
       "purl": "pkg:npm/lodash.merge@4.6.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d0aa63a97455beb6320ac5f5b3047f5d32b4bdae9542440ce8c368ecfa96efb0728c086801103c11facfd4de3e2a52a3f184b46540ad453fd852e872603ba321"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3605,6 +4871,12 @@
       "version": "4.1.1",
       "scope": "required",
       "purl": "pkg:npm/lodash.once@4.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "49be3ceda4ce0abf5dad054bf292313b356169f3a364df54539e2188df0f537b8089257b971d7260da5b3667b1d8f2ba752268353489514b304fae75cb0c3732"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3622,6 +4894,12 @@
       "version": "4.18.1",
       "scope": "optional",
       "purl": "pkg:npm/lodash@4.18.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "74c22789c4cf544f1dd5ee68b5fc269a3971919a14a6254bc32793754b22fc26a3fe07f3cdb941702139b111d5fc0b23b829b15abb5ed93346498b82782abed1"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3639,6 +4917,12 @@
       "version": "0.30.21",
       "scope": "required",
       "purl": "pkg:npm/magic-string@0.30.21",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bddd85e1853211728670b1e8abe4c4c828f1b9e49e1e7171cb28cda7cd328345d5e2f5219c37abfe5bef96a33f6ab0796d740de4adbfde88a7c82472c7c4f609"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3656,6 +4940,12 @@
       "version": "1.1.0",
       "scope": "required",
       "purl": "pkg:npm/math-intrinsics@1.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fc85ed6f0124e474cfc84c32297ea11a4617c4cf676e3eb807e8a55499c2fd1e81d291f91b85776f4a556cbec3063e2d921040a696d05257fa17a5e5f4b1eed6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3673,6 +4963,12 @@
       "version": "0.3.0",
       "scope": "required",
       "purl": "pkg:npm/media-typer@0.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "76afaa7a543d6a41e970e97f8145514f15483a4009d70477400bdbe11b158d2f285681630c64dcebbf702589949a49d41791f030b3a06f93be6b72b17d66a93d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3690,6 +4986,12 @@
       "version": "1.0.3",
       "scope": "required",
       "purl": "pkg:npm/merge-descriptors@1.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "81a36f012ed367cf7bfeb55a6749ccb40cb13728bfa5d6e36c0c14a4542937bd06aa755f3a25e979450c291066cd769243c0dd4d7e3fd26b3adabd8afa113a99"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3707,6 +5009,12 @@
       "version": "1.1.2",
       "scope": "required",
       "purl": "pkg:npm/methods@1.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "89c9401de36a366ebccc5b676747bed4bdb250876fccda1ab8a53858103756f1ffbcf162785eea7d197051953e0c0f4ff5b3d7212f74ba5c68528087db7b15db"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3724,6 +5032,12 @@
       "version": "1.52.0",
       "scope": "required",
       "purl": "pkg:npm/mime-db@1.52.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b0f538b95edd625bed589c70c311c3d0fba285536213b4f201b439496c43081f66518bce82ba103b061040e28f27c0886c4fb51135653a82b5502da7537818be"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3741,6 +5055,12 @@
       "version": "2.1.35",
       "scope": "required",
       "purl": "pkg:npm/mime-types@2.1.35",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "64363e6cf9b9cd34c5f98a42ac053d9cad148080983d3d10b53d4d65616fe2cfbe4cd91c815693d20ebee11dae238323423cf2b07075cf1b962f9d21cda7978b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3758,6 +5078,12 @@
       "version": "1.6.0",
       "scope": "required",
       "purl": "pkg:npm/mime@1.6.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c74567f2ca48fb0b89d4ee92ee09db69083c3f187834d1dbeca4883661162a23c4e1128ea65be28e7f8d92662699180febc99cef48f611b793151b2bb306907a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3775,6 +5101,12 @@
       "version": "2.6.0",
       "scope": "optional",
       "purl": "pkg:npm/mime@2.6.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5123e431e113df5ace3226abb013481d928b1a0bca73f2eb8e87c09c194eb6d7f96a346faa2440f10b1e9db728a1cb4ae9de93b3a6aa657040f976e42ad86242"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3792,6 +5124,12 @@
       "version": "3.1.5",
       "scope": "optional",
       "purl": "pkg:npm/minimatch@3.1.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5608d652c9e74fa9fe35493a799abbef37857695b62d60f33facc51ab09b1d789836e9790f3aa4d871d0e6e147d83356e576e9f3e8d5cda78db7de2cb04125e3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3809,6 +5147,12 @@
       "version": "1.11.0",
       "scope": "required",
       "purl": "pkg:npm/morgan@1.11.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cd2915bb7b75f2bdfda70e22c5f04abdf662df2d943aaafb778598c1c8f79bc9d7a4440ae2b3cee862f3b3f084c68460997df2f448e699c5eabfa8ead122b8ea"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3826,6 +5170,12 @@
       "version": "2.0.0",
       "scope": "required",
       "purl": "pkg:npm/ms@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4e9a7ad0fe885090d3b8eabfe59f1c76c93326e8dfc2a7ce4e4af02308fb211212a679099d3e92c89e0f08f9c63281630bd75d85a979295218b40b7dee2c74e4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3843,6 +5193,12 @@
       "version": "2.1.3",
       "scope": "optional",
       "purl": "pkg:npm/ms@2.1.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e85973b9b4cb646dc9d9afcd542025784863ceae68c601f268253dc985ef70bb2fa1568726afece715c8ebf5d73fab73ed1f7100eb479d23bfb57b45dd645394"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3860,6 +5216,12 @@
       "version": "3.3.12",
       "scope": "required",
       "purl": "pkg:npm/nanoid@3.3.12",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "641f511ffdfdaa9ab956ee98f8d99468585047aa69f8cd97b7be970671300da19c540aa196fc6b9770766ca4b90f7347dd047beafdda4ab29a17f2a2cbb944b5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3877,6 +5239,12 @@
       "version": "1.4.0",
       "scope": "optional",
       "purl": "pkg:npm/natural-compare@1.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "396343f1e8b756d342f61ed5eb4a9f7f7495a1b1ebf7de824f0831b9b832418129836f7487d2746eec8408d3497b19059b9b0e6a38791b5d7a45803573c64c4b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3894,6 +5262,12 @@
       "version": "0.6.3",
       "scope": "required",
       "purl": "pkg:npm/negotiator@0.6.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f8452ca863cbb0cfa3ff37428598ec9d7e758385eb1c53885f07e70953c695093f9398226a470ab2ec4239b051bba0d29bda29c3f3bab2559b25d82140ce1b06"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3911,6 +5285,12 @@
       "version": "2.1.1",
       "scope": "optional",
       "purl": "pkg:npm/nth-check@2.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "96a8eb8e668ea009d67cc9813cbf97367ca7661dbeb30c625f7594134b38c841c8ea6f80c2b2b65193a2988465dd7ff841cb55a92f008998c5ab2386acc5dbff"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3928,6 +5308,12 @@
       "version": "4.1.1",
       "scope": "required",
       "purl": "pkg:npm/object-assign@4.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ac98134279149c7d6c170f324fa552537cc3dec5a6bbab19848b1e63c557f8646edcfe85ec5bbe24d0e85df9251256cb2529dcdc55101d57b8714e618fe05c52"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3945,6 +5331,12 @@
       "version": "1.13.4",
       "scope": "required",
       "purl": "pkg:npm/object-inspect@1.13.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5baee22e5e09d845c41936df78709f7eb8c37e2b6f2c0360d14957df01545124f1f762974457a0307515812a84fb0be101b8b85aa8c683d733cac4d5d84a5b7b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3962,6 +5354,12 @@
       "version": "2.4.1",
       "scope": "required",
       "purl": "pkg:npm/on-finished@2.4.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a15973920dc4340842936cddbfb209c1dfd0503e33d91c51c2991c198f29b0255c09864dab8c189d55802c733e6ebb6e26378f5a2605fc2966b83afc0a1e7e92"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3979,6 +5377,12 @@
       "version": "1.1.0",
       "scope": "required",
       "purl": "pkg:npm/on-headers@1.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ef7ed9637c8d9d7cb7ec51e44313f3b78519d9458f5a209958bbc56787eee5cb9e7227a05f4cc63e7ae563a6f0460e0575039ef5853c324989c068683326e5f0"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -3996,6 +5400,12 @@
       "version": "1.4.0",
       "scope": "optional",
       "purl": "pkg:npm/once@1.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "94d689808fb643951140191c7042874d038f697754c67659125413658d0c15402e684a9ed44f8dcaf81dcff688c8d8ba67d3333b976fd47f27e7cfc610ba77fb"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4013,6 +5423,12 @@
       "version": "0.9.4",
       "scope": "optional",
       "purl": "pkg:npm/optionator@0.9.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e88a50ee6294c5171934b20e6d1d21cfb971b1aa5248860d649c173c6785d264d5a862852178f50d070ca13db64b744e70bc98febcf43d669667d6b25a669df6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4030,6 +5446,12 @@
       "version": "3.1.0",
       "scope": "optional",
       "purl": "pkg:npm/p-limit@3.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4d839a9ccdf01b0346b193767154d83c0af0e39e319d78f9aa6585d5b12801ce3e714fe897b19587ba1d7af8e9d4534776e1dcdca64c70576ec54e5773ab8945"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4047,6 +5469,12 @@
       "version": "5.0.0",
       "scope": "optional",
       "purl": "pkg:npm/p-locate@5.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2da363b51594058fbecc1e6713f37071aa0cca548f93e4be647341d53cdd6cc24c9f2e9dca7a401aded7fed97f418ab74c8784ea7c47a696e8d8b1b29ab1b93f"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4064,6 +5492,12 @@
       "version": "1.0.1",
       "scope": "optional",
       "purl": "pkg:npm/parent-module@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "190d84591a5057cfe8f80c3c62ab5f6593df3515996246e2744f64e6ba65fe10b7bed1c705f1a6d887e2eaa595f9ca031a4ad42990311372e8b7991cb11961fa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4081,6 +5515,12 @@
       "version": "1.3.3",
       "scope": "required",
       "purl": "pkg:npm/parseurl@1.3.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0a2c9e3b1153fc96723799b4cfd3df5f0e1208127a4b2833d43a65d30aa39610c418604fd469ec51510bd29eb78681b57dc8f77c7ca75e2f4d60ee2758e2fea9"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4098,6 +5538,12 @@
       "version": "4.0.0",
       "scope": "optional",
       "purl": "pkg:npm/path-exists@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6a4f50cb943b8d86f65b071ecb9169be0d8aa0073f64884b48b392066466ca03ec1b091556dd1f65ad2aaed333fa6ead2530077d943c167981e0c1b82d6cbbff"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4115,6 +5561,12 @@
       "version": "3.1.1",
       "scope": "optional",
       "purl": "pkg:npm/path-key@3.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a2399e374a9dfb2d23b3312da18e3caf43deab97703049089423aee90e5fe3595f92cc17b8ab58ae18284e92e7c887079b6e1486ac7ee53aa6d889d2c0b844e9"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4132,6 +5584,12 @@
       "version": "0.1.13",
       "scope": "required",
       "purl": "pkg:npm/path-to-regexp@0.1.13",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "03f00634c14dddcf1b3a5bd5f51ade31daefee3b2617d5c87c378277cefe23c44d83ab3bf01849c4cbbaf4d10c1c14891712a275589311daee470124fd620aa8"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4149,6 +5607,12 @@
       "version": "1.1.1",
       "scope": "required",
       "purl": "pkg:npm/picocolors@1.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c5c787dac9e1b5be4cf658aa0ec984c39ea57b7efa993664117fe311bfd1c4d1727a036e97b78db250973fd1438ff2dcbb45fc284c8c71e3f69eda5a1eb0c454"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4166,6 +5630,12 @@
       "version": "2.3.1",
       "scope": "required",
       "purl": "pkg:npm/pinia@2.3.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "921525652c2df715c26936dbc4560128373f6d60065898ce82fc444f091337b2919bae84793d597598fa8b671e87db0fd8fceab1b73bd38af6ca7801af1055ba"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4183,6 +5653,12 @@
       "version": "6.1.3",
       "scope": "optional",
       "purl": "pkg:npm/postcss-selector-parser@6.1.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "703a0ed7c556088591b126b0b370b6ddbd075d1c655249edb5f74d71b5e77f72061c03d134b9573c773a75889ab4e9315b45b8b99879db83e569ac396bb584b5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4200,6 +5676,12 @@
       "version": "8.5.15",
       "scope": "required",
       "purl": "pkg:npm/postcss@8.5.15",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "15f47cb237787a6d93e9f6f723633000953b1d654cafdcdb6be7a799079e5857c26e6f94382ff45f80d2f17b6951333058c19b8ca60fef18df35e933c86981dc"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4217,6 +5699,12 @@
       "version": "1.2.1",
       "scope": "optional",
       "purl": "pkg:npm/prelude-ls@1.2.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "be47033eb459a354192db9f944b18fa60fd698843ae6aa165a170629ffdbe5ea659246ab5f49bdcfca6909ab789a53aa52c5a9c8db9880edd5472ad81d2cd7e6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4234,6 +5722,12 @@
       "version": "3.8.4",
       "scope": "optional",
       "purl": "pkg:npm/prettier@3.8.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "376332952762e3cfb937fe92e63fa669e1db512233cd9e6e39c5f91e6e10a55f0391bd471637c0293297eb234f2500fd021713de27c7341ebab564d32438b5d5"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4251,6 +5745,12 @@
       "version": "5.22.0",
       "scope": "required",
       "purl": "pkg:npm/prisma@5.22.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "beda635b75ee6024a732c3550632cc3644e3e8e65bb9d70f3d33d81ea5f40897e971d59c888d5d33cb87113c260f1c62a84c02204e96bd7b9c5947ad2607eefc"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4268,6 +5768,12 @@
       "version": "2.0.7",
       "scope": "required",
       "purl": "pkg:npm/proxy-addr@2.0.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "96542c30b4940d43d3e388ddad4fcedfbaa59e27e2b433fe670ae699972848ac8b2afb59c69c95d27dbf6c3fcde2d040019fe024475953b28cadaa0ad7e5d802"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4285,6 +5791,12 @@
       "version": "2.3.1",
       "scope": "optional",
       "purl": "pkg:npm/punycode@2.3.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bd8b7b503d54f5683ad77f2c84bb4b3af740bbef03b02fe2945b44547707fb0c9d712a4d136d007d239db9fe8c91115a84be4563b5f5a14ee7295645b5fabc16"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4302,6 +5814,12 @@
       "version": "6.15.2",
       "scope": "required",
       "purl": "pkg:npm/qs@6.15.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "473ab4284c97ff0fed1326e770381d919ac981552c50c937c63877b796efdd2d474c0b60fae398b7bdbe65fc2243029dcac4e191305d2ffad38ba1c3997f4377"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4319,6 +5837,12 @@
       "version": "1.2.1",
       "scope": "required",
       "purl": "pkg:npm/range-parser@1.2.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1eb82cc7ea2baa8ca09e68456ca68713a736f7a27e1d30105e8c4417a80dba944e9a6189468cb37c6ddc700bdea8206bc2bff6cb143905577f1939796a03b04a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4336,6 +5860,12 @@
       "version": "2.5.3",
       "scope": "required",
       "purl": "pkg:npm/raw-body@2.5.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b3855239feb2374aef6d1646c6cf0e9b90968fab1e9de3302b7a036f89560c7d143e159cc70396c39faa936e1bc6af3bb335f5c9daf0ca520ea76b86d688d4a4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4353,6 +5883,12 @@
       "version": "4.0.0",
       "scope": "optional",
       "purl": "pkg:npm/resolve-from@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a5bfcc6265ecb40932b11171f2988d235b4614d408140def904dc6ab812e035745ea01e9ffebe066ab021896a9bf2f0ddd0fb8a3b170beab8f25c9d9ed1632e2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4370,6 +5906,12 @@
       "version": "4.61.1",
       "scope": "required",
       "purl": "pkg:npm/rollup@4.61.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "238296ea2b91a6ebb6b8704bada675c0d65ed033fb9674616be549f6d35a61569580a856d1a2378784589e844f7aa9747e51e6fc2a39e5beec9c40dc39f389ac"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4387,6 +5929,12 @@
       "version": "5.1.2",
       "scope": "required",
       "purl": "pkg:npm/safe-buffer@5.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "19dd94641243917958ec66c9c5fb04f3f9ef2a45045351b7f1cd6c88de903fa6bd3d3f4c98707c1a7a6c71298c252a05f0b388aedf2e77fc0fb688f2b381bafa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4404,6 +5952,12 @@
       "version": "5.2.1",
       "scope": "required",
       "purl": "pkg:npm/safe-buffer@5.2.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ae9dd2a34eca71d9a629b1af81a37141226bedb1954959394bd12ad45fa9a5b468ef4f9879a0f1930e4377c34f37e183e9b8e7626d95b8fb825e6a6e62f9825d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4421,6 +5975,12 @@
       "version": "2.1.2",
       "scope": "required",
       "purl": "pkg:npm/safer-buffer@2.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "619a372bcd920fb462ca2d04d4440fa232f3ee4a5ea6749023d2323db1c78355d75debdbe5d248eeda72376003c467106c71bbbdcc911e4d1c6f0a9c42b894b6"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4438,6 +5998,12 @@
       "version": "7.8.4",
       "scope": "required",
       "purl": "pkg:npm/semver@7.8.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ad408e6d39cfdf6434f11daeb88aedeebf4f944a27b939adb9761c5bab399237658f7c5b9f07bedb5c97a6d01461c3000012e46184ed9e6cdbdf0dc40d97ee78"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4455,6 +6021,12 @@
       "version": "0.19.2",
       "scope": "required",
       "purl": "pkg:npm/send@0.19.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "54c6ccc5b0de7a1031a4eb5625795c512e44f225e1e9098df819115f5180452df045a5c4120cc2701d7481341accee36b69348c9af31232371f1f965d4e14fae"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4472,6 +6044,12 @@
       "version": "1.16.3",
       "scope": "required",
       "purl": "pkg:npm/serve-static@1.16.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c74453a907a5ea0e5263b2e0e99ade326b0ece7707154ee786745690a816b8c4eee4d3740d1e68aee72432a46f69c00df5de70e804674415e5f718430a07cc78"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4489,6 +6067,12 @@
       "version": "1.2.0",
       "scope": "required",
       "purl": "pkg:npm/setprototypeof@1.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1392c35fb5aba7ce4a8a5e5b859bf8ea3f2339e6e82aae4932660cde05467461fcc45a4f59750cb0dae53830ab928c4c11e362fd7648c2e46f6385cdc18309a7"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4506,6 +6090,12 @@
       "version": "2.0.0",
       "scope": "optional",
       "purl": "pkg:npm/shebang-command@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "907c6bdb366962d766acdd6a0e3aeb5ff675ad1d641bc0f1fa09292b51b87979af5ecc26704d614d6056614ce5ada630d7fc99a7a62e0d8efb62dbdb3747660c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4523,6 +6113,12 @@
       "version": "3.0.0",
       "scope": "optional",
       "purl": "pkg:npm/shebang-regex@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "efef9d161b5cc77df9dee05aabc0c347836ec417ad0730bb6503a19934089c711de9b4ab5dd884cb30af1b4ed9e3851874b4a1594c97b7933fca1cfc7a471bd4"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4540,6 +6136,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/side-channel-list@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9a39ffd1b8bfa145118dce5797b21a5a2fce24926e9aea0915025f0c3c8ee3afa1056b1f69533ae53047ab67a864187397d11c8713a28e991b442f12541414d3"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4557,6 +6159,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/side-channel-map@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5428c235f80cb1bcb7b53768d369db8ed33f7b0adaea33c79a94e17a7913621f291bdb9c67fd4ff12a38bb814605e93f063a4e56c0c23282c0fe2b8128815744"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4574,6 +6182,12 @@
       "version": "1.0.2",
       "scope": "required",
       "purl": "pkg:npm/side-channel-weakmap@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "58f4bf1ef1d04d89c78ac2e8f4c72a0473899361641cefed969be5772ae77a6e1a790a7885a8b7832b61b3083aa74d684a84e5e7cadca621408c5d9baf6024d8"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4591,6 +6205,12 @@
       "version": "1.1.1",
       "scope": "required",
       "purl": "pkg:npm/side-channel@1.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "eb1e9d2bacc97694f3178b1078d631c2dbc1cdfe848381ad95eb12f781cebd3b9d51ec8ad965c06887e60e0b32b2562b441785225b22e78018b05194ba19afad"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4608,6 +6228,12 @@
       "version": "1.2.1",
       "scope": "required",
       "purl": "pkg:npm/source-map-js@1.2.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "51758c2a12cec1529bef6f0852d40f5f17d853ebac7726ed52b2bff2e184f0240cbeb84ea70bf30c1c23d108522fb31073bbc8b084811bc550f3e203431a5f40"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4625,6 +6251,12 @@
       "version": "2.0.2",
       "scope": "required",
       "purl": "pkg:npm/statuses@2.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0ef132e795770c1eee927468fb888e193e5f3f5b2547cc10a2155d9278a064f32932cb5a289416870898040089137525da94e70138a18416274616501c606247"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4642,6 +6274,12 @@
       "version": "3.1.1",
       "scope": "optional",
       "purl": "pkg:npm/strip-json-comments@3.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e9f3dcf91e22870a8fe8dfda22fd9fd60307f25395b56407a2a0b8c8aea8483555a1cba602c7c2aa39179ea89832198cc12fe61072e9ed57a196ddea97a9448a"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4659,6 +6297,12 @@
       "version": "10.3.0",
       "scope": "optional",
       "purl": "pkg:npm/superagent@10.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "07ee0893b44e8152ab42c5d3574270a76bbe3d760b4a5aad0c08589e4903fb39f7ca0f2cff38c0d8c7866b23e863f2880ab6e2b709de0c7ae34a8b7128bfb45d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4676,6 +6320,12 @@
       "version": "7.2.2",
       "scope": "optional",
       "purl": "pkg:npm/supertest@7.2.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a0af161bd7624b70e585d5247059f8b643488886c1c7d948d82945f0af9bdbf9bc132bf8ecb49ac3153365048d294ad56f62aca9e4c309c8c00153d86922d54c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4693,6 +6343,12 @@
       "version": "7.2.0",
       "scope": "optional",
       "purl": "pkg:npm/supports-color@7.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "aa9080bd197db2db8e1ef78ab27ec79dc251befe74d6a21a70acd094effe2f0c5cf7ed2adb02f2bf80dfbedf34fc33e7da9a8e06c25d0e2a205c647df8ebf047"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4710,6 +6366,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/toidentifier@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a39b123ca12483f0c840d987e37574fee7ab2eba7355e764521f2d18dbda797a5fa6ec2329e9e54a8c7fd8efc14e5654b447be246eece58844cfad3c3e500744"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4727,6 +6389,12 @@
       "version": "0.4.0",
       "scope": "optional",
       "purl": "pkg:npm/type-check@0.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5e5794a1cf6ec065ea8d6c176944d9026ccc705679f39f10036befc7552be7121c8b15c83fef0b9c50e0469954df4bacead7aa765b2415fbbe69ee0aefd3a87b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4744,6 +6412,12 @@
       "version": "0.20.2",
       "scope": "optional",
       "purl": "pkg:npm/type-fest@0.20.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "35ef9e138af4fe25a7a40c43f39db3dc0f8dd01b7944dfff36327045dd95147126af2c317f9bec66587847a962c65e81fb0cfff1dfa669348090dd452242372d"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4761,6 +6435,12 @@
       "version": "1.6.18",
       "scope": "required",
       "purl": "pkg:npm/type-is@1.6.18",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4e444aafdb144f1107f0c75fb8248fed58b3272cd134c8e3d89d9da3626bdcaca6e7df0955d124b2eccf4029e514f5b8932f50fa203e99af411a6d3a5d0072f2"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4778,6 +6458,12 @@
       "version": "1.0.0",
       "scope": "required",
       "purl": "pkg:npm/unpipe@1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a63cb66d8852b2e7f05a52b03dcfa5ddc37bfb0b8994aeaecf461d2443a54036e5ea3a3f6253e2e266fc6a0524542f0117b57c36ecdec8f36a464b00de1ced29"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4795,6 +6481,12 @@
       "version": "4.4.1",
       "scope": "optional",
       "purl": "pkg:npm/uri-js@4.4.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "eeb294cb2df7435c9cf7ca50d430262edc17d74f45ed321f5a55b561da3c5a5d628b549e1e279e8741c77cf78bd9f3172bacf4b3c79c2acf5fac2b8b26f9dd06"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4812,6 +6504,12 @@
       "version": "1.0.2",
       "scope": "optional",
       "purl": "pkg:npm/util-deprecate@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "10f0f9ab5b97c85c49a42acb9c27359c79eade039ae83641a1c008888d93692080ed5089d5424331a802cc891736c5187c3d5d68afff2d3110f318886eb1ed73"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4829,6 +6527,12 @@
       "version": "1.0.1",
       "scope": "required",
       "purl": "pkg:npm/utils-merge@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a4c653bc8913d5df93146bc33aaa1d39c971d105a49208ba4dda1af200bc7df18002acfda733d36560326dbb071e8103ff3b4cb64bff5686136324a1527f3584"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4846,6 +6550,12 @@
       "version": "1.1.2",
       "scope": "required",
       "purl": "pkg:npm/vary@1.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "04d19b58b7ddd1e50f69b8645d4566d23f2ebaf444c93879a2f45afddca8c3f06a01b649c82fb97d4f88cd03b39802b362a6110084a8461750af778867f3d7aa"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4863,6 +6573,12 @@
       "version": "5.4.21",
       "scope": "required",
       "purl": "pkg:npm/vite@5.4.21",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a396bdc4a8dbb6e858e818b94b7f87bdb444466a2e69b59bc947295d7500d6ef863542a844e8bd6f2389f0cd271db1d81e46080a2325ab1920d4a9189a6db94b"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4880,6 +6596,12 @@
       "version": "0.14.10",
       "scope": "required",
       "purl": "pkg:npm/vue-demi@0.14.10",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9cc6413b0bb369b50ed272e021c73aaf271911e6c5e9e7947da890c7df964a4f1edbd21b2ef3d4f5f788eada96e244e8de1be8600264321f27f03d1fb884a986"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4897,6 +6619,12 @@
       "version": "9.4.3",
       "scope": "optional",
       "purl": "pkg:npm/vue-eslint-parser@9.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "dab6112d6948a5a88df316cf883c976574602c63ad5b111157b343e5f140bf9aa8d43d8df45bbd30d6a304d73aa35de567edb80c05829100af8f89258267084e"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4914,6 +6642,12 @@
       "version": "4.6.4",
       "scope": "required",
       "purl": "pkg:npm/vue-router@4.6.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1f3f6ae6c6b7dd885dba0970cfa83db244fc3813e28bee1b167f3cc3a27e27831f128e0a451a6688d1bf8471e475b44594b04eab137ccbc81fd856f431352056"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4931,6 +6665,12 @@
       "version": "3.5.37",
       "scope": "required",
       "purl": "pkg:npm/vue@3.5.37",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4a8e1b32ad7ae60b03e3e843542d7f6dc6ec3a94e5505186929b87dacc7dbc27e50a12166a1cb80b42b865c5ff08e7b469dd484e82114f7550cf4765e173e286"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4948,6 +6688,12 @@
       "version": "2.0.2",
       "scope": "optional",
       "purl": "pkg:npm/which@2.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "04b2374e5d535b73ef97bd25df2ab763ae22f9ac29c17aac181616924a8cb676d782b303fb28fbae15b492e103c7325a6171a3116e6881aa4a34c10a34c8e26c"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4965,6 +6711,12 @@
       "version": "1.2.5",
       "scope": "optional",
       "purl": "pkg:npm/word-wrap@1.2.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "04ddb607979a30c23d50cb63ac677983978260fa423c3532d052576d8b1a4f9cd8c6314e7244b9dd2403137a56915a16a475d56f706b61c10de13c1ae7907970"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4982,6 +6734,12 @@
       "version": "1.0.2",
       "scope": "optional",
       "purl": "pkg:npm/wrappy@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9784a9fc346c7a8afdc0be84bd5dbe4ee427eb774c90f8d9feca7d5e48214c46d5f4a94f4b5c54b19deeeff2103b8c31b5c141e1b82940f45c477402bdeccf71"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -4999,6 +6757,12 @@
       "version": "4.0.0",
       "scope": "optional",
       "purl": "pkg:npm/xml-name-validator@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2023f67be8ec1ef023d84da5207c5ae6d8d7465283268e0876f3ef0976d740677349f992a4d57220a32fa191e30d8f433f4cd5d7b888f39a3dd2f4455cd71c47"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -5016,6 +6780,12 @@
       "version": "0.1.0",
       "scope": "optional",
       "purl": "pkg:npm/yocto-queue@0.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ad592cbec9cd09d27fa2119ceb180fc3237c7a1782c6c88b33c9b1b84fedfe6395a897b03ee3b59a22e94c74224604ca08b7b12f831e00555a82db3b1e6359d9"
+        }
+      ],
       "properties": [
         {
           "name": "gravitybluex:lockfile",
@@ -5051,6 +6821,26 @@
         "name": "package URLs recorded",
         "ok": true,
         "detail": "pkg:npm purl"
+      },
+      {
+        "name": "components include lockfile hashes",
+        "ok": true,
+        "detail": "295/295 component(s)"
+      },
+      {
+        "name": "scoped package URLs preserve namespace",
+        "ok": true,
+        "detail": "88 scoped component(s), 0 encoded slash(es)"
+      },
+      {
+        "name": "metadata component matches package",
+        "ok": true,
+        "detail": "ashveil-console@0.27.0"
+      },
+      {
+        "name": "CycloneDX serial number is UUID URN",
+        "ok": true,
+        "detail": "urn:uuid:c9568e1d-de3d-4224-9e1e-57f2de093d3a"
       }
     ],
     "lockfiles": [

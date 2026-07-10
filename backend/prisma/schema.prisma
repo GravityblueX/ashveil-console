@@ -92,9 +92,16 @@ model RiskEvent {
   score       Int
   level       String
   status      String   @default("pending")
+  statusNote  String?
+  handledBy   String?
+  statusChangedAt DateTime?
   suggestion  String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  logs        RiskEventStatusLog[]
+
+  @@index([status])
+  @@index([level])
 }
 
 model RiskEventStatusLog {

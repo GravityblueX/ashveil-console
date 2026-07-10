@@ -1,8 +1,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const frontendRoot = resolve(root, 'frontend', 'src');
@@ -12,15 +12,22 @@ const jsonOut = resolve(reportsDir, 'client-api-coverage.json');
 const markdownOut = resolve(reportsDir, 'client-api-coverage.md');
 
 function runOpenApi() {
-  const completed = spawnSync(process.execPath, [resolve(root, 'scripts', 'openapi-spec.mjs')], {
+  const command = [process.execPath, resolve(root, 'scripts', 'openapi-spec.mjs')];
+  const completed = spawnSync(command[0], command.slice(1), {
     cwd: root,
     encoding: 'utf8',
-    shell: false,
+    shell: false
   });
   if (completed.status !== 0) {
-    const output = [completed.stdout, completed.stderr, completed.error?.message].filter(Boolean).join('\n');
+    const output = [completed.stdout, completed.stderr, completed.error?.message]
+      .filter(Boolean)
+      .join('\n');
     throw new Error(`openapi generation failed:\n${output}`);
   }
+  return {
+    command: 'node scripts/openapi-spec.mjs',
+    exitCode: completed.status ?? 0
+  };
 }
 
 async function walk(dir) {
@@ -31,7 +38,7 @@ async function walk(dir) {
     const path = resolve(dir, entry.name);
     if (entry.isDirectory()) {
       if (!['node_modules', 'dist', 'build'].includes(entry.name)) {
-        files.push(...await walk(path));
+        files.push(...(await walk(path)));
       }
     } else if (/\.(vue|js|ts)$/.test(entry.name)) {
       files.push(path);
@@ -41,16 +48,20 @@ async function walk(dir) {
 }
 
 function withApiPrefix(path) {
-  const normalized = path.startsWith('/api/') ? path : `/api${path.startsWith('/') ? '' : '/'}${path}`;
+  const normalized = path.startsWith('/api/')
+    ? path
+    : `/api${path.startsWith('/') ? '' : '/'}${path}`;
   return normalized.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
 }
 
 function normalizeTemplatePath(raw) {
-  return withApiPrefix(raw)
-    .replace(/\$\{[^}]+\}/g, '{param}')
-    .replace(/\?.*$/, '')
-    .replace(/\/+/g, '/')
-    .replace(/\/$/, '') || '/';
+  return (
+    withApiPrefix(raw)
+      .replace(/\$\{[^}]+\}/g, '{param}')
+      .replace(/\?.*$/, '')
+      .replace(/\/+/g, '/')
+      .replace(/\/$/, '') || '/'
+  );
 }
 
 function pathMatches(specPath, clientPath) {
@@ -63,7 +74,8 @@ function pathMatches(specPath, clientPath) {
 function findOperation(spec, method, path) {
   for (const [specPath, item] of Object.entries(spec.paths || {})) {
     if (!item[method.toLowerCase()]) continue;
-    if (pathMatches(specPath, path)) return { path: specPath, operation: item[method.toLowerCase()] };
+    if (pathMatches(specPath, path))
+      return { path: specPath, operation: item[method.toLowerCase()] };
   }
   return null;
 }
@@ -79,7 +91,9 @@ function methodFromOptions(options) {
 
 function discoverCalls(source, file) {
   const calls = [];
-  for (const match of source.matchAll(/api\(\s*([`'"])([\s\S]*?)\1\s*(?:,\s*(\{[\s\S]*?\}))?\s*\)/g)) {
+  for (const match of source.matchAll(
+    /api\(\s*([`'"])([\s\S]*?)\1\s*(?:,\s*(\{[\s\S]*?\}))?\s*\)/g
+  )) {
     const raw = match[2];
     if (!raw.startsWith('/')) continue;
     calls.push({
@@ -88,7 +102,7 @@ function discoverCalls(source, file) {
       raw,
       file: relative(root, file),
       line: lineNumber(source, match.index || 0),
-      source: 'api()',
+      source: 'api()'
     });
   }
   for (const match of source.matchAll(/endpoint\s*[:=]\s*(['"])(\/[^'"]+)\1/g)) {
@@ -98,10 +112,22 @@ function discoverCalls(source, file) {
       raw: match[2],
       file: relative(root, file),
       line: lineNumber(source, match.index || 0),
-      source: 'TablePage endpoint',
+      source: 'TablePage endpoint'
     });
   }
   return calls;
+}
+
+function discoverDirectFetches(source, file) {
+  const relativeFile = relative(root, file);
+  if (relativeFile.replace(/\\/g, '/') === 'frontend/src/api.js') {
+    return [];
+  }
+
+  return [...source.matchAll(/\bfetch\s*\(/g)].map((match) => ({
+    file: relativeFile,
+    line: lineNumber(source, match.index || 0)
+  }));
 }
 
 function uniqueCalls(calls) {
@@ -109,9 +135,13 @@ function uniqueCalls(calls) {
   for (const call of calls) {
     const key = `${call.method} ${call.path}`;
     if (!seen.has(key)) seen.set(key, { ...call, occurrences: [] });
-    seen.get(key).occurrences.push({ file: call.file, line: call.line, source: call.source, raw: call.raw });
+    seen
+      .get(key)
+      .occurrences.push({ file: call.file, line: call.line, source: call.source, raw: call.raw });
   }
-  return [...seen.values()].sort((a, b) => `${a.path} ${a.method}`.localeCompare(`${b.path} ${b.method}`));
+  return [...seen.values()].sort((a, b) =>
+    `${a.path} ${a.method}`.localeCompare(`${b.path} ${b.method}`)
+  );
 }
 
 function renderMarkdown(report) {
@@ -119,41 +149,62 @@ function renderMarkdown(report) {
     '# Ashveil Client API Coverage',
     '',
     `Generated: ${report.generatedAt}`,
-    `Status: \`${report.ok ? 'OK' : 'FAIL'}\``,
-    `Client calls: \`${report.summary.clientCallCount}\``,
-    `Matched calls: \`${report.summary.matchedCallCount}\``,
-    `Backend operations: \`${report.summary.backendOperationCount}\``,
+    `Status: ${mdCode(report.ok ? 'OK' : 'FAIL')}`,
+    `Client calls: ${mdCode(report.summary.clientCallCount)}`,
+    `Matched calls: ${mdCode(report.summary.matchedCallCount)}`,
+    `Backend operations: ${mdCode(report.summary.backendOperationCount)}`,
+    `Direct fetch bypasses: ${mdCode(report.summary.directFetchCount)}`,
     '',
     '## Gates',
     '',
     '| Gate | Result | Detail |',
-    '|---|---|---|',
+    '|---|---|---|'
   ];
   for (const gate of report.gates) {
-    lines.push(`| ${gate.name} | ${gate.ok ? 'OK' : 'FAIL'} | ${gate.detail} |`);
+    lines.push(`| ${mdCell(gate.name)} | ${gate.ok ? 'OK' : 'FAIL'} | ${mdCell(gate.detail)} |`);
   }
-  lines.push('', '## Client Calls', '', '| Method | Client Path | OpenAPI Match | Locations |', '|---|---|---|---|');
+  lines.push(
+    '',
+    '## Client Calls',
+    '',
+    '| Method | Client Path | OpenAPI Match | Locations |',
+    '|---|---|---|---|'
+  );
   for (const call of report.calls) {
-    const locations = call.occurrences.map((item) => `\`${item.file}:${item.line}\``).join('<br>');
-    lines.push(`| ${call.method} | \`${call.path}\` | ${call.matched ? `\`${call.matchedPath}\`` : 'missing'} | ${locations} |`);
+    const locations = call.occurrences
+      .map((item) => mdCode(`${item.file}:${item.line}`))
+      .join('<br>');
+    const matchedPath = call.matched ? mdCode(call.matchedPath) : 'missing';
+    lines.push(`| ${mdCell(call.method)} | ${mdCode(call.path)} | ${matchedPath} | ${locations} |`);
   }
   lines.push('', '## Boundary', '');
-  lines.push('- This report checks Vue client calls and route-prop endpoints against generated OpenAPI paths.');
-  lines.push('- It is a path-drift guard for shipped client behavior, not a claim that every backend route has a UI.');
+  lines.push(
+    report.directFetches.length === 0
+      ? '- No frontend source file bypasses `frontend/src/api.js` with a direct `fetch()` call.'
+      : `- Direct fetch bypasses: ${report.directFetches
+          .map((item) => mdCode(`${item.file}:${item.line}`))
+          .join(', ')}`
+  );
+  lines.push(
+    '- This report checks Vue client calls and route-prop endpoints against generated OpenAPI paths.'
+  );
+  lines.push(
+    '- It is a path-drift guard for shipped client behavior, not a claim that every backend route has a UI.'
+  );
   lines.push('');
   return lines.join('\n');
 }
 
-if (!existsSync(openApiPath)) {
-  runOpenApi();
-}
+const openApiGeneration = runOpenApi();
 
 const spec = JSON.parse(await readFile(openApiPath, 'utf8'));
 const files = await walk(frontendRoot);
 const discovered = [];
+const directFetches = [];
 for (const file of files) {
   const source = await readFile(file, 'utf8');
   discovered.push(...discoverCalls(source, file));
+  directFetches.push(...discoverDirectFetches(source, file));
 }
 
 const calls = uniqueCalls(discovered).map((call) => {
@@ -162,20 +213,60 @@ const calls = uniqueCalls(discovered).map((call) => {
     ...call,
     matched: Boolean(match),
     matchedPath: match?.path || '',
-    operationId: match?.operation?.operationId || '',
+    operationId: match?.operation?.operationId || ''
   };
 });
 
-const operations = Object.entries(spec.paths || {}).flatMap(([path, item]) => (
+const operations = Object.entries(spec.paths || {}).flatMap(([path, item]) =>
   Object.keys(item).map((method) => ({ method: method.toUpperCase(), path }))
-));
+);
 const unmatched = calls.filter((call) => !call.matched);
 const gates = [
-  { name: 'OpenAPI contract available', ok: spec.openapi === '3.1.0', detail: spec.openapi || 'missing' },
-  { name: 'client API calls discovered', ok: calls.length >= 12, detail: `${calls.length} call(s)` },
-  { name: 'all client calls match OpenAPI', ok: unmatched.length === 0, detail: `${unmatched.length} unmatched` },
-  { name: 'login flow covered', ok: calls.some((call) => call.method === 'POST' && call.path === '/api/auth/login'), detail: 'POST /api/auth/login' },
-  { name: 'dynamic table endpoints covered', ok: calls.some((call) => call.source === 'TablePage endpoint'), detail: 'route props and template endpoints' },
+  {
+    name: 'OpenAPI regenerated for coverage',
+    ok: openApiGeneration.exitCode === 0,
+    detail: openApiGeneration.command
+  },
+  {
+    name: 'OpenAPI contract available',
+    ok: spec.openapi === '3.1.0',
+    detail: spec.openapi || 'missing'
+  },
+  {
+    name: 'client API calls discovered',
+    ok: calls.length >= 12,
+    detail: `${calls.length} call(s)`
+  },
+  {
+    name: 'all client calls match OpenAPI',
+    ok: unmatched.length === 0,
+    detail: `${unmatched.length} unmatched`
+  },
+  {
+    name: 'login flow covered',
+    ok: calls.some((call) => call.method === 'POST' && call.path === '/api/auth/login'),
+    detail: 'POST /api/auth/login'
+  },
+  {
+    name: 'dynamic table endpoints covered',
+    ok: calls.some((call) => call.source === 'TablePage endpoint'),
+    detail: 'route props and template endpoints'
+  },
+  {
+    name: 'risk status mutation covered',
+    ok: calls.some(
+      (call) =>
+        call.method === 'PATCH' &&
+        call.path === '/api/risk/events/{param}/status' &&
+        call.matchedPath === '/api/risk/events/{eventKey}/status'
+    ),
+    detail: 'PATCH /api/risk/events/{eventKey}/status'
+  },
+  {
+    name: 'frontend fetch calls go through API helper',
+    ok: directFetches.length === 0,
+    detail: `${directFetches.length} bypass(es)`
+  }
 ];
 
 const report = {
@@ -187,15 +278,17 @@ const report = {
     matchedCallCount: calls.filter((call) => call.matched).length,
     unmatchedCallCount: unmatched.length,
     backendOperationCount: operations.length,
+    directFetchCount: directFetches.length
   },
   gates,
   calls,
   unmatched,
+  directFetches,
   referenceBasis: [
     'OpenAPI Specification as the backend contract',
     'Static Vue API call inventory for path drift detection',
-    'Route-prop endpoints are resolved into concrete GET checks',
-  ],
+    'Route-prop endpoints are resolved into concrete GET checks'
+  ]
 };
 
 await mkdir(reportsDir, { recursive: true });

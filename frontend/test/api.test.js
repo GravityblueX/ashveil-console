@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { beforeEach, describe, it } from 'node:test';
-import { api, apiBase } from '../src/api.js';
+import { api, apiBase, apiUrl } from '../src/api.js';
 
 const calls = [];
 
@@ -19,6 +19,19 @@ describe('frontend API client contract', () => {
         return key === 'token' ? 'test-token' : null;
       }
     };
+  });
+
+  it('normalizes API base and path slashes', () => {
+    assert.equal(apiUrl('/dashboard'), `${apiBase}/dashboard`);
+    assert.equal(apiUrl('dashboard'), `${apiBase}/dashboard`);
+    assert.equal(
+      apiUrl('/dashboard', 'https://api.example.test/api/'),
+      'https://api.example.test/api/dashboard'
+    );
+    assert.equal(
+      apiUrl('dashboard', 'https://api.example.test/api/'),
+      'https://api.example.test/api/dashboard'
+    );
   });
 
   it('uses the default API base outside Vite and sends bearer tokens', async () => {
