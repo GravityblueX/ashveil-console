@@ -6,6 +6,12 @@ on:
   schedule:
     - cron: '0 2 * * *'
   workflow_dispatch:
+    inputs:
+      publish_release:
+        description: 'Commit generated improvements and publish an auto release'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   optimize:
@@ -44,13 +50,13 @@ jobs:
           if-no-files-found: ignore
 
       - name: Auto Commit Improvements
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' && inputs.publish_release
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore(auto): optimization round ${{ github.run_number }}'
 
       - name: Create Release
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' && inputs.publish_release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v0.${{ github.run_number }}
