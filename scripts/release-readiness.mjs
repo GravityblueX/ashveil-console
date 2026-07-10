@@ -372,6 +372,34 @@ function render(report) {
   return lines.join('\n');
 }
 
+function printFailureDiagnostics(report, formatResult) {
+  if (report.ok && formatResult.exitCode === 0) return;
+
+  const failedGates = report.gates.filter((item) => !item.ok);
+  if (failedGates.length > 0) {
+    console.error('Release readiness failed gates:');
+    for (const item of failedGates) {
+      console.error(`- ${item.name}: ${item.detail}`);
+    }
+  }
+
+  const failedCommands = report.commands.filter((command) => command.exitCode !== 0);
+  if (failedCommands.length > 0) {
+    console.error('Release readiness failed commands:');
+    for (const command of failedCommands) {
+      console.error(`- ${command.name}: ${command.command} exit=${command.exitCode}`);
+      if (command.output) console.error(command.output);
+    }
+  }
+
+  if (formatResult.exitCode !== 0) {
+    console.error(
+      `Final report formatting failed: ${formatResult.command} exit=${formatResult.exitCode}`
+    );
+    if (formatResult.output) console.error(formatResult.output);
+  }
+}
+
 const report = await buildReport();
 await mkdir(reportsDir, { recursive: true });
 await writeFile(jsonOut, JSON.stringify(report, null, 2), 'utf8');
@@ -384,4 +412,5 @@ console.log(
     2
   )
 );
+printFailureDiagnostics(report, formatResult);
 if (!report.ok || formatResult.exitCode !== 0) process.exit(1);
