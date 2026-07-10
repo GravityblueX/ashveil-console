@@ -193,6 +193,7 @@ async function buildReport() {
     'renovate.json',
     'package-lock.json',
     '.github/workflows/continuous-optimize.yml',
+    '.github/workflows/quality-gates.yml',
     'backend/.env.example',
     'backend/package.json',
     'backend/prisma/schema.prisma',

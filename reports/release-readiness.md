@@ -1,6 +1,6 @@
 # Ashveil Release Readiness
 
-Generated: 2026-07-10T18:09:51.695Z
+Generated: 2026-07-10T19:55:47.951Z
 Project: `ashveil-console`
 Version: `0.27.0`
 Status: `OK`
@@ -15,6 +15,7 @@ Status: `OK`
 | required file renovate.json                             | OK     | renovate.json                                                                         |
 | required file package-lock.json                         | OK     | package-lock.json                                                                     |
 | required file .github/workflows/continuous-optimize.yml | OK     | .github/workflows/continuous-optimize.yml                                             |
+| required file .github/workflows/quality-gates.yml       | OK     | .github/workflows/quality-gates.yml                                                   |
 | required file backend/.env.example                      | OK     | backend/.env.example                                                                  |
 | required file backend/package.json                      | OK     | backend/package.json                                                                  |
 | required file backend/prisma/schema.prisma              | OK     | backend/prisma/schema.prisma                                                          |
@@ -53,7 +54,7 @@ Status: `OK`
 | client API coverage required gates                      | OK     | 8 required gates passed (8 total)                                                     |
 | dependency SBOM required gates                          | OK     | 8 required gates passed (8 total)                                                     |
 | smoke report required gates                             | OK     | 11 required gates passed (11 total)                                                   |
-| git status readable                                     | OK     | dirty_count=35                                                                        |
+| git status readable                                     | OK     | dirty_count=15                                                                        |
 
 ## Commands
 

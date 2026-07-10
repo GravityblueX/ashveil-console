@@ -5,6 +5,7 @@ Ashveil Console / nocturne-admin 已进入自动化持续优化部署状态。
 ## 已部署能力
 
 - GitHub Actions 持续优化流水线：`.github/workflows/continuous-optimize.yml`
+- GitHub Actions 只读质量门：`.github/workflows/quality-gates.yml`
 - 永久循环优化提示词：`AGENT_OPTIMIZE_PROMPT.md`
 - 本地循环辅助脚本：`optimize-loop.sh`
 - GitHub Secrets 配置说明：`docs/github-secrets.md`
@@ -20,6 +21,16 @@ GitHub Actions 会在以下场景触发：
 - push 到 `main` 或 `master`
 - 每天 UTC 02:00 定时触发
 - 在 Actions 页面手动 `Run workflow`
+
+该持续优化流水线会格式化工作区、运行发布就绪检查、自动提交改动并创建 Release。
+
+### 方式一补充：只读质量门
+
+`.github/workflows/quality-gates.yml` 会在 pull request 或手动触发时运行：
+
+- `npm run release:readiness`
+
+`release:readiness` 内部会执行 `npm run check`。这个 workflow 只授予 `contents: read` 权限，不会自动提交，也不会创建 Release。它用于在合并前确认变更通过 lint、格式、测试、API 报告、SBOM 和 smoke gates。
 
 ### 方式二：本地循环脚本
 
