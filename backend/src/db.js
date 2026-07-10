@@ -3,6 +3,11 @@ let prismaUnavailableReason = '';
 
 export async function getPrisma() {
   if (prisma) return prisma;
+  if (!process.env.DATABASE_URL?.trim()) {
+    prismaUnavailableReason = 'DATABASE_URL 未配置，当前使用 mock 数据兜底';
+    return null;
+  }
+
   try {
     const { PrismaClient } = await import('@prisma/client');
     prisma = new PrismaClient();
