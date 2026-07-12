@@ -1,6 +1,6 @@
 # Ashveil OpenAPI Contract
 
-Generated: 2026-07-12T16:35:03.738Z
+Generated: 2026-07-12T23:25:58.787Z
 Status: `OK`
 Operations: `18`
 Protected: `16`
