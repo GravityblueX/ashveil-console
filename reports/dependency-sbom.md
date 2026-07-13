@@ -1,6 +1,6 @@
 # Ashveil Dependency SBOM
 
-Generated: 2026-07-12T23:25:59.319Z
+Generated: 2026-07-13T14:02:49.715Z
 Status: `OK`
 Spec: `CycloneDX 1.6`
 Components: `295`
@@ -16,7 +16,7 @@ Components: `295`
 | components include lockfile hashes     | OK     | 295/295 component(s)                          |
 | scoped package URLs preserve namespace | OK     | 88 scoped component(s), 0 encoded slash(es)   |
 | metadata component matches package     | OK     | ashveil-console@0.27.0                        |
-| CycloneDX serial number is UUID URN    | OK     | urn:uuid:2e610aca-ff93-4b4e-a02b-f82b14bae082 |
+| CycloneDX serial number is UUID URN    | OK     | urn:uuid:b2892339-acac-4083-a27a-767153fc2f04 |
 
 ## Lockfiles
 

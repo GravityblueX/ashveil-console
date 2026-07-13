@@ -1,13 +1,13 @@
 <template>
   <Teleport to="body">
     <div v-if="open" class="modal-mask" @click.self="close">
-      <section class="modal-card">
+      <section class="modal-card" role="dialog" aria-modal="true" :aria-label="modalTitle">
         <header class="modal-head">
           <div>
             <p class="eyebrow">FORM</p>
-            <h2>{{ mode === 'create' ? `新增${title}` : `编辑${title}` }}</h2>
+            <h2>{{ modalTitle }}</h2>
           </div>
-          <button class="icon-btn" type="button" @click="close">×</button>
+          <button class="icon-btn" type="button" aria-label="关闭表单弹窗" @click="close">×</button>
         </header>
         <div class="modal-body">
           <label v-for="field in fields" :key="field.key" class="modal-field">
@@ -31,7 +31,7 @@
   </Teleport>
 </template>
 <script setup>
-import { reactive, watch } from 'vue';
+import { computed, reactive, watch } from 'vue';
 const props = defineProps({
   open: Boolean,
   title: String,
@@ -41,6 +41,9 @@ const props = defineProps({
 });
 const emit = defineEmits(['close', 'submit']);
 const draft = reactive({});
+const modalTitle = computed(() =>
+  props.mode === 'create' ? `新增${props.title}` : `编辑${props.title}`
+);
 watch(
   () => [props.open, props.modelValue, props.fields],
   () => {

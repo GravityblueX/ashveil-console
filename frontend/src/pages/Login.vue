@@ -4,9 +4,9 @@
       <p class="eyebrow">ASHVEIL ACCESS</p>
       <h1>进入灰域观察台</h1>
       <p class="muted">看见权限、审计、任务与系统脉搏之间的灰域变化。</p>
-      <input v-model="username" placeholder="用户名 admin" />
-      <input v-model="password" placeholder="密码 ashveil2026" type="password" />
-      <button @click="submit">登录</button>
+      <input v-model="username" aria-label="用户名" placeholder="用户名 admin" />
+      <input v-model="password" aria-label="密码" placeholder="密码 ashveil2026" type="password" />
+      <button type="button" @click="submit">登录</button>
       <p class="error" v-if="error">{{ error }}</p>
     </div>
   </section>
