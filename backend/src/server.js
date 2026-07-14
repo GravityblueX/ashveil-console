@@ -81,13 +81,35 @@ function parseRiskStatusPayload(body) {
   };
 }
 
+function parseLoginPayload(body) {
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return { error: '登录请求体必须是 JSON 对象' };
+  }
+
+  if (typeof body.username !== 'string' || body.username.trim().length === 0) {
+    return { error: '用户名必须是非空字符串' };
+  }
+
+  if (typeof body.password !== 'string' || body.password.length === 0) {
+    return { error: '密码必须是非空字符串' };
+  }
+
+  return {
+    value: {
+      username: body.username.trim(),
+      password: body.password
+    }
+  };
+}
+
 app.get('/api/health', (_, res) =>
   res.json({ ok: true, name: 'Ashveil Console API', version: API_VERSION })
 );
 
 app.post('/api/auth/login', async (req, res) => {
-  const { username, password } = req.body;
-  const result = await findUserForLogin(username, password);
+  const payload = parseLoginPayload(req.body);
+  if (payload.error) return res.status(400).json({ message: payload.error });
+  const result = await findUserForLogin(payload.value.username, payload.value.password);
   if (!result) return res.status(401).json({ message: '账号或密码错误' });
   res.json({
     token: sign(result.safe),

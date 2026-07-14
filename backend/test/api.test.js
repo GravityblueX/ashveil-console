@@ -37,4 +37,25 @@ describe('Ashveil API smoke contract', () => {
     assert.ok(Array.isArray(response.body.menus));
     assert.equal(Object.hasOwn(response.body.user, 'password'), false);
   });
+
+  it('rejects non-object login payloads with a structured error', async () => {
+    const response = await request(app).post('/api/auth/login').send([]).expect(400);
+
+    assert.equal(response.body.message, '登录请求体必须是 JSON 对象');
+  });
+
+  it('rejects missing login credentials before checking accounts', async () => {
+    const missingUsername = await request(app)
+      .post('/api/auth/login')
+      .send({ username: ' ', password: 'ashveil2026' })
+      .expect(400);
+
+    const missingPassword = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: '' })
+      .expect(400);
+
+    assert.equal(missingUsername.body.message, '用户名必须是非空字符串');
+    assert.equal(missingPassword.body.message, '密码必须是非空字符串');
+  });
 });

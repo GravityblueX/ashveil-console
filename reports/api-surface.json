@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_api_surface",
-  "generatedAt": "2026-07-13T14:02:49.157Z",
+  "generatedAt": "2026-07-14T14:30:12.051Z",
   "ok": true,
   "summary": {
     "routeCount": 18,
@@ -61,7 +61,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 121
+      "sourceLine": 143
     },
     {
       "method": "GET",
@@ -69,7 +69,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 122
+      "sourceLine": 144
     },
     {
       "method": "GET",
@@ -77,7 +77,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 120
+      "sourceLine": 142
     },
     {
       "method": "GET",
@@ -85,7 +85,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 119
+      "sourceLine": 141
     },
     {
       "method": "GET",
@@ -93,7 +93,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 127
+      "sourceLine": 149
     },
     {
       "method": "GET",
@@ -101,7 +101,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 128
+      "sourceLine": 150
     },
     {
       "method": "POST",
@@ -109,7 +109,7 @@
       "protected": false,
       "firstHandler": "async (req",
       "source": "backend/src/server.js",
-      "sourceLine": 88
+      "sourceLine": 109
     },
     {
       "method": "GET",
@@ -117,7 +117,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 100
+      "sourceLine": 122
     },
     {
       "method": "GET",
@@ -125,7 +125,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 106
+      "sourceLine": 128
     },
     {
       "method": "GET",
@@ -133,7 +133,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 126
+      "sourceLine": 148
     },
     {
       "method": "GET",
@@ -141,7 +141,7 @@
       "protected": false,
       "firstHandler": "(_",
       "source": "backend/src/server.js",
-      "sourceLine": 84
+      "sourceLine": 105
     },
     {
       "method": "GET",
@@ -149,7 +149,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 170
+      "sourceLine": 192
     },
     {
       "method": "GET",
@@ -157,7 +157,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 147
+      "sourceLine": 169
     },
     {
       "method": "GET",
@@ -165,7 +165,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 148
+      "sourceLine": 170
     },
     {
       "method": "GET",
@@ -173,7 +173,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 152
+      "sourceLine": 174
     },
     {
       "method": "PATCH",
@@ -181,7 +181,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 160
+      "sourceLine": 182
     },
     {
       "method": "GET",
@@ -189,7 +189,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 149
+      "sourceLine": 171
     },
     {
       "method": "GET",
@@ -197,7 +197,7 @@
       "protected": true,
       "firstHandler": "auth",
       "source": "backend/src/server.js",
-      "sourceLine": 171
+      "sourceLine": 193
     }
   ],
   "referenceBasis": [
