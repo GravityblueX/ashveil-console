@@ -14,6 +14,7 @@ const REQUIRED_SMOKE_GATES = [
   'api health',
   'protected route rejects anonymous access',
   'protected route rejects malformed authorization headers',
+  'protected route rejects malformed signed claims',
   'login rejects extra fields',
   'mock login succeeds',
   'login response omits password',

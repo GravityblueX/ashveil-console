@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
+import jwt from 'jsonwebtoken';
 import request from 'supertest';
 
 process.env.NODE_ENV = 'test';
@@ -59,6 +60,17 @@ describe('Ashveil API smoke contract', () => {
       .expect(200);
 
     assert.equal(response.body.user.username, 'admin');
+  });
+
+  it('rejects signed tokens with missing auth claims', async () => {
+    const malformedToken = jwt.sign({ username: 'admin', roles: ['ROOT'] }, 'ashveil-test-secret');
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${malformedToken}`)
+      .expect(401);
+
+    assert.equal(response.body.message, 'Invalid token');
   });
 
   it('rejects non-object login payloads with a structured error', async () => {

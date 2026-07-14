@@ -54,11 +54,33 @@ function parseBearerToken(raw) {
   return { token: match[1].trim() };
 }
 
+function isValidUserId(value) {
+  if (typeof value === 'number') return Number.isFinite(value);
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function isValidAuthClaims(value) {
+  return (
+    value &&
+    typeof value === 'object' &&
+    !Array.isArray(value) &&
+    isValidUserId(value.id) &&
+    typeof value.username === 'string' &&
+    value.username.trim().length > 0 &&
+    Array.isArray(value.roles) &&
+    value.roles.every((role) => typeof role === 'string' && role.trim().length > 0)
+  );
+}
+
 function auth(req, res, next) {
   const parsed = parseBearerToken(req.headers.authorization);
   if (parsed.error) return res.status(401).json({ message: parsed.error });
   try {
-    req.user = jwt.verify(parsed.token, JWT_SECRET);
+    const claims = jwt.verify(parsed.token, JWT_SECRET);
+    if (!isValidAuthClaims(claims)) {
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+    req.user = claims;
     next();
   } catch {
     res.status(401).json({ message: 'Invalid token' });

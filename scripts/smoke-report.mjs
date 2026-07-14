@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { menus } from '../backend/src/store.js';
 import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
@@ -9,6 +10,8 @@ process.env.DATABASE_URL = '';
 process.env.JWT_SECRET = 'ashveil-smoke-secret';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const backendRequire = createRequire(new URL('../backend/package.json', import.meta.url));
+const jwt = backendRequire('jsonwebtoken');
 const reportsDir = resolve(root, 'reports');
 const jsonOut = resolve(reportsDir, 'smoke-report.json');
 const markdownOut = resolve(reportsDir, 'smoke-report.md');
@@ -106,6 +109,23 @@ async function runSmoke() {
         malformedAuth.status === 401 &&
           malformedAuth.body?.message === 'Authorization header must use Bearer token',
         requestDetail(malformedAuth, `, message=${malformedAuth.body?.message || 'none'}`)
+      )
+    );
+
+    const malformedSignedClaims = await request(baseUrl, '/api/auth/me', {
+      headers: {
+        authorization: `Bearer ${jwt.sign({ username: 'admin', roles: ['ROOT'] }, process.env.JWT_SECRET)}`
+      }
+    });
+    gates.push(
+      gate(
+        'protected route rejects malformed signed claims',
+        malformedSignedClaims.status === 401 &&
+          malformedSignedClaims.body?.message === 'Invalid token',
+        requestDetail(
+          malformedSignedClaims,
+          `, message=${malformedSignedClaims.body?.message || 'none'}`
+        )
       )
     );
 

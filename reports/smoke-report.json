@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-14T19:25:35.003Z",
+  "generatedAt": "2026-07-14T20:03:28.714Z",
   "ok": true,
   "gates": [
     {
@@ -17,6 +17,11 @@
       "name": "protected route rejects malformed authorization headers",
       "ok": true,
       "detail": "status=401, message=Authorization header must use Bearer token"
+    },
+    {
+      "name": "protected route rejects malformed signed claims",
+      "ok": true,
+      "detail": "status=401, message=Invalid token"
     },
     {
       "name": "login rejects extra fields",
