@@ -97,6 +97,18 @@ async function runSmoke() {
       )
     );
 
+    const malformedAuth = await request(baseUrl, '/api/dashboard', {
+      headers: { authorization: 'Basic not-a-bearer-token' }
+    });
+    gates.push(
+      gate(
+        'protected route rejects malformed authorization headers',
+        malformedAuth.status === 401 &&
+          malformedAuth.body?.message === 'Authorization header must use Bearer token',
+        requestDetail(malformedAuth, `, message=${malformedAuth.body?.message || 'none'}`)
+      )
+    );
+
     const login = await request(baseUrl, '/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username: 'admin', password: 'ashveil2026' })
@@ -242,7 +254,7 @@ function renderMarkdown(report) {
 
 const report = await runSmoke();
 await mkdir(reportsDir, { recursive: true });
-await writeFile(jsonOut, JSON.stringify(report, null, 2), 'utf8');
+await writeFile(jsonOut, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 await writeFile(markdownOut, renderMarkdown(report), 'utf8');
 
 console.log(JSON.stringify({ ok: report.ok, json: jsonOut, markdown: markdownOut }, null, 2));

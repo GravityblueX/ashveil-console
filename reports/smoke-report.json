@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-14T14:30:13.280Z",
+  "generatedAt": "2026-07-14T15:52:19.066Z",
   "ok": true,
   "gates": [
     {
@@ -12,6 +12,11 @@
       "name": "protected route rejects anonymous access",
       "ok": true,
       "detail": "status=401"
+    },
+    {
+      "name": "protected route rejects malformed authorization headers",
+      "ok": true,
+      "detail": "status=401, message=Authorization header must use Bearer token"
     },
     {
       "name": "mock login succeeds",

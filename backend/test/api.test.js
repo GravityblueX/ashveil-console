@@ -25,6 +25,15 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.message, 'Missing token');
   });
 
+  it('rejects malformed authorization headers before JWT verification', async () => {
+    const response = await request(app)
+      .get('/api/dashboard')
+      .set('Authorization', 'Basic not-a-bearer-token')
+      .expect(401);
+
+    assert.equal(response.body.message, 'Authorization header must use Bearer token');
+  });
+
   it('logs in with mock credentials and keeps passwords out of the response', async () => {
     const response = await request(app)
       .post('/api/auth/login')
@@ -36,6 +45,20 @@ describe('Ashveil API smoke contract', () => {
     assert.ok(Array.isArray(response.body.user.roles));
     assert.ok(Array.isArray(response.body.menus));
     assert.equal(Object.hasOwn(response.body.user, 'password'), false);
+  });
+
+  it('accepts the bearer authorization scheme case-insensitively', async () => {
+    const login = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: 'ashveil2026' })
+      .expect(200);
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `bearer ${login.body.token}`)
+      .expect(200);
+
+    assert.equal(response.body.user.username, 'admin');
   });
 
   it('rejects non-object login payloads with a structured error', async () => {

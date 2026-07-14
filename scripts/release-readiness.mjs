@@ -13,6 +13,7 @@ const prettierBin = resolve(root, 'node_modules', 'prettier', 'bin', 'prettier.c
 const REQUIRED_SMOKE_GATES = [
   'api health',
   'protected route rejects anonymous access',
+  'protected route rejects malformed authorization headers',
   'mock login succeeds',
   'login response omits password',
   'dashboard contract',

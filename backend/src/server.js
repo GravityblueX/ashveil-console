@@ -42,12 +42,23 @@ function sign(user) {
   });
 }
 
+function parseBearerToken(raw) {
+  const value = String(raw || '').trim();
+  if (!value) return { error: 'Missing token' };
+
+  const match = value.match(/^Bearer\s+(.+)$/i);
+  if (!match || match[1].trim().length === 0) {
+    return { error: 'Authorization header must use Bearer token' };
+  }
+
+  return { token: match[1].trim() };
+}
+
 function auth(req, res, next) {
-  const raw = req.headers.authorization || '';
-  const token = raw.replace('Bearer ', '');
-  if (!token) return res.status(401).json({ message: 'Missing token' });
+  const parsed = parseBearerToken(req.headers.authorization);
+  if (parsed.error) return res.status(401).json({ message: parsed.error });
   try {
-    req.user = jwt.verify(token, JWT_SECRET);
+    req.user = jwt.verify(parsed.token, JWT_SECRET);
     next();
   } catch {
     res.status(401).json({ message: 'Invalid token' });
