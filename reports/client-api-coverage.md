@@ -1,6 +1,6 @@
 # Ashveil Client API Coverage
 
-Generated: 2026-07-14T19:05:46.688Z
+Generated: 2026-07-14T19:25:33.627Z
 Status: `OK`
 Client calls: `15`
 Matched calls: `15`
@@ -26,15 +26,15 @@ Direct fetch bypasses: `0`
 | ------ | --------------------------------- | ------------------------------------ | -------------------------------------------- |
 | GET    | `/api/access/permission-matrix`   | `/api/access/permission-matrix`      | `frontend\src\pages\PermissionMatrix.vue:85` |
 | GET    | `/api/access/roles`               | `/api/access/roles`                  | `frontend\src\pages\PermissionMatrix.vue:84` |
-| GET    | `/api/access/users`               | `/api/access/users`                  | `frontend\src\main.js:38`                    |
+| GET    | `/api/access/users`               | `/api/access/users`                  | `frontend\src\main.js:39`                    |
 | GET    | `/api/audit/logs`                 | `/api/audit/logs`                    | `frontend\src\pages\AuditCenter.vue:49`      |
 | GET    | `/api/audit/summary`              | `/api/audit/summary`                 | `frontend\src\pages\AuditCenter.vue:68`      |
 | POST   | `/api/auth/login`                 | `/api/auth/login`                    | `frontend\src\pages\Login.vue:22`            |
 | GET    | `/api/dashboard`                  | `/api/dashboard`                     | `frontend\src\pages\Dashboard.vue:32`        |
-| GET    | `/api/dictionaries`               | `/api/dictionaries`                  | `frontend\src\main.js:44`                    |
+| GET    | `/api/dictionaries`               | `/api/dictionaries`                  | `frontend\src\main.js:45`                    |
 | GET    | `/api/ideas`                      | `/api/ideas`                         | `frontend\src\pages\IdeasRoadmap.vue:56`     |
-| GET    | `/api/jobs`                       | `/api/jobs`                          | `frontend\src\main.js:47`                    |
-| GET    | `/api/monitor`                    | `/api/monitor`                       | `frontend\src\main.js:48`                    |
+| GET    | `/api/jobs`                       | `/api/jobs`                          | `frontend\src\main.js:48`                    |
+| GET    | `/api/monitor`                    | `/api/monitor`                       | `frontend\src\main.js:49`                    |
 | GET    | `/api/risk/events`                | `/api/risk/events`                   | `frontend\src\pages\RiskEvents.vue:124`      |
 | PATCH  | `/api/risk/events/{param}/status` | `/api/risk/events/{eventKey}/status` | `frontend\src\pages\RiskEvents.vue:102`      |
 | GET    | `/api/risk/scores`                | `/api/risk/scores`                   | `frontend\src\pages\RiskScores.vue:85`       |

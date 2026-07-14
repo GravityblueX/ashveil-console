@@ -2,6 +2,7 @@ import { createApp, defineAsyncComponent } from 'vue';
 import { createPinia } from 'pinia';
 import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
+import { hasStoredToken } from './auth-storage.js';
 import './styles/tokens.css';
 import './styles.css';
 
@@ -50,7 +51,7 @@ const routes = [
 
 const router = createRouter({ history: createWebHistory(), routes });
 router.beforeEach((to) => {
-  if (to.path !== '/login' && !localStorage.getItem('token')) return '/login';
+  if (to.path !== '/login' && !hasStoredToken()) return '/login';
 });
 
 createApp(App).use(createPinia()).use(router).mount('#app');

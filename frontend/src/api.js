@@ -1,3 +1,5 @@
+import { readStoredToken } from './auth-storage.js';
+
 const env = import.meta.env || {};
 export const apiBase = env.VITE_API_BASE || 'http://localhost:4160/api';
 
@@ -13,14 +15,6 @@ async function errorMessage(res) {
     return payload.message || payload.error || `Request failed (${res.status})`;
   } catch {
     return `Request failed (${res.status})`;
-  }
-}
-
-function readStoredToken(storage = globalThis.localStorage) {
-  try {
-    return storage?.getItem?.('token') || '';
-  } catch {
-    return '';
   }
 }
 

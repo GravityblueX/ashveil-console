@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_client_api_coverage",
-  "generatedAt": "2026-07-14T19:05:46.688Z",
+  "generatedAt": "2026-07-14T19:25:33.627Z",
   "ok": true,
   "summary": {
     "clientCallCount": 15,
@@ -95,12 +95,12 @@
       "path": "/api/access/users",
       "raw": "/access/users",
       "file": "frontend\\src\\main.js",
-      "line": 38,
+      "line": 39,
       "source": "TablePage endpoint",
       "occurrences": [
         {
           "file": "frontend\\src\\main.js",
-          "line": 38,
+          "line": 39,
           "source": "TablePage endpoint",
           "raw": "/access/users"
         }
@@ -190,12 +190,12 @@
       "path": "/api/dictionaries",
       "raw": "/dictionaries",
       "file": "frontend\\src\\main.js",
-      "line": 44,
+      "line": 45,
       "source": "TablePage endpoint",
       "occurrences": [
         {
           "file": "frontend\\src\\main.js",
-          "line": 44,
+          "line": 45,
           "source": "TablePage endpoint",
           "raw": "/dictionaries"
         }
@@ -228,12 +228,12 @@
       "path": "/api/jobs",
       "raw": "/jobs",
       "file": "frontend\\src\\main.js",
-      "line": 47,
+      "line": 48,
       "source": "TablePage endpoint",
       "occurrences": [
         {
           "file": "frontend\\src\\main.js",
-          "line": 47,
+          "line": 48,
           "source": "TablePage endpoint",
           "raw": "/jobs"
         }
@@ -247,12 +247,12 @@
       "path": "/api/monitor",
       "raw": "/monitor",
       "file": "frontend\\src\\main.js",
-      "line": 48,
+      "line": 49,
       "source": "TablePage endpoint",
       "occurrences": [
         {
           "file": "frontend\\src\\main.js",
-          "line": 48,
+          "line": 49,
           "source": "TablePage endpoint",
           "raw": "/monitor"
         }
