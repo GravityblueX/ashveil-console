@@ -60,6 +60,23 @@ describe('frontend API client contract', () => {
     assert.equal(calls[0].init.headers['X-Request-Id'], 'req-1');
   });
 
+  it('continues without authorization when token storage is unavailable', async () => {
+    globalThis.localStorage = {
+      getItem() {
+        throw new Error('storage unavailable');
+      }
+    };
+    installFetch({
+      ok: true,
+      json: async () => ({ public: true })
+    });
+
+    const payload = await api('/health');
+
+    assert.equal(payload.public, true);
+    assert.equal(Object.hasOwn(calls[0].init.headers, 'Authorization'), false);
+  });
+
   it('uses structured server error messages when available', async () => {
     installFetch({
       ok: false,

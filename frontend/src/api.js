@@ -16,8 +16,16 @@ async function errorMessage(res) {
   }
 }
 
+function readStoredToken(storage = globalThis.localStorage) {
+  try {
+    return storage?.getItem?.('token') || '';
+  } catch {
+    return '';
+  }
+}
+
 export async function api(path, options = {}) {
-  const token = globalThis.localStorage?.getItem?.('token') || '';
+  const token = readStoredToken();
   const headers = {
     'Content-Type': 'application/json',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
