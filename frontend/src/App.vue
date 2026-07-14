@@ -18,7 +18,9 @@
   </div>
 </template>
 <script setup>
-const menus = JSON.parse(localStorage.getItem('menus') || '[]');
+import { loadStoredMenus } from './menu-storage';
+
+const menus = loadStoredMenus();
 function logout() {
   localStorage.clear();
   location.href = '/login';
