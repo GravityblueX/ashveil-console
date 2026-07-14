@@ -97,6 +97,12 @@ function parseLoginPayload(body) {
     return { error: '登录请求体必须是 JSON 对象' };
   }
 
+  const allowedKeys = new Set(['username', 'password']);
+  const unknownKeys = Object.keys(body).filter((key) => !allowedKeys.has(key));
+  if (unknownKeys.length > 0) {
+    return { error: `不支持的登录字段：${unknownKeys.join(', ')}` };
+  }
+
   if (typeof body.username !== 'string' || body.username.trim().length === 0) {
     return { error: '用户名必须是非空字符串' };
   }

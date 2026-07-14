@@ -81,4 +81,13 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(missingUsername.body.message, '用户名必须是非空字符串');
     assert.equal(missingPassword.body.message, '密码必须是非空字符串');
   });
+
+  it('rejects extra login fields before checking accounts', async () => {
+    const response = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: 'ashveil2026', roles: ['ROOT'] })
+      .expect(400);
+
+    assert.equal(response.body.message, '不支持的登录字段：roles');
+  });
 });

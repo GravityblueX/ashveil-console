@@ -52,6 +52,25 @@ function operationId(route) {
 function requestBody(route) {
   if (!['POST', 'PUT', 'PATCH'].includes(route.method)) return undefined;
 
+  if (route.method === 'POST' && route.path === '/api/auth/login') {
+    return {
+      required: true,
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            required: ['username', 'password'],
+            properties: {
+              username: { type: 'string', minLength: 1 },
+              password: { type: 'string', minLength: 1 }
+            },
+            additionalProperties: false
+          }
+        }
+      }
+    };
+  }
+
   if (route.method === 'PATCH' && route.path === '/api/risk/events/:eventKey/status') {
     return {
       required: true,
@@ -85,6 +104,13 @@ function requestBody(route) {
 }
 
 function extraResponses(route) {
+  if (route.method === 'POST' && route.path === '/api/auth/login') {
+    return {
+      400: { description: 'Invalid login payload' },
+      401: { description: 'Invalid username or password' }
+    };
+  }
+
   if (route.method === 'PATCH' && route.path === '/api/risk/events/:eventKey/status') {
     return {
       400: { description: 'Invalid risk event status payload or unsupported status' },
@@ -164,9 +190,12 @@ function buildReport(surface, spec, projectVersion) {
     spec.paths['/api/risk/events/{eventKey}/status']?.patch?.requestBody?.content?.[
       'application/json'
     ]?.schema;
+  const loginBody =
+    spec.paths['/api/auth/login']?.post?.requestBody?.content?.['application/json']?.schema;
   const publicOperations = operations.filter(
     (operation) => operation['x-auth-boundary'] === 'public'
   );
+  const loginResponses = spec.paths['/api/auth/login']?.post?.responses || {};
   const riskStatusResponses =
     spec.paths['/api/risk/events/{eventKey}/status']?.patch?.responses || {};
   const riskStatusEnum = riskStatusBody?.properties?.status?.enum;
@@ -305,6 +334,23 @@ function buildReport(surface, spec, projectVersion) {
         missingPathParameters.length === 0
           ? 'all templated path params documented'
           : missingPathParameters.join('; ')
+    },
+    {
+      name: 'login request body constrained',
+      ok:
+        Array.isArray(loginBody?.required) &&
+        loginBody.required.includes('username') &&
+        loginBody.required.includes('password') &&
+        loginBody.properties?.username?.minLength === 1 &&
+        loginBody.properties?.password?.minLength === 1 &&
+        loginBody.additionalProperties === false,
+      detail: 'username/password only'
+    },
+    {
+      name: 'login error responses documented',
+      ok: ['400', '401'].every((status) => Boolean(loginResponses[status])),
+      detail:
+        ['400', '401'].filter((status) => Boolean(loginResponses[status])).join(', ') || 'missing'
     },
     {
       name: 'risk status request body constrained',

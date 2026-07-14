@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-14T15:52:19.066Z",
+  "generatedAt": "2026-07-14T16:53:27.254Z",
   "ok": true,
   "gates": [
     {
@@ -17,6 +17,11 @@
       "name": "protected route rejects malformed authorization headers",
       "ok": true,
       "detail": "status=401, message=Authorization header must use Bearer token"
+    },
+    {
+      "name": "login rejects extra fields",
+      "ok": true,
+      "detail": "status=400, message=不支持的登录字段：roles"
     },
     {
       "name": "mock login succeeds",

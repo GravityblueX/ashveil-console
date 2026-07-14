@@ -109,6 +109,19 @@ async function runSmoke() {
       )
     );
 
+    const extraLoginFields = await request(baseUrl, '/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username: 'admin', password: 'ashveil2026', roles: ['ROOT'] })
+    });
+    gates.push(
+      gate(
+        'login rejects extra fields',
+        extraLoginFields.status === 400 &&
+          extraLoginFields.body?.message === '不支持的登录字段：roles',
+        requestDetail(extraLoginFields, `, message=${extraLoginFields.body?.message || 'none'}`)
+      )
+    );
+
     const login = await request(baseUrl, '/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username: 'admin', password: 'ashveil2026' })

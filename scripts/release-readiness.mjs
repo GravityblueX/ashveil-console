@@ -14,6 +14,7 @@ const REQUIRED_SMOKE_GATES = [
   'api health',
   'protected route rejects anonymous access',
   'protected route rejects malformed authorization headers',
+  'login rejects extra fields',
   'mock login succeeds',
   'login response omits password',
   'dashboard contract',
@@ -51,6 +52,8 @@ const REQUIRED_OPENAPI_GATES = [
   'Express path params converted',
   'operation IDs are unique',
   'path parameters documented',
+  'login request body constrained',
+  'login error responses documented',
   'risk status request body constrained',
   'risk status error responses documented'
 ];
