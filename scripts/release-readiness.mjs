@@ -23,6 +23,8 @@ const REQUIRED_SMOKE_GATES = [
   'login response omits password',
   'dashboard contract',
   'risk events contract',
+  'risk status parser rejects unsupported status',
+  'risk status parser normalizes allowed values',
   'risk status rejects invalid status',
   'risk status rejects malformed event keys',
   'risk status rejects malformed JSON',

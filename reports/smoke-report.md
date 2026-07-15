@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-15T12:54:16.964Z
+Generated: 2026-07-15T14:02:33.187Z
 Status: `OK`
 
 ## Gates
@@ -15,6 +15,8 @@ Status: `OK`
 | login rejects extra fields                              | OK     | status=400, message=不支持的登录字段：roles                                 |
 | login rejects oversized credentials                     | OK     | username=400, password=400                                                  |
 | api rejects oversized JSON bodies                       | OK     | status=413, message=请求体不能超过 32kb                                     |
+| risk status parser rejects unsupported status           | OK     | 不支持的风险事件状态                                                        |
+| risk status parser normalizes allowed values            | OK     | status=processing, note=smoke note                                          |
 | mock login succeeds                                     | OK     | status=200, user=admin                                                      |
 | login response omits password                           | OK     | password field absent                                                       |
 | dashboard contract                                      | OK     | status=200, cards=4                                                         |

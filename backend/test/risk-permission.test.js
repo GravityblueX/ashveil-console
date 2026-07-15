@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
 import request from 'supertest';
 import { RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from '../src/risk-events.js';
+import { parseRiskStatusPayload } from '../src/risk-status-payload.js';
 
 process.env.NODE_ENV = 'test';
 process.env.DATABASE_URL = '';
@@ -90,6 +91,21 @@ describe('Ashveil risk and access regression contract', () => {
 
     assert.match(schema, /model RiskEventStatusLog \{/);
     assert.match(schema, /event\s+RiskEvent\s+@relation/);
+  });
+
+  it('rejects unsupported risk event statuses in the payload parser', () => {
+    assert.deepEqual(parseRiskStatusPayload({ status: 'made-up-status', note: 'smoke' }), {
+      error: '不支持的风险事件状态'
+    });
+  });
+
+  it('normalizes supported risk event status payload values', () => {
+    assert.deepEqual(parseRiskStatusPayload({ status: ' processing ', note: '  smoke note  ' }), {
+      value: {
+        status: 'processing',
+        note: 'smoke note'
+      }
+    });
   });
 
   it('rejects unsupported risk event status before persistence is attempted', async () => {

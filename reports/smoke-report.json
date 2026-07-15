@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-15T12:54:16.964Z",
+  "generatedAt": "2026-07-15T14:02:33.187Z",
   "ok": true,
   "gates": [
     {
@@ -42,6 +42,16 @@
       "name": "api rejects oversized JSON bodies",
       "ok": true,
       "detail": "status=413, message=请求体不能超过 32kb"
+    },
+    {
+      "name": "risk status parser rejects unsupported status",
+      "ok": true,
+      "detail": "不支持的风险事件状态"
+    },
+    {
+      "name": "risk status parser normalizes allowed values",
+      "ok": true,
+      "detail": "status=processing, note=smoke note"
     },
     {
       "name": "mock login succeeds",

@@ -7,6 +7,7 @@ import {
   LOGIN_PASSWORD_MAX_LENGTH,
   LOGIN_USERNAME_MAX_LENGTH
 } from '../backend/src/auth-payload.js';
+import { parseRiskStatusPayload } from '../backend/src/risk-status-payload.js';
 import { RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from '../backend/src/risk-events.js';
 import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
 
@@ -203,6 +204,33 @@ async function runSmoke() {
         oversizedJsonBody.status === 413 &&
           oversizedJsonBody.body?.message === '请求体不能超过 32kb',
         requestDetail(oversizedJsonBody, `, message=${oversizedJsonBody.body?.message || 'none'}`)
+      )
+    );
+
+    const unsupportedRiskStatusPayload = parseRiskStatusPayload({
+      status: 'made-up-status',
+      note: 'smoke'
+    });
+    gates.push(
+      gate(
+        'risk status parser rejects unsupported status',
+        unsupportedRiskStatusPayload.error === '不支持的风险事件状态',
+        unsupportedRiskStatusPayload.error || 'accepted'
+      )
+    );
+
+    const normalizedRiskStatusPayload = parseRiskStatusPayload({
+      status: ' processing ',
+      note: '  smoke note  '
+    });
+    gates.push(
+      gate(
+        'risk status parser normalizes allowed values',
+        normalizedRiskStatusPayload.value?.status === 'processing' &&
+          normalizedRiskStatusPayload.value?.note === 'smoke note',
+        `status=${normalizedRiskStatusPayload.value?.status || 'missing'}, note=${
+          normalizedRiskStatusPayload.value?.note || 'missing'
+        }`
       )
     );
 
