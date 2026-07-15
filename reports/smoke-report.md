@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-15T14:02:33.187Z
+Generated: 2026-07-15T15:09:15.049Z
 Status: `OK`
 
 ## Gates
@@ -8,6 +8,7 @@ Status: `OK`
 | Gate                                                    | Result | Detail                                                                      |
 | ------------------------------------------------------- | ------ | --------------------------------------------------------------------------- |
 | api health                                              | OK     | status=200, version=0.27.0                                                  |
+| api emits baseline security headers                     | OK     | cache=no-store, referrer=no-referrer, contentType=nosniff, frame=DENY       |
 | protected route rejects anonymous access                | OK     | status=401                                                                  |
 | protected route rejects malformed authorization headers | OK     | status=401, message=Authorization header must use Bearer token              |
 | protected route rejects ambiguous bearer tokens         | OK     | status=401, message=Authorization header must contain a single Bearer token |

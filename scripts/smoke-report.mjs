@@ -47,7 +47,16 @@ async function request(baseUrl, path, options = {}) {
     } catch {
       body = null;
     }
-    return { status: response.status, body };
+    return {
+      status: response.status,
+      body,
+      headers: {
+        cacheControl: response.headers.get('cache-control') || '',
+        referrerPolicy: response.headers.get('referrer-policy') || '',
+        xContentTypeOptions: response.headers.get('x-content-type-options') || '',
+        xFrameOptions: response.headers.get('x-frame-options') || ''
+      }
+    };
   } catch (error) {
     return {
       status: 0,
@@ -94,6 +103,20 @@ async function runSmoke() {
         'api health',
         health.status === 200 && health.body?.ok === true,
         requestDetail(health, `, version=${health.body?.version}`)
+      )
+    );
+    gates.push(
+      gate(
+        'api emits baseline security headers',
+        health.headers?.cacheControl === 'no-store' &&
+          health.headers?.referrerPolicy === 'no-referrer' &&
+          health.headers?.xContentTypeOptions === 'nosniff' &&
+          health.headers?.xFrameOptions === 'DENY',
+        `cache=${health.headers?.cacheControl || 'missing'}, referrer=${
+          health.headers?.referrerPolicy || 'missing'
+        }, contentType=${health.headers?.xContentTypeOptions || 'missing'}, frame=${
+          health.headers?.xFrameOptions || 'missing'
+        }`
       )
     );
 

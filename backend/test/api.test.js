@@ -22,6 +22,18 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.version, pkg.version);
   });
 
+  it('emits baseline security headers on API responses', async () => {
+    const success = await request(app).get('/api/health').expect(200);
+    const error = await request(app).get('/api/dashboard').expect(401);
+
+    for (const response of [success, error]) {
+      assert.equal(response.headers['cache-control'], 'no-store');
+      assert.equal(response.headers['referrer-policy'], 'no-referrer');
+      assert.equal(response.headers['x-content-type-options'], 'nosniff');
+      assert.equal(response.headers['x-frame-options'], 'DENY');
+    }
+  });
+
   it('rejects protected routes without a token', async () => {
     const response = await request(app).get('/api/dashboard').expect(401);
 

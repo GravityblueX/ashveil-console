@@ -32,7 +32,19 @@ const app = express();
 const PORT = process.env.PORT || 4160;
 const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 const JSON_BODY_LIMIT = '32kb';
+const SECURITY_HEADERS = Object.freeze({
+  'Cache-Control': 'no-store',
+  'Referrer-Policy': 'no-referrer',
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY'
+});
 
+app.use((_, res, next) => {
+  for (const [header, value] of Object.entries(SECURITY_HEADERS)) {
+    res.setHeader(header, value);
+  }
+  next();
+});
 app.use(cors());
 app.use(express.json({ limit: JSON_BODY_LIMIT }));
 app.use(morgan('dev'));

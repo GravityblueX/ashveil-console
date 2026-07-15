@@ -1,12 +1,17 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-15T14:02:33.187Z",
+  "generatedAt": "2026-07-15T15:09:15.049Z",
   "ok": true,
   "gates": [
     {
       "name": "api health",
       "ok": true,
       "detail": "status=200, version=0.27.0"
+    },
+    {
+      "name": "api emits baseline security headers",
+      "ok": true,
+      "detail": "cache=no-store, referrer=no-referrer, contentType=nosniff, frame=DENY"
     },
     {
       "name": "protected route rejects anonymous access",

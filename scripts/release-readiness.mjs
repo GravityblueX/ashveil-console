@@ -12,6 +12,7 @@ const markdownOut = resolve(reportsDir, 'release-readiness.md');
 const prettierBin = resolve(root, 'node_modules', 'prettier', 'bin', 'prettier.cjs');
 const REQUIRED_SMOKE_GATES = [
   'api health',
+  'api emits baseline security headers',
   'protected route rejects anonymous access',
   'protected route rejects malformed authorization headers',
   'protected route rejects ambiguous bearer tokens',
