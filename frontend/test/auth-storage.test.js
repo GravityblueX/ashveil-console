@@ -25,6 +25,31 @@ describe('frontend auth storage helpers', () => {
     assert.equal(hasStoredToken(storage), false);
   });
 
+  it('normalizes stored token values before checking auth state', () => {
+    const paddedStorage = {
+      getItem() {
+        return '  test-token  ';
+      }
+    };
+    const blankStorage = {
+      getItem() {
+        return '   ';
+      }
+    };
+    const unexpectedStorage = {
+      getItem() {
+        return { token: 'test-token' };
+      }
+    };
+
+    assert.equal(readStoredToken(paddedStorage), 'test-token');
+    assert.equal(hasStoredToken(paddedStorage), true);
+    assert.equal(readStoredToken(blankStorage), '');
+    assert.equal(hasStoredToken(blankStorage), false);
+    assert.equal(readStoredToken(unexpectedStorage), '');
+    assert.equal(hasStoredToken(unexpectedStorage), false);
+  });
+
   it('treats unavailable storage as signed out instead of throwing', () => {
     const storage = {
       getItem() {

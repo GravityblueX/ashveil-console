@@ -77,6 +77,23 @@ describe('frontend API client contract', () => {
     assert.equal(Object.hasOwn(calls[0].init.headers, 'Authorization'), false);
   });
 
+  it('does not send authorization for blank stored tokens', async () => {
+    globalThis.localStorage = {
+      getItem() {
+        return '   ';
+      }
+    };
+    installFetch({
+      ok: true,
+      json: async () => ({ public: true })
+    });
+
+    const payload = await api('/health');
+
+    assert.equal(payload.public, true);
+    assert.equal(Object.hasOwn(calls[0].init.headers, 'Authorization'), false);
+  });
+
   it('uses structured server error messages when available', async () => {
     installFetch({
       ok: false,

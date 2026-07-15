@@ -1,6 +1,7 @@
 export function readStoredToken(storage = globalThis.localStorage) {
   try {
-    return storage?.getItem?.('token') || '';
+    const value = storage?.getItem?.('token');
+    return typeof value === 'string' ? value.trim() : '';
   } catch {
     return '';
   }
