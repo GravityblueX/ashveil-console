@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 import { menus, dictionaries, auditLogs, jobs, monitor } from './store.js';
 import { buildRiskScores } from './risk.js';
 import { buildRiskEvents, RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from './risk-events.js';
+import { parseLoginPayload } from './auth-payload.js';
 import { cachedJson } from './cache.js';
 import { buildRoadmap, featureIdeas } from './ideas.js';
 import {
@@ -118,33 +119,6 @@ function parseRiskStatusPayload(body) {
     value: {
       status,
       note
-    }
-  };
-}
-
-function parseLoginPayload(body) {
-  if (!body || typeof body !== 'object' || Array.isArray(body)) {
-    return { error: '登录请求体必须是 JSON 对象' };
-  }
-
-  const allowedKeys = new Set(['username', 'password']);
-  const unknownKeys = Object.keys(body).filter((key) => !allowedKeys.has(key));
-  if (unknownKeys.length > 0) {
-    return { error: `不支持的登录字段：${unknownKeys.join(', ')}` };
-  }
-
-  if (typeof body.username !== 'string' || body.username.trim().length === 0) {
-    return { error: '用户名必须是非空字符串' };
-  }
-
-  if (typeof body.password !== 'string' || body.password.length === 0) {
-    return { error: '密码必须是非空字符串' };
-  }
-
-  return {
-    value: {
-      username: body.username.trim(),
-      password: body.password
     }
   };
 }

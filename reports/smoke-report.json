@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-15T08:28:09.233Z",
+  "generatedAt": "2026-07-15T09:19:01.153Z",
   "ok": true,
   "gates": [
     {
@@ -27,6 +27,11 @@
       "name": "login rejects extra fields",
       "ok": true,
       "detail": "status=400, message=不支持的登录字段：roles"
+    },
+    {
+      "name": "login rejects oversized credentials",
+      "ok": true,
+      "detail": "username=400, password=400"
     },
     {
       "name": "mock login succeeds",

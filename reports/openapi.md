@@ -1,6 +1,6 @@
 # Ashveil OpenAPI Contract
 
-Generated: 2026-07-15T08:28:07.840Z
+Generated: 2026-07-15T09:18:59.763Z
 Status: `OK`
 Operations: `18`
 Protected: `16`
@@ -25,7 +25,7 @@ Public: `2`
 | Express path params converted               | OK     | colon params converted to {param}                            |
 | operation IDs are unique                    | OK     | 18/18 unique operationId(s)                                  |
 | path parameters documented                  | OK     | all templated path params documented                         |
-| login request body constrained              | OK     | username/password only                                       |
+| login request body constrained              | OK     | username<=120; password<=256; username/password only         |
 | login error responses documented            | OK     | 400, 401                                                     |
 | risk status request body constrained        | OK     | pending, processing, confirmed, ignored, archived; note<=500 |
 | risk status error responses documented      | OK     | 400, 404, 503                                                |

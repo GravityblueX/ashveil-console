@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-15T08:28:09.233Z
+Generated: 2026-07-15T09:19:01.153Z
 Status: `OK`
 
 ## Gates
@@ -12,6 +12,7 @@ Status: `OK`
 | protected route rejects malformed authorization headers | OK     | status=401, message=Authorization header must use Bearer token |
 | protected route rejects malformed signed claims         | OK     | status=401, message=Invalid token                              |
 | login rejects extra fields                              | OK     | status=400, message=不支持的登录字段：roles                    |
+| login rejects oversized credentials                     | OK     | username=400, password=400                                     |
 | mock login succeeds                                     | OK     | status=200, user=admin                                         |
 | login response omits password                           | OK     | password field absent                                          |
 | dashboard contract                                      | OK     | status=200, cards=4                                            |

@@ -9,6 +9,8 @@ process.env.DATABASE_URL = '';
 process.env.JWT_SECRET = 'ashveil-test-secret';
 
 const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+const { LOGIN_PASSWORD_MAX_LENGTH, LOGIN_USERNAME_MAX_LENGTH } =
+  await import('../src/auth-payload.js');
 const { default: app } = await import('../src/server.js');
 
 describe('Ashveil API smoke contract', () => {
@@ -101,5 +103,26 @@ describe('Ashveil API smoke contract', () => {
       .expect(400);
 
     assert.equal(response.body.message, '不支持的登录字段：roles');
+  });
+
+  it('rejects oversized login credentials before checking accounts', async () => {
+    const oversizedUsername = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'u'.repeat(LOGIN_USERNAME_MAX_LENGTH + 1), password: 'ashveil2026' })
+      .expect(400);
+
+    const oversizedPassword = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: 'p'.repeat(LOGIN_PASSWORD_MAX_LENGTH + 1) })
+      .expect(400);
+
+    assert.equal(
+      oversizedUsername.body.message,
+      `用户名不能超过 ${LOGIN_USERNAME_MAX_LENGTH} 个字符`
+    );
+    assert.equal(
+      oversizedPassword.body.message,
+      `密码不能超过 ${LOGIN_PASSWORD_MAX_LENGTH} 个字符`
+    );
   });
 });

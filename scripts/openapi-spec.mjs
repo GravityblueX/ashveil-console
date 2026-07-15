@@ -13,6 +13,10 @@ const {
   RISK_EVENT_STATUSES: riskEventStatuses,
   RISK_EVENT_STATUS_NOTE_MAX_LENGTH: riskEventStatusNoteMaxLength
 } = await import('../backend/src/risk-events.js');
+const {
+  LOGIN_PASSWORD_MAX_LENGTH: loginPasswordMaxLength,
+  LOGIN_USERNAME_MAX_LENGTH: loginUsernameMaxLength
+} = await import('../backend/src/auth-payload.js');
 
 function runApiSurface() {
   const completed = spawnSync(process.execPath, [resolve(root, 'scripts', 'api-surface.mjs')], {
@@ -64,8 +68,8 @@ function requestBody(route) {
             type: 'object',
             required: ['username', 'password'],
             properties: {
-              username: { type: 'string', minLength: 1 },
-              password: { type: 'string', minLength: 1 }
+              username: { type: 'string', minLength: 1, maxLength: loginUsernameMaxLength },
+              password: { type: 'string', minLength: 1, maxLength: loginPasswordMaxLength }
             },
             additionalProperties: false
           }
@@ -345,9 +349,11 @@ function buildReport(surface, spec, projectVersion) {
         loginBody.required.includes('username') &&
         loginBody.required.includes('password') &&
         loginBody.properties?.username?.minLength === 1 &&
+        loginBody.properties?.username?.maxLength === loginUsernameMaxLength &&
         loginBody.properties?.password?.minLength === 1 &&
+        loginBody.properties?.password?.maxLength === loginPasswordMaxLength &&
         loginBody.additionalProperties === false,
-      detail: 'username/password only'
+      detail: `username<=${loginUsernameMaxLength}; password<=${loginPasswordMaxLength}; username/password only`
     },
     {
       name: 'login error responses documented',

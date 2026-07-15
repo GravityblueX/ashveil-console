@@ -3,6 +3,10 @@ import { dirname, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { menus } from '../backend/src/store.js';
+import {
+  LOGIN_PASSWORD_MAX_LENGTH,
+  LOGIN_USERNAME_MAX_LENGTH
+} from '../backend/src/auth-payload.js';
 import { RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from '../backend/src/risk-events.js';
 import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
 
@@ -140,6 +144,33 @@ async function runSmoke() {
         extraLoginFields.status === 400 &&
           extraLoginFields.body?.message === '不支持的登录字段：roles',
         requestDetail(extraLoginFields, `, message=${extraLoginFields.body?.message || 'none'}`)
+      )
+    );
+
+    const oversizedUsernameLogin = await request(baseUrl, '/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: 'u'.repeat(LOGIN_USERNAME_MAX_LENGTH + 1),
+        password: 'ashveil2026'
+      })
+    });
+    const oversizedPasswordLogin = await request(baseUrl, '/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: 'admin',
+        password: 'p'.repeat(LOGIN_PASSWORD_MAX_LENGTH + 1)
+      })
+    });
+    gates.push(
+      gate(
+        'login rejects oversized credentials',
+        oversizedUsernameLogin.status === 400 &&
+          oversizedUsernameLogin.body?.message ===
+            `用户名不能超过 ${LOGIN_USERNAME_MAX_LENGTH} 个字符` &&
+          oversizedPasswordLogin.status === 400 &&
+          oversizedPasswordLogin.body?.message ===
+            `密码不能超过 ${LOGIN_PASSWORD_MAX_LENGTH} 个字符`,
+        `username=${oversizedUsernameLogin.status}, password=${oversizedPasswordLogin.status}`
       )
     );
 
