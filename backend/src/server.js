@@ -31,6 +31,7 @@ const { version: API_VERSION } = createRequire(import.meta.url)('../package.json
 const app = express();
 const PORT = process.env.PORT || 4160;
 const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
+const JWT_ALGORITHM = 'HS256';
 const JSON_BODY_LIMIT = '32kb';
 const SECURITY_HEADERS = Object.freeze({
   'Cache-Control': 'no-store',
@@ -63,6 +64,7 @@ app.use((err, _req, res, next) => {
 
 function sign(user) {
   return jwt.sign({ id: user.id, username: user.username, roles: user.roles }, JWT_SECRET, {
+    algorithm: JWT_ALGORITHM,
     expiresIn: '8h'
   });
 }
@@ -106,7 +108,7 @@ function auth(req, res, next) {
   const parsed = parseBearerToken(req.headers.authorization);
   if (parsed.error) return res.status(401).json({ message: parsed.error });
   try {
-    const claims = jwt.verify(parsed.token, JWT_SECRET);
+    const claims = jwt.verify(parsed.token, JWT_SECRET, { algorithms: [JWT_ALGORITHM] });
     if (!isValidAuthClaims(claims)) {
       return res.status(401).json({ message: 'Invalid token' });
     }

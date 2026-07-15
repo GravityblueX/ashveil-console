@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-15T17:54:18.853Z
+Generated: 2026-07-15T22:12:50.975Z
 Status: `OK`
 
 ## Gates

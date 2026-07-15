@@ -1,6 +1,6 @@
 # Ashveil Client API Coverage
 
-Generated: 2026-07-15T17:54:17.191Z
+Generated: 2026-07-15T22:12:49.765Z
 Status: `OK`
 Client calls: `15`
 Matched calls: `15`

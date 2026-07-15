@@ -94,6 +94,19 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.user.username, 'admin');
   });
 
+  it('rejects signed tokens that use an unsupported JWT algorithm', async () => {
+    const token = jwt.sign({ id: 1, username: 'admin', roles: ['ROOT'] }, 'ashveil-test-secret', {
+      algorithm: 'HS384'
+    });
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(401);
+
+    assert.equal(response.body.message, 'Invalid token');
+  });
+
   it('rejects signed tokens with missing auth claims', async () => {
     const malformedToken = jwt.sign({ username: 'admin', roles: ['ROOT'] }, 'ashveil-test-secret');
 
