@@ -6,7 +6,12 @@ import morgan from 'morgan';
 import jwt from 'jsonwebtoken';
 import { menus, dictionaries, auditLogs, jobs, monitor } from './store.js';
 import { buildRiskScores } from './risk.js';
-import { buildRiskEvents, RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from './risk-events.js';
+import {
+  buildRiskEvents,
+  RISK_EVENT_KEY_MAX_LENGTH,
+  RISK_EVENT_KEY_PATTERN,
+  RISK_EVENT_STATUS_NOTE_MAX_LENGTH
+} from './risk-events.js';
 import { parseLoginPayload } from './auth-payload.js';
 import { cachedJson } from './cache.js';
 import { buildRoadmap, featureIdeas } from './ideas.js';
@@ -132,6 +137,19 @@ function parseRiskStatusPayload(body) {
   };
 }
 
+function parseRiskEventKeyParam(value) {
+  if (typeof value !== 'string' || value.length === 0) {
+    return { error: '风险事件标识必须是非空字符串' };
+  }
+  if (value.length > RISK_EVENT_KEY_MAX_LENGTH) {
+    return { error: `风险事件标识不能超过 ${RISK_EVENT_KEY_MAX_LENGTH} 个字符` };
+  }
+  if (!RISK_EVENT_KEY_PATTERN.test(value)) {
+    return { error: '风险事件标识只能包含字母、数字、冒号、下划线和连字符' };
+  }
+  return { value };
+}
+
 app.get('/api/health', (_, res) =>
   res.json({ ok: true, name: 'Ashveil Console API', version: API_VERSION })
 );
@@ -210,9 +228,11 @@ app.get('/api/risk/events', auth, async (_, res) => {
   });
 });
 app.patch('/api/risk/events/:eventKey/status', auth, async (req, res) => {
+  const eventKey = parseRiskEventKeyParam(req.params.eventKey);
+  if (eventKey.error) return res.status(400).json({ message: eventKey.error });
   const payload = parseRiskStatusPayload(req.body);
   if (payload.error) return res.status(400).json({ message: payload.error });
-  const result = await updateRiskEventStatus(req.params.eventKey, payload.value.status, {
+  const result = await updateRiskEventStatus(eventKey.value, payload.value.status, {
     note: payload.value.note,
     actor: req.user?.username
   });

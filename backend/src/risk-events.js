@@ -1,6 +1,9 @@
 import { buildRiskScores } from './risk.js';
 
 export const RISK_EVENT_STATUSES = ['pending', 'processing', 'confirmed', 'ignored', 'archived'];
+export const RISK_EVENT_KEY_MAX_LENGTH = 80;
+export const RISK_EVENT_KEY_PATTERN_SOURCE = '^[A-Za-z0-9:_-]+$';
+export const RISK_EVENT_KEY_PATTERN = new RegExp(RISK_EVENT_KEY_PATTERN_SOURCE);
 export const RISK_EVENT_STATUS_NOTE_MAX_LENGTH = 500;
 
 function eventStatus(item) {

@@ -24,6 +24,7 @@ const REQUIRED_SMOKE_GATES = [
   'dashboard contract',
   'risk events contract',
   'risk status rejects invalid status',
+  'risk status rejects malformed event keys',
   'risk status rejects malformed JSON',
   'risk status rejects oversized notes',
   'risk status persistence boundary',
@@ -60,6 +61,7 @@ const REQUIRED_OPENAPI_GATES = [
   'login request body constrained',
   'login error responses documented',
   'risk status request body constrained',
+  'risk event key path parameter constrained',
   'risk status error responses documented'
 ];
 const REQUIRED_CLIENT_API_COVERAGE_GATES = [

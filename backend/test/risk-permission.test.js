@@ -104,6 +104,31 @@ describe('Ashveil risk and access regression contract', () => {
     assert.equal(response.body.message, '不支持的风险事件状态');
   });
 
+  it('rejects oversized risk event keys before payload handling', async () => {
+    const token = await loginToken();
+    const oversizedKey = 'risk:' + 'x'.repeat(90);
+
+    const response = await request(app)
+      .patch(`/api/risk/events/${oversizedKey}/status`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: 'processing', note: 'should not persist' })
+      .expect(400);
+
+    assert.equal(response.body.message, '风险事件标识不能超过 80 个字符');
+  });
+
+  it('rejects malformed risk event keys before payload handling', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1%20bad/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: 'processing', note: 'should not persist' })
+      .expect(400);
+
+    assert.equal(response.body.message, '风险事件标识只能包含字母、数字、冒号、下划线和连字符');
+  });
+
   it('rejects missing risk event status before repository handling', async () => {
     const token = await loginToken();
 

@@ -1,6 +1,6 @@
 # Ashveil OpenAPI Contract
 
-Generated: 2026-07-15T12:03:31.112Z
+Generated: 2026-07-15T12:54:15.486Z
 Status: `OK`
 Operations: `18`
 Protected: `16`
@@ -28,6 +28,7 @@ Public: `2`
 | login request body constrained              | OK     | username<=120; password<=256; username/password only         |
 | login error responses documented            | OK     | 400, 401                                                     |
 | risk status request body constrained        | OK     | pending, processing, confirmed, ignored, archived; note<=500 |
+| risk event key path parameter constrained   | OK     | eventKey<=80; pattern=^[A-Za-z0-9:_-]+$                      |
 | risk status error responses documented      | OK     | 400, 404, 503                                                |
 
 ## Reference Basis

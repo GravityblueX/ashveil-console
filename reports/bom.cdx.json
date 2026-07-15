@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:670225df-5f74-4109-9163-e726f581f4d4",
+  "serialNumber": "urn:uuid:26753378-aae1-456b-bda2-d199ce834d2e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-15T12:03:31.654Z",
+    "timestamp": "2026-07-15T12:54:16.041Z",
     "component": {
       "type": "application",
       "name": "ashveil-console",
@@ -6840,7 +6840,7 @@
       {
         "name": "CycloneDX serial number is UUID URN",
         "ok": true,
-        "detail": "urn:uuid:670225df-5f74-4109-9163-e726f581f4d4"
+        "detail": "urn:uuid:26753378-aae1-456b-bda2-d199ce834d2e"
       }
     ],
     "lockfiles": [

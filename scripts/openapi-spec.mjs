@@ -10,6 +10,8 @@ const apiSurfacePath = resolve(reportsDir, 'api-surface.json');
 const jsonOut = resolve(reportsDir, 'openapi.json');
 const markdownOut = resolve(reportsDir, 'openapi.md');
 const {
+  RISK_EVENT_KEY_MAX_LENGTH: riskEventKeyMaxLength,
+  RISK_EVENT_KEY_PATTERN_SOURCE: riskEventKeyPatternSource,
   RISK_EVENT_STATUSES: riskEventStatuses,
   RISK_EVENT_STATUS_NOTE_MAX_LENGTH: riskEventStatusNoteMaxLength
 } = await import('../backend/src/risk-events.js');
@@ -41,7 +43,16 @@ function pathParameters(expressPath) {
     name: match[1],
     in: 'path',
     required: true,
-    schema: { type: 'string' }
+    schema: {
+      type: 'string',
+      ...(match[1] === 'eventKey'
+        ? {
+            minLength: 1,
+            maxLength: riskEventKeyMaxLength,
+            pattern: riskEventKeyPatternSource
+          }
+        : {})
+    }
   }));
 }
 
@@ -205,6 +216,11 @@ function buildReport(surface, spec, projectVersion) {
   const loginResponses = spec.paths['/api/auth/login']?.post?.responses || {};
   const riskStatusResponses =
     spec.paths['/api/risk/events/{eventKey}/status']?.patch?.responses || {};
+  const riskEventKeyParam = spec.paths[
+    '/api/risk/events/{eventKey}/status'
+  ]?.patch?.parameters?.find(
+    (parameter) => parameter.name === 'eventKey' && parameter.in === 'path'
+  );
   const riskStatusEnum = riskStatusBody?.properties?.status?.enum;
   const operationIds = operations.map((operation) => operation.operationId).filter(Boolean);
   const operationsWithSourceLines = operations.filter(
@@ -371,6 +387,14 @@ function buildReport(surface, spec, projectVersion) {
         riskStatusBody.properties?.note?.maxLength === riskEventStatusNoteMaxLength &&
         riskStatusBody.additionalProperties === false,
       detail: `${riskEventStatuses.join(', ')}; note<=${riskEventStatusNoteMaxLength}`
+    },
+    {
+      name: 'risk event key path parameter constrained',
+      ok:
+        riskEventKeyParam?.schema?.minLength === 1 &&
+        riskEventKeyParam?.schema?.maxLength === riskEventKeyMaxLength &&
+        riskEventKeyParam?.schema?.pattern === riskEventKeyPatternSource,
+      detail: `eventKey<=${riskEventKeyMaxLength}; pattern=${riskEventKeyPatternSource}`
     },
     {
       name: 'risk status error responses documented',

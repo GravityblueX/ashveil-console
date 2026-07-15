@@ -261,6 +261,28 @@ async function runSmoke() {
         )
       );
 
+      const malformedRiskEventKey = await request(
+        baseUrl,
+        '/api/risk/events/risk%3Auser%3A1%20bad/status',
+        {
+          method: 'PATCH',
+          headers: authHeaders,
+          body: JSON.stringify({ status: 'processing', note: 'smoke' })
+        }
+      );
+      gates.push(
+        gate(
+          'risk status rejects malformed event keys',
+          malformedRiskEventKey.status === 400 &&
+            malformedRiskEventKey.body?.message ===
+              '风险事件标识只能包含字母、数字、冒号、下划线和连字符',
+          requestDetail(
+            malformedRiskEventKey,
+            `, message=${malformedRiskEventKey.body?.message || 'none'}`
+          )
+        )
+      );
+
       const malformedRiskStatus = await request(
         baseUrl,
         '/api/risk/events/risk%3Auser%3A1/status',
