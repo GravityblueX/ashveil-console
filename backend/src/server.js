@@ -34,9 +34,12 @@ const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 const JSON_BODY_LIMIT = '32kb';
 const SECURITY_HEADERS = Object.freeze({
   'Cache-Control': 'no-store',
+  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
   'Referrer-Policy': 'no-referrer',
   'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY'
+  'X-Frame-Options': 'DENY',
+  'X-Permitted-Cross-Domain-Policies': 'none'
 });
 
 app.use((_, res, next) => {

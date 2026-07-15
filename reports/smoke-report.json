@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-15T15:09:15.049Z",
+  "generatedAt": "2026-07-15T17:54:18.853Z",
   "ok": true,
   "gates": [
     {
@@ -11,7 +11,7 @@
     {
       "name": "api emits baseline security headers",
       "ok": true,
-      "detail": "cache=no-store, referrer=no-referrer, contentType=nosniff, frame=DENY"
+      "detail": "cache=no-store, referrer=no-referrer, contentType=nosniff, frame=DENY, csp=default-src 'none'; frame-ancestors 'none'; base-uri 'none', permissions=camera=(), microphone=(), geolocation=(), crossDomain=none"
     },
     {
       "name": "protected route rejects anonymous access",

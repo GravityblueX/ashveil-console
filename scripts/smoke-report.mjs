@@ -52,9 +52,13 @@ async function request(baseUrl, path, options = {}) {
       body,
       headers: {
         cacheControl: response.headers.get('cache-control') || '',
+        contentSecurityPolicy: response.headers.get('content-security-policy') || '',
+        permissionsPolicy: response.headers.get('permissions-policy') || '',
         referrerPolicy: response.headers.get('referrer-policy') || '',
         xContentTypeOptions: response.headers.get('x-content-type-options') || '',
-        xFrameOptions: response.headers.get('x-frame-options') || ''
+        xFrameOptions: response.headers.get('x-frame-options') || '',
+        xPermittedCrossDomainPolicies:
+          response.headers.get('x-permitted-cross-domain-policies') || ''
       }
     };
   } catch (error) {
@@ -109,14 +113,20 @@ async function runSmoke() {
       gate(
         'api emits baseline security headers',
         health.headers?.cacheControl === 'no-store' &&
+          health.headers?.contentSecurityPolicy ===
+            "default-src 'none'; frame-ancestors 'none'; base-uri 'none'" &&
+          health.headers?.permissionsPolicy === 'camera=(), microphone=(), geolocation=()' &&
           health.headers?.referrerPolicy === 'no-referrer' &&
           health.headers?.xContentTypeOptions === 'nosniff' &&
-          health.headers?.xFrameOptions === 'DENY',
+          health.headers?.xFrameOptions === 'DENY' &&
+          health.headers?.xPermittedCrossDomainPolicies === 'none',
         `cache=${health.headers?.cacheControl || 'missing'}, referrer=${
           health.headers?.referrerPolicy || 'missing'
         }, contentType=${health.headers?.xContentTypeOptions || 'missing'}, frame=${
           health.headers?.xFrameOptions || 'missing'
-        }`
+        }, csp=${health.headers?.contentSecurityPolicy || 'missing'}, permissions=${
+          health.headers?.permissionsPolicy || 'missing'
+        }, crossDomain=${health.headers?.xPermittedCrossDomainPolicies || 'missing'}`
       )
     );
 

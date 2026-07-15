@@ -28,9 +28,18 @@ describe('Ashveil API smoke contract', () => {
 
     for (const response of [success, error]) {
       assert.equal(response.headers['cache-control'], 'no-store');
+      assert.equal(
+        response.headers['content-security-policy'],
+        "default-src 'none'; frame-ancestors 'none'; base-uri 'none'"
+      );
+      assert.equal(
+        response.headers['permissions-policy'],
+        'camera=(), microphone=(), geolocation=()'
+      );
       assert.equal(response.headers['referrer-policy'], 'no-referrer');
       assert.equal(response.headers['x-content-type-options'], 'nosniff');
       assert.equal(response.headers['x-frame-options'], 'DENY');
+      assert.equal(response.headers['x-permitted-cross-domain-policies'], 'none');
     }
   });
 
