@@ -1,6 +1,6 @@
 # Ashveil API Surface
 
-Generated: 2026-07-15T10:06:42.789Z
+Generated: 2026-07-15T11:16:30.326Z
 Status: `OK`
 Routes: `18`
 Public: `2`
@@ -24,24 +24,24 @@ Protected: `16`
 
 | Method | Path                                | Auth      | Source                      |
 | ------ | ----------------------------------- | --------- | --------------------------- |
-| GET    | `/api/access/menus`                 | protected | `backend/src/server.js:164` |
-| GET    | `/api/access/permission-matrix`     | protected | `backend/src/server.js:165` |
-| GET    | `/api/access/roles`                 | protected | `backend/src/server.js:163` |
-| GET    | `/api/access/users`                 | protected | `backend/src/server.js:162` |
-| GET    | `/api/audit/logs`                   | protected | `backend/src/server.js:170` |
-| GET    | `/api/audit/summary`                | protected | `backend/src/server.js:171` |
-| POST   | `/api/auth/login`                   | public    | `backend/src/server.js:130` |
-| GET    | `/api/auth/me`                      | protected | `backend/src/server.js:143` |
-| GET    | `/api/dashboard`                    | protected | `backend/src/server.js:149` |
-| GET    | `/api/dictionaries`                 | protected | `backend/src/server.js:169` |
-| GET    | `/api/health`                       | public    | `backend/src/server.js:126` |
-| GET    | `/api/ideas`                        | protected | `backend/src/server.js:213` |
-| GET    | `/api/jobs`                         | protected | `backend/src/server.js:190` |
-| GET    | `/api/monitor`                      | protected | `backend/src/server.js:191` |
-| GET    | `/api/risk/events`                  | protected | `backend/src/server.js:195` |
-| PATCH  | `/api/risk/events/:eventKey/status` | protected | `backend/src/server.js:203` |
-| GET    | `/api/risk/scores`                  | protected | `backend/src/server.js:192` |
-| GET    | `/api/watch/night`                  | protected | `backend/src/server.js:214` |
+| GET    | `/api/access/menus`                 | protected | `backend/src/server.js:169` |
+| GET    | `/api/access/permission-matrix`     | protected | `backend/src/server.js:170` |
+| GET    | `/api/access/roles`                 | protected | `backend/src/server.js:168` |
+| GET    | `/api/access/users`                 | protected | `backend/src/server.js:167` |
+| GET    | `/api/audit/logs`                   | protected | `backend/src/server.js:175` |
+| GET    | `/api/audit/summary`                | protected | `backend/src/server.js:176` |
+| POST   | `/api/auth/login`                   | public    | `backend/src/server.js:135` |
+| GET    | `/api/auth/me`                      | protected | `backend/src/server.js:148` |
+| GET    | `/api/dashboard`                    | protected | `backend/src/server.js:154` |
+| GET    | `/api/dictionaries`                 | protected | `backend/src/server.js:174` |
+| GET    | `/api/health`                       | public    | `backend/src/server.js:131` |
+| GET    | `/api/ideas`                        | protected | `backend/src/server.js:218` |
+| GET    | `/api/jobs`                         | protected | `backend/src/server.js:195` |
+| GET    | `/api/monitor`                      | protected | `backend/src/server.js:196` |
+| GET    | `/api/risk/events`                  | protected | `backend/src/server.js:200` |
+| PATCH  | `/api/risk/events/:eventKey/status` | protected | `backend/src/server.js:208` |
+| GET    | `/api/risk/scores`                  | protected | `backend/src/server.js:197` |
+| GET    | `/api/watch/night`                  | protected | `backend/src/server.js:219` |
 
 ## Reference Basis
 

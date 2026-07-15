@@ -52,7 +52,12 @@ function parseBearerToken(raw) {
     return { error: 'Authorization header must use Bearer token' };
   }
 
-  return { token: match[1].trim() };
+  const token = match[1].trim();
+  if (/\s/.test(token)) {
+    return { error: 'Authorization header must contain a single Bearer token' };
+  }
+
+  return { token };
 }
 
 function isValidUserId(value) {

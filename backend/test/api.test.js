@@ -37,6 +37,15 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.message, 'Authorization header must use Bearer token');
   });
 
+  it('rejects bearer headers with whitespace inside the token before JWT verification', async () => {
+    const response = await request(app)
+      .get('/api/dashboard')
+      .set('Authorization', 'Bearer first second')
+      .expect(401);
+
+    assert.equal(response.body.message, 'Authorization header must contain a single Bearer token');
+  });
+
   it('logs in with mock credentials and keeps passwords out of the response', async () => {
     const response = await request(app)
       .post('/api/auth/login')

@@ -117,6 +117,22 @@ async function runSmoke() {
       )
     );
 
+    const ambiguousBearerToken = await request(baseUrl, '/api/dashboard', {
+      headers: { authorization: 'Bearer first second' }
+    });
+    gates.push(
+      gate(
+        'protected route rejects ambiguous bearer tokens',
+        ambiguousBearerToken.status === 401 &&
+          ambiguousBearerToken.body?.message ===
+            'Authorization header must contain a single Bearer token',
+        requestDetail(
+          ambiguousBearerToken,
+          `, message=${ambiguousBearerToken.body?.message || 'none'}`
+        )
+      )
+    );
+
     const malformedSignedClaims = await request(baseUrl, '/api/auth/me', {
       headers: {
         authorization: `Bearer ${jwt.sign({ username: 'admin', roles: ['ROOT'] }, process.env.JWT_SECRET)}`
