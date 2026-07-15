@@ -22,6 +22,7 @@ const REQUIRED_SMOKE_GATES = [
   'risk events contract',
   'risk status rejects invalid status',
   'risk status rejects malformed JSON',
+  'risk status rejects oversized notes',
   'risk status persistence boundary',
   'frontend route coverage',
   'login route exists'

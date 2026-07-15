@@ -1,6 +1,7 @@
 import { buildRiskScores } from './risk.js';
 
 export const RISK_EVENT_STATUSES = ['pending', 'processing', 'confirmed', 'ignored', 'archived'];
+export const RISK_EVENT_STATUS_NOTE_MAX_LENGTH = 500;
 
 function eventStatus(item) {
   if (item.band === 'critical') return 'pending';

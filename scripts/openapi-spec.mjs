@@ -9,7 +9,10 @@ const reportsDir = resolve(root, 'reports');
 const apiSurfacePath = resolve(reportsDir, 'api-surface.json');
 const jsonOut = resolve(reportsDir, 'openapi.json');
 const markdownOut = resolve(reportsDir, 'openapi.md');
-const { RISK_EVENT_STATUSES: riskEventStatuses } = await import('../backend/src/risk-events.js');
+const {
+  RISK_EVENT_STATUSES: riskEventStatuses,
+  RISK_EVENT_STATUS_NOTE_MAX_LENGTH: riskEventStatusNoteMaxLength
+} = await import('../backend/src/risk-events.js');
 
 function runApiSurface() {
   const completed = spawnSync(process.execPath, [resolve(root, 'scripts', 'api-surface.mjs')], {
@@ -81,7 +84,7 @@ function requestBody(route) {
             required: ['status'],
             properties: {
               status: { type: 'string', enum: riskEventStatuses },
-              note: { type: 'string' }
+              note: { type: 'string', maxLength: riskEventStatusNoteMaxLength }
             },
             additionalProperties: false
           }
@@ -359,8 +362,9 @@ function buildReport(surface, spec, projectVersion) {
         riskStatusBody.required.includes('status') &&
         Array.isArray(riskStatusEnum) &&
         JSON.stringify(riskStatusEnum) === JSON.stringify(riskEventStatuses) &&
+        riskStatusBody.properties?.note?.maxLength === riskEventStatusNoteMaxLength &&
         riskStatusBody.additionalProperties === false,
-      detail: riskEventStatuses.join(', ')
+      detail: `${riskEventStatuses.join(', ')}; note<=${riskEventStatusNoteMaxLength}`
     },
     {
       name: 'risk status error responses documented',

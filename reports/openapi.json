@@ -26,7 +26,7 @@
         "operationId": "getApiAccessMenus",
         "summary": "GET /api/access/menus",
         "tags": ["api/access"],
-        "description": "Discovered from backend/src/server.js:182. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:190. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -50,7 +50,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 182,
+        "x-source-line": 190,
         "x-auth-boundary": "protected"
       }
     },
@@ -59,7 +59,7 @@
         "operationId": "getApiAccessPermissionMatrix",
         "summary": "GET /api/access/permission-matrix",
         "tags": ["api/access"],
-        "description": "Discovered from backend/src/server.js:183. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:191. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -83,7 +83,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 183,
+        "x-source-line": 191,
         "x-auth-boundary": "protected"
       }
     },
@@ -92,105 +92,6 @@
         "operationId": "getApiAccessRoles",
         "summary": "GET /api/access/roles",
         "tags": ["api/access"],
-        "description": "Discovered from backend/src/server.js:181. Auth boundary: JWT bearer token required.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Missing or invalid bearer token"
-          }
-        },
-        "x-source-file": "backend/src/server.js",
-        "x-source-line": 181,
-        "x-auth-boundary": "protected"
-      }
-    },
-    "/api/access/users": {
-      "get": {
-        "operationId": "getApiAccessUsers",
-        "summary": "GET /api/access/users",
-        "tags": ["api/access"],
-        "description": "Discovered from backend/src/server.js:180. Auth boundary: JWT bearer token required.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Missing or invalid bearer token"
-          }
-        },
-        "x-source-file": "backend/src/server.js",
-        "x-source-line": 180,
-        "x-auth-boundary": "protected"
-      }
-    },
-    "/api/audit/logs": {
-      "get": {
-        "operationId": "getApiAuditLogs",
-        "summary": "GET /api/audit/logs",
-        "tags": ["api/audit"],
-        "description": "Discovered from backend/src/server.js:188. Auth boundary: JWT bearer token required.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Missing or invalid bearer token"
-          }
-        },
-        "x-source-file": "backend/src/server.js",
-        "x-source-line": 188,
-        "x-auth-boundary": "protected"
-      }
-    },
-    "/api/audit/summary": {
-      "get": {
-        "operationId": "getApiAuditSummary",
-        "summary": "GET /api/audit/summary",
-        "tags": ["api/audit"],
         "description": "Discovered from backend/src/server.js:189. Auth boundary: JWT bearer token required.",
         "security": [
           {
@@ -219,12 +120,111 @@
         "x-auth-boundary": "protected"
       }
     },
+    "/api/access/users": {
+      "get": {
+        "operationId": "getApiAccessUsers",
+        "summary": "GET /api/access/users",
+        "tags": ["api/access"],
+        "description": "Discovered from backend/src/server.js:188. Auth boundary: JWT bearer token required.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "x-source-file": "backend/src/server.js",
+        "x-source-line": 188,
+        "x-auth-boundary": "protected"
+      }
+    },
+    "/api/audit/logs": {
+      "get": {
+        "operationId": "getApiAuditLogs",
+        "summary": "GET /api/audit/logs",
+        "tags": ["api/audit"],
+        "description": "Discovered from backend/src/server.js:196. Auth boundary: JWT bearer token required.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "x-source-file": "backend/src/server.js",
+        "x-source-line": 196,
+        "x-auth-boundary": "protected"
+      }
+    },
+    "/api/audit/summary": {
+      "get": {
+        "operationId": "getApiAuditSummary",
+        "summary": "GET /api/audit/summary",
+        "tags": ["api/audit"],
+        "description": "Discovered from backend/src/server.js:197. Auth boundary: JWT bearer token required.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer token"
+          }
+        },
+        "x-source-file": "backend/src/server.js",
+        "x-source-line": 197,
+        "x-auth-boundary": "protected"
+      }
+    },
     "/api/auth/login": {
       "post": {
         "operationId": "postApiAuthLogin",
         "summary": "POST /api/auth/login",
         "tags": ["api/auth"],
-        "description": "Discovered from backend/src/server.js:148. Auth boundary: public endpoint.",
+        "description": "Discovered from backend/src/server.js:156. Auth boundary: public endpoint.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -268,7 +268,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 148,
+        "x-source-line": 156,
         "x-auth-boundary": "public"
       }
     },
@@ -277,7 +277,7 @@
         "operationId": "getApiAuthMe",
         "summary": "GET /api/auth/me",
         "tags": ["api/auth"],
-        "description": "Discovered from backend/src/server.js:161. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:169. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -301,7 +301,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 161,
+        "x-source-line": 169,
         "x-auth-boundary": "protected"
       }
     },
@@ -310,7 +310,7 @@
         "operationId": "getApiDashboard",
         "summary": "GET /api/dashboard",
         "tags": ["api/dashboard"],
-        "description": "Discovered from backend/src/server.js:167. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:175. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -334,7 +334,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 167,
+        "x-source-line": 175,
         "x-auth-boundary": "protected"
       }
     },
@@ -343,7 +343,7 @@
         "operationId": "getApiDictionaries",
         "summary": "GET /api/dictionaries",
         "tags": ["api/dictionaries"],
-        "description": "Discovered from backend/src/server.js:187. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:195. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -367,7 +367,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 187,
+        "x-source-line": 195,
         "x-auth-boundary": "protected"
       }
     },
@@ -376,7 +376,7 @@
         "operationId": "getApiHealth",
         "summary": "GET /api/health",
         "tags": ["api/health"],
-        "description": "Discovered from backend/src/server.js:144. Auth boundary: public endpoint.",
+        "description": "Discovered from backend/src/server.js:152. Auth boundary: public endpoint.",
         "parameters": [],
         "responses": {
           "200": {
@@ -392,7 +392,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 144,
+        "x-source-line": 152,
         "x-auth-boundary": "public"
       }
     },
@@ -401,7 +401,7 @@
         "operationId": "getApiIdeas",
         "summary": "GET /api/ideas",
         "tags": ["api/ideas"],
-        "description": "Discovered from backend/src/server.js:231. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:239. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -425,7 +425,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 231,
+        "x-source-line": 239,
         "x-auth-boundary": "protected"
       }
     },
@@ -434,7 +434,7 @@
         "operationId": "getApiJobs",
         "summary": "GET /api/jobs",
         "tags": ["api/jobs"],
-        "description": "Discovered from backend/src/server.js:208. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:216. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -458,7 +458,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 208,
+        "x-source-line": 216,
         "x-auth-boundary": "protected"
       }
     },
@@ -467,7 +467,7 @@
         "operationId": "getApiMonitor",
         "summary": "GET /api/monitor",
         "tags": ["api/monitor"],
-        "description": "Discovered from backend/src/server.js:209. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:217. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -491,7 +491,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 209,
+        "x-source-line": 217,
         "x-auth-boundary": "protected"
       }
     },
@@ -500,7 +500,7 @@
         "operationId": "getApiRiskEvents",
         "summary": "GET /api/risk/events",
         "tags": ["api/risk"],
-        "description": "Discovered from backend/src/server.js:213. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:221. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -524,7 +524,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 213,
+        "x-source-line": 221,
         "x-auth-boundary": "protected"
       }
     },
@@ -533,7 +533,7 @@
         "operationId": "patchApiRiskEventsByEventKeyStatus",
         "summary": "PATCH /api/risk/events/:eventKey/status",
         "tags": ["api/risk"],
-        "description": "Discovered from backend/src/server.js:221. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:229. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -562,7 +562,8 @@
                     "enum": ["pending", "processing", "confirmed", "ignored", "archived"]
                   },
                   "note": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 500
                   }
                 },
                 "additionalProperties": false
@@ -596,7 +597,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 221,
+        "x-source-line": 229,
         "x-auth-boundary": "protected"
       }
     },
@@ -605,7 +606,7 @@
         "operationId": "getApiRiskScores",
         "summary": "GET /api/risk/scores",
         "tags": ["api/risk"],
-        "description": "Discovered from backend/src/server.js:210. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:218. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -629,7 +630,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 210,
+        "x-source-line": 218,
         "x-auth-boundary": "protected"
       }
     },
@@ -638,7 +639,7 @@
         "operationId": "getApiWatchNight",
         "summary": "GET /api/watch/night",
         "tags": ["api/watch"],
-        "description": "Discovered from backend/src/server.js:232. Auth boundary: JWT bearer token required.",
+        "description": "Discovered from backend/src/server.js:240. Auth boundary: JWT bearer token required.",
         "security": [
           {
             "bearerAuth": []
@@ -662,7 +663,7 @@
           }
         },
         "x-source-file": "backend/src/server.js",
-        "x-source-line": 232,
+        "x-source-line": 240,
         "x-auth-boundary": "protected"
       }
     }
@@ -670,7 +671,7 @@
   "x-generated-from": "reports/api-surface.json",
   "x-report": {
     "reportType": "ashveil_openapi_contract",
-    "generatedAt": "2026-07-14T20:03:27.381Z",
+    "generatedAt": "2026-07-15T08:28:07.840Z",
     "ok": true,
     "summary": {
       "pathCount": 18,
@@ -767,7 +768,7 @@
       {
         "name": "risk status request body constrained",
         "ok": true,
-        "detail": "pending, processing, confirmed, ignored, archived"
+        "detail": "pending, processing, confirmed, ignored, archived; note<=500"
       },
       {
         "name": "risk status error responses documented",

@@ -51,10 +51,11 @@ model RiskEventStatusLog {
 后端行为：
 
 1. 校验状态是否合法。
-2. 从 JWT 读取 `req.user.username` 作为操作人。
-3. 更新 `RiskEvent.status`、`statusNote`、`handledBy`、`statusChangedAt`。
-4. 写入 `RiskEventStatusLog`，记录旧状态、新状态、备注和操作人。
-5. 返回最新事件以及最近 5 条状态轨迹。
+2. 清理状态和备注首尾空白，并拒绝超过 500 个字符的备注。
+3. 从 JWT 读取 `req.user.username` 作为操作人。
+4. 更新 `RiskEvent.status`、`statusNote`、`handledBy`、`statusChangedAt`。
+5. 写入 `RiskEventStatusLog`，记录旧状态、新状态、备注和操作人。
+6. 返回最新事件以及最近 5 条状态轨迹。
 
 ## 前端行为
 

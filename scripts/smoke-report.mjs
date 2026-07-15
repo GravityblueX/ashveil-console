@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { menus } from '../backend/src/store.js';
+import { RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from '../backend/src/risk-events.js';
 import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
 
 process.env.NODE_ENV = 'test';
@@ -214,6 +215,31 @@ async function runSmoke() {
           requestDetail(
             malformedRiskStatus,
             `, message=${malformedRiskStatus.body?.message || 'none'}`
+          )
+        )
+      );
+
+      const oversizedRiskStatusNote = await request(
+        baseUrl,
+        '/api/risk/events/risk%3Auser%3A1/status',
+        {
+          method: 'PATCH',
+          headers: authHeaders,
+          body: JSON.stringify({
+            status: 'processing',
+            note: 'x'.repeat(RISK_EVENT_STATUS_NOTE_MAX_LENGTH + 1)
+          })
+        }
+      );
+      gates.push(
+        gate(
+          'risk status rejects oversized notes',
+          oversizedRiskStatusNote.status === 400 &&
+            oversizedRiskStatusNote.body?.message ===
+              `风险事件处置备注不能超过 ${RISK_EVENT_STATUS_NOTE_MAX_LENGTH} 个字符`,
+          requestDetail(
+            oversizedRiskStatusNote,
+            `, message=${oversizedRiskStatusNote.body?.message || 'none'}`
           )
         )
       );

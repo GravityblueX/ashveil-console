@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-14T20:03:28.714Z
+Generated: 2026-07-15T08:28:09.233Z
 Status: `OK`
 
 ## Gates
@@ -18,6 +18,7 @@ Status: `OK`
 | risk events contract                                    | OK     | status=200, events=4                                           |
 | risk status rejects invalid status                      | OK     | status=400, message=不支持的风险事件状态                       |
 | risk status rejects malformed JSON                      | OK     | status=400, message=请求体必须是合法 JSON                      |
+| risk status rejects oversized notes                     | OK     | status=400, message=风险事件处置备注不能超过 500 个字符        |
 | risk status persistence boundary                        | OK     | status=503, message=Prisma 不可用，无法持久化风险事件状态      |
 | frontend route coverage                                 | OK     | 11 menu routes covered                                         |
 | login route exists                                      | OK     | /login                                                         |

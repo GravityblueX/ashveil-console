@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
 import request from 'supertest';
+import { RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from '../src/risk-events.js';
 
 process.env.NODE_ENV = 'test';
 process.env.DATABASE_URL = '';
@@ -125,6 +126,33 @@ describe('Ashveil risk and access regression contract', () => {
       .expect(400);
 
     assert.equal(response.body.message, '风险事件处置备注必须是字符串');
+  });
+
+  it('rejects oversized risk event notes before persistence is attempted', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: 'processing', note: 'x'.repeat(RISK_EVENT_STATUS_NOTE_MAX_LENGTH + 1) })
+      .expect(400);
+
+    assert.equal(
+      response.body.message,
+      `风险事件处置备注不能超过 ${RISK_EVENT_STATUS_NOTE_MAX_LENGTH} 个字符`
+    );
+  });
+
+  it('normalizes padded risk event status values before repository handling', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: ' processing ', note: '  smoke note  ' })
+      .expect(503);
+
+    assert.equal(response.body.message, 'Prisma 不可用，无法持久化风险事件状态');
   });
 
   it('rejects extra fields in risk event status requests', async () => {
