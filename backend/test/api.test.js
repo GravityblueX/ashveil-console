@@ -134,4 +134,19 @@ describe('Ashveil API smoke contract', () => {
       `密码不能超过 ${LOGIN_PASSWORD_MAX_LENGTH} 个字符`
     );
   });
+
+  it('rejects oversized JSON request bodies before payload parsing', async () => {
+    const response = await request(app)
+      .post('/api/auth/login')
+      .set('Content-Type', 'application/json')
+      .send(
+        JSON.stringify({
+          username: 'admin',
+          password: 'p'.repeat(40_000)
+        })
+      )
+      .expect(413);
+
+    assert.equal(response.body.message, '请求体不能超过 32kb');
+  });
 });

@@ -26,11 +26,15 @@ const { version: API_VERSION } = createRequire(import.meta.url)('../package.json
 const app = express();
 const PORT = process.env.PORT || 4160;
 const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
+const JSON_BODY_LIMIT = '32kb';
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: JSON_BODY_LIMIT }));
 app.use(morgan('dev'));
 app.use((err, _req, res, next) => {
+  if (err?.type === 'entity.too.large') {
+    return res.status(413).json({ message: `请求体不能超过 ${JSON_BODY_LIMIT}` });
+  }
   if (err instanceof SyntaxError && 'body' in err) {
     return res.status(400).json({ message: '请求体必须是合法 JSON' });
   }

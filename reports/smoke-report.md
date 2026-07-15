@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-15T11:16:31.870Z
+Generated: 2026-07-15T12:03:32.515Z
 Status: `OK`
 
 ## Gates
@@ -14,6 +14,7 @@ Status: `OK`
 | protected route rejects malformed signed claims         | OK     | status=401, message=Invalid token                                           |
 | login rejects extra fields                              | OK     | status=400, message=不支持的登录字段：roles                                 |
 | login rejects oversized credentials                     | OK     | username=400, password=400                                                  |
+| api rejects oversized JSON bodies                       | OK     | status=413, message=请求体不能超过 32kb                                     |
 | mock login succeeds                                     | OK     | status=200, user=admin                                                      |
 | login response omits password                           | OK     | password field absent                                                       |
 | dashboard contract                                      | OK     | status=200, cards=4                                                         |

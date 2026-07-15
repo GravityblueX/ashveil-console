@@ -18,6 +18,7 @@ const REQUIRED_SMOKE_GATES = [
   'protected route rejects malformed signed claims',
   'login rejects extra fields',
   'login rejects oversized credentials',
+  'api rejects oversized JSON bodies',
   'mock login succeeds',
   'login response omits password',
   'dashboard contract',

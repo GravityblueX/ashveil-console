@@ -190,6 +190,22 @@ async function runSmoke() {
       )
     );
 
+    const oversizedJsonBody = await request(baseUrl, '/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: 'admin',
+        password: 'p'.repeat(40_000)
+      })
+    });
+    gates.push(
+      gate(
+        'api rejects oversized JSON bodies',
+        oversizedJsonBody.status === 413 &&
+          oversizedJsonBody.body?.message === '请求体不能超过 32kb',
+        requestDetail(oversizedJsonBody, `, message=${oversizedJsonBody.body?.message || 'none'}`)
+      )
+    );
+
     const login = await request(baseUrl, '/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username: 'admin', password: 'ashveil2026' })
