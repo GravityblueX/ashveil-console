@@ -88,8 +88,12 @@ function parseBearerToken(raw) {
 }
 
 function isValidUserId(value) {
-  if (typeof value === 'number') return Number.isFinite(value);
-  return typeof value === 'string' && value.trim().length > 0;
+  const id = typeof value === 'number' ? value : Number(value);
+  return (
+    Number.isSafeInteger(id) &&
+    id > 0 &&
+    (typeof value === 'number' || String(value).trim() === String(id))
+  );
 }
 
 function isValidJwtTimestamp(value) {

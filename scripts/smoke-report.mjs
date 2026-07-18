@@ -187,6 +187,23 @@ async function runSmoke() {
       )
     );
 
+    const nonNumericUserIdClaims = await request(baseUrl, '/api/auth/me', {
+      headers: {
+        authorization: `Bearer ${jwt.sign({ id: 'not-a-number', username: 'admin', roles: ['ROOT'] }, process.env.JWT_SECRET)}`
+      }
+    });
+    gates.push(
+      gate(
+        'protected route rejects non-numeric user id claims',
+        nonNumericUserIdClaims.status === 401 &&
+          nonNumericUserIdClaims.body?.message === 'Invalid token',
+        requestDetail(
+          nonNumericUserIdClaims,
+          `, message=${nonNumericUserIdClaims.body?.message || 'none'}`
+        )
+      )
+    );
+
     const now = Math.floor(Date.now() / 1000);
     const missingIssuedAtToken = jwt.sign(
       { id: 1, username: 'admin', roles: ['ROOT'], exp: now + 3600 },

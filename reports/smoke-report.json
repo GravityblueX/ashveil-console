@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-18T21:51:54.987Z",
+  "generatedAt": "2026-07-18T22:31:26.365Z",
   "ok": true,
   "gates": [
     {
@@ -30,6 +30,11 @@
     },
     {
       "name": "protected route rejects malformed signed claims",
+      "ok": true,
+      "detail": "status=401, message=Invalid token"
+    },
+    {
+      "name": "protected route rejects non-numeric user id claims",
       "ok": true,
       "detail": "status=401, message=Invalid token"
     },
