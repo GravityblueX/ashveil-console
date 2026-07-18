@@ -32,6 +32,7 @@ const app = express();
 const PORT = process.env.PORT || 4160;
 const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 const JWT_ALGORITHM = 'HS256';
+const JWT_MAX_TTL_SECONDS = 8 * 60 * 60;
 const JSON_BODY_LIMIT = '32kb';
 const SECURITY_HEADERS = Object.freeze({
   'Cache-Control': 'no-store',
@@ -95,6 +96,15 @@ function isValidJwtTimestamp(value) {
   return Number.isInteger(value) && value > 0;
 }
 
+function isValidJwtTimeline(value) {
+  return (
+    isValidJwtTimestamp(value.iat) &&
+    isValidJwtTimestamp(value.exp) &&
+    value.exp > value.iat &&
+    value.exp - value.iat <= JWT_MAX_TTL_SECONDS
+  );
+}
+
 function isValidAuthClaims(value) {
   return (
     value &&
@@ -105,7 +115,7 @@ function isValidAuthClaims(value) {
     value.username.trim().length > 0 &&
     Array.isArray(value.roles) &&
     value.roles.every((role) => typeof role === 'string' && role.trim().length > 0) &&
-    isValidJwtTimestamp(value.exp)
+    isValidJwtTimeline(value)
   );
 }
 

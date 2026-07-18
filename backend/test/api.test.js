@@ -131,6 +131,44 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.message, 'Invalid token');
   });
 
+  it('rejects signed tokens without an issued-at claim', async () => {
+    const now = Math.floor(Date.now() / 1000);
+    const token = jwt.sign(
+      { id: 1, username: 'admin', roles: ['ROOT'], exp: now + 3600 },
+      'ashveil-test-secret',
+      { algorithm: 'HS256', noTimestamp: true }
+    );
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(401);
+
+    assert.equal(response.body.message, 'Invalid token');
+  });
+
+  it('rejects signed tokens whose lifetime exceeds the session window', async () => {
+    const now = Math.floor(Date.now() / 1000);
+    const token = jwt.sign(
+      {
+        id: 1,
+        username: 'admin',
+        roles: ['ROOT'],
+        iat: now,
+        exp: now + 7 * 24 * 60 * 60
+      },
+      'ashveil-test-secret',
+      { algorithm: 'HS256' }
+    );
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(401);
+
+    assert.equal(response.body.message, 'Invalid token');
+  });
+
   it('rejects non-object login payloads with a structured error', async () => {
     const response = await request(app).post('/api/auth/login').send([]).expect(400);
 
