@@ -204,6 +204,26 @@ async function runSmoke() {
       )
     );
 
+    const malformedRoleClaims = await request(baseUrl, '/api/auth/me', {
+      headers: {
+        authorization: `Bearer ${jwt.sign(
+          { id: 1, username: 'admin', roles: [' ROOT '] },
+          process.env.JWT_SECRET,
+          { expiresIn: '1h' }
+        )}`
+      }
+    });
+    gates.push(
+      gate(
+        'protected route rejects malformed role claims',
+        malformedRoleClaims.status === 401 && malformedRoleClaims.body?.message === 'Invalid token',
+        requestDetail(
+          malformedRoleClaims,
+          `, message=${malformedRoleClaims.body?.message || 'none'}`
+        )
+      )
+    );
+
     const now = Math.floor(Date.now() / 1000);
     const missingIssuedAtToken = jwt.sign(
       { id: 1, username: 'admin', roles: ['ROOT'], exp: now + 3600 },

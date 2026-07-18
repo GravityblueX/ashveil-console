@@ -109,6 +109,12 @@ function isValidJwtTimeline(value) {
   );
 }
 
+function isValidJwtRole(value) {
+  return (
+    typeof value === 'string' && value.length > 0 && value === value.trim() && !value.includes('\0')
+  );
+}
+
 function isValidAuthClaims(value) {
   return (
     value &&
@@ -118,7 +124,8 @@ function isValidAuthClaims(value) {
     typeof value.username === 'string' &&
     value.username.trim().length > 0 &&
     Array.isArray(value.roles) &&
-    value.roles.every((role) => typeof role === 'string' && role.trim().length > 0) &&
+    value.roles.length > 0 &&
+    value.roles.every((role) => isValidJwtRole(role)) &&
     isValidJwtTimeline(value)
   );
 }
