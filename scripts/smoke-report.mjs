@@ -184,6 +184,52 @@ async function runSmoke() {
       )
     );
 
+    const now = Math.floor(Date.now() / 1000);
+    const missingIssuedAtToken = jwt.sign(
+      { id: 1, username: 'admin', roles: ['ROOT'], exp: now + 3600 },
+      process.env.JWT_SECRET,
+      { noTimestamp: true }
+    );
+    const missingIssuedAtClaims = await request(baseUrl, '/api/auth/me', {
+      headers: { authorization: `Bearer ${missingIssuedAtToken}` }
+    });
+    gates.push(
+      gate(
+        'protected route rejects missing issued-at claims',
+        missingIssuedAtClaims.status === 401 &&
+          missingIssuedAtClaims.body?.message === 'Invalid token',
+        requestDetail(
+          missingIssuedAtClaims,
+          `, message=${missingIssuedAtClaims.body?.message || 'none'}`
+        )
+      )
+    );
+
+    const oversizedSessionToken = jwt.sign(
+      {
+        id: 1,
+        username: 'admin',
+        roles: ['ROOT'],
+        iat: now,
+        exp: now + 7 * 24 * 60 * 60
+      },
+      process.env.JWT_SECRET
+    );
+    const oversizedSessionClaims = await request(baseUrl, '/api/auth/me', {
+      headers: { authorization: `Bearer ${oversizedSessionToken}` }
+    });
+    gates.push(
+      gate(
+        'protected route rejects oversized session lifetimes',
+        oversizedSessionClaims.status === 401 &&
+          oversizedSessionClaims.body?.message === 'Invalid token',
+        requestDetail(
+          oversizedSessionClaims,
+          `, message=${oversizedSessionClaims.body?.message || 'none'}`
+        )
+      )
+    );
+
     const extraLoginFields = await request(baseUrl, '/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username: 'admin', password: 'ashveil2026', roles: ['ROOT'] })

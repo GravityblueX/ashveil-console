@@ -1,6 +1,6 @@
 # Ashveil Release Readiness
 
-Generated: 2026-07-18T20:08:43.532Z
+Generated: 2026-07-18T20:13:24.378Z
 Project: `ashveil-console`
 Version: `0.27.0`
 Status: `OK`
@@ -53,8 +53,8 @@ Status: `OK`
 | openapi required gates                                  | OK     | 20 required gates passed (20 total)                                                   |
 | client API coverage required gates                      | OK     | 8 required gates passed (8 total)                                                     |
 | dependency SBOM required gates                          | OK     | 8 required gates passed (8 total)                                                     |
-| smoke report required gates                             | OK     | 22 required gates passed (22 total)                                                   |
-| git status readable                                     | OK     | dirty_count=14                                                                        |
+| smoke report required gates                             | OK     | 24 required gates passed (24 total)                                                   |
+| git status readable                                     | OK     | dirty_count=12                                                                        |
 
 ## Commands
 

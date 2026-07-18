@@ -17,6 +17,8 @@ const REQUIRED_SMOKE_GATES = [
   'protected route rejects malformed authorization headers',
   'protected route rejects ambiguous bearer tokens',
   'protected route rejects malformed signed claims',
+  'protected route rejects missing issued-at claims',
+  'protected route rejects oversized session lifetimes',
   'login rejects extra fields',
   'login rejects oversized credentials',
   'api rejects oversized JSON bodies',

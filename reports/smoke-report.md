@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-18T20:08:43.446Z
+Generated: 2026-07-18T20:13:24.296Z
 Status: `OK`
 
 ## Gates
@@ -13,6 +13,8 @@ Status: `OK`
 | protected route rejects malformed authorization headers | OK     | status=401, message=Authorization header must use Bearer token                                                                                                                                                 |
 | protected route rejects ambiguous bearer tokens         | OK     | status=401, message=Authorization header must contain a single Bearer token                                                                                                                                    |
 | protected route rejects malformed signed claims         | OK     | status=401, message=Invalid token                                                                                                                                                                              |
+| protected route rejects missing issued-at claims        | OK     | status=401, message=Invalid token                                                                                                                                                                              |
+| protected route rejects oversized session lifetimes     | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | login rejects extra fields                              | OK     | status=400, message=不支持的登录字段：roles                                                                                                                                                                    |
 | login rejects oversized credentials                     | OK     | username=400, password=400                                                                                                                                                                                     |
 | api rejects oversized JSON bodies                       | OK     | status=413, message=请求体不能超过 32kb                                                                                                                                                                        |
