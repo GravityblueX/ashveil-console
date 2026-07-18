@@ -8,7 +8,10 @@ import {
   LOGIN_USERNAME_MAX_LENGTH
 } from '../backend/src/auth-payload.js';
 import { parseRiskStatusPayload } from '../backend/src/risk-status-payload.js';
-import { RISK_EVENT_STATUS_NOTE_MAX_LENGTH } from '../backend/src/risk-events.js';
+import {
+  RISK_EVENT_KEY_MAX_LENGTH,
+  RISK_EVENT_STATUS_NOTE_MAX_LENGTH
+} from '../backend/src/risk-events.js';
 import { markdownCodeSpan as mdCode, markdownTableCell as mdCell } from './markdown.mjs';
 
 process.env.NODE_ENV = 'test';
@@ -386,6 +389,29 @@ async function runSmoke() {
           requestDetail(
             malformedRiskEventKey,
             `, message=${malformedRiskEventKey.body?.message || 'none'}`
+          )
+        )
+      );
+
+      const oversizedRiskEventKey = 'risk:' + 'x'.repeat(RISK_EVENT_KEY_MAX_LENGTH + 1);
+      const oversizedRiskEventKeyResult = await request(
+        baseUrl,
+        `/api/risk/events/${oversizedRiskEventKey}/status`,
+        {
+          method: 'PATCH',
+          headers: authHeaders,
+          body: JSON.stringify({ status: 'processing', note: 'smoke' })
+        }
+      );
+      gates.push(
+        gate(
+          'risk status rejects oversized event keys',
+          oversizedRiskEventKeyResult.status === 400 &&
+            oversizedRiskEventKeyResult.body?.message ===
+              `风险事件标识不能超过 ${RISK_EVENT_KEY_MAX_LENGTH} 个字符`,
+          requestDetail(
+            oversizedRiskEventKeyResult,
+            `, message=${oversizedRiskEventKeyResult.body?.message || 'none'}`
           )
         )
       );

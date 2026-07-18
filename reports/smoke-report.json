@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-18T20:13:24.296Z",
+  "generatedAt": "2026-07-18T21:08:58.803Z",
   "ok": true,
   "gates": [
     {
@@ -97,6 +97,11 @@
       "name": "risk status rejects malformed event keys",
       "ok": true,
       "detail": "status=400, message=风险事件标识只能包含字母、数字、冒号、下划线和连字符"
+    },
+    {
+      "name": "risk status rejects oversized event keys",
+      "ok": true,
+      "detail": "status=400, message=风险事件标识不能超过 80 个字符"
     },
     {
       "name": "risk status rejects malformed JSON",

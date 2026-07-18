@@ -30,6 +30,7 @@ const REQUIRED_SMOKE_GATES = [
   'risk status parser normalizes allowed values',
   'risk status rejects invalid status',
   'risk status rejects malformed event keys',
+  'risk status rejects oversized event keys',
   'risk status rejects malformed JSON',
   'risk status rejects oversized notes',
   'risk status persistence boundary',
