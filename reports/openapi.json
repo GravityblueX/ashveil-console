@@ -676,7 +676,7 @@
   "x-generated-from": "reports/api-surface.json",
   "x-report": {
     "reportType": "ashveil_openapi_contract",
-    "generatedAt": "2026-07-18T21:08:57.431Z",
+    "generatedAt": "2026-07-18T21:51:53.697Z",
     "ok": true,
     "summary": {
       "pathCount": 18,

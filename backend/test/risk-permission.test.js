@@ -208,6 +208,18 @@ describe('Ashveil risk and access regression contract', () => {
     assert.equal(response.body.message, '不支持的风险事件状态字段：handledBy');
   });
 
+  it('reports extra risk event status fields in stable sorted order', async () => {
+    const token = await loginToken();
+
+    const response = await request(app)
+      .patch('/api/risk/events/risk%3Auser%3A1/status')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ status: 'processing', note: 'ok', zeta: 'spoofed', handledBy: 'spoofed' })
+      .expect(400);
+
+    assert.equal(response.body.message, '不支持的风险事件状态字段：handledBy, zeta');
+  });
+
   it('returns structured JSON errors for malformed JSON request bodies', async () => {
     const token = await loginToken();
 

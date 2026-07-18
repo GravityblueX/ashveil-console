@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-18T21:08:58.803Z",
+  "generatedAt": "2026-07-18T21:51:54.987Z",
   "ok": true,
   "gates": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "login rejects extra fields",
       "ok": true,
-      "detail": "status=400, message=不支持的登录字段：roles"
+      "detail": "status=400, message=不支持的登录字段：roles, zeta"
     },
     {
       "name": "login rejects oversized credentials",

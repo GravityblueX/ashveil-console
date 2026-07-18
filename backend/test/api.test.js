@@ -199,6 +199,15 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.message, '不支持的登录字段：roles');
   });
 
+  it('reports extra login fields in stable sorted order', async () => {
+    const response = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: 'ashveil2026', zeta: true, audit: true })
+      .expect(400);
+
+    assert.equal(response.body.message, '不支持的登录字段：audit, zeta');
+  });
+
   it('rejects oversized login credentials before checking accounts', async () => {
     const oversizedUsername = await request(app)
       .post('/api/auth/login')

@@ -7,7 +7,9 @@ export function parseLoginPayload(body) {
   }
 
   const allowedKeys = new Set(['username', 'password']);
-  const unknownKeys = Object.keys(body).filter((key) => !allowedKeys.has(key));
+  const unknownKeys = Object.keys(body)
+    .filter((key) => !allowedKeys.has(key))
+    .sort();
   if (unknownKeys.length > 0) {
     return { error: `不支持的登录字段：${unknownKeys.join(', ')}` };
   }

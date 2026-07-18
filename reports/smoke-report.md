@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-18T21:08:58.803Z
+Generated: 2026-07-18T21:51:54.987Z
 Status: `OK`
 
 ## Gates
@@ -15,7 +15,7 @@ Status: `OK`
 | protected route rejects malformed signed claims         | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects missing issued-at claims        | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects oversized session lifetimes     | OK     | status=401, message=Invalid token                                                                                                                                                                              |
-| login rejects extra fields                              | OK     | status=400, message=不支持的登录字段：roles                                                                                                                                                                    |
+| login rejects extra fields                              | OK     | status=400, message=不支持的登录字段：roles, zeta                                                                                                                                                              |
 | login rejects oversized credentials                     | OK     | username=400, password=400                                                                                                                                                                                     |
 | api rejects oversized JSON bodies                       | OK     | status=413, message=请求体不能超过 32kb                                                                                                                                                                        |
 | risk status parser rejects unsupported status           | OK     | 不支持的风险事件状态                                                                                                                                                                                           |

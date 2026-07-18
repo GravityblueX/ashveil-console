@@ -6,7 +6,9 @@ export function parseRiskStatusPayload(body) {
   }
 
   const allowedKeys = new Set(['status', 'note']);
-  const unknownKeys = Object.keys(body).filter((key) => !allowedKeys.has(key));
+  const unknownKeys = Object.keys(body)
+    .filter((key) => !allowedKeys.has(key))
+    .sort();
   if (unknownKeys.length > 0) {
     return { error: `不支持的风险事件状态字段：${unknownKeys.join(', ')}` };
   }
