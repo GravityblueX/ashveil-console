@@ -91,6 +91,10 @@ function isValidUserId(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
+function isValidJwtTimestamp(value) {
+  return Number.isInteger(value) && value > 0;
+}
+
 function isValidAuthClaims(value) {
   return (
     value &&
@@ -100,7 +104,8 @@ function isValidAuthClaims(value) {
     typeof value.username === 'string' &&
     value.username.trim().length > 0 &&
     Array.isArray(value.roles) &&
-    value.roles.every((role) => typeof role === 'string' && role.trim().length > 0)
+    value.roles.every((role) => typeof role === 'string' && role.trim().length > 0) &&
+    isValidJwtTimestamp(value.exp)
   );
 }
 

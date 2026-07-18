@@ -118,6 +118,19 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.message, 'Invalid token');
   });
 
+  it('rejects signed tokens without an expiration claim', async () => {
+    const token = jwt.sign({ id: 1, username: 'admin', roles: ['ROOT'] }, 'ashveil-test-secret', {
+      algorithm: 'HS256'
+    });
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(401);
+
+    assert.equal(response.body.message, 'Invalid token');
+  });
+
   it('rejects non-object login payloads with a structured error', async () => {
     const response = await request(app).post('/api/auth/login').send([]).expect(400);
 
