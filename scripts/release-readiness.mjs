@@ -153,6 +153,38 @@ function summarizeGateCollection(gates, label) {
   return { ok: true, detail: `${gates.length} gate(s)` };
 }
 
+function summarizeCommandCollection(commands, label) {
+  if (!Array.isArray(commands) || commands.length === 0) {
+    return { ok: false, detail: `${label} command list is empty` };
+  }
+
+  const blankNames = commands.filter(
+    (item) => typeof item?.name !== 'string' || item.name.trim() === ''
+  );
+  if (blankNames.length > 0) {
+    return { ok: false, detail: `${blankNames.length} blank command name(s)` };
+  }
+
+  const missingCommands = commands.filter(
+    (item) => typeof item?.command !== 'string' || item.command.trim() === ''
+  );
+  if (missingCommands.length > 0) {
+    return { ok: false, detail: `${missingCommands.length} missing command string(s)` };
+  }
+
+  const seen = new Set();
+  const duplicates = [];
+  for (const item of commands) {
+    if (seen.has(item.name)) duplicates.push(item.name);
+    seen.add(item.name);
+  }
+  if (duplicates.length > 0) {
+    return { ok: false, detail: `duplicate commands: ${[...new Set(duplicates)].join(', ')}` };
+  }
+
+  return { ok: true, detail: `${commands.length} command(s)` };
+}
+
 function run(command, args) {
   const useCmd = process.platform === 'win32' && command === 'npm';
   const executable = useCmd ? process.env.ComSpec || 'cmd.exe' : command;
@@ -408,6 +440,15 @@ async function buildReport() {
   const dirty = run('git', ['status', '--short']);
   const dirtyCount = dirty.output.split('\n').filter((line) => line.trim()).length;
   gates.push(gate('git status readable', dirty.exitCode === 0, `dirty_count=${dirtyCount}`));
+
+  const commandNameSummary = summarizeCommandCollection(commands, 'release readiness');
+  gates.push(
+    gate(
+      'release readiness command names are unique',
+      commandNameSummary.ok,
+      commandNameSummary.detail
+    )
+  );
 
   const gateNameSummary = summarizeGateCollection(gates, 'release readiness');
   gates.push(
