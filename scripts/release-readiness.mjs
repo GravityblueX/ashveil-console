@@ -213,6 +213,19 @@ function summarizeCommandExitCodes(commands, label) {
   return { ok: true, detail: `${commands.length} command exit code(s)` };
 }
 
+function summarizeCommandOutputs(commands, label) {
+  if (!Array.isArray(commands) || commands.length === 0) {
+    return { ok: false, detail: `${label} command list is empty` };
+  }
+
+  const invalidOutputs = commands.filter((item) => typeof item?.output !== 'string');
+  if (invalidOutputs.length > 0) {
+    return { ok: false, detail: `${invalidOutputs.length} invalid command output value(s)` };
+  }
+
+  return { ok: true, detail: `${commands.length} command output value(s)` };
+}
+
 function summarizeReferenceCollection(references, label) {
   if (!Array.isArray(references) || references.length === 0) {
     return { ok: false, detail: `${label} reference list is empty` };
@@ -500,6 +513,15 @@ async function buildReport() {
       'release readiness command exit codes are numeric',
       commandExitCodeSummary.ok,
       commandExitCodeSummary.detail
+    )
+  );
+
+  const commandOutputSummary = summarizeCommandOutputs(commands, 'release readiness');
+  gates.push(
+    gate(
+      'release readiness command outputs are strings',
+      commandOutputSummary.ok,
+      commandOutputSummary.detail
     )
   );
 
