@@ -170,6 +170,22 @@ async function runSmoke() {
       )
     );
 
+    const nonCanonicalBearerSpacing = await request(baseUrl, '/api/dashboard', {
+      headers: { authorization: 'Bearer  padded-token' }
+    });
+    gates.push(
+      gate(
+        'protected route rejects non-canonical bearer spacing',
+        nonCanonicalBearerSpacing.status === 401 &&
+          nonCanonicalBearerSpacing.body?.message ===
+            'Authorization header must contain a single Bearer token',
+        requestDetail(
+          nonCanonicalBearerSpacing,
+          `, message=${nonCanonicalBearerSpacing.body?.message || 'none'}`
+        )
+      )
+    );
+
     const malformedSignedClaims = await request(baseUrl, '/api/auth/me', {
       headers: {
         authorization: `Bearer ${jwt.sign({ username: 'admin', roles: ['ROOT'] }, process.env.JWT_SECRET)}`

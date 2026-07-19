@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-19T04:06:08.085Z
+Generated: 2026-07-19T05:11:02.116Z
 Status: `OK`
 
 ## Gates
@@ -12,6 +12,7 @@ Status: `OK`
 | protected route rejects anonymous access                | OK     | status=401                                                                                                                                                                                                     |
 | protected route rejects malformed authorization headers | OK     | status=401, message=Authorization header must use Bearer token                                                                                                                                                 |
 | protected route rejects ambiguous bearer tokens         | OK     | status=401, message=Authorization header must contain a single Bearer token                                                                                                                                    |
+| protected route rejects non-canonical bearer spacing    | OK     | status=401, message=Authorization header must contain a single Bearer token                                                                                                                                    |
 | protected route rejects malformed signed claims         | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects non-numeric user id claims      | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects malformed username claims       | OK     | status=401, message=Invalid token                                                                                                                                                                              |

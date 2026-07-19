@@ -76,17 +76,16 @@ function parseBearerToken(raw) {
   const value = String(raw || '').trim();
   if (!value) return { error: 'Missing token' };
 
-  const match = value.match(/^Bearer\s+(.+)$/i);
-  if (!match || match[1].trim().length === 0) {
+  if (!/^Bearer(?:\s|$)/i.test(value)) {
     return { error: 'Authorization header must use Bearer token' };
   }
 
-  const token = match[1].trim();
-  if (/\s/.test(token)) {
+  const match = value.match(/^Bearer ([^\s]+)$/i);
+  if (!match) {
     return { error: 'Authorization header must contain a single Bearer token' };
   }
 
-  return { token };
+  return { token: match[1] };
 }
 
 function isValidUserId(value) {

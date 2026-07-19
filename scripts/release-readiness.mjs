@@ -16,6 +16,7 @@ const REQUIRED_SMOKE_GATES = [
   'protected route rejects anonymous access',
   'protected route rejects malformed authorization headers',
   'protected route rejects ambiguous bearer tokens',
+  'protected route rejects non-canonical bearer spacing',
   'protected route rejects malformed signed claims',
   'protected route rejects non-numeric user id claims',
   'protected route rejects malformed username claims',

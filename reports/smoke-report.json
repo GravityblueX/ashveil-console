@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-19T04:06:08.085Z",
+  "generatedAt": "2026-07-19T05:11:02.116Z",
   "ok": true,
   "gates": [
     {
@@ -25,6 +25,11 @@
     },
     {
       "name": "protected route rejects ambiguous bearer tokens",
+      "ok": true,
+      "detail": "status=401, message=Authorization header must contain a single Bearer token"
+    },
+    {
+      "name": "protected route rejects non-canonical bearer spacing",
       "ok": true,
       "detail": "status=401, message=Authorization header must contain a single Bearer token"
     },
