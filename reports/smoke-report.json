@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-19T00:19:56.061Z",
+  "generatedAt": "2026-07-19T02:37:09.086Z",
   "ok": true,
   "gates": [
     {
@@ -55,6 +55,11 @@
     },
     {
       "name": "protected route rejects missing issued-at claims",
+      "ok": true,
+      "detail": "status=401, message=Invalid token"
+    },
+    {
+      "name": "protected route rejects future issued-at claims",
       "ok": true,
       "detail": "status=401, message=Invalid token"
     },

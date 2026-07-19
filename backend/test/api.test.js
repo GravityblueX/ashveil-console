@@ -239,6 +239,28 @@ describe('Ashveil API smoke contract', () => {
     assert.equal(response.body.message, 'Invalid token');
   });
 
+  it('rejects signed tokens with future issued-at claims', async () => {
+    const now = Math.floor(Date.now() / 1000);
+    const token = jwt.sign(
+      {
+        id: 1,
+        username: 'admin',
+        roles: ['ROOT'],
+        iat: now + 5 * 60,
+        exp: now + 60 * 60
+      },
+      'ashveil-test-secret',
+      { algorithm: 'HS256' }
+    );
+
+    const response = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(401);
+
+    assert.equal(response.body.message, 'Invalid token');
+  });
+
   it('rejects signed tokens whose lifetime exceeds the session window', async () => {
     const now = Math.floor(Date.now() / 1000);
     const token = jwt.sign(

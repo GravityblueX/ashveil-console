@@ -301,6 +301,25 @@ async function runSmoke() {
       )
     );
 
+    const futureIssuedAtToken = jwt.sign(
+      { id: 1, username: 'admin', roles: ['ROOT'], iat: now + 5 * 60, exp: now + 60 * 60 },
+      process.env.JWT_SECRET
+    );
+    const futureIssuedAtClaims = await request(baseUrl, '/api/auth/me', {
+      headers: { authorization: `Bearer ${futureIssuedAtToken}` }
+    });
+    gates.push(
+      gate(
+        'protected route rejects future issued-at claims',
+        futureIssuedAtClaims.status === 401 &&
+          futureIssuedAtClaims.body?.message === 'Invalid token',
+        requestDetail(
+          futureIssuedAtClaims,
+          `, message=${futureIssuedAtClaims.body?.message || 'none'}`
+        )
+      )
+    );
+
     const oversizedSessionToken = jwt.sign(
       {
         id: 1,

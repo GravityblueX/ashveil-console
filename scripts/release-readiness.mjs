@@ -22,6 +22,7 @@ const REQUIRED_SMOKE_GATES = [
   'protected route rejects stale principal claims',
   'protected route rejects malformed role claims',
   'protected route rejects missing issued-at claims',
+  'protected route rejects future issued-at claims',
   'protected route rejects oversized session lifetimes',
   'login rejects extra fields',
   'login rejects oversized credentials',

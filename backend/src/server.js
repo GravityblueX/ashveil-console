@@ -33,6 +33,7 @@ const PORT = process.env.PORT || 4160;
 const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 const JWT_ALGORITHM = 'HS256';
 const JWT_MAX_TTL_SECONDS = 8 * 60 * 60;
+const JWT_CLOCK_SKEW_SECONDS = 60;
 const JSON_BODY_LIMIT = '32kb';
 const SECURITY_HEADERS = Object.freeze({
   'Cache-Control': 'no-store',
@@ -101,9 +102,11 @@ function isValidJwtTimestamp(value) {
 }
 
 function isValidJwtTimeline(value) {
+  const now = Math.floor(Date.now() / 1000);
   return (
     isValidJwtTimestamp(value.iat) &&
     isValidJwtTimestamp(value.exp) &&
+    value.iat <= now + JWT_CLOCK_SKEW_SECONDS &&
     value.exp > value.iat &&
     value.exp - value.iat <= JWT_MAX_TTL_SECONDS
   );
