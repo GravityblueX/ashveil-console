@@ -185,6 +185,46 @@ function summarizeCommandCollection(commands, label) {
   return { ok: true, detail: `${commands.length} command(s)` };
 }
 
+function summarizeCommandExitCodes(commands, label) {
+  if (!Array.isArray(commands) || commands.length === 0) {
+    return { ok: false, detail: `${label} command list is empty` };
+  }
+
+  const invalidExitCodes = commands.filter(
+    (item) => !Number.isInteger(item?.exitCode) || item.exitCode < 0
+  );
+  if (invalidExitCodes.length > 0) {
+    return { ok: false, detail: `${invalidExitCodes.length} invalid command exit code(s)` };
+  }
+
+  return { ok: true, detail: `${commands.length} command exit code(s)` };
+}
+
+function summarizeReferenceCollection(references, label) {
+  if (!Array.isArray(references) || references.length === 0) {
+    return { ok: false, detail: `${label} reference list is empty` };
+  }
+
+  const blankReferences = references.filter(
+    (item) => typeof item !== 'string' || item.trim() === ''
+  );
+  if (blankReferences.length > 0) {
+    return { ok: false, detail: `${blankReferences.length} blank reference(s)` };
+  }
+
+  const seen = new Set();
+  const duplicates = [];
+  for (const item of references) {
+    if (seen.has(item)) duplicates.push(item);
+    seen.add(item);
+  }
+  if (duplicates.length > 0) {
+    return { ok: false, detail: `duplicate references: ${[...new Set(duplicates)].join(', ')}` };
+  }
+
+  return { ok: true, detail: `${references.length} reference(s)` };
+}
+
 function run(command, args) {
   const useCmd = process.platform === 'win32' && command === 'npm';
   const executable = useCmd ? process.env.ComSpec || 'cmd.exe' : command;
@@ -441,6 +481,15 @@ async function buildReport() {
   const dirtyCount = dirty.output.split('\n').filter((line) => line.trim()).length;
   gates.push(gate('git status readable', dirty.exitCode === 0, `dirty_count=${dirtyCount}`));
 
+  const commandExitCodeSummary = summarizeCommandExitCodes(commands, 'release readiness');
+  gates.push(
+    gate(
+      'release readiness command exit codes are numeric',
+      commandExitCodeSummary.ok,
+      commandExitCodeSummary.detail
+    )
+  );
+
   const commandNameSummary = summarizeCommandCollection(commands, 'release readiness');
   gates.push(
     gate(
@@ -448,6 +497,19 @@ async function buildReport() {
       commandNameSummary.ok,
       commandNameSummary.detail
     )
+  );
+
+  const references = [
+    'Release-readiness gates before tagging',
+    'OpenAPI Specification contract generated from the route inventory',
+    'Client API coverage checks Vue calls and route endpoints against generated OpenAPI paths',
+    'CycloneDX style dependency SBOM from package-lock files',
+    'Express API smoke coverage',
+    'Lint, Prettier, and Node.js native test runner checks through npm run check'
+  ];
+  const referenceSummary = summarizeReferenceCollection(references, 'release readiness');
+  gates.push(
+    gate('release readiness references are unique', referenceSummary.ok, referenceSummary.detail)
   );
 
   const gateNameSummary = summarizeGateCollection(gates, 'release readiness');
@@ -463,14 +525,7 @@ async function buildReport() {
     ok: gates.every((item) => item.ok),
     gates,
     commands,
-    references: [
-      'Release-readiness gates before tagging',
-      'OpenAPI Specification contract generated from the route inventory',
-      'Client API coverage checks Vue calls and route endpoints against generated OpenAPI paths',
-      'CycloneDX style dependency SBOM from package-lock files',
-      'Express API smoke coverage',
-      'Lint, Prettier, and Node.js native test runner checks through npm run check'
-    ]
+    references
   };
 }
 

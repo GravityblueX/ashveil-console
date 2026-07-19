@@ -1,6 +1,6 @@
 # Ashveil Release Readiness
 
-Generated: 2026-07-19T07:58:01.111Z
+Generated: 2026-07-19T09:09:30.864Z
 Project: `ashveil-console`
 Version: `0.27.0`
 Status: `OK`
@@ -60,8 +60,10 @@ Status: `OK`
 | dependency SBOM required gates                               | OK     | 8 required gates passed (8 total)                                                     |
 | smoke report required gates                                  | OK     | 32 required gates passed (32 total)                                                   |
 | git status readable                                          | OK     | dirty_count=11                                                                        |
+| release readiness command exit codes are numeric             | OK     | 9 command exit code(s)                                                                |
 | release readiness command names are unique                   | OK     | 9 command(s)                                                                          |
-| release readiness gate names are unique                      | OK     | 52 gate(s)                                                                            |
+| release readiness references are unique                      | OK     | 6 reference(s)                                                                        |
+| release readiness gate names are unique                      | OK     | 54 gate(s)                                                                            |
 
 ## Commands
 
