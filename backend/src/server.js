@@ -34,6 +34,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'ashveil-local-secret';
 const JWT_ALGORITHM = 'HS256';
 const JWT_MAX_TTL_SECONDS = 8 * 60 * 60;
 const JWT_CLOCK_SKEW_SECONDS = 60;
+const JWT_ROLE_MAX_LENGTH = 80;
 const JSON_BODY_LIMIT = '32kb';
 const SECURITY_HEADERS = Object.freeze({
   'Cache-Control': 'no-store',
@@ -114,7 +115,11 @@ function isValidJwtTimeline(value) {
 
 function isValidJwtRole(value) {
   return (
-    typeof value === 'string' && value.length > 0 && value === value.trim() && !value.includes('\0')
+    typeof value === 'string' &&
+    value.length > 0 &&
+    value.length <= JWT_ROLE_MAX_LENGTH &&
+    value === value.trim() &&
+    !value.includes('\0')
   );
 }
 
@@ -129,6 +134,7 @@ function isValidJwtUsername(value) {
 }
 
 function isValidAuthClaims(value) {
+  const roleSet = Array.isArray(value?.roles) ? new Set(value.roles) : null;
   return (
     value &&
     typeof value === 'object' &&
@@ -137,6 +143,7 @@ function isValidAuthClaims(value) {
     isValidJwtUsername(value.username) &&
     Array.isArray(value.roles) &&
     value.roles.length > 0 &&
+    roleSet.size === value.roles.length &&
     value.roles.every((role) => isValidJwtRole(role)) &&
     isValidJwtTimeline(value)
   );
