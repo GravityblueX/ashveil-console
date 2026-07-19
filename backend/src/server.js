@@ -11,7 +11,7 @@ import {
   RISK_EVENT_KEY_MAX_LENGTH,
   RISK_EVENT_KEY_PATTERN
 } from './risk-events.js';
-import { parseLoginPayload } from './auth-payload.js';
+import { LOGIN_USERNAME_MAX_LENGTH, parseLoginPayload } from './auth-payload.js';
 import { parseRiskStatusPayload } from './risk-status-payload.js';
 import { cachedJson } from './cache.js';
 import { buildRoadmap, featureIdeas } from './ideas.js';
@@ -115,14 +115,23 @@ function isValidJwtRole(value) {
   );
 }
 
+function isValidJwtUsername(value) {
+  return (
+    typeof value === 'string' &&
+    value.length > 0 &&
+    value.length <= LOGIN_USERNAME_MAX_LENGTH &&
+    value === value.trim() &&
+    !value.includes('\0')
+  );
+}
+
 function isValidAuthClaims(value) {
   return (
     value &&
     typeof value === 'object' &&
     !Array.isArray(value) &&
     isValidUserId(value.id) &&
-    typeof value.username === 'string' &&
-    value.username.trim().length > 0 &&
+    isValidJwtUsername(value.username) &&
     Array.isArray(value.roles) &&
     value.roles.length > 0 &&
     value.roles.every((role) => isValidJwtRole(role)) &&
