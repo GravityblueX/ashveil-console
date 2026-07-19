@@ -128,6 +128,31 @@ function summarizeRequiredGateList(gateNames, label) {
   return { ok: true, detail: `${gateNames.length} required gate(s)` };
 }
 
+function summarizeGateCollection(gates, label) {
+  if (!Array.isArray(gates) || gates.length === 0) {
+    return { ok: false, detail: `${label} gate list is empty` };
+  }
+
+  const blankNames = gates.filter(
+    (item) => typeof item?.name !== 'string' || item.name.trim() === ''
+  );
+  if (blankNames.length > 0) {
+    return { ok: false, detail: `${blankNames.length} blank gate name(s)` };
+  }
+
+  const seen = new Set();
+  const duplicates = [];
+  for (const item of gates) {
+    if (seen.has(item.name)) duplicates.push(item.name);
+    seen.add(item.name);
+  }
+  if (duplicates.length > 0) {
+    return { ok: false, detail: `duplicate gates: ${[...new Set(duplicates)].join(', ')}` };
+  }
+
+  return { ok: true, detail: `${gates.length} gate(s)` };
+}
+
 function run(command, args) {
   const useCmd = process.platform === 'win32' && command === 'npm';
   const executable = useCmd ? process.env.ComSpec || 'cmd.exe' : command;
@@ -383,6 +408,11 @@ async function buildReport() {
   const dirty = run('git', ['status', '--short']);
   const dirtyCount = dirty.output.split('\n').filter((line) => line.trim()).length;
   gates.push(gate('git status readable', dirty.exitCode === 0, `dirty_count=${dirtyCount}`));
+
+  const gateNameSummary = summarizeGateCollection(gates, 'release readiness');
+  gates.push(
+    gate('release readiness gate names are unique', gateNameSummary.ok, gateNameSummary.detail)
+  );
 
   return {
     reportType: 'ashveil_release_readiness',
