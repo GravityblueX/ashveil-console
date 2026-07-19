@@ -166,6 +166,19 @@ function summarizeGateOkValues(gates, label) {
   return { ok: true, detail: `${gates.length} gate ok value(s)` };
 }
 
+function summarizeGateDetails(gates, label) {
+  if (!Array.isArray(gates) || gates.length === 0) {
+    return { ok: false, detail: `${label} gate list is empty` };
+  }
+
+  const invalidDetails = gates.filter((item) => typeof item?.detail !== 'string');
+  if (invalidDetails.length > 0) {
+    return { ok: false, detail: `${invalidDetails.length} non-string gate detail value(s)` };
+  }
+
+  return { ok: true, detail: `${gates.length} gate detail value(s)` };
+}
+
 function summarizeCommandCollection(commands, label) {
   if (!Array.isArray(commands) || commands.length === 0) {
     return { ok: false, detail: `${label} command list is empty` };
@@ -545,6 +558,15 @@ async function buildReport() {
   const referenceSummary = summarizeReferenceCollection(references, 'release readiness');
   gates.push(
     gate('release readiness references are unique', referenceSummary.ok, referenceSummary.detail)
+  );
+
+  const gateDetailSummary = summarizeGateDetails(gates, 'release readiness');
+  gates.push(
+    gate(
+      'release readiness gate details are strings',
+      gateDetailSummary.ok,
+      gateDetailSummary.detail
+    )
   );
 
   const gateOkValueSummary = summarizeGateOkValues(gates, 'release readiness');
