@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-19T00:05:08.458Z",
+  "generatedAt": "2026-07-19T00:19:56.061Z",
   "ok": true,
   "gates": [
     {
@@ -42,6 +42,11 @@
       "name": "protected route rejects malformed username claims",
       "ok": true,
       "detail": "status=401, message=Invalid token"
+    },
+    {
+      "name": "protected route rejects stale principal claims",
+      "ok": true,
+      "detail": "username=status=401, message=Invalid token; roles=status=401, message=Invalid token"
     },
     {
       "name": "protected route rejects malformed role claims",

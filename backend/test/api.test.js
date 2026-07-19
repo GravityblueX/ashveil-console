@@ -154,6 +154,34 @@ describe('Ashveil API smoke contract', () => {
     }
   });
 
+  it('rejects signed tokens whose principal claims no longer match the current user', async () => {
+    const staleUsernameToken = jwt.sign(
+      { id: 1, username: 'mira', roles: ['ROOT'] },
+      'ashveil-test-secret',
+      {
+        algorithm: 'HS256',
+        expiresIn: '1h'
+      }
+    );
+    const staleRolesToken = jwt.sign(
+      { id: 1, username: 'admin', roles: ['AUDITOR'] },
+      'ashveil-test-secret',
+      {
+        algorithm: 'HS256',
+        expiresIn: '1h'
+      }
+    );
+
+    for (const token of [staleUsernameToken, staleRolesToken]) {
+      const response = await request(app)
+        .get('/api/dashboard')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(401);
+
+      assert.equal(response.body.message, 'Invalid token');
+    }
+  });
+
   it('rejects signed tokens with empty role claims', async () => {
     const token = jwt.sign({ id: 1, username: 'admin', roles: [] }, 'ashveil-test-secret', {
       algorithm: 'HS256',

@@ -225,6 +225,41 @@ async function runSmoke() {
       )
     );
 
+    const staleUsernameClaims = await request(baseUrl, '/api/dashboard', {
+      headers: {
+        authorization: `Bearer ${jwt.sign(
+          { id: 1, username: 'mira', roles: ['ROOT'] },
+          process.env.JWT_SECRET,
+          { expiresIn: '1h' }
+        )}`
+      }
+    });
+    const staleRoleClaims = await request(baseUrl, '/api/dashboard', {
+      headers: {
+        authorization: `Bearer ${jwt.sign(
+          { id: 1, username: 'admin', roles: ['AUDITOR'] },
+          process.env.JWT_SECRET,
+          { expiresIn: '1h' }
+        )}`
+      }
+    });
+    gates.push(
+      gate(
+        'protected route rejects stale principal claims',
+        staleUsernameClaims.status === 401 &&
+          staleUsernameClaims.body?.message === 'Invalid token' &&
+          staleRoleClaims.status === 401 &&
+          staleRoleClaims.body?.message === 'Invalid token',
+        `username=${requestDetail(
+          staleUsernameClaims,
+          `, message=${staleUsernameClaims.body?.message || 'none'}`
+        )}; roles=${requestDetail(
+          staleRoleClaims,
+          `, message=${staleRoleClaims.body?.message || 'none'}`
+        )}`
+      )
+    );
+
     const malformedRoleClaims = await request(baseUrl, '/api/auth/me', {
       headers: {
         authorization: `Bearer ${jwt.sign(

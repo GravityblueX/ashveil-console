@@ -139,7 +139,26 @@ function isValidAuthClaims(value) {
   );
 }
 
-function auth(req, res, next) {
+function haveSameStringSet(left, right) {
+  if (!Array.isArray(left) || !Array.isArray(right) || left.length !== right.length) {
+    return false;
+  }
+
+  const rightValues = new Set(right);
+  return rightValues.size === right.length && left.every((item) => rightValues.has(item));
+}
+
+async function findCurrentPrincipal(claims) {
+  const result = await findUserById(claims.id);
+  if (!result) return null;
+
+  const user = result.safe;
+  if (user.username !== claims.username) return null;
+  if (!haveSameStringSet(user.roles, claims.roles)) return null;
+  return user;
+}
+
+async function auth(req, res, next) {
   const parsed = parseBearerToken(req.headers.authorization);
   if (parsed.error) return res.status(401).json({ message: parsed.error });
   try {
@@ -147,7 +166,11 @@ function auth(req, res, next) {
     if (!isValidAuthClaims(claims)) {
       return res.status(401).json({ message: 'Invalid token' });
     }
-    req.user = claims;
+    const principal = await findCurrentPrincipal(claims);
+    if (!principal) {
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+    req.user = { ...claims, username: principal.username, roles: principal.roles };
     next();
   } catch {
     res.status(401).json({ message: 'Invalid token' });
