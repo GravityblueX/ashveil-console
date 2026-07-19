@@ -1,6 +1,6 @@
 # Ashveil Smoke Report
 
-Generated: 2026-07-19T05:11:02.116Z
+Generated: 2026-07-19T06:06:56.921Z
 Status: `OK`
 
 ## Gates
@@ -18,6 +18,7 @@ Status: `OK`
 | protected route rejects malformed username claims       | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects stale principal claims          | OK     | username=status=401, message=Invalid token; roles=status=401, message=Invalid token                                                                                                                            |
 | protected route rejects malformed role claims           | OK     | status=401, message=Invalid token                                                                                                                                                                              |
+| protected route rejects control-character auth claims   | OK     | username=status=401, message=Invalid token; roles=status=401, message=Invalid token                                                                                                                            |
 | protected route rejects missing issued-at claims        | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects future issued-at claims         | OK     | status=401, message=Invalid token                                                                                                                                                                              |
 | protected route rejects oversized session lifetimes     | OK     | status=401, message=Invalid token                                                                                                                                                                              |

@@ -296,6 +296,41 @@ async function runSmoke() {
       )
     );
 
+    const controlCharacterUsernameClaims = await request(baseUrl, '/api/auth/me', {
+      headers: {
+        authorization: `Bearer ${jwt.sign(
+          { id: 1, username: 'admin\troot', roles: ['ROOT'] },
+          process.env.JWT_SECRET,
+          { expiresIn: '1h' }
+        )}`
+      }
+    });
+    const controlCharacterRoleClaims = await request(baseUrl, '/api/auth/me', {
+      headers: {
+        authorization: `Bearer ${jwt.sign(
+          { id: 1, username: 'admin', roles: ['RO\tOT'] },
+          process.env.JWT_SECRET,
+          { expiresIn: '1h' }
+        )}`
+      }
+    });
+    gates.push(
+      gate(
+        'protected route rejects control-character auth claims',
+        controlCharacterUsernameClaims.status === 401 &&
+          controlCharacterUsernameClaims.body?.message === 'Invalid token' &&
+          controlCharacterRoleClaims.status === 401 &&
+          controlCharacterRoleClaims.body?.message === 'Invalid token',
+        `username=${requestDetail(
+          controlCharacterUsernameClaims,
+          `, message=${controlCharacterUsernameClaims.body?.message || 'none'}`
+        )}; roles=${requestDetail(
+          controlCharacterRoleClaims,
+          `, message=${controlCharacterRoleClaims.body?.message || 'none'}`
+        )}`
+      )
+    );
+
     const now = Math.floor(Date.now() / 1000);
     const missingIssuedAtToken = jwt.sign(
       { id: 1, username: 'admin', roles: ['ROOT'], exp: now + 3600 },

@@ -11,7 +11,7 @@ process.env.JWT_SECRET = 'ashveil-test-secret';
 const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 const { LOGIN_PASSWORD_MAX_LENGTH, LOGIN_USERNAME_MAX_LENGTH } =
   await import('../src/auth-payload.js');
-const { default: app } = await import('../src/server.js');
+const { default: app, isValidAuthClaims } = await import('../src/server.js');
 
 describe('Ashveil API smoke contract', () => {
   it('reports service health', async () => {
@@ -145,6 +145,8 @@ describe('Ashveil API smoke contract', () => {
     const malformedUsernames = [
       ' admin ',
       'admin\0root',
+      'admin\troot',
+      'admin\nroot',
       'u'.repeat(LOGIN_USERNAME_MAX_LENGTH + 1)
     ];
 
@@ -161,6 +163,25 @@ describe('Ashveil API smoke contract', () => {
 
       assert.equal(response.body.message, 'Invalid token');
     }
+  });
+
+  it('rejects control characters during auth claim validation', () => {
+    const now = Math.floor(Date.now() / 1000);
+    const validClaims = {
+      id: 1,
+      username: 'admin',
+      roles: ['ROOT'],
+      iat: now,
+      exp: now + 60 * 60
+    };
+
+    assert.equal(isValidAuthClaims(validClaims), true);
+    assert.equal(isValidAuthClaims({ ...validClaims, username: 'admin\troot' }), false);
+    assert.equal(isValidAuthClaims({ ...validClaims, username: 'admin\nroot' }), false);
+    assert.equal(isValidAuthClaims({ ...validClaims, username: 'admin\u007Froot' }), false);
+    assert.equal(isValidAuthClaims({ ...validClaims, roles: ['RO\tOT'] }), false);
+    assert.equal(isValidAuthClaims({ ...validClaims, roles: ['ROOT\nADMIN'] }), false);
+    assert.equal(isValidAuthClaims({ ...validClaims, roles: ['ROOT\u007FADMIN'] }), false);
   });
 
   it('rejects signed tokens whose principal claims no longer match the current user', async () => {
@@ -217,6 +238,24 @@ describe('Ashveil API smoke contract', () => {
       .expect(401);
 
     assert.equal(response.body.message, 'Invalid token');
+  });
+
+  it('rejects signed tokens with control-character role claims', async () => {
+    const malformedRoles = [['RO\tOT'], ['ROOT\nADMIN']];
+
+    for (const roles of malformedRoles) {
+      const token = jwt.sign({ id: 1, username: 'admin', roles }, 'ashveil-test-secret', {
+        algorithm: 'HS256',
+        expiresIn: '1h'
+      });
+
+      const response = await request(app)
+        .get('/api/auth/me')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(401);
+
+      assert.equal(response.body.message, 'Invalid token');
+    }
   });
 
   it('rejects signed tokens with duplicate or oversized role claims', async () => {

@@ -1,6 +1,6 @@
 {
   "reportType": "ashveil_smoke_report",
-  "generatedAt": "2026-07-19T05:11:02.116Z",
+  "generatedAt": "2026-07-19T06:06:56.921Z",
   "ok": true,
   "gates": [
     {
@@ -57,6 +57,11 @@
       "name": "protected route rejects malformed role claims",
       "ok": true,
       "detail": "status=401, message=Invalid token"
+    },
+    {
+      "name": "protected route rejects control-character auth claims",
+      "ok": true,
+      "detail": "username=status=401, message=Invalid token; roles=status=401, message=Invalid token"
     },
     {
       "name": "protected route rejects missing issued-at claims",

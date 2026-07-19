@@ -101,6 +101,14 @@ function isValidJwtTimestamp(value) {
   return Number.isInteger(value) && value > 0;
 }
 
+function hasAsciiControlCharacter(value) {
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index);
+    if (code < 32 || code === 127) return true;
+  }
+  return false;
+}
+
 function isValidJwtTimeline(value) {
   const now = Math.floor(Date.now() / 1000);
   return (
@@ -118,7 +126,7 @@ function isValidJwtRole(value) {
     value.length > 0 &&
     value.length <= JWT_ROLE_MAX_LENGTH &&
     value === value.trim() &&
-    !value.includes('\0')
+    !hasAsciiControlCharacter(value)
   );
 }
 
@@ -128,11 +136,11 @@ function isValidJwtUsername(value) {
     value.length > 0 &&
     value.length <= LOGIN_USERNAME_MAX_LENGTH &&
     value === value.trim() &&
-    !value.includes('\0')
+    !hasAsciiControlCharacter(value)
   );
 }
 
-function isValidAuthClaims(value) {
+export function isValidAuthClaims(value) {
   const roleSet = Array.isArray(value?.roles) ? new Set(value.roles) : null;
   return (
     value &&
