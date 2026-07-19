@@ -1,6 +1,6 @@
 # Ashveil Release Readiness
 
-Generated: 2026-07-19T09:09:30.864Z
+Generated: 2026-07-19T10:02:20.244Z
 Project: `ashveil-console`
 Version: `0.27.0`
 Status: `OK`
@@ -63,7 +63,8 @@ Status: `OK`
 | release readiness command exit codes are numeric             | OK     | 9 command exit code(s)                                                                |
 | release readiness command names are unique                   | OK     | 9 command(s)                                                                          |
 | release readiness references are unique                      | OK     | 6 reference(s)                                                                        |
-| release readiness gate names are unique                      | OK     | 54 gate(s)                                                                            |
+| release readiness gate ok values are boolean                 | OK     | 54 gate ok value(s)                                                                   |
+| release readiness gate names are unique                      | OK     | 55 gate(s)                                                                            |
 
 ## Commands
 

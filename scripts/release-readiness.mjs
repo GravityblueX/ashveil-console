@@ -153,6 +153,19 @@ function summarizeGateCollection(gates, label) {
   return { ok: true, detail: `${gates.length} gate(s)` };
 }
 
+function summarizeGateOkValues(gates, label) {
+  if (!Array.isArray(gates) || gates.length === 0) {
+    return { ok: false, detail: `${label} gate list is empty` };
+  }
+
+  const invalidValues = gates.filter((item) => typeof item?.ok !== 'boolean');
+  if (invalidValues.length > 0) {
+    return { ok: false, detail: `${invalidValues.length} non-boolean gate ok value(s)` };
+  }
+
+  return { ok: true, detail: `${gates.length} gate ok value(s)` };
+}
+
 function summarizeCommandCollection(commands, label) {
   if (!Array.isArray(commands) || commands.length === 0) {
     return { ok: false, detail: `${label} command list is empty` };
@@ -510,6 +523,15 @@ async function buildReport() {
   const referenceSummary = summarizeReferenceCollection(references, 'release readiness');
   gates.push(
     gate('release readiness references are unique', referenceSummary.ok, referenceSummary.detail)
+  );
+
+  const gateOkValueSummary = summarizeGateOkValues(gates, 'release readiness');
+  gates.push(
+    gate(
+      'release readiness gate ok values are boolean',
+      gateOkValueSummary.ok,
+      gateOkValueSummary.detail
+    )
   );
 
   const gateNameSummary = summarizeGateCollection(gates, 'release readiness');
