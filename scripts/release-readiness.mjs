@@ -239,6 +239,21 @@ function summarizeCommandOutputs(commands, label) {
   return { ok: true, detail: `${commands.length} command output value(s)` };
 }
 
+function summarizeCommandStrings(commands, label) {
+  if (!Array.isArray(commands) || commands.length === 0) {
+    return { ok: false, detail: `${label} command list is empty` };
+  }
+
+  const invalidCommands = commands.filter(
+    (item) => typeof item?.command !== 'string' || item.command.trim() === ''
+  );
+  if (invalidCommands.length > 0) {
+    return { ok: false, detail: `${invalidCommands.length} missing command string(s)` };
+  }
+
+  return { ok: true, detail: `${commands.length} command string(s)` };
+}
+
 function summarizeReferenceCollection(references, label) {
   if (!Array.isArray(references) || references.length === 0) {
     return { ok: false, detail: `${label} reference list is empty` };
@@ -535,6 +550,15 @@ async function buildReport() {
       'release readiness command outputs are strings',
       commandOutputSummary.ok,
       commandOutputSummary.detail
+    )
+  );
+
+  const commandStringSummary = summarizeCommandStrings(commands, 'release readiness');
+  gates.push(
+    gate(
+      'release readiness command strings are non-empty',
+      commandStringSummary.ok,
+      commandStringSummary.detail
     )
   );
 

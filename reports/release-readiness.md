@@ -1,6 +1,6 @@
 # Ashveil Release Readiness
 
-Generated: 2026-07-19T11:12:25.901Z
+Generated: 2026-07-19T11:52:37.280Z
 Project: `ashveil-console`
 Version: `0.27.0`
 Status: `OK`
@@ -62,11 +62,12 @@ Status: `OK`
 | git status readable                                          | OK     | dirty_count=11                                                                        |
 | release readiness command exit codes are numeric             | OK     | 9 command exit code(s)                                                                |
 | release readiness command outputs are strings                | OK     | 9 command output value(s)                                                             |
+| release readiness command strings are non-empty              | OK     | 9 command string(s)                                                                   |
 | release readiness command names are unique                   | OK     | 9 command(s)                                                                          |
 | release readiness references are unique                      | OK     | 6 reference(s)                                                                        |
-| release readiness gate details are strings                   | OK     | 55 gate detail value(s)                                                               |
-| release readiness gate ok values are boolean                 | OK     | 56 gate ok value(s)                                                                   |
-| release readiness gate names are unique                      | OK     | 57 gate(s)                                                                            |
+| release readiness gate details are strings                   | OK     | 56 gate detail value(s)                                                               |
+| release readiness gate ok values are boolean                 | OK     | 57 gate ok value(s)                                                                   |
+| release readiness gate names are unique                      | OK     | 58 gate(s)                                                                            |
 
 ## Commands
 
