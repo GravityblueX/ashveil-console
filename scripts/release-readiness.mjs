@@ -102,6 +102,32 @@ function gate(name, ok, detail) {
   return { name, ok, detail };
 }
 
+function summarizeRequiredGateList(gateNames, label) {
+  if (!Array.isArray(gateNames) || gateNames.length === 0) {
+    return { ok: false, detail: `${label} required gate list is empty` };
+  }
+
+  const blankNames = gateNames.filter((name) => typeof name !== 'string' || name.trim() === '');
+  if (blankNames.length > 0) {
+    return { ok: false, detail: `${blankNames.length} blank required gate name(s)` };
+  }
+
+  const seen = new Set();
+  const duplicates = [];
+  for (const name of gateNames) {
+    if (seen.has(name)) duplicates.push(name);
+    seen.add(name);
+  }
+  if (duplicates.length > 0) {
+    return {
+      ok: false,
+      detail: `duplicate required gates: ${[...new Set(duplicates)].join(', ')}`
+    };
+  }
+
+  return { ok: true, detail: `${gateNames.length} required gate(s)` };
+}
+
 function run(command, args) {
   const useCmd = process.platform === 'win32' && command === 'npm';
   const executable = useCmd ? process.env.ComSpec || 'cmd.exe' : command;
@@ -267,6 +293,16 @@ async function buildReport() {
       'boundary backtick padding'
     )
   );
+  for (const [label, requiredGateNames] of [
+    ['smoke report', REQUIRED_SMOKE_GATES],
+    ['API surface report', REQUIRED_API_SURFACE_GATES],
+    ['OpenAPI report', REQUIRED_OPENAPI_GATES],
+    ['client API coverage report', REQUIRED_CLIENT_API_COVERAGE_GATES],
+    ['dependency SBOM report', REQUIRED_SBOM_GATES]
+  ]) {
+    const summary = summarizeRequiredGateList(requiredGateNames, label);
+    gates.push(gate(`${label} required gate list is well formed`, summary.ok, summary.detail));
+  }
 
   const releaseTag = `v${pkg.version}`;
   const releaseNotes = await readFile(resolve(root, 'RELEASE_NOTES.md'), 'utf8');
